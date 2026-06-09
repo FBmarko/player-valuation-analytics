@@ -1,8 +1,9 @@
 export async function loadGeneratedData() {
+  const baseUrl = import.meta.env.BASE_URL || "/";
   const [playersRes, teamsRes, metadataRes] = await Promise.all([
-    fetch("/data/generated/players.generated.json"),
-    fetch("/data/generated/teams.generated.json"),
-    fetch("/data/generated/metadata.generated.json")
+    fetch(`${baseUrl}data/generated/players.generated.json`),
+    fetch(`${baseUrl}data/generated/teams.generated.json`),
+    fetch(`${baseUrl}data/generated/metadata.generated.json`)
   ]);
 
   if (!playersRes.ok || !teamsRes.ok || !metadataRes.ok) {
