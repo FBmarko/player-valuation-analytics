@@ -366,7 +366,71 @@ function ReportList({ icon: Icon, title, items, accent }) {
   );
 }
 
-function AIScoutReport({ report, className = "" }) {
+function generateScoutingNarrative(player) {
+  const name = player.name;
+  const age = parseInt(player.age) || 25;
+  const position = player.position.toLowerCase();
+  
+  const categories = Object.entries(player.aiScores);
+  categories.sort((a, b) => b[1] - a[1]);
+  const highest = categories[0];
+  const lowest = categories.at(-1);
+  
+  let ageGroup = "prime";
+  if (age <= 21) ageGroup = "wonderkid";
+  else if (age <= 24) ageGroup = "young";
+  else if (age >= 31) ageGroup = "veteran";
+  
+  let traitNote = "";
+  if (highest[0] === "attack") {
+    traitNote = `possesses lethal finishing and off-the-ball movements, showing elite clinical threat in the final third.`;
+  } else if (highest[0] === "playmaking") {
+    traitNote = `possesses vision and passing range, acting as a crucial engine for ball progression and chance creation.`;
+  } else if (highest[0] === "dribbling") {
+    traitNote = `displays excellent ball-carrying abilities under pressure, showing progressive runs and key dynamic carries.`;
+  } else if (highest[0] === "defense") {
+    traitNote = `exhibits positional discipline and defensive awareness, making key tackles and ball recovery actions.`;
+  } else if (highest[0] === "physicality") {
+    traitNote = `stands out for duel dominance and contact strength, using size and stamina to dominate match duels.`;
+  } else {
+    traitNote = `maintains reliable operational quality across his core duties on the pitch.`;
+  }
+  
+  let weaknessNote = "";
+  if (lowest[1] < 45) {
+    weaknessNote = ` However, a low ${lowest[0]} rating (${lowest[1]}/99) represents a key vulnerability in this profile that opposition coaches may target.`;
+  } else if (lowest[1] < 60) {
+    weaknessNote = ` His ${lowest[0]} score (${lowest[1]}/99) is moderate, which is an area that coaches should look to develop for tactical flexibility.`;
+  } else {
+    weaknessNote = ` He displays a well-rounded profile with no statistical vulnerabilities in key category metrics.`;
+  }
+
+  let projectionNote = "";
+  const finalProj = player.futureProjection?.[2];
+  if (finalProj && finalProj.aiQualityScore > player.aiQualityScore) {
+    const growth = finalProj.aiQualityScore - player.aiQualityScore;
+    projectionNote = ` Our ML projection forecasts excellent development, expecting an index growth of +${growth} points and a target valuation of €${finalProj.marketValue.toFixed(1)}M by the ${finalProj.season} season.`;
+  } else if (finalProj && finalProj.aiQualityScore < player.aiQualityScore) {
+    projectionNote = ` As an older player, the projection model estimates a gradual performance and market value regression, indicating a short-term contract model is ideal.`;
+  } else {
+    projectionNote = ` The projection model forecasts stable quality and value retention over the next three seasons.`;
+  }
+
+  if (ageGroup === "wonderkid") {
+    return `${name} is an exceptionally promising ${age}-year-old ${position} who ${traitNote}${weaknessNote}${projectionNote} An elite prospect for long-term scouting lists.`;
+  } else if (ageGroup === "young") {
+    return `${name} is a developing ${age}-year-old ${position} who ${traitNote}${weaknessNote}${projectionNote} Offers strong upside with high resale potential.`;
+  } else if (ageGroup === "veteran") {
+    return `${name} is a highly experienced ${age}-year-old veteran ${position} who ${traitNote}${weaknessNote}${projectionNote} Provides crucial leadership and tactical maturity for short-term squad depth.`;
+  } else {
+    return `${name} is a ${age}-year-old ${position} currently in his peak years who ${traitNote}${weaknessNote}${projectionNote} An established asset with reliable match output.`;
+  }
+}
+
+function AIScoutReport({ player, className = "" }) {
+  const report = player.aiReport;
+  const aiComment = useMemo(() => generateScoutingNarrative(player), [player]);
+
   return (
     <PremiumPanel className={`flex min-h-[34rem] flex-col p-7 ${className}`}>
       <div className="mb-5 flex items-center justify-between gap-4">
@@ -401,15 +465,15 @@ function AIScoutReport({ report, className = "" }) {
       <div className="mt-5 flex-1 rounded-3xl border border-emerald-400/20 bg-emerald-400/10 p-6">
         <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.24em] text-emerald-300">
           <BrainCircuit className="h-4 w-4" />
-          AI Comment
+          AI Scouting Analyst Comment
         </div>
-        <p className="mt-5 text-base leading-8 text-slate-200">{report.aiComment}</p>
+        <p className="mt-4 text-sm leading-8 text-slate-200">{aiComment}</p>
       </div>
     </PremiumPanel>
   );
 }
 
-function FutureProjection({ projection, className = "" }) {
+function FutureProjection({ projection, currentValue, currentQuality, projectionIndex, onChange, className = "" }) {
   const finalSeason = projection.at(-1);
   const projectionReady = hasProjectionData(projection);
 
@@ -424,52 +488,89 @@ function FutureProjection({ projection, className = "" }) {
       </div>
 
       {projectionReady ? (
-        <>
-          <div className="grid gap-3">
-            {projection.map((season, index) => (
-              <div
-                key={season.season}
-                className="relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/55 p-4"
-              >
-                <div className="absolute right-0 top-0 h-20 w-20 rounded-full bg-emerald-400/10 blur-2xl" />
-                <div className="relative flex items-center justify-between gap-4">
-                  <div>
-                    <p className="text-xs font-bold uppercase tracking-[0.22em] text-slate-500">
-                      Season {index + 1}
-                    </p>
-                    <p className="mt-1 text-lg font-black text-white">{season.season}</p>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3 text-right">
-                    <div>
-                      <p className="text-[11px] uppercase tracking-[0.18em] text-slate-500">AI Index</p>
-                      <p className="mt-1 text-lg font-black text-emerald-300">
-                        {formatScore(season.aiQualityScore)}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-[11px] uppercase tracking-[0.18em] text-slate-500">Value</p>
-                      <p className="mt-1 text-lg font-black text-amber-300">
-                        EUR {season.marketValue.toFixed(1)}M
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-4 rounded-3xl border border-emerald-400/20 bg-emerald-400/10 p-4">
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.24em] text-emerald-300">
-              <TrendingUp className="h-4 w-4" />
-              Projection Summary
+        <div className="flex flex-col h-full justify-between gap-5">
+          {/* Slider Controls */}
+          <div className="rounded-3xl bg-slate-950/70 p-5 border border-slate-850">
+            <div className="flex justify-between text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">
+              <span>Projection Timeline</span>
+              <span className="text-emerald-400 font-extrabold">
+                {projectionIndex === 0 ? "Current Baseline" : `${projection[projectionIndex - 1]?.season} Forecast`}
+              </span>
             </div>
-            <p className="mt-3 text-sm leading-6 text-slate-300">
-              Model projects a {formatScore(finalSeason.aiQualityScore)} AI Index and EUR{" "}
-              {finalSeason.marketValue.toFixed(1)}M market value by {finalSeason.season}.
-            </p>
+            
+            <input
+              type="range"
+              min="0"
+              max="3"
+              value={projectionIndex}
+              onChange={(e) => onChange(parseInt(e.target.value))}
+              className="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-400 focus:outline-none"
+            />
+            
+            <div className="flex justify-between mt-3.5 px-1">
+              {["Now", "2026/27", "2027/28", "2028/29"].map((label, idx) => (
+                <button
+                  key={label}
+                  onClick={() => onChange(idx)}
+                  className={`text-[10px] font-black uppercase transition ${
+                    projectionIndex === idx ? "text-emerald-300 scale-105" : "text-slate-500 hover:text-slate-300"
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
           </div>
-        </>
+
+          {/* Current/Forecasted Stats card */}
+          <div className="relative overflow-hidden rounded-3xl border border-slate-850 bg-slate-950/60 p-5 flex-1">
+            <div className="absolute right-0 top-0 h-24 w-24 rounded-full bg-emerald-400/5 blur-2xl pointer-events-none" />
+            
+            <div className="flex items-center justify-between gap-4 border-b border-slate-850/60 pb-3 mb-4">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Timeline State</p>
+                <p className="text-base font-black text-white">
+                  {projectionIndex === 0 ? "Current Actuals" : `${projection[projectionIndex - 1]?.season} Forecast`}
+                </p>
+              </div>
+              <span className="rounded-full bg-slate-900 border border-slate-850 px-2.5 py-1 text-[10px] font-bold text-slate-400">
+                {projectionIndex === 0 ? "Baseline" : "ML Projected"}
+              </span>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="rounded-2xl border border-emerald-500/10 bg-emerald-500/5 p-4">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">AI Quality Index</p>
+                <p className="text-2xl font-black text-emerald-400 mt-1">
+                  {projectionIndex === 0 ? currentQuality : projection[projectionIndex - 1]?.aiQualityScore}
+                </p>
+                {projectionIndex > 0 && (
+                  <p className={`text-[10px] font-bold mt-1.5 ${
+                    projection[projectionIndex - 1]?.aiQualityScore >= currentQuality ? "text-emerald-400" : "text-rose-400"
+                  }`}>
+                    {projection[projectionIndex - 1]?.aiQualityScore >= currentQuality ? "▲" : "▼"}{" "}
+                    {Math.abs(Math.round(((projection[projectionIndex - 1]?.aiQualityScore - currentQuality) / currentQuality) * 100))}% vs baseline
+                  </p>
+                )}
+              </div>
+
+              <div className="rounded-2xl border border-amber-500/10 bg-amber-500/5 p-4">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Market Valuation</p>
+                <p className="text-2xl font-black text-amber-300 mt-1">
+                  €{(projectionIndex === 0 ? currentValue : projection[projectionIndex - 1]?.marketValue).toFixed(1)}M
+                </p>
+                {projectionIndex > 0 && (
+                  <p className={`text-[10px] font-bold mt-1.5 ${
+                    projection[projectionIndex - 1]?.marketValue >= currentValue ? "text-emerald-400" : "text-rose-400"
+                  }`}>
+                    {projection[projectionIndex - 1]?.marketValue >= currentValue ? "▲" : "▼"}{" "}
+                    {Math.abs(Math.round(((projection[projectionIndex - 1]?.marketValue - currentValue) / currentValue) * 100))}% vs baseline
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
       ) : (
         <div className="flex flex-1 items-center rounded-3xl border border-slate-800 bg-slate-950/55 p-6">
           <div>

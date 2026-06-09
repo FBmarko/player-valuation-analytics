@@ -7,6 +7,8 @@ import Home from "./pages/Home";
 import LeaguePage from "./pages/LeaguePage";
 import TeamPage from "./pages/TeamPage";
 import PlayerProfile from "./pages/PlayerProfile";
+import ComparePlayers from "./pages/ComparePlayers";
+import ScoutFinder from "./pages/ScoutFinder";
 import { slugify } from "./utils/dataUtils";
 
 function AppShell() {
@@ -104,6 +106,8 @@ function AppShell() {
         <Topbar searchableItems={searchableItems} onSelect={handleSearchSelect} />
         <Routes>
           <Route path="/" element={<Home teams={teams} players={players} />} />
+          <Route path="/scout" element={<ScoutFinder teams={teams} players={players} />} />
+          <Route path="/compare" element={<ComparePlayers teams={teams} players={players} />} />
           <Route path="/league/:leagueId" element={<LeaguePage teams={teams} players={players} />} />
           <Route path="/team/:teamId" element={<TeamPage teams={teams} players={players} />} />
           <Route path="/player/:id" element={<PlayerProfile teams={teams} players={players} />} />

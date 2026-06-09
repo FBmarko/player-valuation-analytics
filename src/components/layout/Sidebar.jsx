@@ -1,4 +1,4 @@
-import { Crosshair, Shield, Sparkles } from "lucide-react";
+import { Crosshair, Shield, Sparkles, Search, GitCompare } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { slugify } from "../../utils/dataUtils";
 
@@ -23,14 +23,43 @@ export default function Sidebar({ teams }) {
       <NavLink
         to="/"
         className={({ isActive }) =>
-          `mt-8 rounded-2xl px-4 py-3 text-sm font-semibold transition ${
+          `mt-8 flex items-center gap-2.5 rounded-2xl px-4 py-3 text-sm font-semibold transition ${
             isActive
               ? "bg-emerald-400/10 text-emerald-200 ring-1 ring-emerald-400/30"
               : "text-slate-400 hover:bg-slate-900 hover:text-slate-100"
           }`
         }
       >
+        <Crosshair className="h-4 w-4" />
         Command Center
+      </NavLink>
+
+      <NavLink
+        to="/scout"
+        className={({ isActive }) =>
+          `mt-2 flex items-center gap-2.5 rounded-2xl px-4 py-3 text-sm font-semibold transition ${
+            isActive
+              ? "bg-emerald-400/10 text-emerald-200 ring-1 ring-emerald-400/30"
+              : "text-slate-400 hover:bg-slate-900 hover:text-slate-100"
+          }`
+        }
+      >
+        <Search className="h-4 w-4" />
+        Scout Finder
+      </NavLink>
+
+      <NavLink
+        to="/compare"
+        className={({ isActive }) =>
+          `mt-2 flex items-center gap-2.5 rounded-2xl px-4 py-3 text-sm font-semibold transition ${
+            isActive
+              ? "bg-emerald-400/10 text-emerald-200 ring-1 ring-emerald-400/30"
+              : "text-slate-400 hover:bg-slate-900 hover:text-slate-100"
+          }`
+        }
+      >
+        <GitCompare className="h-4 w-4" />
+        Compare Mode
       </NavLink>
 
       <div className="mt-4 rounded-3xl border border-slate-800 bg-slate-900/50 p-4 backdrop-blur-md">
