@@ -182,7 +182,7 @@ function ScoutMetricConsole({ groups }) {
                 </span>
               </div>
 
-              <div className="mt-3 grid gap-2 sm:grid-cols-5">
+              <div className="mt-3 grid gap-2 grid-cols-2 min-[480px]:grid-cols-3 sm:grid-cols-5">
                 {group.metrics.map((metric) => (
                   <div
                     key={metric.label}
@@ -224,7 +224,7 @@ function ScoutMetricConsole({ groups }) {
             </div>
 
             <div className="mt-3 grid gap-2">
-              <div className="grid gap-2 sm:grid-cols-3">
+              <div className="grid gap-2 grid-cols-3">
                 {featuredMetrics.map((metric) => (
                   <div
                     key={metric.label}
@@ -238,7 +238,7 @@ function ScoutMetricConsole({ groups }) {
                 ))}
               </div>
 
-              <div className="grid gap-1.5 sm:grid-cols-2">
+              <div className="grid gap-1.5 grid-cols-1 sm:grid-cols-2">
                 {secondaryMetrics.map((metric) => (
                   <div
                     key={metric.label}
@@ -346,7 +346,7 @@ function ScoreOrb({ score, tier }) {
           <BrainCircuit className="h-5 w-5 text-emerald-300" />
           <span className="text-xs font-semibold uppercase tracking-[0.3em]">A-Quality Index</span>
         </div>
-        <p className="mt-5 bg-gradient-to-br from-emerald-100 via-emerald-300 to-green-500 bg-clip-text text-7xl font-black leading-none text-transparent drop-shadow-[0_0_28px_rgba(34,197,94,0.38)]">
+        <p className="mt-5 bg-gradient-to-br from-emerald-100 via-emerald-300 to-green-500 bg-clip-text text-5xl sm:text-7xl font-black leading-none text-transparent drop-shadow-[0_0_28px_rgba(34,197,94,0.38)]">
           {formatScore(score)}
         </p>
         <div className="mt-4 flex flex-wrap items-center gap-3">
@@ -457,7 +457,7 @@ function AIScoutReport({ player, className = "" }) {
         <BrainCircuit className="h-6 w-6 text-emerald-300" />
       </div>
 
-      <div className="grid gap-4 2xl:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-3">
         <ReportList
           icon={Sparkles}
           title="Strong Sides"
@@ -655,8 +655,8 @@ function ProfileHero({ player, team }) {
       <div className="absolute right-8 top-8 h-48 w-48 rounded-full bg-emerald-400/10 blur-3xl" />
 
       <div className="relative p-6">
-        <div className="grid gap-6 xl:grid-cols-[16rem_1fr_13rem]">
-          <GlowingAvatar aiQualityScore={player.aiQualityScore} className="w-full rounded-[2.25rem]" />
+        <div className="grid gap-6 md:grid-cols-[14rem_1fr] xl:grid-cols-[16rem_1fr_13rem]">
+          <GlowingAvatar aiQualityScore={player.aiQualityScore} className="w-full max-w-[14rem] mx-auto xl:max-w-none rounded-[2.25rem]" />
 
           <div className="min-w-0 self-center">
             <div className="flex flex-wrap items-center gap-3">
@@ -668,13 +668,13 @@ function ProfileHero({ player, team }) {
               </span>
             </div>
 
-            <h1 className="mt-5 text-5xl font-black tracking-tight text-white 2xl:text-7xl">
+            <h1 className="mt-5 text-3xl sm:text-5xl 2xl:text-7xl font-black tracking-tight text-white">
               {player.name}
             </h1>
             <p className="mt-3 text-lg font-semibold text-slate-300">{player.position}</p>
             <p className="mt-5 max-w-4xl text-sm leading-7 text-slate-400">{player.summary}</p>
 
-            <div className="mt-6 grid gap-3 sm:grid-cols-2 2xl:grid-cols-4">
+            <div className="mt-6 grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
               <MiniMetric icon={MapPin} label="Nation" value={displayFallback(player.nationality, "Unconfirmed")} accent="text-sky-300" />
               <MiniMetric icon={Footprints} label="Foot" value={displayFallback(player.foot)} accent="text-amber-300" />
               <MiniMetric icon={BadgeEuro} label="Value" value={`EUR ${latestValue.toFixed(1)}M`} accent="text-emerald-300" />
@@ -682,19 +682,21 @@ function ProfileHero({ player, team }) {
             </div>
           </div>
 
-          <div className="self-stretch rounded-[2rem] border border-slate-800 bg-slate-950/65 p-5">
-            <p className="text-xs uppercase tracking-[0.24em] text-slate-500">Club Identity</p>
-            <p className="mt-2 text-lg font-black text-white">{team.name}</p>
-            <div className="mt-4 grid place-items-center rounded-[1.5rem] bg-slate-900/70 py-5">
+          <div className="md:col-span-2 xl:col-span-1 rounded-[2rem] border border-slate-800 bg-slate-950/65 p-5 flex flex-col sm:flex-row xl:flex-col justify-between items-center gap-4">
+            <div className="text-center sm:text-left xl:text-center">
+              <p className="text-xs uppercase tracking-[0.24em] text-slate-500">Club Identity</p>
+              <p className="mt-2 text-lg font-black text-white">{team.name}</p>
+            </div>
+            <div className="grid place-items-center rounded-[1.5rem] bg-slate-900/70 py-5 w-full sm:w-36 xl:w-full">
               <TeamJersey
                 primaryColor={team.primaryColor}
                 secondaryColor={team.secondaryColor}
-                className="h-28 w-28"
+                className="h-20 w-20 sm:h-24 sm:w-24 xl:h-28 xl:w-28"
               />
             </div>
-            <div className="mt-4 flex items-center gap-2">
-              <span className="h-2.5 flex-1 rounded-full" style={{ backgroundColor: team.primaryColor }} />
-              <span className="h-2.5 flex-1 rounded-full" style={{ backgroundColor: team.secondaryColor }} />
+            <div className="flex items-center gap-2 w-full sm:w-24 xl:w-full">
+              <span className="h-2 flex-1 rounded-full" style={{ backgroundColor: team.primaryColor }} />
+              <span className="h-2 flex-1 rounded-full" style={{ backgroundColor: team.secondaryColor }} />
             </div>
           </div>
         </div>
@@ -738,10 +740,10 @@ function AIDashboard({ player }) {
 
   return (
     <div className="flex h-full flex-col gap-5">
-      <div className="grid gap-5 2xl:grid-cols-[0.9fr_1.1fr]">
+      <div className="grid gap-5 md:grid-cols-[1fr_1.2fr] lg:grid-cols-1 2xl:grid-cols-[0.9fr_1.1fr]">
         <ScoreOrb score={activeQuality} tier={tier} />
 
-        <div className="grid gap-3 sm:grid-cols-3 2xl:grid-cols-1">
+        <div className="grid gap-3 sm:grid-cols-3 md:grid-cols-1 lg:grid-cols-3 2xl:grid-cols-1">
           <InsightCard
             icon={Sparkles}
             label="Best AI Signal"
@@ -824,11 +826,11 @@ export default function PlayerProfile({ teams, players }) {
   const team = teams.find((candidate) => candidate.id === player.teamId);
 
   return (
-    <div className="p-6">
+    <div className="p-4 sm:p-6">
       <div className="mb-6 flex items-center justify-between gap-4">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 rounded-2xl border border-slate-800 bg-slate-900/60 px-4 py-3 text-sm font-semibold text-slate-300 transition hover:border-emerald-400/40 hover:text-emerald-300"
+          className="inline-flex items-center gap-2 rounded-2xl border border-slate-800 bg-slate-900/60 px-3.5 py-2.5 sm:px-4 sm:py-3 text-xs sm:text-sm font-semibold text-slate-300 transition hover:border-emerald-400/40 hover:text-emerald-300"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Command Center
@@ -841,7 +843,7 @@ export default function PlayerProfile({ teams, players }) {
 
       <ProfileHero player={player} team={team} />
 
-      <div className="mt-6 grid items-stretch gap-6 xl:grid-cols-[minmax(30rem,0.54fr)_minmax(0,0.46fr)]">
+      <div className="mt-6 grid items-stretch gap-6 lg:grid-cols-[1.2fr_1fr]">
         <aside className="flex flex-col">
           <ScoutMetricConsole groups={player.rawMetrics} />
           <AIScoutReport player={player} className="mt-3 flex-1" />

@@ -27,7 +27,7 @@ const matchesSmartSearch = (item, query) => {
   );
 };
 
-export default function Topbar({ searchableItems, onSelect }) {
+export default function Topbar({ searchableItems, onSelect, onMenuClick }) {
   const [query, setQuery] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
@@ -78,7 +78,7 @@ export default function Topbar({ searchableItems, onSelect }) {
   const isOpen = isFocused && normalizeSearch(query).length >= 2;
 
   return (
-    <header className="sticky top-0 z-55 border-b border-slate-800 bg-slate-950/80 px-6 py-5 backdrop-blur-xl">
+    <header className="sticky top-0 z-55 border-b border-slate-800 bg-slate-950/80 px-4 py-4 sm:px-6 sm:py-5 backdrop-blur-xl">
       {isOpen && (
         <button
           type="button"
@@ -88,9 +88,21 @@ export default function Topbar({ searchableItems, onSelect }) {
         />
       )}
 
-      <div className="relative z-50 flex items-center gap-4">
+      <div className="relative z-50 flex items-center gap-2 sm:gap-4">
+        {/* Hamburger Mobile Menu Toggle */}
+        <button
+          type="button"
+          onClick={onMenuClick}
+          className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-slate-800 bg-slate-900/60 text-slate-300 hover:border-emerald-400/40 hover:text-emerald-300 lg:hidden"
+          aria-label="Toggle navigation menu"
+        >
+          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
         <div className="relative flex-1">
-          <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500" />
+          <Search className="pointer-events-none absolute left-3.5 sm:left-4 top-1/2 h-4 w-4 sm:h-5 sm:w-5 -translate-y-1/2 text-slate-500" />
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
@@ -101,7 +113,7 @@ export default function Topbar({ searchableItems, onSelect }) {
                 event.currentTarget.blur();
               }
             }}
-            className="h-14 w-full rounded-2xl border border-slate-800 bg-slate-900/70 pl-12 pr-32 text-sm text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-emerald-400/50 focus:ring-4 focus:ring-emerald-400/10"
+            className="h-12 sm:h-14 w-full rounded-xl sm:rounded-2xl border border-slate-800 bg-slate-900/70 pl-10 sm:pl-12 pr-4 sm:pr-32 text-xs sm:text-sm text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-emerald-400/50 focus:ring-4 focus:ring-emerald-400/10"
             placeholder="Search players, teams, leagues..."
           />
           <div className="pointer-events-none absolute right-4 top-1/2 hidden -translate-y-1/2 items-center gap-2 rounded-xl border border-slate-700 bg-slate-950/80 px-2 py-1 text-xs text-slate-500 sm:flex">
@@ -138,13 +150,13 @@ export default function Topbar({ searchableItems, onSelect }) {
               setShowSettings(!showSettings);
               setShowNotifications(false);
             }}
-            className={`grid h-14 w-14 place-items-center rounded-2xl border transition ${
+            className={`grid h-12 w-12 sm:h-14 sm:w-14 place-items-center rounded-xl sm:rounded-2xl border transition ${
               showSettings
                 ? "border-emerald-400/60 bg-emerald-400/10 text-emerald-300 shadow-[0_0_20px_rgba(52,211,153,0.15)]"
                 : "border-slate-800 bg-slate-900/60 text-slate-300 hover:border-emerald-400/40 hover:text-emerald-300"
             }`}
           >
-            <SlidersHorizontal className="h-5 w-5" />
+            <SlidersHorizontal className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
 
           {showSettings && (
@@ -189,13 +201,13 @@ export default function Topbar({ searchableItems, onSelect }) {
               setShowNotifications(!showNotifications);
               setShowSettings(false);
             }}
-            className={`grid h-14 w-14 place-items-center rounded-2xl border transition ${
+            className={`grid h-12 w-12 sm:h-14 sm:w-14 place-items-center rounded-xl sm:rounded-2xl border transition ${
               showNotifications
                 ? "border-amber-400/60 bg-amber-400/10 text-amber-300 shadow-[0_0_20px_rgba(251,191,36,0.15)]"
                 : "border-slate-800 bg-slate-900/60 text-slate-300 hover:border-amber-400/40 hover:text-amber-300"
             }`}
           >
-            <Bell className="h-5 w-5" />
+            <Bell className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
 
           {showNotifications && (

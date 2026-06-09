@@ -99,11 +99,17 @@ function AppShell() {
     );
   }
 
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div className="flex min-h-screen bg-slate-950 text-slate-100">
-      <Sidebar teams={teams} />
-      <main className="min-w-0 flex-1">
-        <Topbar searchableItems={searchableItems} onSelect={handleSearchSelect} />
+      <Sidebar teams={teams} isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <main className="min-w-0 flex-1 flex flex-col">
+        <Topbar
+          searchableItems={searchableItems}
+          onSelect={handleSearchSelect}
+          onMenuClick={() => setSidebarOpen(true)}
+        />
         <Routes>
           <Route path="/" element={<Home teams={teams} players={players} />} />
           <Route path="/scout" element={<ScoutFinder teams={teams} players={players} />} />
