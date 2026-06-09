@@ -17,6 +17,7 @@ import {
   Target,
   TrendingUp,
 } from "lucide-react";
+import { useState, useMemo } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import GlowingAvatar from "../components/GlowingAvatar";
 import StatBar from "../components/StatBar";
@@ -473,7 +474,7 @@ function AIScoutReport({ player, className = "" }) {
   );
 }
 
-function FutureProjection({ projection, currentValue, currentQuality, projectionIndex, onChange, className = "" }) {
+function FutureProjection({ projection, currentValue, currentQuality, projectionIndex = 0, onChange, className = "" }) {
   const finalSeason = projection.at(-1);
   const projectionReady = hasProjectionData(projection);
 
@@ -491,29 +492,65 @@ function FutureProjection({ projection, currentValue, currentQuality, projection
         <div className="flex flex-col h-full justify-between gap-5">
           {/* Slider Controls */}
           <div className="rounded-3xl bg-slate-950/70 p-5 border border-slate-850">
-            <div className="flex justify-between text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">
+            <div className="flex justify-between text-xs font-bold text-slate-500 uppercase tracking-wider mb-5">
               <span>Projection Timeline</span>
-              <span className="text-emerald-400 font-extrabold">
+              <span className="text-emerald-400 font-extrabold tracking-wide">
                 {projectionIndex === 0 ? "Current Baseline" : `${projection[projectionIndex - 1]?.season} Forecast`}
               </span>
             </div>
             
-            <input
-              type="range"
-              min="0"
-              max="3"
-              value={projectionIndex}
-              onChange={(e) => onChange(parseInt(e.target.value))}
-              className="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-400 focus:outline-none"
-            />
+            {/* Custom Premium Range Track */}
+            <div className="relative my-4 px-2">
+              {/* Back track line */}
+              <div className="absolute top-1/2 left-2 right-2 h-1 bg-slate-800 -translate-y-1/2 rounded-full" />
+              
+              {/* Active filled line with glow */}
+              <div
+                className="absolute top-1/2 left-2 h-1 bg-gradient-to-r from-emerald-500 to-green-400 -translate-y-1/2 rounded-full transition-all duration-300 shadow-[0_0_10px_#10b981]"
+                style={{ width: `calc(${(projectionIndex / 3) * 100}% - 4px)` }}
+              />
+              
+              {/* Invisible native range input on top for drag functionality */}
+              <input
+                type="range"
+                min="0"
+                max="3"
+                value={projectionIndex}
+                onChange={(e) => onChange(parseInt(e.target.value))}
+                className="absolute inset-x-0 top-1/2 w-full h-8 -translate-y-1/2 opacity-0 cursor-pointer z-20"
+              />
+
+              {/* Visual Ticks with glowing halos */}
+              <div className="relative flex justify-between z-10 pointer-events-none">
+                {[0, 1, 2, 3].map((idx) => {
+                  const isActive = projectionIndex === idx;
+                  return (
+                    <div key={idx} className="relative flex items-center justify-center">
+                      <div
+                        className={`w-3.5 h-3.5 rounded-full border-2 transition-all duration-300 ${
+                          isActive
+                            ? "bg-emerald-400 border-emerald-400 scale-125 shadow-[0_0_12px_#34d399]"
+                            : "bg-slate-950 border-slate-700"
+                        }`}
+                      />
+                      {isActive && (
+                        <div className="absolute w-7 h-7 bg-emerald-500/20 rounded-full animate-ping" />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
             
-            <div className="flex justify-between mt-3.5 px-1">
+            <div className="flex justify-between mt-5 px-1">
               {["Now", "2026/27", "2027/28", "2028/29"].map((label, idx) => (
                 <button
                   key={label}
                   onClick={() => onChange(idx)}
-                  className={`text-[10px] font-black uppercase transition ${
-                    projectionIndex === idx ? "text-emerald-300 scale-105" : "text-slate-500 hover:text-slate-300"
+                  className={`text-[10px] font-black uppercase transition-all duration-300 ${
+                    projectionIndex === idx 
+                      ? "text-emerald-300 scale-110 tracking-widest drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]" 
+                      : "text-slate-500 hover:text-slate-355"
                   }`}
                 >
                   {label}
@@ -652,19 +689,42 @@ function ProfileHero({ player, team }) {
 }
 
 function AIDashboard({ player }) {
-  const rankedScores = getRankedScores(player.aiScores);
+  const [projectionIndex, setProjectionIndex] = useState(0);
+
+  // Compute values dynamically based on selected timeline year
+  const activeQuality = useMemo(() => {
+    if (projectionIndex === 0) return player.aiQualityScore;
+    return player.futureProjection?.[projectionIndex - 1]?.aiQualityScore || player.aiQualityScore;
+  }, [player, projectionIndex]);
+
+  const activeScores = useMemo(() => {
+    if (projectionIndex === 0) return player.aiScores;
+    const proj = player.futureProjection?.[projectionIndex - 1];
+    if (!proj || proj.aiQualityScore === 0) return player.aiScores;
+    const ratio = proj.aiQualityScore / player.aiQualityScore;
+    const newScores = {};
+    for (const [key, val] of Object.entries(player.aiScores)) {
+      newScores[key] = Math.min(99, Math.max(10, Math.round(val * ratio)));
+    }
+    return newScores;
+  }, [player, projectionIndex]);
+
+  const rankedScores = useMemo(() => getRankedScores(activeScores), [activeScores]);
   const topSignal = rankedScores[0];
   const developmentSignal = rankedScores.at(-1);
-  const averageScore = Math.round(
-    Object.values(player.aiScores).reduce((sum, value) => sum + value, 0) /
-      Object.values(player.aiScores).length,
-  );
-  const tier = getScoreTier(player.aiQualityScore);
+  const averageScore = useMemo(() => {
+    return Math.round(
+      Object.values(activeScores).reduce((sum, value) => sum + value, 0) /
+        Object.values(activeScores).length,
+    );
+  }, [activeScores]);
+  
+  const tier = useMemo(() => getScoreTier(activeQuality), [activeQuality]);
 
   return (
     <div className="flex h-full flex-col gap-5">
       <div className="grid gap-5 2xl:grid-cols-[0.9fr_1.1fr]">
-        <ScoreOrb score={player.aiQualityScore} tier={tier} />
+        <ScoreOrb score={activeQuality} tier={tier} />
 
         <div className="grid gap-3 sm:grid-cols-3 2xl:grid-cols-1">
           <InsightCard
@@ -699,7 +759,7 @@ function AIDashboard({ player }) {
           <Gauge className="h-6 w-6 text-emerald-300" />
         </div>
         <div className="space-y-5">
-          {Object.entries(player.aiScores).map(([label, value]) => (
+          {Object.entries(activeScores).map(([label, value]) => (
             <StatBar key={label} label={titleCase(label)} value={value} />
           ))}
         </div>
@@ -723,10 +783,17 @@ function AIDashboard({ player }) {
           </div>
           <ShieldCheck className="hidden h-6 w-6 text-amber-300 sm:block" />
         </div>
-        <AbilityRadarChart stats={player.aiScores} height="h-80" />
+        <AbilityRadarChart stats={activeScores} height="h-80" />
       </PremiumPanel>
 
-      <FutureProjection projection={player.futureProjection} className="flex-1" />
+      <FutureProjection
+        projection={player.futureProjection}
+        currentValue={player.marketValueHistory.at(-1).value}
+        currentQuality={player.aiQualityScore}
+        projectionIndex={projectionIndex}
+        onChange={setProjectionIndex}
+        className="flex-1"
+      />
     </div>
   );
 }

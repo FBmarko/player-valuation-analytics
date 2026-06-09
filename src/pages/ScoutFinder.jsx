@@ -227,7 +227,7 @@ export default function ScoutFinder({ teams, players }) {
                   max="40"
                   value={minAge}
                   onChange={(e) => setMinAge(Math.min(parseInt(e.target.value), maxAge))}
-                  className="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-400"
+                  className="w-full h-1.5 bg-slate-950 border border-slate-850/60 rounded-lg appearance-none cursor-pointer accent-emerald-500 hover:accent-emerald-450 focus:outline-none transition shadow-inner"
                 />
               </div>
               <div className="flex items-center gap-2">
@@ -238,7 +238,7 @@ export default function ScoutFinder({ teams, players }) {
                   max="40"
                   value={maxAge}
                   onChange={(e) => setMaxAge(Math.max(parseInt(e.target.value), minAge))}
-                  className="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-400"
+                  className="w-full h-1.5 bg-slate-950 border border-slate-850/60 rounded-lg appearance-none cursor-pointer accent-emerald-500 hover:accent-emerald-455 focus:outline-none transition shadow-inner"
                 />
               </div>
             </div>
@@ -262,7 +262,7 @@ export default function ScoutFinder({ teams, players }) {
                   step="100"
                   value={minScore}
                   onChange={(e) => setMinScore(Math.min(parseInt(e.target.value), maxScore))}
-                  className="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-400"
+                  className="w-full h-1.5 bg-slate-950 border border-slate-850/60 rounded-lg appearance-none cursor-pointer accent-emerald-500 hover:accent-emerald-450 focus:outline-none transition shadow-inner"
                 />
               </div>
               <div className="flex items-center gap-2">
@@ -274,7 +274,7 @@ export default function ScoutFinder({ teams, players }) {
                   step="100"
                   value={maxScore}
                   onChange={(e) => setMaxScore(Math.max(parseInt(e.target.value), minScore))}
-                  className="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-400"
+                  className="w-full h-1.5 bg-slate-950 border border-slate-850/60 rounded-lg appearance-none cursor-pointer accent-emerald-500 hover:accent-emerald-455 focus:outline-none transition shadow-inner"
                 />
               </div>
             </div>
@@ -296,13 +296,13 @@ export default function ScoutFinder({ teams, players }) {
               max="150"
               value={maxVal}
               onChange={(e) => setMaxVal(parseInt(e.target.value))}
-              className="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-400"
+              className="w-full h-1.5 bg-slate-950 border border-slate-850/60 rounded-lg appearance-none cursor-pointer accent-amber-500 hover:accent-amber-450 focus:outline-none transition shadow-inner"
             />
           </div>
 
           {/* Undervalued Checkbox */}
-          <div className="flex items-center justify-between p-3 rounded-2xl border border-emerald-500/10 bg-emerald-500/5">
-            <span className="text-xs font-semibold text-slate-300 flex items-center gap-2">
+          <div className="flex items-center justify-between p-3 rounded-2xl border border-emerald-500/10 bg-emerald-550/5">
+            <span className="text-xs font-semibold text-slate-350 flex items-center gap-2">
               <BadgePercent className="h-4 w-4 text-emerald-400" />
               Undervalued Gems
             </span>
@@ -349,62 +349,97 @@ export default function ScoutFinder({ teams, players }) {
               const teamName = getTeamName(player.teamId);
               const isUndervalued = player.marketEstimate?.valuationGapPercent >= 10;
               
+              // Calculate tier
+              const tier = player.aiQualityScore >= 4800 ? "S-Tier" : player.aiQualityScore >= 4200 ? "A-Tier" : "B-Tier";
+              const tierClass = player.aiQualityScore >= 4800 
+                ? "text-emerald-400 border-emerald-500/30 bg-emerald-500/10 drop-shadow-[0_0_6px_rgba(16,185,129,0.2)]" 
+                : player.aiQualityScore >= 4200 
+                  ? "text-amber-400 border-amber-500/30 bg-amber-500/10 drop-shadow-[0_0_6px_rgba(245,158,11,0.2)]" 
+                  : "text-slate-450 border-slate-800 bg-slate-900";
+              
               return (
                 <Link
                   key={player.id}
                   to={`/player/${player.id}`}
-                  className="group relative overflow-hidden rounded-3xl border border-slate-850 p-5 bg-gradient-to-b from-slate-900/60 to-slate-950/85 hover:border-slate-700 transition shadow-lg hover:shadow-2xl"
+                  className="group relative overflow-hidden rounded-3xl border border-slate-850 p-5 bg-gradient-to-b from-slate-900/60 to-slate-950/85 hover:border-slate-700 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300"
+                  style={{
+                    boxShadow: `0 10px 30px -15px rgba(0,0,0,0.7), 0 0 15px ${colors.primary}08`
+                  }}
                 >
-                  {/* Subtle color highlight */}
-                  <div className="absolute left-0 top-0 bottom-0 w-1.5 transition-all group-hover:w-2" style={{ backgroundColor: colors.primary }} />
+                  {/* Subtle color highlight bar */}
+                  <div className="absolute left-0 top-0 bottom-0 w-1 transition-all group-hover:w-1.5" style={{ backgroundColor: colors.primary }} />
+
+                  {/* Team Color Mesh Glow inside the card */}
+                  <div
+                    className="absolute -inset-10 opacity-10 blur-3xl pointer-events-none group-hover:opacity-15 transition-all duration-500"
+                    style={{
+                      background: `radial-gradient(circle at 75% 25%, ${colors.primary} 0%, transparent 60%)`
+                    }}
+                  />
 
                   {/* Top Stats header */}
-                  <div className="flex justify-between items-start mb-3">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full border border-slate-800 bg-slate-900 text-slate-400">
+                  <div className="flex justify-between items-center mb-3.5 relative z-10">
+                    <span className="text-[10px] font-black px-2.5 py-1 rounded-full border border-slate-850 bg-slate-950/80 text-slate-400 uppercase tracking-wider">
                       {player.position}
                     </span>
-                    {isUndervalued && (
-                      <span className="inline-flex items-center gap-1 text-[9px] font-black uppercase tracking-wider text-emerald-300 border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 rounded-full">
-                        <TrendingUp className="h-2.5 w-2.5" />
-                        Gems
+                    
+                    <div className="flex items-center gap-1.5">
+                      {isUndervalued && (
+                        <span className="inline-flex items-center gap-1 text-[9px] font-black uppercase tracking-wider text-emerald-300 border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 rounded-full">
+                          Gems
+                        </span>
+                      )}
+                      <span className={`text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full border ${tierClass}`}>
+                        {tier}
                       </span>
-                    )}
+                    </div>
                   </div>
 
                   {/* Player Card Core */}
-                  <div className="flex items-center gap-3.5 mb-4">
-                    <GlowingAvatar name={player.name} teamId={player.teamId} position={player.position} className="h-11 w-11 shrink-0" size="sm" />
+                  <div className="flex items-center gap-3.5 mb-4 relative z-10">
+                    {/* Glowing outer ring matching team color */}
+                    <div className="relative">
+                      <div className="absolute inset-0 rounded-full blur-sm opacity-30 scale-105" style={{ backgroundColor: colors.primary }} />
+                      <GlowingAvatar name={player.name} teamId={player.teamId} position={player.position} className="relative h-11 w-11 shrink-0 ring-1 ring-slate-800" size="sm" />
+                    </div>
                     <div className="min-w-0">
-                      <h4 className="text-sm font-black text-white truncate group-hover:text-emerald-300 transition">{player.name}</h4>
+                      <h4 className="text-sm font-black text-white truncate group-hover:text-emerald-300 transition-colors duration-300">{player.name}</h4>
                       <p className="text-xs text-slate-500 truncate mt-0.5">{teamName} • {player.age} yrs</p>
                     </div>
                   </div>
 
                   {/* AI Scores Snapshot */}
-                  <div className="grid grid-cols-2 gap-3 border-t border-slate-850 pt-3.5 mb-3.5">
+                  <div className="grid grid-cols-2 gap-3 border-t border-slate-850/80 pt-3.5 mb-3.5 relative z-10">
                     <div>
-                      <p className="text-[9px] font-bold uppercase tracking-wider text-slate-500">AI Quality</p>
+                      <p className="text-[9px] font-black uppercase tracking-widest text-slate-500">AI Quality</p>
                       <p className="text-sm font-black text-emerald-300 mt-0.5">{player.aiQualityScore}</p>
                     </div>
                     <div>
-                      <p className="text-[9px] font-bold uppercase tracking-wider text-slate-500">Est. Value</p>
+                      <p className="text-[9px] font-black uppercase tracking-widest text-slate-500">Est. Value</p>
                       <p className="text-sm font-black text-amber-300 mt-0.5">€{player.marketEstimate?.predictedMarketValueMillions || 0}M</p>
                     </div>
                   </div>
 
                   {/* Mini-bars category strength */}
-                  <div className="flex gap-1">
+                  <div className="flex gap-1.5 relative z-10 bg-slate-950/40 p-2 rounded-xl border border-slate-850/40">
                     {Object.entries(player.aiScores).slice(0, 5).map(([category, value]) => (
-                      <div key={category} className="flex-1 bg-slate-900 rounded-full h-1.5 overflow-hidden border border-slate-850/50" title={`${category}: ${value}`}>
-                        <div className="bg-emerald-400 h-full rounded-full" style={{ width: `${(value / 99) * 100}%` }} />
+                      <div key={category} className="flex-1 bg-slate-900 rounded-full h-1.5 overflow-hidden border border-slate-850/20" title={`${category}: ${value}`}>
+                        <div 
+                          className="h-full rounded-full transition-all duration-500" 
+                          style={{ 
+                            width: `${(value / 99) * 100}%`,
+                            backgroundColor: colors.primary,
+                            boxShadow: `0 0 4px ${colors.primary}80`
+                          }} 
+                        />
                       </div>
                     ))}
                   </div>
 
                   {/* Action link indicator */}
-                  <div className="mt-4 flex items-center justify-between text-xs font-bold text-slate-500 group-hover:text-emerald-300 transition-all border-t border-slate-850/40 pt-3">
+                  <div className="mt-4 flex items-center justify-between text-xs font-bold text-slate-500 group-hover:text-emerald-300 transition-all border-t border-slate-850/40 pt-3 relative z-10">
                     <span>Analyze Profile</span>
-                    <ChevronRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="h-4 w-4 transform group-hover:translate-x-1.5 transition-transform" />
                   </div>
                 </Link>
               );

@@ -29,3 +29,25 @@ input {
   color: #020617;
   background: #86efac;
 }
+
+@keyframes holographicGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.holo-card-glow {
+  background-size: 200% 200%;
+  animation: holographicGlow 8s ease infinite;
+}
+
+@keyframes meshShift {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(25px, -15px) scale(1.1); }
+  66% { transform: translate(-15px, 20px) scale(0.95); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+.mesh-glow {
+  animation: meshShift 12s ease-in-out infinite;
+}
