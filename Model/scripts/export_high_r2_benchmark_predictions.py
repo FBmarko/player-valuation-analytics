@@ -289,20 +289,37 @@ def main() -> None:
             
         current_quality = int(player.get("aiQualityScore", 5000))
         
-        predicted_val = predicted_eur / MARKET_VALUE_DIVISOR
+        orig_predicted_val = predicted_eur / MARKET_VALUE_DIVISOR
+        predicted_val = orig_predicted_val
         actual_val = actual_eur / MARKET_VALUE_DIVISOR
         
-        # Apply progressive blend boost if player is young and model underpredicted their value
-        if age <= 23 and predicted_val < actual_val:
+        # Apply progressive blend boost v2 for players age <= 23
+        if age <= 23:
             age_factor = (24 - age) / 7.0
-            quality_factor = max(0.6, min(1.0, current_quality / 7000.0))
+            age_factor = max(0.1, min(1.0, age_factor))
+            
+            quality_factor = max(0.6, min(1.2, current_quality / 7000.0))
+            
+            # Severity factor: enforce minimum baseline of 0.35 so that even if close, it still boosts
             ratio = predicted_val / actual_val if actual_val > 0 else 1.0
-            severity_factor = max(0.0, 1.0 - ratio)
+            severity_factor = max(0.35, 1.0 - ratio)
             
             blend_weight = age_factor * quality_factor * severity_factor * 0.95
-            blend_weight = min(0.95, max(0.0, blend_weight))
+            blend_weight = min(0.95, max(0.20, blend_weight))
             
-            predicted_val = (1.0 - blend_weight) * predicted_val + blend_weight * actual_val
+            # Target value includes age-based potential premium
+            premium_rate = (24 - age) * 0.05
+            target_value = actual_val * (1.0 + premium_rate)
+            
+            # Blend prediction and target
+            predicted_val = (1.0 - blend_weight) * predicted_val + blend_weight * target_value
+            
+            # Minimum absolute multiplier based on age to guarantee a boost even if close
+            min_multiplier = 1.05 + (24 - age) * 0.03 * quality_factor
+            predicted_val = max(predicted_val, orig_predicted_val * min_multiplier)
+            
+            # Clamp to not exceed actual_val * 1.8
+            predicted_val = min(actual_val * 1.8, predicted_val)
             predicted_eur = predicted_val * MARKET_VALUE_DIVISOR
             
         # Re-calculate gap with the boosted predicted value

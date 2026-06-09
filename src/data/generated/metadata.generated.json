@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-09T15:31:04.834430+00:00",
+  "generatedAt": "2026-06-09T15:38:17.600446+00:00",
   "sourceDataset": "Model/data/processed/engineered_master_dataset_high_r2.csv",
   "rowCountRead": 20744,
   "columnCountRead": 136,
@@ -76,7 +76,7 @@
   "frontendStatus": "Frontend imports generated JSON via src/data/generatedData.js",
   "totalGeneratedPlayers": 7105,
   "highR2BenchmarkPrediction": {
-    "generatedAt": "2026-06-09T15:31:10.142181+00:00",
+    "generatedAt": "2026-06-09T15:38:25.713520+00:00",
     "modelPath": "Model/models/elite_stacking_model_high_r2.pkl",
     "predictionFile": "src/data/generated/predictions.high_r2_benchmark.generated.json",
     "coverage": {
