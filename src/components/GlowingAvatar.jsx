@@ -40,9 +40,9 @@ export default function GlowingAvatar({ aiQualityScore, className = "" }) {
           background: `radial-gradient(circle at 50% 35%, ${glow.glow}, transparent 45%)`,
         }}
       />
-      <div className="absolute bottom-0 h-2/3 w-4/5 rounded-t-full bg-gradient-to-b from-slate-700 to-slate-950 opacity-80 blur-sm" />
-      <UserRound className={`relative z-10 h-24 w-24 ${glow.text}`} strokeWidth={1.2} />
-      <div className="absolute inset-x-10 bottom-8 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute bottom-[8%] h-[48%] w-[66%] rounded-t-full bg-gradient-to-b from-slate-700 to-slate-950 opacity-80 blur-sm" />
+      <UserRound className={`relative z-10 h-[58%] w-[58%] ${glow.text}`} strokeWidth={1.35} />
+      <div className="absolute inset-x-[24%] bottom-[18%] h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
     </div>
   );
 }
