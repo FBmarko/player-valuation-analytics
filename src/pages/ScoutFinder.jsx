@@ -30,17 +30,17 @@ export default function ScoutFinder({ teams, players }) {
   // Position detector mapping
   const detectPositionGroup = (posDetail) => {
     const detail = (posDetail || "").toLowerCase();
-    if (detail.includes("forward") || detail.includes("striker") || detail.includes("winger") || detail.includes("attack")) {
-      return "FW";
+    if (detail.includes("goalkeeper") || detail === "gk") {
+      return "GK";
     }
-    if (detail.includes("midfield")) {
+    if (detail.includes("midfield") || detail.includes("dm") || detail.includes("am") || detail.includes("cm")) {
       return "MID";
     }
-    if (detail.includes("back") || detail.includes("defender") || detail.includes("fullback")) {
-      return "DF";
+    if (detail.includes("forward") || detail.includes("striker") || detail.includes("winger") || detail.includes("attack") || detail === "st" || detail === "lw" || detail === "rw" || detail === "cf") {
+      return "FW";
     }
-    if (detail.includes("goalkeeper")) {
-      return "GK";
+    if (detail.includes("back") || detail.includes("defender") || detail.includes("fullback") || detail.includes("cb") || detail.includes("lb") || detail.includes("rb")) {
+      return "DF";
     }
     return "MID"; // default fallback
   };
@@ -73,7 +73,7 @@ export default function ScoutFinder({ teams, players }) {
 
         // Market Value filter
         const marketVal = p.marketEstimate?.predictedMarketValueMillions || 0;
-        if (marketVal > maxVal) {
+        if (maxVal < 150 && marketVal > maxVal) {
           return false;
         }
 
@@ -400,7 +400,7 @@ export default function ScoutFinder({ teams, players }) {
                     {/* Glowing outer ring matching team color */}
                     <div className="relative">
                       <div className="absolute inset-0 rounded-full blur-sm opacity-30 scale-105" style={{ backgroundColor: colors.primary }} />
-                      <GlowingAvatar name={player.name} teamId={player.teamId} position={player.position} className="relative h-11 w-11 shrink-0 ring-1 ring-slate-800" size="sm" />
+                      <GlowingAvatar aiQualityScore={player.aiQualityScore} className="relative h-11 w-11 shrink-0 ring-1 ring-slate-800" />
                     </div>
                     <div className="min-w-0">
                       <h4 className="text-sm font-black text-white truncate group-hover:text-emerald-300 transition-colors duration-300">{player.name}</h4>

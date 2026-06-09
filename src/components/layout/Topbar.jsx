@@ -78,7 +78,7 @@ export default function Topbar({ searchableItems, onSelect, onMenuClick }) {
   const isOpen = isFocused && normalizeSearch(query).length >= 2;
 
   return (
-    <header className="sticky top-0 z-55 border-b border-slate-800 bg-slate-950/80 px-4 py-4 sm:px-6 sm:py-5 backdrop-blur-xl">
+    <header className="sticky top-0 z-[40] border-b border-slate-800 bg-slate-950/80 px-4 py-4 sm:px-6 sm:py-5 backdrop-blur-xl">
       {isOpen && (
         <button
           type="button"

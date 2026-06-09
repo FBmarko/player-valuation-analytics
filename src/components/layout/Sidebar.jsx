@@ -13,14 +13,14 @@ export default function Sidebar({ teams, isOpen, onClose }) {
       {/* Mobile Backdrop Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-100 bg-slate-950/60 backdrop-blur-sm transition-opacity duration-300 lg:hidden"
+          className="fixed inset-0 z-[100] bg-slate-950/60 backdrop-blur-sm transition-opacity duration-300 lg:hidden"
           onClick={onClose}
         />
       )}
 
       {/* Sidebar Panel */}
       <aside
-        className={`fixed inset-y-0 left-0 z-110 flex h-screen w-72 flex-col border-r border-slate-800 bg-slate-950 px-5 py-6 transition-transform duration-300 ease-in-out lg:sticky lg:top-0 lg:z-30 lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-[110] flex h-screen w-72 flex-col border-r border-slate-800 bg-slate-950 px-5 py-6 transition-transform duration-300 ease-in-out lg:sticky lg:top-0 lg:z-30 lg:translate-x-0 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >

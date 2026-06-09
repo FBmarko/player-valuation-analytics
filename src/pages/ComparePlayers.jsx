@@ -168,11 +168,8 @@ function PlayerSelector({ label, players, selectedPlayer, onSelect, placeholder,
         <div className="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-950/45 p-4 ring-1 ring-slate-850 hover:border-slate-700 transition">
           <div className="flex items-center gap-3">
             <GlowingAvatar
-              name={selectedPlayer.name}
-              teamId={selectedPlayer.teamId}
-              position={selectedPlayer.position}
+              aiQualityScore={selectedPlayer.aiQualityScore}
               className="h-10 w-10 shrink-0"
-              size="sm"
             />
             <div className="min-w-0">
               <p className="text-sm font-black text-white truncate">{selectedPlayer.name}</p>
@@ -218,11 +215,8 @@ function PlayerSelector({ label, players, selectedPlayer, onSelect, placeholder,
                   className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition hover:bg-slate-850"
                 >
                   <GlowingAvatar
-                    name={player.name}
-                    teamId={player.teamId}
-                    position={player.position}
+                    aiQualityScore={player.aiQualityScore}
                     className="h-8 w-8 shrink-0"
-                    size="sm"
                   />
                   <div className="min-w-0">
                     <p className="text-xs font-bold text-white truncate">{player.name}</p>
@@ -283,7 +277,7 @@ function ComparePlayerCard({ player, team, color, secondaryColor }) {
         {/* Glowing Halo for Avatar */}
         <div className="relative mb-4">
           <div className="absolute inset-0 rounded-full blur-md opacity-30 scale-105" style={{ backgroundColor: color }} />
-          <GlowingAvatar name={player.name} teamId={player.teamId} position={player.position} className="relative h-20 w-20 shadow-xl ring-2 ring-slate-800/80" size="lg" />
+          <GlowingAvatar aiQualityScore={player.aiQualityScore} className="relative h-20 w-20 shadow-xl ring-2 ring-slate-800/80" />
         </div>
         
         <h3 className="text-lg font-black text-white truncate max-w-full tracking-tight transition-all duration-300 group-hover:text-emerald-300">{player.name}</h3>
@@ -327,14 +321,14 @@ function CompareRow({ label, val1, val2, p1Color, p2Color, isPrice = false }) {
     ? "hover:bg-slate-900/10"
     : isP1Better
       ? "hover:bg-emerald-500/[0.015] border-l-2 border-l-transparent hover:border-l-emerald-500/30"
-      : "hover:bg-sky-500/[0.015] border-r-2 border-r-transparent hover:border-r-sky-550/30";
+      : "hover:bg-sky-500/[0.015] border-r-2 border-r-transparent hover:border-r-sky-500/30";
 
   return (
-    <div className={`flex flex-col py-4 px-3 border-b border-slate-850/40 transition-all rounded-2xl ${rowBg}`}>
+    <div className={`flex flex-col py-4 px-2 sm:px-3 border-b border-slate-850/40 transition-all rounded-2xl ${rowBg}`}>
       {/* Symmetrical Outward Progress Bars (EA Sports/Football Manager style) */}
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-2 sm:gap-5">
         {/* Player 1 Stat */}
-        <div className="w-1/2 flex items-center justify-end gap-3.5">
+        <div className="w-1/2 flex items-center justify-end gap-2 sm:gap-3.5">
           {!isTie && isP1Better && (
             <span className="text-[9px] font-black px-1.5 py-0.5 rounded-md border text-emerald-400 bg-emerald-500/10 border-emerald-500/20 shadow-inner select-none animate-pulse shrink-0">
               {delta}
@@ -359,12 +353,12 @@ function CompareRow({ label, val1, val2, p1Color, p2Color, isPrice = false }) {
         </div>
 
         {/* Center Label */}
-        <div className="w-[8.5rem] shrink-0 text-center text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 bg-slate-950 border border-slate-850/80 px-2 py-1.5 rounded-xl shadow-inner select-none transition-all hover:text-slate-200">
+        <div className="w-24 sm:w-[8.5rem] shrink-0 text-center text-[8px] sm:text-[10px] font-black uppercase tracking-[0.12em] sm:tracking-[0.2em] text-slate-400 bg-slate-950 border border-slate-850/80 px-1.5 py-1.5 rounded-xl shadow-inner select-none transition-all hover:text-slate-200">
           {label}
         </div>
 
         {/* Player 2 Stat */}
-        <div className="w-1/2 flex items-center justify-start gap-3.5">
+        <div className="w-1/2 flex items-center justify-start gap-2 sm:gap-3.5">
           <div className="h-2.5 w-full bg-slate-950 border border-slate-900 rounded-full overflow-hidden max-w-[12rem] hidden sm:block">
             <div
               className="h-full rounded-full transition-all duration-700"
@@ -592,7 +586,7 @@ export default function ComparePlayers({ teams, players }) {
           <div className="flex flex-col gap-6">
             
             {/* Visual Hero Split */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <ComparePlayerCard player={player1} team={p1Team} color={p1Color} secondaryColor={p1Team?.secondaryColor} />
               
               {player2 ? (
