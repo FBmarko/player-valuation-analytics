@@ -1,0 +1,146 @@
+[
+  {
+    "id": "fc-bayern-munchen",
+    "name": "FC Bayern München",
+    "league": "Almanya Bundesliga",
+    "country": "UNKNOWN",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FBM"
+  },
+  {
+    "id": "rb-leipzig",
+    "name": "RB Leipzig",
+    "league": "Almanya Bundesliga",
+    "country": "UNKNOWN",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "RL"
+  },
+  {
+    "id": "paris-saintgermain",
+    "name": "Paris Saint-Germain",
+    "league": "Fransa Ligue 1",
+    "country": "UNKNOWN",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "PSG"
+  },
+  {
+    "id": "arsenal",
+    "name": "Arsenal",
+    "league": "Ingiltere Premier League",
+    "country": "UNKNOWN",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ARS"
+  },
+  {
+    "id": "aston-villa",
+    "name": "Aston Villa",
+    "league": "Ingiltere Premier League",
+    "country": "UNKNOWN",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "AV"
+  },
+  {
+    "id": "chelsea",
+    "name": "Chelsea",
+    "league": "Ingiltere Premier League",
+    "country": "UNKNOWN",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "CHE"
+  },
+  {
+    "id": "liverpool",
+    "name": "Liverpool",
+    "league": "Ingiltere Premier League",
+    "country": "UNKNOWN",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "LIV"
+  },
+  {
+    "id": "manchester-city",
+    "name": "Manchester City",
+    "league": "Ingiltere Premier League",
+    "country": "UNKNOWN",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "MC"
+  },
+  {
+    "id": "manchester-united",
+    "name": "Manchester United",
+    "league": "Ingiltere Premier League",
+    "country": "UNKNOWN",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "MU"
+  },
+  {
+    "id": "newcastle-united",
+    "name": "Newcastle United",
+    "league": "Ingiltere Premier League",
+    "country": "UNKNOWN",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "NU"
+  },
+  {
+    "id": "atletico-madrid",
+    "name": "Atlético Madrid",
+    "league": "Ispanya Laliga",
+    "country": "UNKNOWN",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "AM"
+  },
+  {
+    "id": "fc-barcelona",
+    "name": "FC Barcelona",
+    "league": "Ispanya Laliga",
+    "country": "UNKNOWN",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FB"
+  },
+  {
+    "id": "real-madrid",
+    "name": "Real Madrid",
+    "league": "Ispanya Laliga",
+    "country": "UNKNOWN",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "RM"
+  },
+  {
+    "id": "inter",
+    "name": "Inter",
+    "league": "Italya Serie A",
+    "country": "UNKNOWN",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "INT"
+  },
+  {
+    "id": "juventus",
+    "name": "Juventus",
+    "league": "Italya Serie A",
+    "country": "UNKNOWN",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "JUV"
+  },
+  {
+    "id": "galatasaray",
+    "name": "Galatasaray",
+    "league": "Turkiye Trendyol Super Lig",
+    "country": "UNKNOWN",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "GAL"
+  }
+]

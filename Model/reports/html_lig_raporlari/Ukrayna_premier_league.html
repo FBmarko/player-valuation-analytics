@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ukrayna Premier League — Model tabloları</title>
+<style>
+
+        :root {
+            --bg: #0b1220;
+            --panel: #151d2e;
+            --text: #e8edf5;
+            --muted: #8b9bb4;
+            --border: #2a3548;
+            --accent: #3b82f6;
+            --good: #22c55e;
+            --mid: #eab308;
+            --bad: #f87171;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: "Segoe UI", system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 24px;
+            line-height: 1.45;
+        }
+        .wrap { max-width: 1200px; margin: 0 auto; }
+        h1 { font-size: 1.65rem; margin: 0 0 8px; font-weight: 650; }
+        .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 28px; }
+        .team-block {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 22px;
+            overflow: hidden;
+        }
+        .team-block h2 {
+            margin: 0;
+            padding: 12px 16px;
+            font-size: 1.05rem;
+            background: rgba(59, 130, 246, 0.12);
+            border-bottom: 1px solid var(--border);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+        th, td {
+            text-align: left;
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            color: var(--muted);
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(255,255,255,0.03); }
+        td.num { text-align: right; font-variant-numeric: tabular-nums; }
+        .pct-high { color: var(--good); font-weight: 600; }
+        .pct-mid { color: var(--mid); font-weight: 600; }
+        .pct-low { color: var(--bad); font-weight: 600; }
+        .note {
+            margin-top: 32px;
+            padding: 14px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+        a.back { color: var(--accent); text-decoration: none; }
+        a.back:hover { text-decoration: underline; }
+    
+</style>
+</head>
+<body>
+<div class="wrap">
+<p><a class="back" href="index.html">← Tüm ligler</a></p>
+<h1>Ukrayna Premier League</h1>
+<p class="meta">Model: elite_stacking_model.pkl · Üretim: 2026-04-12 15:42 · Takım: 16 · Oyuncu satırı: 374</p>
+<div class="team-block">
+<h2>Dynamo Kyiv</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Vladyslav Vanat</td><td class="num">15.000.000 €</td><td class="num">15.154.666 €</td><td class="num pct-high">99.0 %</td></tr>
+<tr><td>Volodymyr Brazhko</td><td class="num">10.000.000 €</td><td class="num">14.812.163 €</td><td class="num pct-mid">51.9 %</td></tr>
+<tr><td>Taras Mykhavko</td><td class="num">9.000.000 €</td><td class="num">8.348.085 €</td><td class="num pct-high">92.8 %</td></tr>
+<tr><td>Mykola Shaparenko</td><td class="num">8.000.000 €</td><td class="num">8.617.380 €</td><td class="num pct-high">92.3 %</td></tr>
+<tr><td>Matvii Ponomarenko</td><td class="num">6.000.000 €</td><td class="num">5.220.504 €</td><td class="num pct-high">87.0 %</td></tr>
+<tr><td>Nazar Voloshyn</td><td class="num">5.000.000 €</td><td class="num">4.615.757 €</td><td class="num pct-high">92.3 %</td></tr>
+<tr><td>Oleksandr Tymchyk</td><td class="num">3.500.000 €</td><td class="num">3.628.091 €</td><td class="num pct-high">96.3 %</td></tr>
+<tr><td>Denys Popov</td><td class="num">3.500.000 €</td><td class="num">3.725.050 €</td><td class="num pct-high">93.6 %</td></tr>
+<tr><td>Ruslan Neshcheret</td><td class="num">3.500.000 €</td><td class="num">4.379.341 €</td><td class="num pct-high">74.9 %</td></tr>
+<tr><td>Oleksandr Pikhalyonok</td><td class="num">3.000.000 €</td><td class="num">2.619.431 €</td><td class="num pct-high">87.3 %</td></tr>
+<tr><td>Vladyslav Kabaiev</td><td class="num">3.000.000 €</td><td class="num">3.351.501 €</td><td class="num pct-high">88.3 %</td></tr>
+<tr><td>Vitaliy Buyalskyi</td><td class="num">3.000.000 €</td><td class="num">2.737.804 €</td><td class="num pct-high">91.3 %</td></tr>
+<tr><td>Eduardo Guerrero</td><td class="num">3.000.000 €</td><td class="num">2.324.775 €</td><td class="num pct-high">77.5 %</td></tr>
+<tr><td>Vladyslav Dubinchak</td><td class="num">2.500.000 €</td><td class="num">2.908.990 €</td><td class="num pct-high">83.6 %</td></tr>
+<tr><td>Kostiantyn Vivcharenko</td><td class="num">2.500.000 €</td><td class="num">1.972.738 €</td><td class="num pct-high">78.9 %</td></tr>
+<tr><td>Mykola Mykhailenko</td><td class="num">2.500.000 €</td><td class="num">2.454.861 €</td><td class="num pct-high">98.2 %</td></tr>
+<tr><td>Bogdan Redushko</td><td class="num">1.800.000 €</td><td class="num">1.351.354 €</td><td class="num pct-high">75.1 %</td></tr>
+<tr><td>Vladislav Blănuță</td><td class="num">1.500.000 €</td><td class="num">1.465.904 €</td><td class="num pct-high">97.7 %</td></tr>
+<tr><td>Aliou Thiare</td><td class="num">1.500.000 €</td><td class="num">1.859.835 €</td><td class="num pct-high">76.0 %</td></tr>
+<tr><td>Kristian Bilovar</td><td class="num">1.500.000 €</td><td class="num">1.306.622 €</td><td class="num pct-high">87.1 %</td></tr>
+<tr><td>Andriy Yarmolenko</td><td class="num">1.200.000 €</td><td class="num">1.324.469 €</td><td class="num pct-high">89.6 %</td></tr>
+<tr><td>Oleksandr Karavayev</td><td class="num">1.200.000 €</td><td class="num">755.721 €</td><td class="num pct-mid">63.0 %</td></tr>
+<tr><td>Oleksandr Yatsyk</td><td class="num">1.000.000 €</td><td class="num">1.666.876 €</td><td class="num pct-low">33.3 %</td></tr>
+<tr><td>Shola Ogundana</td><td class="num">800.000 €</td><td class="num">383.895 €</td><td class="num pct-mid">48.0 %</td></tr>
+<tr><td>Maksym Korobov</td><td class="num">600.000 €</td><td class="num">350.837 €</td><td class="num pct-mid">58.5 %</td></tr>
+<tr><td>Vladyslav Zakharchenko</td><td class="num">500.000 €</td><td class="num">858.301 €</td><td class="num pct-low">28.3 %</td></tr>
+<tr><td>Valentyn Morhun</td><td class="num">500.000 €</td><td class="num">1.612 €</td><td class="num pct-low">0.3 %</td></tr>
+<tr><td>Ángel Torres</td><td class="num">300.000 €</td><td class="num">279.374 €</td><td class="num pct-high">93.1 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Fc Epicentr Dunaivtsi</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Oleg Bilyk</td><td class="num">400.000 €</td><td class="num">388.626 €</td><td class="num pct-high">97.2 %</td></tr>
+<tr><td>Ihor Kyriukhantsev</td><td class="num">400.000 €</td><td class="num">339.808 €</td><td class="num pct-high">85.0 %</td></tr>
+<tr><td>Joaquinete</td><td class="num">400.000 €</td><td class="num">507.251 €</td><td class="num pct-high">73.2 %</td></tr>
+<tr><td>Vladyslav Moroz</td><td class="num">400.000 €</td><td class="num">337.085 €</td><td class="num pct-high">84.3 %</td></tr>
+<tr><td>Vladyslav Supryaga</td><td class="num">400.000 €</td><td class="num">468.343 €</td><td class="num pct-high">82.9 %</td></tr>
+<tr><td>Nil Coch</td><td class="num">350.000 €</td><td class="num">72.729 €</td><td class="num pct-low">20.8 %</td></tr>
+<tr><td>Mykola Myronyuk</td><td class="num">300.000 €</td><td class="num">226.059 €</td><td class="num pct-high">75.4 %</td></tr>
+<tr><td>Valerii Luchkevych</td><td class="num">300.000 €</td><td class="num">301.803 €</td><td class="num pct-high">99.4 %</td></tr>
+<tr><td>Oleksandr Klymets</td><td class="num">300.000 €</td><td class="num">67.882 €</td><td class="num pct-low">22.6 %</td></tr>
+<tr><td>Stepan Grigorashchuk</td><td class="num">300.000 €</td><td class="num">262.238 €</td><td class="num pct-high">87.4 %</td></tr>
+<tr><td>Andrii Matkevych</td><td class="num">300.000 €</td><td class="num">-338.471 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Vadym Sydun</td><td class="num">250.000 €</td><td class="num">360.952 €</td><td class="num pct-mid">55.6 %</td></tr>
+<tr><td>Carlos Rojas</td><td class="num">250.000 €</td><td class="num">-32.810 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Yevhen Zaporozhets</td><td class="num">250.000 €</td><td class="num">166.075 €</td><td class="num pct-mid">66.4 %</td></tr>
+<tr><td>Andrii Boriachuk</td><td class="num">250.000 €</td><td class="num">139.897 €</td><td class="num pct-mid">56.0 %</td></tr>
+<tr><td>Jon Cebeiro</td><td class="num">250.000 €</td><td class="num">131.006 €</td><td class="num pct-mid">52.4 %</td></tr>
+<tr><td>Ivan Bendera</td><td class="num">250.000 €</td><td class="num">84.675 €</td><td class="num pct-low">33.9 %</td></tr>
+<tr><td>Kyrylo Kovalets</td><td class="num">200.000 €</td><td class="num">192.221 €</td><td class="num pct-high">96.1 %</td></tr>
+<tr><td>Stanislav Krystin</td><td class="num">200.000 €</td><td class="num">62.076 €</td><td class="num pct-low">31.0 %</td></tr>
+<tr><td>Yehor Demchenko</td><td class="num">200.000 €</td><td class="num">153.926 €</td><td class="num pct-high">77.0 %</td></tr>
+<tr><td>Alagy Oliveira</td><td class="num">150.000 €</td><td class="num">-268.255 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Andriy Lipovuz</td><td class="num">150.000 €</td><td class="num">-61.499 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Volodymyr Tanchyk</td><td class="num">125.000 €</td><td class="num">67.119 €</td><td class="num pct-mid">53.7 %</td></tr>
+<tr><td>Andriy  Bezhenar</td><td class="num">125.000 €</td><td class="num">31.197 €</td><td class="num pct-low">25.0 %</td></tr>
+<tr><td>Vladyslav Krystin</td><td class="num">100.000 €</td><td class="num">-164.048 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Nikita Fedotov</td><td class="num">100.000 €</td><td class="num">227.251 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Fc Kryvbas Kryvyi Rih</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Yvan Dibango</td><td class="num">1.500.000 €</td><td class="num">1.597.769 €</td><td class="num pct-high">93.5 %</td></tr>
+<tr><td>Gleiker Mendoza</td><td class="num">1.200.000 €</td><td class="num">412.332 €</td><td class="num pct-low">34.4 %</td></tr>
+<tr><td>Jan Jurčec</td><td class="num">1.000.000 €</td><td class="num">720.344 €</td><td class="num pct-high">72.0 %</td></tr>
+<tr><td>Volodymyr Vilivald</td><td class="num">1.000.000 €</td><td class="num">546.240 €</td><td class="num pct-mid">54.6 %</td></tr>
+<tr><td>Carlos Paraco</td><td class="num">1.000.000 €</td><td class="num">884.800 €</td><td class="num pct-high">88.5 %</td></tr>
+<tr><td>Andrusw Araujo</td><td class="num">1.000.000 €</td><td class="num">119.695 €</td><td class="num pct-low">12.0 %</td></tr>
+<tr><td>Bar Lin</td><td class="num">800.000 €</td><td class="num">289.373 €</td><td class="num pct-low">36.2 %</td></tr>
+<tr><td>Oleksandr Kemkin</td><td class="num">800.000 €</td><td class="num">205.617 €</td><td class="num pct-low">25.7 %</td></tr>
+<tr><td>Maksym Zaderaka</td><td class="num">700.000 €</td><td class="num">344.246 €</td><td class="num pct-mid">49.2 %</td></tr>
+<tr><td>Joseph Jones</td><td class="num">600.000 €</td><td class="num">186.569 €</td><td class="num pct-low">31.1 %</td></tr>
+<tr><td>Ante Bekavac</td><td class="num">500.000 €</td><td class="num">132.751 €</td><td class="num pct-low">26.6 %</td></tr>
+<tr><td>Volodymyr Makhankov</td><td class="num">400.000 €</td><td class="num">389.174 €</td><td class="num pct-high">97.3 %</td></tr>
+<tr><td>Yaroslav Shevchenko</td><td class="num">400.000 €</td><td class="num">830.478 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Oleksandr Kamenskyi</td><td class="num">300.000 €</td><td class="num">521.395 €</td><td class="num pct-low">26.2 %</td></tr>
+<tr><td>Giovany Herbert</td><td class="num">300.000 €</td><td class="num">289.385 €</td><td class="num pct-high">96.5 %</td></tr>
+<tr><td>Assane Seck</td><td class="num">250.000 €</td><td class="num">11.794 €</td><td class="num pct-low">4.7 %</td></tr>
+<tr><td>Carlos Rojas</td><td class="num">200.000 €</td><td class="num">457.309 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Matviy Bodnar</td><td class="num">150.000 €</td><td class="num">-449.229 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Volodymyr Mulyk</td><td class="num">100.000 €</td><td class="num">286.174 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Karpaty Lviv</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Bruninho</td><td class="num">1.200.000 €</td><td class="num">975.748 €</td><td class="num pct-high">81.3 %</td></tr>
+<tr><td>Ilya Kvasnytsya</td><td class="num">1.200.000 €</td><td class="num">2.218.261 €</td><td class="num pct-low">15.1 %</td></tr>
+<tr><td>Vladyslav Babohlo</td><td class="num">1.000.000 €</td><td class="num">1.158.267 €</td><td class="num pct-high">84.2 %</td></tr>
+<tr><td>Valentyn Rubchynskyi</td><td class="num">1.000.000 €</td><td class="num">1.007.107 €</td><td class="num pct-high">99.3 %</td></tr>
+<tr><td>Jean Pedroso</td><td class="num">900.000 €</td><td class="num">1.200.927 €</td><td class="num pct-mid">66.6 %</td></tr>
+<tr><td>Xeber Alkain</td><td class="num">800.000 €</td><td class="num">1.001.641 €</td><td class="num pct-high">74.8 %</td></tr>
+<tr><td>Stênio Zanetti</td><td class="num">800.000 €</td><td class="num">654.811 €</td><td class="num pct-high">81.9 %</td></tr>
+<tr><td>Vitaliy Kholod</td><td class="num">750.000 €</td><td class="num">909.013 €</td><td class="num pct-high">78.8 %</td></tr>
+<tr><td>Baboucarr Faal</td><td class="num">700.000 €</td><td class="num">450.903 €</td><td class="num pct-mid">64.4 %</td></tr>
+<tr><td>Yan Kostenko</td><td class="num">700.000 €</td><td class="num">533.747 €</td><td class="num pct-high">76.2 %</td></tr>
+<tr><td>Oleksii Sych</td><td class="num">700.000 €</td><td class="num">695.804 €</td><td class="num pct-high">99.4 %</td></tr>
+<tr><td>Paulo Vitor</td><td class="num">700.000 €</td><td class="num">447.961 €</td><td class="num pct-mid">64.0 %</td></tr>
+<tr><td>Nazar Domchak</td><td class="num">700.000 €</td><td class="num">-363.302 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Edson Fernando</td><td class="num">600.000 €</td><td class="num">110.444 €</td><td class="num pct-low">18.4 %</td></tr>
+<tr><td>Ambrosiy Chachua</td><td class="num">600.000 €</td><td class="num">395.709 €</td><td class="num pct-mid">66.0 %</td></tr>
+<tr><td>Rostyslav Liakh</td><td class="num">600.000 €</td><td class="num">421.919 €</td><td class="num pct-high">70.3 %</td></tr>
+<tr><td>Shakh Artur</td><td class="num">500.000 €</td><td class="num">716.560 €</td><td class="num pct-mid">56.7 %</td></tr>
+<tr><td>Denys Miroshnichenko</td><td class="num">500.000 €</td><td class="num">562.349 €</td><td class="num pct-high">87.5 %</td></tr>
+<tr><td>Yaroslav Karabin</td><td class="num">500.000 €</td><td class="num">888.736 €</td><td class="num pct-low">22.3 %</td></tr>
+<tr><td>Marko Sapuga</td><td class="num">300.000 €</td><td class="num">629.708 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Andrii Klishchuk</td><td class="num">250.000 €</td><td class="num">154.914 €</td><td class="num pct-mid">62.0 %</td></tr>
+<tr><td>Eriki</td><td class="num">225.000 €</td><td class="num">788.749 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Volodymyr Adamyuk</td><td class="num">200.000 €</td><td class="num">-34.140 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Kolos Kovalivka</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Ivan Pakholiuk</td><td class="num">1.000.000 €</td><td class="num">685.401 €</td><td class="num pct-mid">68.5 %</td></tr>
+<tr><td>Nika Gagnidze</td><td class="num">900.000 €</td><td class="num">399.120 €</td><td class="num pct-low">44.3 %</td></tr>
+<tr><td>Andriy Poniedielnik</td><td class="num">800.000 €</td><td class="num">724.636 €</td><td class="num pct-high">90.6 %</td></tr>
+<tr><td>Arinaldo Rrapaj</td><td class="num">700.000 €</td><td class="num">149.212 €</td><td class="num pct-low">21.3 %</td></tr>
+<tr><td>Elias Telles</td><td class="num">700.000 €</td><td class="num">171.489 €</td><td class="num pct-low">24.5 %</td></tr>
+<tr><td>Yurii Klymchuk</td><td class="num">700.000 €</td><td class="num">682.894 €</td><td class="num pct-high">97.6 %</td></tr>
+<tr><td>Eduard Kozik</td><td class="num">700.000 €</td><td class="num">579.705 €</td><td class="num pct-high">82.8 %</td></tr>
+<tr><td>Artem Husol</td><td class="num">500.000 €</td><td class="num">326.966 €</td><td class="num pct-mid">65.4 %</td></tr>
+<tr><td>Danyil Alefirenko</td><td class="num">500.000 €</td><td class="num">501.034 €</td><td class="num pct-high">99.8 %</td></tr>
+<tr><td>Oleksandr Demchenko</td><td class="num">500.000 €</td><td class="num">272.647 €</td><td class="num pct-mid">54.5 %</td></tr>
+<tr><td>Ibrahim Kane</td><td class="num">500.000 €</td><td class="num">343.696 €</td><td class="num pct-mid">68.7 %</td></tr>
+<tr><td>Taras Stepanenko</td><td class="num">500.000 €</td><td class="num">298.963 €</td><td class="num pct-mid">59.8 %</td></tr>
+<tr><td>Luka Stankovski</td><td class="num">500.000 €</td><td class="num">333.250 €</td><td class="num pct-mid">66.6 %</td></tr>
+<tr><td>Mykyta Burda</td><td class="num">400.000 €</td><td class="num">408.784 €</td><td class="num pct-high">97.8 %</td></tr>
+<tr><td>Artem Cheliadin</td><td class="num">400.000 €</td><td class="num">427.450 €</td><td class="num pct-high">93.1 %</td></tr>
+<tr><td>Anton Salabay</td><td class="num">400.000 €</td><td class="num">567.804 €</td><td class="num pct-mid">58.0 %</td></tr>
+<tr><td>Daniil Khrypchuk</td><td class="num">350.000 €</td><td class="num">383.813 €</td><td class="num pct-high">90.3 %</td></tr>
+<tr><td>Valeriy Bondarenko</td><td class="num">300.000 €</td><td class="num">104.974 €</td><td class="num pct-low">35.0 %</td></tr>
+<tr><td>Ardit Tahiri</td><td class="num">250.000 €</td><td class="num">134.108 €</td><td class="num pct-mid">53.6 %</td></tr>
+<tr><td>Andrei Tsurikov</td><td class="num">200.000 €</td><td class="num">159.830 €</td><td class="num pct-high">79.9 %</td></tr>
+<tr><td>Zurab Rukhadze</td><td class="num">200.000 €</td><td class="num">278.595 €</td><td class="num pct-mid">60.7 %</td></tr>
+<tr><td>Daniil Denysenko</td><td class="num">200.000 €</td><td class="num">180.408 €</td><td class="num pct-high">90.2 %</td></tr>
+<tr><td>Tymur Puzankov</td><td class="num">100.000 €</td><td class="num">546.099 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Kudrivka</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Oleksii Husiev</td><td class="num">500.000 €</td><td class="num">424.650 €</td><td class="num pct-high">84.9 %</td></tr>
+<tr><td>Artem Macheliuk</td><td class="num">400.000 €</td><td class="num">-144.433 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Maksym Melnychuk</td><td class="num">400.000 €</td><td class="num">220.166 €</td><td class="num pct-mid">55.0 %</td></tr>
+<tr><td>Marian Faryna</td><td class="num">400.000 €</td><td class="num">263.667 €</td><td class="num pct-mid">65.9 %</td></tr>
+<tr><td>Miroslav Serdyuk</td><td class="num">400.000 €</td><td class="num">-77.345 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Oleksandr Beliaiev</td><td class="num">350.000 €</td><td class="num">355.677 €</td><td class="num pct-high">98.4 %</td></tr>
+<tr><td>Anton Glushchenko</td><td class="num">350.000 €</td><td class="num">252.289 €</td><td class="num pct-high">72.1 %</td></tr>
+<tr><td>Valerii Rohozynskyi</td><td class="num">300.000 €</td><td class="num">114.173 €</td><td class="num pct-low">38.1 %</td></tr>
+<tr><td>Oleksandr Kozak</td><td class="num">300.000 €</td><td class="num">88.459 €</td><td class="num pct-low">29.5 %</td></tr>
+<tr><td>Denys Nagnoynyi</td><td class="num">300.000 €</td><td class="num">116.516 €</td><td class="num pct-low">38.8 %</td></tr>
+<tr><td>Artur Dumaniuk</td><td class="num">300.000 €</td><td class="num">90.926 €</td><td class="num pct-low">30.3 %</td></tr>
+<tr><td>Andrii Storchous</td><td class="num">300.000 €</td><td class="num">-181.176 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Yaroslav Kysyl</td><td class="num">300.000 €</td><td class="num">307.929 €</td><td class="num pct-high">97.4 %</td></tr>
+<tr><td>Taipi Alban</td><td class="num">250.000 €</td><td class="num">-247.425 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Artem Liehostaiev</td><td class="num">250.000 €</td><td class="num">64.526 €</td><td class="num pct-low">25.8 %</td></tr>
+<tr><td>Roman Lyopka</td><td class="num">200.000 €</td><td class="num">-6.936 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Oleh Pushkarov</td><td class="num">200.000 €</td><td class="num">82.940 €</td><td class="num pct-low">41.5 %</td></tr>
+<tr><td>Raymond Owusu</td><td class="num">200.000 €</td><td class="num">-52.812 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Kaya Makosso</td><td class="num">200.000 €</td><td class="num">23.404 €</td><td class="num pct-low">11.7 %</td></tr>
+<tr><td>Bogdan Veklyak</td><td class="num">200.000 €</td><td class="num">71.322 €</td><td class="num pct-low">35.7 %</td></tr>
+<tr><td>Denys Svityukha</td><td class="num">150.000 €</td><td class="num">14.273 €</td><td class="num pct-low">9.5 %</td></tr>
+<tr><td>Yevhenii Morozko</td><td class="num">150.000 €</td><td class="num">96.093 €</td><td class="num pct-mid">64.1 %</td></tr>
+<tr><td>Jair Collahuazo</td><td class="num">150.000 €</td><td class="num">27.103 €</td><td class="num pct-low">18.1 %</td></tr>
+<tr><td>Anton Yashkov</td><td class="num">100.000 €</td><td class="num">-201.763 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Lnz Cherkasy</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Denys Kuzyk</td><td class="num">1.800.000 €</td><td class="num">1.482.797 €</td><td class="num pct-high">82.4 %</td></tr>
+<tr><td>Yehor Tverdokhlib</td><td class="num">1.800.000 €</td><td class="num">1.580.447 €</td><td class="num pct-high">87.8 %</td></tr>
+<tr><td>Mark Assinor</td><td class="num">1.500.000 €</td><td class="num">632.166 €</td><td class="num pct-low">42.1 %</td></tr>
+<tr><td>Muharrem Jashari</td><td class="num">1.200.000 €</td><td class="num">884.473 €</td><td class="num pct-high">73.7 %</td></tr>
+<tr><td>Yevhenii Pastukh</td><td class="num">1.000.000 €</td><td class="num">855.655 €</td><td class="num pct-high">85.6 %</td></tr>
+<tr><td>Oleg Horin</td><td class="num">900.000 €</td><td class="num">333.933 €</td><td class="num pct-low">37.1 %</td></tr>
+<tr><td>Shota Nonikashvili</td><td class="num">800.000 €</td><td class="num">611.377 €</td><td class="num pct-high">76.4 %</td></tr>
+<tr><td>Ajdi Dajko</td><td class="num">600.000 €</td><td class="num">880.100 €</td><td class="num pct-mid">53.3 %</td></tr>
+<tr><td>Jewison Bennette</td><td class="num">600.000 €</td><td class="num">770.118 €</td><td class="num pct-high">71.6 %</td></tr>
+<tr><td>Danylo Kravchuk</td><td class="num">400.000 €</td><td class="num">549.942 €</td><td class="num pct-mid">62.5 %</td></tr>
+<tr><td>Hennadii Pasich</td><td class="num">300.000 €</td><td class="num">326.315 €</td><td class="num pct-high">91.2 %</td></tr>
+<tr><td>Francis Momoh</td><td class="num">300.000 €</td><td class="num">453.147 €</td><td class="num pct-mid">49.0 %</td></tr>
+<tr><td>Oleksiy Palamarchuk</td><td class="num">250.000 €</td><td class="num">130.751 €</td><td class="num pct-mid">52.3 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Metalist 1925</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Ivan Kalyuzhnyi</td><td class="num">2.000.000 €</td><td class="num">1.738.969 €</td><td class="num pct-high">86.9 %</td></tr>
+<tr><td>Ilya Krupskyi</td><td class="num">1.500.000 €</td><td class="num">1.255.101 €</td><td class="num pct-high">83.7 %</td></tr>
+<tr><td>Oleksandr Martinyuk</td><td class="num">1.500.000 €</td><td class="num">1.753.324 €</td><td class="num pct-high">83.1 %</td></tr>
+<tr><td>Peter Itodo</td><td class="num">1.200.000 €</td><td class="num">1.562.401 €</td><td class="num pct-mid">69.8 %</td></tr>
+<tr><td>Yevhen Pavliuk</td><td class="num">1.000.000 €</td><td class="num">649.545 €</td><td class="num pct-mid">65.0 %</td></tr>
+<tr><td>Baton Zabergja</td><td class="num">1.000.000 €</td><td class="num">1.041.618 €</td><td class="num pct-high">95.8 %</td></tr>
+<tr><td>Cauan Baptistella</td><td class="num">1.000.000 €</td><td class="num">2.012.329 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Nicolas Arevalo</td><td class="num">1.000.000 €</td><td class="num">729.783 €</td><td class="num pct-high">73.0 %</td></tr>
+<tr><td>Denys Antyukh</td><td class="num">800.000 €</td><td class="num">415.912 €</td><td class="num pct-mid">52.0 %</td></tr>
+<tr><td>Danylo Varakuta</td><td class="num">800.000 €</td><td class="num">457.772 €</td><td class="num pct-mid">57.2 %</td></tr>
+<tr><td>Ermir Rashica</td><td class="num">800.000 €</td><td class="num">649.845 €</td><td class="num pct-high">81.2 %</td></tr>
+<tr><td>Sebastian Castillo</td><td class="num">700.000 €</td><td class="num">707.414 €</td><td class="num pct-high">98.9 %</td></tr>
+<tr><td>Ivan Lytvynenko</td><td class="num">700.000 €</td><td class="num">113.164 €</td><td class="num pct-low">16.2 %</td></tr>
+<tr><td>Volodymyr Salyuk</td><td class="num">600.000 €</td><td class="num">618.134 €</td><td class="num pct-high">97.0 %</td></tr>
+<tr><td>Ari Moura</td><td class="num">500.000 €</td><td class="num">389.708 €</td><td class="num pct-high">77.9 %</td></tr>
+<tr><td>Valeriy Dubko</td><td class="num">500.000 €</td><td class="num">300.982 €</td><td class="num pct-mid">60.2 %</td></tr>
+<tr><td>Ramik Gadzhyev</td><td class="num">500.000 €</td><td class="num">252.308 €</td><td class="num pct-mid">50.5 %</td></tr>
+<tr><td>Christian Mba</td><td class="num">400.000 €</td><td class="num">409.692 €</td><td class="num pct-high">97.6 %</td></tr>
+<tr><td>Vladyslav Kalitvintsev</td><td class="num">350.000 €</td><td class="num">220.885 €</td><td class="num pct-mid">63.1 %</td></tr>
+<tr><td>Igor Kogut</td><td class="num">300.000 €</td><td class="num">10.075 €</td><td class="num pct-low">3.4 %</td></tr>
+<tr><td>Dmytro Kapinus</td><td class="num">300.000 €</td><td class="num">214.603 €</td><td class="num pct-high">71.5 %</td></tr>
+<tr><td>Artem Shabanov</td><td class="num">250.000 €</td><td class="num">162.560 €</td><td class="num pct-mid">65.0 %</td></tr>
+<tr><td>Vyacheslav Churko</td><td class="num">250.000 €</td><td class="num">141.652 €</td><td class="num pct-mid">56.7 %</td></tr>
+<tr><td>Matvii Panchenko</td><td class="num">200.000 €</td><td class="num">31.772 €</td><td class="num pct-low">15.9 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Nk Veres Rivne</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Kai Cipot</td><td class="num">700.000 €</td><td class="num">514.434 €</td><td class="num pct-high">73.5 %</td></tr>
+<tr><td>Vitaliy Boyko</td><td class="num">600.000 €</td><td class="num">357.618 €</td><td class="num pct-mid">59.6 %</td></tr>
+<tr><td>Konstantinos Stamoulis</td><td class="num">600.000 €</td><td class="num">115.546 €</td><td class="num pct-low">19.3 %</td></tr>
+<tr><td>Maksym Smiyan</td><td class="num">600.000 €</td><td class="num">51.645 €</td><td class="num pct-low">8.6 %</td></tr>
+<tr><td>Wesley Pomba</td><td class="num">500.000 €</td><td class="num">308.600 €</td><td class="num pct-mid">61.7 %</td></tr>
+<tr><td>Semen Vovchenko</td><td class="num">500.000 €</td><td class="num">562.065 €</td><td class="num pct-high">87.6 %</td></tr>
+<tr><td>Igor Kharatin</td><td class="num">500.000 €</td><td class="num">45.074 €</td><td class="num pct-low">9.0 %</td></tr>
+<tr><td>Vladyslav Sharay</td><td class="num">500.000 €</td><td class="num">170.625 €</td><td class="num pct-low">34.1 %</td></tr>
+<tr><td>Valentyn Horokh</td><td class="num">500.000 €</td><td class="num">247.534 €</td><td class="num pct-mid">49.5 %</td></tr>
+<tr><td>Andrii Kozhukhar</td><td class="num">400.000 €</td><td class="num">329.776 €</td><td class="num pct-high">82.4 %</td></tr>
+<tr><td>André Gonçalves</td><td class="num">400.000 €</td><td class="num">115.383 €</td><td class="num pct-low">28.8 %</td></tr>
+<tr><td>Denys Ndukve</td><td class="num">400.000 €</td><td class="num">319.040 €</td><td class="num pct-high">79.8 %</td></tr>
+<tr><td>Dmytro Klyots</td><td class="num">300.000 €</td><td class="num">281.711 €</td><td class="num pct-high">93.9 %</td></tr>
+<tr><td>Mykhailo Protasevych</td><td class="num">300.000 €</td><td class="num">81.588 €</td><td class="num pct-low">27.2 %</td></tr>
+<tr><td>Roman Honcharenko</td><td class="num">250.000 €</td><td class="num">62.254 €</td><td class="num pct-low">24.9 %</td></tr>
+<tr><td>Fabrício Yan</td><td class="num">200.000 €</td><td class="num">-130.541 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Dmytro Godya</td><td class="num">200.000 €</td><td class="num">128.882 €</td><td class="num pct-mid">64.4 %</td></tr>
+<tr><td>Sergiy Korniychuk</td><td class="num">150.000 €</td><td class="num">93.702 €</td><td class="num pct-mid">62.5 %</td></tr>
+<tr><td>Serhii Sten</td><td class="num">150.000 €</td><td class="num">550.413 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Alagie Wally</td><td class="num">150.000 €</td><td class="num">-20.422 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Danyil Checher</td><td class="num">100.000 €</td><td class="num">-146.419 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Guilherme Bahia</td><td class="num">100.000 €</td><td class="num">-43.698 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Ignat Pushkutsa</td><td class="num">50.000 €</td><td class="num">209.588 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Obolon Kyiv</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Pavlo Polehenko</td><td class="num">600.000 €</td><td class="num">45.345 €</td><td class="num pct-low">7.6 %</td></tr>
+<tr><td>Denys Marchenko</td><td class="num">600.000 €</td><td class="num">1.431.580 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Maksym Chekh</td><td class="num">400.000 €</td><td class="num">22.150 €</td><td class="num pct-low">5.5 %</td></tr>
+<tr><td>Yevgeniy Shevchenko</td><td class="num">400.000 €</td><td class="num">245.840 €</td><td class="num pct-mid">61.5 %</td></tr>
+<tr><td>Vladyslav Pryimak</td><td class="num">400.000 €</td><td class="num">259.990 €</td><td class="num pct-mid">65.0 %</td></tr>
+<tr><td>Maksym Tretyakov</td><td class="num">400.000 €</td><td class="num">350.664 €</td><td class="num pct-high">87.7 %</td></tr>
+<tr><td>Dmytro Semenov</td><td class="num">400.000 €</td><td class="num">233.845 €</td><td class="num pct-mid">58.5 %</td></tr>
+<tr><td>Denys Ustymenko</td><td class="num">400.000 €</td><td class="num">375.680 €</td><td class="num pct-high">93.9 %</td></tr>
+<tr><td>Serhiy Sukhanov</td><td class="num">350.000 €</td><td class="num">442.199 €</td><td class="num pct-high">73.7 %</td></tr>
+<tr><td>Roman Volokhatyi</td><td class="num">350.000 €</td><td class="num">88.779 €</td><td class="num pct-low">25.4 %</td></tr>
+<tr><td>Oleh Slobodian</td><td class="num">300.000 €</td><td class="num">-44.666 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Ivan Nesterenko</td><td class="num">300.000 €</td><td class="num">609.244 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Nazariy Fedorivskyi</td><td class="num">300.000 €</td><td class="num">199.553 €</td><td class="num pct-mid">66.5 %</td></tr>
+<tr><td>Taras Moroz</td><td class="num">250.000 €</td><td class="num">-103.623 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Kostiantyn Bychek</td><td class="num">250.000 €</td><td class="num">217.926 €</td><td class="num pct-high">87.2 %</td></tr>
+<tr><td>Artem Kulakovskyi</td><td class="num">250.000 €</td><td class="num">-151.766 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Yegor Prokopenko</td><td class="num">250.000 €</td><td class="num">121.127 €</td><td class="num pct-mid">48.5 %</td></tr>
+<tr><td>Maksym Hrysio</td><td class="num">200.000 €</td><td class="num">157.563 €</td><td class="num pct-high">78.8 %</td></tr>
+<tr><td>Andrii Lomnytskyi</td><td class="num">200.000 €</td><td class="num">-105.307 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Oleksandr Zhovtenko</td><td class="num">200.000 €</td><td class="num">48.667 €</td><td class="num pct-low">24.3 %</td></tr>
+<tr><td>Denys Teslyuk</td><td class="num">200.000 €</td><td class="num">127.558 €</td><td class="num pct-mid">63.8 %</td></tr>
+<tr><td>Igor Medynsky</td><td class="num">150.000 €</td><td class="num">19.648 €</td><td class="num pct-low">13.1 %</td></tr>
+<tr><td>Ruslan Chernenko</td><td class="num">150.000 €</td><td class="num">83.076 €</td><td class="num pct-mid">55.4 %</td></tr>
+<tr><td>Vadym Stashkiv</td><td class="num">150.000 €</td><td class="num">191.836 €</td><td class="num pct-high">72.1 %</td></tr>
+<tr><td>Taras Liakh</td><td class="num">50.000 €</td><td class="num">185.721 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Oleksandr Feshchenko</td><td class="num">50.000 €</td><td class="num">-78.314 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Oleksandria</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Miguel Campos</td><td class="num">900.000 €</td><td class="num">1.219.956 €</td><td class="num pct-mid">64.4 %</td></tr>
+<tr><td>Tedi Cara</td><td class="num">800.000 €</td><td class="num">1.037.123 €</td><td class="num pct-high">70.4 %</td></tr>
+<tr><td>Fernando Henrique</td><td class="num">600.000 €</td><td class="num">573.238 €</td><td class="num pct-high">95.5 %</td></tr>
+<tr><td>Danil Skorko</td><td class="num">500.000 €</td><td class="num">-11.473 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Serhii Buletsa</td><td class="num">500.000 €</td><td class="num">297.078 €</td><td class="num pct-mid">59.4 %</td></tr>
+<tr><td>Papa Ndiaga Yade</td><td class="num">450.000 €</td><td class="num">298.847 €</td><td class="num pct-mid">66.4 %</td></tr>
+<tr><td>Jocelin Behiratche</td><td class="num">400.000 €</td><td class="num">-45.205 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Denys Shostak</td><td class="num">400.000 €</td><td class="num">181.867 €</td><td class="num pct-mid">45.5 %</td></tr>
+<tr><td>Mykola Ogarkov</td><td class="num">400.000 €</td><td class="num">39.133 €</td><td class="num pct-low">9.8 %</td></tr>
+<tr><td>Bryan Castillo</td><td class="num">400.000 €</td><td class="num">353.549 €</td><td class="num pct-high">88.4 %</td></tr>
+<tr><td>Viktor Dolhyi</td><td class="num">400.000 €</td><td class="num">287.469 €</td><td class="num pct-high">71.9 %</td></tr>
+<tr><td>Daniil Vashchenko</td><td class="num">350.000 €</td><td class="num">278.911 €</td><td class="num pct-high">79.7 %</td></tr>
+<tr><td>Hussayn Touati</td><td class="num">350.000 €</td><td class="num">330.105 €</td><td class="num pct-high">94.3 %</td></tr>
+<tr><td>Dmytro Myshniov</td><td class="num">300.000 €</td><td class="num">124.254 €</td><td class="num pct-low">41.4 %</td></tr>
+<tr><td>Mauro Rodrigues</td><td class="num">300.000 €</td><td class="num">266.482 €</td><td class="num pct-high">88.8 %</td></tr>
+<tr><td>Jota</td><td class="num">300.000 €</td><td class="num">155.471 €</td><td class="num pct-mid">51.8 %</td></tr>
+<tr><td>Mateus Amaral</td><td class="num">200.000 €</td><td class="num">196.558 €</td><td class="num pct-high">98.3 %</td></tr>
+<tr><td>Artem Shulianskyi</td><td class="num">200.000 €</td><td class="num">371.395 €</td><td class="num pct-low">14.3 %</td></tr>
+<tr><td>Jhonnatan da Silva</td><td class="num">150.000 €</td><td class="num">-226.797 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Nazar Makarenko</td><td class="num">100.000 €</td><td class="num">335.603 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Bogdan Butko</td><td class="num">50.000 €</td><td class="num">37.888 €</td><td class="num pct-high">75.8 %</td></tr>
+<tr><td>Dmytro Chernysh</td><td class="num">50.000 €</td><td class="num">-156.253 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Polissya Zhytomyr</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Oleksii Hutsuliak</td><td class="num">3.000.000 €</td><td class="num">2.849.342 €</td><td class="num pct-high">95.0 %</td></tr>
+<tr><td>Bogdan Mykhaylichenko</td><td class="num">2.500.000 €</td><td class="num">1.889.376 €</td><td class="num pct-high">75.6 %</td></tr>
+<tr><td>Oleksandr Nazarenko</td><td class="num">2.500.000 €</td><td class="num">2.111.884 €</td><td class="num pct-high">84.5 %</td></tr>
+<tr><td>Lindon Emërllahu</td><td class="num">1.800.000 €</td><td class="num">1.596.206 €</td><td class="num pct-high">88.7 %</td></tr>
+<tr><td>Eduard Sarapiyy</td><td class="num">1.500.000 €</td><td class="num">1.038.863 €</td><td class="num pct-mid">69.3 %</td></tr>
+<tr><td>Borys Krushynskyi</td><td class="num">1.500.000 €</td><td class="num">1.554.471 €</td><td class="num pct-high">96.4 %</td></tr>
+<tr><td>Serhii Chobotenko</td><td class="num">1.500.000 €</td><td class="num">858.032 €</td><td class="num pct-mid">57.2 %</td></tr>
+<tr><td>Maksym Bragaru</td><td class="num">1.300.000 €</td><td class="num">1.303.833 €</td><td class="num pct-high">99.7 %</td></tr>
+<tr><td>Igor Krasnopir</td><td class="num">1.200.000 €</td><td class="num">1.606.315 €</td><td class="num pct-mid">66.1 %</td></tr>
+<tr><td>Mykyta Kravchenko</td><td class="num">1.200.000 €</td><td class="num">1.035.451 €</td><td class="num pct-high">86.3 %</td></tr>
+<tr><td>Oleksandr Andriyevskyi</td><td class="num">1.000.000 €</td><td class="num">747.047 €</td><td class="num pct-high">74.7 %</td></tr>
+<tr><td>Volodymyr Shepeliev</td><td class="num">1.000.000 €</td><td class="num">938.545 €</td><td class="num pct-high">93.9 %</td></tr>
+<tr><td>Ilir Krasniqi</td><td class="num">1.000.000 €</td><td class="num">773.799 €</td><td class="num pct-high">77.4 %</td></tr>
+<tr><td>Vladyslav Veleten</td><td class="num">1.000.000 €</td><td class="num">949.616 €</td><td class="num pct-high">95.0 %</td></tr>
+<tr><td>Oleg Fedor</td><td class="num">900.000 €</td><td class="num">659.548 €</td><td class="num pct-high">73.3 %</td></tr>
+<tr><td>Yevgen Volynets</td><td class="num">800.000 €</td><td class="num">362.233 €</td><td class="num pct-mid">45.3 %</td></tr>
+<tr><td>Bogdan Lednev</td><td class="num">700.000 €</td><td class="num">909.132 €</td><td class="num pct-high">70.1 %</td></tr>
+<tr><td>Mykola Haiduchyk</td><td class="num">700.000 €</td><td class="num">548.295 €</td><td class="num pct-high">78.3 %</td></tr>
+<tr><td>Tomer Yosefi</td><td class="num">600.000 €</td><td class="num">657.548 €</td><td class="num pct-high">90.4 %</td></tr>
+<tr><td>João Vialle</td><td class="num">600.000 €</td><td class="num">793.117 €</td><td class="num pct-mid">67.8 %</td></tr>
+<tr><td>Giorgi Maisuradze</td><td class="num">500.000 €</td><td class="num">392.331 €</td><td class="num pct-high">78.5 %</td></tr>
+<tr><td>Oleksandr Filippov</td><td class="num">500.000 €</td><td class="num">449.472 €</td><td class="num pct-high">89.9 %</td></tr>
+<tr><td>Oleh Kudryk</td><td class="num">400.000 €</td><td class="num">599.478 €</td><td class="num pct-mid">50.1 %</td></tr>
+<tr><td>Maksym Melnychenko</td><td class="num">400.000 €</td><td class="num">451.235 €</td><td class="num pct-high">87.2 %</td></tr>
+<tr><td>Andi Hadroj</td><td class="num">300.000 €</td><td class="num">267.187 €</td><td class="num pct-high">89.1 %</td></tr>
+<tr><td>Ruslan Babenko</td><td class="num">300.000 €</td><td class="num">271.969 €</td><td class="num pct-high">90.7 %</td></tr>
+<tr><td>Borel Tomandzoto</td><td class="num">300.000 €</td><td class="num">123.051 €</td><td class="num pct-low">41.0 %</td></tr>
+<tr><td>Yaroslav Karaman</td><td class="num">300.000 €</td><td class="num">238.903 €</td><td class="num pct-high">79.6 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Rukh Lviv</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Igor Neves</td><td class="num">800.000 €</td><td class="num">809.594 €</td><td class="num pct-high">98.8 %</td></tr>
+<tr><td>Ostap Prytula</td><td class="num">600.000 €</td><td class="num">419.688 €</td><td class="num pct-mid">69.9 %</td></tr>
+<tr><td>Talles Brener</td><td class="num">500.000 €</td><td class="num">386.308 €</td><td class="num pct-high">77.3 %</td></tr>
+<tr><td>Vitalii Roman</td><td class="num">500.000 €</td><td class="num">626.263 €</td><td class="num pct-high">74.7 %</td></tr>
+<tr><td>Vlad Raileanu</td><td class="num">500.000 €</td><td class="num">279.463 €</td><td class="num pct-mid">55.9 %</td></tr>
+<tr><td>Yurii Kopyna</td><td class="num">500.000 €</td><td class="num">295.175 €</td><td class="num pct-mid">59.0 %</td></tr>
+<tr><td>Klayver</td><td class="num">500.000 €</td><td class="num">272.448 €</td><td class="num pct-mid">54.5 %</td></tr>
+<tr><td>Denys Pidgurskyi</td><td class="num">500.000 €</td><td class="num">606.119 €</td><td class="num pct-high">78.8 %</td></tr>
+<tr><td>Vasyl Runich</td><td class="num">400.000 €</td><td class="num">391.430 €</td><td class="num pct-high">97.9 %</td></tr>
+<tr><td>Denys Sliusar</td><td class="num">400.000 €</td><td class="num">239.158 €</td><td class="num pct-mid">59.8 %</td></tr>
+<tr><td>Yuriy-Volodymyr Gereta</td><td class="num">400.000 €</td><td class="num">554.493 €</td><td class="num pct-mid">61.4 %</td></tr>
+<tr><td>Samba Diallo</td><td class="num">300.000 €</td><td class="num">385.468 €</td><td class="num pct-high">71.5 %</td></tr>
+<tr><td>Andriy Kitela</td><td class="num">300.000 €</td><td class="num">184.275 €</td><td class="num pct-mid">61.4 %</td></tr>
+<tr><td>Beknaz Almazbekov</td><td class="num">300.000 €</td><td class="num">519.280 €</td><td class="num pct-low">26.9 %</td></tr>
+<tr><td>Arsen Zalypka</td><td class="num">200.000 €</td><td class="num">145.915 €</td><td class="num pct-high">73.0 %</td></tr>
+<tr><td>Maksym Boiko</td><td class="num">200.000 €</td><td class="num">-153.254 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Oleksiy Tovarnytskyi</td><td class="num">200.000 €</td><td class="num">127.115 €</td><td class="num pct-mid">63.6 %</td></tr>
+<tr><td>Mykola Kyrychok</td><td class="num">200.000 €</td><td class="num">-78.413 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Kostiantyn Kvas</td><td class="num">100.000 €</td><td class="num">-64.662 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Ivan Denysov</td><td class="num">100.000 €</td><td class="num">493.290 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Bohdan Levytskyi</td><td class="num">100.000 €</td><td class="num">550.962 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Volodymyr Yasinskyi</td><td class="num">100.000 €</td><td class="num">181.676 €</td><td class="num pct-low">18.3 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Sc Poltava</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Oleksandr Piatov</td><td class="num">350.000 €</td><td class="num">376.251 €</td><td class="num pct-high">92.5 %</td></tr>
+<tr><td>Danyil Sukhoruchko</td><td class="num">350.000 €</td><td class="num">461.594 €</td><td class="num pct-mid">68.1 %</td></tr>
+<tr><td>Mykyta Kononov</td><td class="num">300.000 €</td><td class="num">155.364 €</td><td class="num pct-mid">51.8 %</td></tr>
+<tr><td>Denys Galenkov</td><td class="num">300.000 €</td><td class="num">108.347 €</td><td class="num pct-low">36.1 %</td></tr>
+<tr><td>Dmytro Plakhtyr</td><td class="num">300.000 €</td><td class="num">116.673 €</td><td class="num pct-low">38.9 %</td></tr>
+<tr><td>Oleksandr Vivdych</td><td class="num">300.000 €</td><td class="num">110.182 €</td><td class="num pct-low">36.7 %</td></tr>
+<tr><td>Mykola Buzhyn</td><td class="num">300.000 €</td><td class="num">234.830 €</td><td class="num pct-high">78.3 %</td></tr>
+<tr><td>Volodymyr Odariuk</td><td class="num">250.000 €</td><td class="num">213.751 €</td><td class="num pct-high">85.5 %</td></tr>
+<tr><td>Oleh Veremiienko</td><td class="num">250.000 €</td><td class="num">171.935 €</td><td class="num pct-mid">68.8 %</td></tr>
+<tr><td>Vadym Pidlepych</td><td class="num">200.000 €</td><td class="num">226.834 €</td><td class="num pct-high">86.6 %</td></tr>
+<tr><td>Valeriy Voskonyan</td><td class="num">200.000 €</td><td class="num">-140.303 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Mykyta Minchev</td><td class="num">200.000 €</td><td class="num">-498.290 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Maksym Marusych</td><td class="num">150.000 €</td><td class="num">-27.710 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Illia Ukhan</td><td class="num">150.000 €</td><td class="num">-3.434 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Yevgen Misyura</td><td class="num">150.000 €</td><td class="num">-12.276 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Vladyslav Danylenko</td><td class="num">150.000 €</td><td class="num">147.845 €</td><td class="num pct-high">98.6 %</td></tr>
+<tr><td>Arsentii Doroshenko</td><td class="num">150.000 €</td><td class="num">137.948 €</td><td class="num pct-high">92.0 %</td></tr>
+<tr><td>Bohdan Kobzar</td><td class="num">100.000 €</td><td class="num">-90.112 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Igor Kotsyumaka</td><td class="num">100.000 €</td><td class="num">-57.956 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Daniil Yermolov</td><td class="num">100.000 €</td><td class="num">296.249 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Andriy Savenkov</td><td class="num">100.000 €</td><td class="num">-200.697 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Shakhtar Donetsk</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Georgiy Sudakov</td><td class="num">28.000.000 €</td><td class="num">28.664.228 €</td><td class="num pct-high">97.6 %</td></tr>
+<tr><td>Mykola Matviyenko</td><td class="num">15.000.000 €</td><td class="num">14.787.659 €</td><td class="num pct-high">98.6 %</td></tr>
+<tr><td>Kauã Elias</td><td class="num">15.000.000 €</td><td class="num">15.178.826 €</td><td class="num pct-high">98.8 %</td></tr>
+<tr><td>Marlon Gomes</td><td class="num">12.000.000 €</td><td class="num">12.025.690 €</td><td class="num pct-high">99.8 %</td></tr>
+<tr><td>Luca Meirelles</td><td class="num">10.000.000 €</td><td class="num">9.084.842 €</td><td class="num pct-high">90.8 %</td></tr>
+<tr><td>Pedrinho</td><td class="num">10.000.000 €</td><td class="num">8.607.800 €</td><td class="num pct-high">86.1 %</td></tr>
+<tr><td>Alisson Santana</td><td class="num">9.000.000 €</td><td class="num">10.337.967 €</td><td class="num pct-high">85.1 %</td></tr>
+<tr><td>Isaque</td><td class="num">8.000.000 €</td><td class="num">7.898.929 €</td><td class="num pct-high">98.7 %</td></tr>
+<tr><td>Valeriy Bondar</td><td class="num">8.000.000 €</td><td class="num">7.153.879 €</td><td class="num pct-high">89.4 %</td></tr>
+<tr><td>Artem Bondarenko</td><td class="num">8.000.000 €</td><td class="num">12.206.314 €</td><td class="num pct-mid">47.4 %</td></tr>
+<tr><td>Dmytro Riznyk</td><td class="num">7.000.000 €</td><td class="num">6.644.155 €</td><td class="num pct-high">94.9 %</td></tr>
+<tr><td>Lucas Ferreira</td><td class="num">7.000.000 €</td><td class="num">7.323.279 €</td><td class="num pct-high">95.4 %</td></tr>
+<tr><td>Pedro Henrique</td><td class="num">6.000.000 €</td><td class="num">4.878.900 €</td><td class="num pct-high">81.3 %</td></tr>
+<tr><td>Vinícius Tobias</td><td class="num">6.000.000 €</td><td class="num">6.217.174 €</td><td class="num pct-high">96.4 %</td></tr>
+<tr><td>Oleg Ocheretko</td><td class="num">6.000.000 €</td><td class="num">4.626.404 €</td><td class="num pct-high">77.1 %</td></tr>
+<tr><td>Eguinaldo</td><td class="num">5.000.000 €</td><td class="num">6.327.098 €</td><td class="num pct-high">73.5 %</td></tr>
+<tr><td>Yukhym Konoplia</td><td class="num">5.000.000 €</td><td class="num">4.896.750 €</td><td class="num pct-high">97.9 %</td></tr>
+<tr><td>Lassina Traoré</td><td class="num">5.000.000 €</td><td class="num">4.322.417 €</td><td class="num pct-high">86.4 %</td></tr>
+<tr><td>Dmytro Kryskiv</td><td class="num">5.000.000 €</td><td class="num">6.254.574 €</td><td class="num pct-high">74.9 %</td></tr>
+<tr><td>Prosper Obah</td><td class="num">3.000.000 €</td><td class="num">2.701.899 €</td><td class="num pct-high">90.1 %</td></tr>
+<tr><td>Giorgi Gocholeishvili</td><td class="num">2.500.000 €</td><td class="num">2.689.722 €</td><td class="num pct-high">92.4 %</td></tr>
+<tr><td>Marlon</td><td class="num">2.500.000 €</td><td class="num">2.598.789 €</td><td class="num pct-high">96.0 %</td></tr>
+<tr><td>Irakli Azarovi</td><td class="num">2.500.000 €</td><td class="num">3.587.904 €</td><td class="num pct-mid">56.5 %</td></tr>
+<tr><td>Yehor Nazaryna</td><td class="num">1.500.000 €</td><td class="num">1.193.922 €</td><td class="num pct-high">79.6 %</td></tr>
+<tr><td>Kiril Fesyun</td><td class="num">1.500.000 €</td><td class="num">1.600.917 €</td><td class="num pct-high">93.3 %</td></tr>
+<tr><td>Alaa Ghram</td><td class="num">1.200.000 €</td><td class="num">1.488.149 €</td><td class="num pct-high">76.0 %</td></tr>
+<tr><td>Marian Shved</td><td class="num">800.000 €</td><td class="num">1.306.876 €</td><td class="num pct-low">36.6 %</td></tr>
+<tr><td>Viktor Tsukanov</td><td class="num">500.000 €</td><td class="num">866.231 €</td><td class="num pct-low">26.8 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Zoria Luhansk</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Anderson Jordan</td><td class="num">1.000.000 €</td><td class="num">1.131.918 €</td><td class="num pct-high">86.8 %</td></tr>
+<tr><td>Juninho</td><td class="num">800.000 €</td><td class="num">898.195 €</td><td class="num pct-high">87.7 %</td></tr>
+<tr><td>Nemanja Anđušić</td><td class="num">750.000 €</td><td class="num">617.478 €</td><td class="num pct-high">82.3 %</td></tr>
+<tr><td>Petar Mićin</td><td class="num">700.000 €</td><td class="num">5.094.856 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Dejan Popara</td><td class="num">700.000 €</td><td class="num">391.773 €</td><td class="num pct-mid">56.0 %</td></tr>
+<tr><td>Jakov Bašić</td><td class="num">700.000 €</td><td class="num">659.600 €</td><td class="num pct-high">94.2 %</td></tr>
+<tr><td>Roman Vantukh</td><td class="num">700.000 €</td><td class="num">952.828 €</td><td class="num pct-mid">63.9 %</td></tr>
+<tr><td>Oleksandr Saputin</td><td class="num">700.000 €</td><td class="num">371.953 €</td><td class="num pct-mid">53.1 %</td></tr>
+<tr><td>Artem Slesar</td><td class="num">600.000 €</td><td class="num">352.661 €</td><td class="num pct-mid">58.8 %</td></tr>
+<tr><td>Andrija Janjić</td><td class="num">600.000 €</td><td class="num">570.055 €</td><td class="num pct-high">95.0 %</td></tr>
+<tr><td>Kyrylo Dryshlyuk</td><td class="num">500.000 €</td><td class="num">126.880 €</td><td class="num pct-low">25.4 %</td></tr>
+<tr><td>Bohdan Kushnirenko</td><td class="num">400.000 €</td><td class="num">-238.027 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Igor Gorbach</td><td class="num">400.000 €</td><td class="num">337.606 €</td><td class="num pct-high">84.4 %</td></tr>
+<tr><td>Gabriel Eskinja</td><td class="num">400.000 €</td><td class="num">-113.215 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Roman Salenko</td><td class="num">400.000 €</td><td class="num">334.966 €</td><td class="num pct-high">83.7 %</td></tr>
+<tr><td>Mykyta Turbaievskyi</td><td class="num">400.000 €</td><td class="num">349.200 €</td><td class="num pct-high">87.3 %</td></tr>
+<tr><td>Pylyp Budkivskyi</td><td class="num">300.000 €</td><td class="num">44.586 €</td><td class="num pct-low">14.9 %</td></tr>
+<tr><td>Vladyslav Vakula</td><td class="num">300.000 €</td><td class="num">234.629 €</td><td class="num pct-high">78.2 %</td></tr>
+<tr><td>Domagoj Jelavić</td><td class="num">300.000 €</td><td class="num">-132.148 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Navin Malysh</td><td class="num">200.000 €</td><td class="num">112.121 €</td><td class="num pct-mid">56.1 %</td></tr>
+<tr><td>Reynaldiño Verley</td><td class="num">200.000 €</td><td class="num">45.609 €</td><td class="num pct-low">22.8 %</td></tr>
+<tr><td>Sallieu Bah</td><td class="num">200.000 €</td><td class="num">36.695 €</td><td class="num pct-low">18.3 %</td></tr>
+<tr><td>Igor Perduta</td><td class="num">100.000 €</td><td class="num">-48.169 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Fedir Zadorozhnyi</td><td class="num">100.000 €</td><td class="num">-134.452 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<p class="note">Başarı %: TM ile tahmin arasındaki göreli hataya göre 100 − (|tahmin−TM|/TM×100), 0–100 aralığına sıkıştırılmıştır. Çoklu sezon için oyuncu başına en yüksek <code>minutesPlayed</code> satırı seçilmiştir.</p>
+</div></body></html>

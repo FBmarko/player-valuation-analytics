@@ -1,0 +1,93 @@
+{
+  "generatedAt": "2026-06-09T01:08:07.284389+00:00",
+  "sourceDataset": "Model/data/processed/engineered_master_dataset_high_r2.csv",
+  "rowCountRead": 20744,
+  "columnCountRead": 136,
+  "playersExported": 7105,
+  "teamsExported": 308,
+  "exportLimit": 10000,
+  "sampleLimit": 50,
+  "canonicalColumns": {
+    "playerId": "Oyuncu_ID",
+    "playerName": "İsim",
+    "teamKey": "Team",
+    "leagueKey": "League",
+    "position": "TM_Sub_Position",
+    "positionFallback": "TM_Position",
+    "currentMarketValue": "PD_Guncel"
+  },
+  "marketValueUnit": "raw EUR divided by 1,000,000 for frontend EUR millions",
+  "scoreMode": "role_aware_v2",
+  "scoreRange": {
+    "min": 1000,
+    "max": 9999
+  },
+  "actualAiQualityScoreRange": {
+    "min": 2067,
+    "max": 8808
+  },
+  "scoreFormula": "Role-aware category percentiles scaled to 0-99. aiQualityScore ranks selected players by role-weighted average category score percentile and maps to configured scoreRange.",
+  "sofascoreStatRecovery": {
+    "sourcePattern": "Model/data/standardized/sofascore/**/*.csv",
+    "joinKey": "Oyuncu_ID",
+    "filesScanned": 510,
+    "fieldsAdded": [
+      "appearances",
+      "matchesStarted",
+      "penaltyGoals",
+      "totalPasses",
+      "totalContest"
+    ],
+    "coverage": {
+      "appearances": {
+        "filled": 7105,
+        "missing": 0
+      },
+      "matchesStarted": {
+        "filled": 7105,
+        "missing": 0
+      },
+      "penaltyGoals": {
+        "filled": 7105,
+        "missing": 0
+      },
+      "totalPasses": {
+        "filled": 7105,
+        "missing": 0
+      },
+      "totalContest": {
+        "filled": 7105,
+        "missing": 0
+      }
+    }
+  },
+  "unknownFields": [
+    "player.nationality unless configured in nationalityOverrides",
+    "team.country unless configured in countryOverrides",
+    "recovered SofaScore raw metrics remain UNKNOWN only when a selected player lacks a source value",
+    "futureProjection marketValue and aiQualityScore until model output exists"
+  ],
+  "warnings": [
+    "Only 7105 eligible unique players were available for exportLimit 10000.",
+    "Future projection values remain zero placeholders because no model output is connected.",
+    "High-R2 benchmark predictions are market-aware estimates and should not be treated as clean future forecasts."
+  ],
+  "modelStatus": "No .pkl model files were loaded or connected.",
+  "frontendStatus": "Frontend imports generated JSON via src/data/generatedData.js",
+  "totalGeneratedPlayers": 7105,
+  "highR2BenchmarkPrediction": {
+    "generatedAt": "2026-06-09T01:08:08.301621+00:00",
+    "modelPath": "Model/models/elite_stacking_model_high_r2.pkl",
+    "predictionFile": "src/data/generated/predictions.high_r2_benchmark.generated.json",
+    "coverage": {
+      "playersRequested": 7105,
+      "playersPredicted": 7105,
+      "playersMissingPrediction": 0,
+      "missingPlayerIds": []
+    },
+    "predictionOutputScale": "raw_eur",
+    "frontendValueScale": "eur_millions",
+    "warning": "Predictions are market-aware benchmark estimates from the high-R2 model.",
+    "modelLoadLocation": "Offline Python script only; no .pkl file is loaded in React."
+  }
+}

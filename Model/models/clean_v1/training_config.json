@@ -1,0 +1,99 @@
+{
+  "trainedAt": "2026-06-08T23:03:56.125989+00:00",
+  "dataset": "data/processed/engineered_master_dataset_high_r2.csv",
+  "target": "PD_Guncel",
+  "split": {
+    "method": "GroupShuffleSplit",
+    "group": "Oyuncu_ID",
+    "testSize": 0.15,
+    "randomState": 42
+  },
+  "targetTransform": {
+    "train": "log1p",
+    "predict": "expm1",
+    "outputScale": "raw_eur"
+  },
+  "candidateParams": {
+    "catboost": {
+      "iterations": 900,
+      "learning_rate": 0.045,
+      "depth": 7,
+      "loss_function": "RMSE",
+      "random_seed": 42,
+      "verbose": false,
+      "allow_writing_files": false
+    },
+    "xgboost": {
+      "n_estimators": 900,
+      "learning_rate": 0.045,
+      "max_depth": 7,
+      "subsample": 0.9,
+      "colsample_bytree": 0.9,
+      "reg_lambda": 2.0,
+      "reg_alpha": 0.1,
+      "tree_method": "hist",
+      "random_state": 42,
+      "n_jobs": 1
+    },
+    "lightgbm": {
+      "n_estimators": 900,
+      "learning_rate": 0.045,
+      "num_leaves": 96,
+      "subsample": 0.9,
+      "colsample_bytree": 0.9,
+      "reg_lambda": 2.0,
+      "reg_alpha": 0.1,
+      "random_state": 42,
+      "verbose": -1
+    },
+    "hist_gradient_boosting": {
+      "learning_rate": 0.055,
+      "max_iter": 600,
+      "max_leaf_nodes": 63,
+      "l2_regularization": 0.05,
+      "random_state": 42
+    },
+    "random_forest": {
+      "n_estimators": 300,
+      "min_samples_leaf": 2,
+      "max_features": "sqrt",
+      "random_state": 42,
+      "n_jobs": -1
+    }
+  },
+  "selectedModel": "xgboost",
+  "dependencyStatus": {
+    "pandas": true,
+    "numpy": true,
+    "joblib": true,
+    "sklearn": true,
+    "catboost": true,
+    "xgboost": true,
+    "lightgbm": true
+  },
+  "leakagePolicy": {
+    "droppedHistoricalPlayerMarketValueColumns": [
+      "PD_23_Kis",
+      "PD_23_Yaz",
+      "PD_24_Kis",
+      "PD_24_Yaz",
+      "PD_25_Yaz",
+      "PD_Guncel_History",
+      "PD_accel_2step",
+      "PD_delta_24y_23y",
+      "PD_delta_25y_24k",
+      "PD_hist_max",
+      "PD_hist_mean",
+      "PD_hist_min",
+      "PD_hist_span",
+      "PD_hist_std",
+      "PD_ratio_25_23"
+    ],
+    "keptAggregateMarketContextColumns": [
+      "Lig_Ort_Pd",
+      "Kulup_Ort_Pd",
+      "Lig_Guc_0_100",
+      "Kulup_Guc_0_100"
+    ]
+  }
+}

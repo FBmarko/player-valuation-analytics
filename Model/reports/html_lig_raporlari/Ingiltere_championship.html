@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ingiltere Championship — Model tabloları</title>
+<style>
+
+        :root {
+            --bg: #0b1220;
+            --panel: #151d2e;
+            --text: #e8edf5;
+            --muted: #8b9bb4;
+            --border: #2a3548;
+            --accent: #3b82f6;
+            --good: #22c55e;
+            --mid: #eab308;
+            --bad: #f87171;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: "Segoe UI", system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 24px;
+            line-height: 1.45;
+        }
+        .wrap { max-width: 1200px; margin: 0 auto; }
+        h1 { font-size: 1.65rem; margin: 0 0 8px; font-weight: 650; }
+        .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 28px; }
+        .team-block {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 22px;
+            overflow: hidden;
+        }
+        .team-block h2 {
+            margin: 0;
+            padding: 12px 16px;
+            font-size: 1.05rem;
+            background: rgba(59, 130, 246, 0.12);
+            border-bottom: 1px solid var(--border);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+        th, td {
+            text-align: left;
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            color: var(--muted);
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(255,255,255,0.03); }
+        td.num { text-align: right; font-variant-numeric: tabular-nums; }
+        .pct-high { color: var(--good); font-weight: 600; }
+        .pct-mid { color: var(--mid); font-weight: 600; }
+        .pct-low { color: var(--bad); font-weight: 600; }
+        .note {
+            margin-top: 32px;
+            padding: 14px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+        a.back { color: var(--accent); text-decoration: none; }
+        a.back:hover { text-decoration: underline; }
+    
+</style>
+</head>
+<body>
+<div class="wrap">
+<p><a class="back" href="index.html">← Tüm ligler</a></p>
+<h1>Ingiltere Championship</h1>
+<p class="meta">Model: elite_stacking_model.pkl · Üretim: 2026-04-12 15:42 · Takım: 14 · Oyuncu satırı: 26</p>
+<div class="team-block">
+<h2>Birmingham City</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Willum Thor Willumsson</td><td class="num">3.500.000 €</td><td class="num">3.593.967 €</td><td class="num pct-high">97.3 %</td></tr>
+<tr><td>Alfons Sampsted</td><td class="num">1.500.000 €</td><td class="num">2.284.911 €</td><td class="num pct-mid">47.7 %</td></tr>
+<tr><td>Marc Leonard</td><td class="num">1.000.000 €</td><td class="num">1.792.485 €</td><td class="num pct-low">20.8 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Coventry City</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Kai Andrews</td><td class="num">400.000 €</td><td class="num">1.206.398 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Derby County</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Kenzo Goudmijn</td><td class="num">900.000 €</td><td class="num">1.923.172 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Andreas Weimann</td><td class="num">450.000 €</td><td class="num">151.858 €</td><td class="num pct-low">33.7 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Hull City</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Abu Kamara</td><td class="num">3.000.000 €</td><td class="num">4.261.722 €</td><td class="num pct-mid">57.9 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Leicester City</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Bilal El Khannouss</td><td class="num">32.000.000 €</td><td class="num">27.010.754 €</td><td class="num pct-high">84.4 %</td></tr>
+<tr><td>James Justin</td><td class="num">12.000.000 €</td><td class="num">10.673.669 €</td><td class="num pct-high">88.9 %</td></tr>
+<tr><td>Wout Faes</td><td class="num">10.000.000 €</td><td class="num">10.914.720 €</td><td class="num pct-high">90.9 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Millwall</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Steven Benda</td><td class="num">1.000.000 €</td><td class="num">1.553.402 €</td><td class="num pct-low">44.7 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Oxford United</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Filip Krastev</td><td class="num">3.500.000 €</td><td class="num">4.257.329 €</td><td class="num pct-high">78.4 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Preston North End</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Harrison Armstrong</td><td class="num">12.000.000 €</td><td class="num">9.788.541 €</td><td class="num pct-high">81.6 %</td></tr>
+<tr><td>Mads Frøkjær</td><td class="num">3.200.000 €</td><td class="num">3.242.334 €</td><td class="num pct-high">98.7 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Queens Park Rangers</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Liam Morrison</td><td class="num">1.000.000 €</td><td class="num">1.441.826 €</td><td class="num pct-mid">55.8 %</td></tr>
+<tr><td>Michael Frey</td><td class="num">500.000 €</td><td class="num">764.130 €</td><td class="num pct-mid">47.2 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Sheffield United</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Ben Godfrey</td><td class="num">5.500.000 €</td><td class="num">5.388.222 €</td><td class="num pct-high">98.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Sheffield Wednesday</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Yan Valery</td><td class="num">1.300.000 €</td><td class="num">1.862.619 €</td><td class="num pct-mid">56.7 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Southampton</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Mateus Fernandes</td><td class="num">35.000.000 €</td><td class="num">30.060.429 €</td><td class="num pct-high">85.9 %</td></tr>
+<tr><td>Adam Armstrong</td><td class="num">8.000.000 €</td><td class="num">8.390.978 €</td><td class="num pct-high">95.1 %</td></tr>
+<tr><td>Yukinari Sugawara</td><td class="num">7.500.000 €</td><td class="num">8.294.383 €</td><td class="num pct-high">89.4 %</td></tr>
+<tr><td>Damion Downs</td><td class="num">6.000.000 €</td><td class="num">6.236.954 €</td><td class="num pct-high">96.1 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Watford</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Max Alleyne</td><td class="num">8.000.000 €</td><td class="num">6.191.107 €</td><td class="num pct-high">77.4 %</td></tr>
+<tr><td>Moussa Sissoko</td><td class="num">250.000 €</td><td class="num">132.867 €</td><td class="num pct-mid">53.1 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>West Bromwich Albion</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Torbjørn Heggem</td><td class="num">14.000.000 €</td><td class="num">12.127.216 €</td><td class="num pct-high">86.6 %</td></tr>
+<tr><td>Samuel Iling Junior</td><td class="num">8.000.000 €</td><td class="num">8.480.596 €</td><td class="num pct-high">94.0 %</td></tr>
+</tbody></table></div>
+<p class="note">Başarı %: TM ile tahmin arasındaki göreli hataya göre 100 − (|tahmin−TM|/TM×100), 0–100 aralığına sıkıştırılmıştır. Çoklu sezon için oyuncu başına en yüksek <code>minutesPlayed</code> satırı seçilmiştir.</p>
+</div></body></html>

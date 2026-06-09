@@ -1,0 +1,2774 @@
+[
+  {
+    "id": "fc-blau-weiss-linz",
+    "name": "FC Blau Weiss Linz",
+    "league": "Austrian Bundesliga",
+    "country": "Austria",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FBW"
+  },
+  {
+    "id": "fk-austria-wien",
+    "name": "FK Austria Wien",
+    "league": "Austrian Bundesliga",
+    "country": "Austria",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FAW"
+  },
+  {
+    "id": "grazer-ak-1902",
+    "name": "Grazer Ak 1902",
+    "league": "Austrian Bundesliga",
+    "country": "Austria",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "GA1"
+  },
+  {
+    "id": "lask",
+    "name": "Lask",
+    "league": "Austrian Bundesliga",
+    "country": "Austria",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "LAS"
+  },
+  {
+    "id": "red-bull-salzburg",
+    "name": "Red Bull Salzburg",
+    "league": "Austrian Bundesliga",
+    "country": "Austria",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "RBS"
+  },
+  {
+    "id": "scr-altach",
+    "name": "SCR Altach",
+    "league": "Austrian Bundesliga",
+    "country": "Austria",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SA"
+  },
+  {
+    "id": "sk-rapid-wien",
+    "name": "SK Rapid Wien",
+    "league": "Austrian Bundesliga",
+    "country": "Austria",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SRW"
+  },
+  {
+    "id": "sk-sturm-graz",
+    "name": "SK Sturm Graz",
+    "league": "Austrian Bundesliga",
+    "country": "Austria",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SSG"
+  },
+  {
+    "id": "sv-ried",
+    "name": "SV Ried",
+    "league": "Austrian Bundesliga",
+    "country": "Austria",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SR"
+  },
+  {
+    "id": "tsv-hartberg",
+    "name": "TSV Hartberg",
+    "league": "Austrian Bundesliga",
+    "country": "Austria",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "TH"
+  },
+  {
+    "id": "wolfsberger-ac",
+    "name": "Wolfsberger AC",
+    "league": "Austrian Bundesliga",
+    "country": "Austria",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "WA"
+  },
+  {
+    "id": "wsg-tirol",
+    "name": "Wsg Tirol",
+    "league": "Austrian Bundesliga",
+    "country": "Austria",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "WT"
+  },
+  {
+    "id": "cercle-brugge",
+    "name": "Cercle Brugge",
+    "league": "Belgian Pro League",
+    "country": "Belgium",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "CB"
+  },
+  {
+    "id": "club-brugge-kv",
+    "name": "Club Brugge KV",
+    "league": "Belgian Pro League",
+    "country": "Belgium",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "CBK"
+  },
+  {
+    "id": "fcv-dender",
+    "name": "FCV Dender",
+    "league": "Belgian Pro League",
+    "country": "Belgium",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FD"
+  },
+  {
+    "id": "kaa-gent",
+    "name": "KAA Gent",
+    "league": "Belgian Pro League",
+    "country": "Belgium",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "KG"
+  },
+  {
+    "id": "krc-genk",
+    "name": "KRC Genk",
+    "league": "Belgian Pro League",
+    "country": "Belgium",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "KG"
+  },
+  {
+    "id": "kv-mechelen",
+    "name": "KV Mechelen",
+    "league": "Belgian Pro League",
+    "country": "Belgium",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "KM"
+  },
+  {
+    "id": "kvc-westerlo",
+    "name": "KVC Westerlo",
+    "league": "Belgian Pro League",
+    "country": "Belgium",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "KW"
+  },
+  {
+    "id": "oudheverlee-leuven",
+    "name": "Oudheverlee Leuven",
+    "league": "Belgian Pro League",
+    "country": "Belgium",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "OL"
+  },
+  {
+    "id": "raal-la-louviere",
+    "name": "RAAL La Louvière",
+    "league": "Belgian Pro League",
+    "country": "Belgium",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "RLL"
+  },
+  {
+    "id": "rc-sporting-charleroi",
+    "name": "RC Sporting Charleroi",
+    "league": "Belgian Pro League",
+    "country": "Belgium",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "RSC"
+  },
+  {
+    "id": "rsc-anderlecht",
+    "name": "RSC Anderlecht",
+    "league": "Belgian Pro League",
+    "country": "Belgium",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "RA"
+  },
+  {
+    "id": "royal-antwerp-fc",
+    "name": "Royal Antwerp FC",
+    "league": "Belgian Pro League",
+    "country": "Belgium",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "RAF"
+  },
+  {
+    "id": "sv-zulte-waregem",
+    "name": "SV Zulte Waregem",
+    "league": "Belgian Pro League",
+    "country": "Belgium",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SZW"
+  },
+  {
+    "id": "sinttruidense-vv",
+    "name": "Sint-Truidense VV",
+    "league": "Belgian Pro League",
+    "country": "Belgium",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "STV"
+  },
+  {
+    "id": "standard-liege",
+    "name": "Standard Liège",
+    "league": "Belgian Pro League",
+    "country": "Belgium",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SL"
+  },
+  {
+    "id": "royale-union-saintgilloise",
+    "name": "Union SG",
+    "league": "Belgian Pro League",
+    "country": "Belgium",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "US"
+  },
+  {
+    "id": "1-fc-heidenheim",
+    "name": "1. FC Heidenheim",
+    "league": "Bundesliga",
+    "country": "Germany",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "1FH"
+  },
+  {
+    "id": "1-fc-koln",
+    "name": "1. FC Köln",
+    "league": "Bundesliga",
+    "country": "Germany",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "1FK"
+  },
+  {
+    "id": "1-fc-union-berlin",
+    "name": "1. FC Union Berlin",
+    "league": "Bundesliga",
+    "country": "Germany",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "1FU"
+  },
+  {
+    "id": "1-fsv-mainz-05",
+    "name": "1. FSV Mainz 05",
+    "league": "Bundesliga",
+    "country": "Germany",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "1FM"
+  },
+  {
+    "id": "bayer-04-leverkusen",
+    "name": "Bayer 04 Leverkusen",
+    "league": "Bundesliga",
+    "country": "Germany",
+    "primaryColor": "#000000",
+    "secondaryColor": "#E32219",
+    "badge": "B0L"
+  },
+  {
+    "id": "borussia-dortmund",
+    "name": "Borussia Dortmund",
+    "league": "Bundesliga",
+    "country": "Germany",
+    "primaryColor": "#FDE100",
+    "secondaryColor": "#000000",
+    "badge": "BD"
+  },
+  {
+    "id": "borussia-mgladbach",
+    "name": "Borussia Mönchengladbach",
+    "league": "Bundesliga",
+    "country": "Germany",
+    "primaryColor": "#FFFFFF",
+    "secondaryColor": "#009B48",
+    "badge": "BM"
+  },
+  {
+    "id": "eintracht-frankfurt",
+    "name": "Eintracht Frankfurt",
+    "league": "Bundesliga",
+    "country": "Germany",
+    "primaryColor": "#E30613",
+    "secondaryColor": "#000000",
+    "badge": "EF"
+  },
+  {
+    "id": "fc-augsburg",
+    "name": "FC Augsburg",
+    "league": "Bundesliga",
+    "country": "Germany",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FA"
+  },
+  {
+    "id": "fc-bayern-munchen",
+    "name": "FC Bayern München",
+    "league": "Bundesliga",
+    "country": "Germany",
+    "primaryColor": "#DC052D",
+    "secondaryColor": "#FFFFFF",
+    "badge": "FBM"
+  },
+  {
+    "id": "fc-st-pauli",
+    "name": "FC St. Pauli",
+    "league": "Bundesliga",
+    "country": "Germany",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FSP"
+  },
+  {
+    "id": "hamburger-sv",
+    "name": "Hamburger SV",
+    "league": "Bundesliga",
+    "country": "Germany",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "HS"
+  },
+  {
+    "id": "rb-leipzig",
+    "name": "RB Leipzig",
+    "league": "Bundesliga",
+    "country": "Germany",
+    "primaryColor": "#DD013F",
+    "secondaryColor": "#0C2340",
+    "badge": "RL"
+  },
+  {
+    "id": "sc-freiburg",
+    "name": "SC Freiburg",
+    "league": "Bundesliga",
+    "country": "Germany",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SF"
+  },
+  {
+    "id": "sv-werder-bremen",
+    "name": "SV Werder Bremen",
+    "league": "Bundesliga",
+    "country": "Germany",
+    "primaryColor": "#00975F",
+    "secondaryColor": "#FFFFFF",
+    "badge": "SWB"
+  },
+  {
+    "id": "tsg-hoffenheim",
+    "name": "TSG Hoffenheim",
+    "league": "Bundesliga",
+    "country": "Germany",
+    "primaryColor": "#1C63B7",
+    "secondaryColor": "#FFFFFF",
+    "badge": "TH"
+  },
+  {
+    "id": "vfb-stuttgart",
+    "name": "VfB Stuttgart",
+    "league": "Bundesliga",
+    "country": "Germany",
+    "primaryColor": "#FFFFFF",
+    "secondaryColor": "#E32219",
+    "badge": "VS"
+  },
+  {
+    "id": "vfl-wolfsburg",
+    "name": "VfL Wolfsburg",
+    "league": "Bundesliga",
+    "country": "Germany",
+    "primaryColor": "#65B32E",
+    "secondaryColor": "#FFFFFF",
+    "badge": "VW"
+  },
+  {
+    "id": "athletico",
+    "name": "Athletico",
+    "league": "Campeonato Brasileiro Série A",
+    "country": "Brazil",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ATH"
+  },
+  {
+    "id": "atletico-mineiro",
+    "name": "Atlético Mineiro",
+    "league": "Campeonato Brasileiro Série A",
+    "country": "Brazil",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "AM"
+  },
+  {
+    "id": "bahia",
+    "name": "Bahia",
+    "league": "Campeonato Brasileiro Série A",
+    "country": "Brazil",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "BAH"
+  },
+  {
+    "id": "botafogo",
+    "name": "Botafogo",
+    "league": "Campeonato Brasileiro Série A",
+    "country": "Brazil",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "BOT"
+  },
+  {
+    "id": "chapecoense",
+    "name": "Chapecoense",
+    "league": "Campeonato Brasileiro Série A",
+    "country": "Brazil",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "CHA"
+  },
+  {
+    "id": "corinthians",
+    "name": "Corinthians",
+    "league": "Campeonato Brasileiro Série A",
+    "country": "Brazil",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "COR"
+  },
+  {
+    "id": "coritiba",
+    "name": "Coritiba",
+    "league": "Campeonato Brasileiro Série A",
+    "country": "Brazil",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "COR"
+  },
+  {
+    "id": "cruzeiro",
+    "name": "Cruzeiro",
+    "league": "Campeonato Brasileiro Série A",
+    "country": "Brazil",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "CRU"
+  },
+  {
+    "id": "flamengo",
+    "name": "Flamengo",
+    "league": "Campeonato Brasileiro Série A",
+    "country": "Brazil",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FLA"
+  },
+  {
+    "id": "fluminense",
+    "name": "Fluminense",
+    "league": "Campeonato Brasileiro Série A",
+    "country": "Brazil",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FLU"
+  },
+  {
+    "id": "gremio",
+    "name": "Gremio",
+    "league": "Campeonato Brasileiro Série A",
+    "country": "Brazil",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "GRE"
+  },
+  {
+    "id": "internacional",
+    "name": "Internacional",
+    "league": "Campeonato Brasileiro Série A",
+    "country": "Brazil",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "INT"
+  },
+  {
+    "id": "mirassol",
+    "name": "Mirassol",
+    "league": "Campeonato Brasileiro Série A",
+    "country": "Brazil",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "MIR"
+  },
+  {
+    "id": "palmeiras",
+    "name": "Palmeiras",
+    "league": "Campeonato Brasileiro Série A",
+    "country": "Brazil",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "PAL"
+  },
+  {
+    "id": "red-bull-bragantino",
+    "name": "Red Bull Bragantino",
+    "league": "Campeonato Brasileiro Série A",
+    "country": "Brazil",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "RBB"
+  },
+  {
+    "id": "remo",
+    "name": "Remo",
+    "league": "Campeonato Brasileiro Série A",
+    "country": "Brazil",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "REM"
+  },
+  {
+    "id": "santos",
+    "name": "Santos",
+    "league": "Campeonato Brasileiro Série A",
+    "country": "Brazil",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SAN"
+  },
+  {
+    "id": "sao-paulo",
+    "name": "São Paulo",
+    "league": "Campeonato Brasileiro Série A",
+    "country": "Brazil",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SP"
+  },
+  {
+    "id": "vasco-da-gama",
+    "name": "Vasco da Gama",
+    "league": "Campeonato Brasileiro Série A",
+    "country": "Brazil",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "VDG"
+  },
+  {
+    "id": "vitoria",
+    "name": "Vitoria",
+    "league": "Campeonato Brasileiro Série A",
+    "country": "Brazil",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "VIT"
+  },
+  {
+    "id": "gnk-dinamo-zagreb",
+    "name": "GNK Dinamo Zagreb",
+    "league": "Croatian Football League (HNL)",
+    "country": "Croatia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "GDZ"
+  },
+  {
+    "id": "hnk-gorica",
+    "name": "HNK Gorica",
+    "league": "Croatian Football League (HNL)",
+    "country": "Croatia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "HG"
+  },
+  {
+    "id": "hnk-hajduk-split",
+    "name": "HNK Hajduk Split",
+    "league": "Croatian Football League (HNL)",
+    "country": "Croatia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "HHS"
+  },
+  {
+    "id": "hnk-rijeka",
+    "name": "HNK Rijeka",
+    "league": "Croatian Football League (HNL)",
+    "country": "Croatia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "HR"
+  },
+  {
+    "id": "hnk-vukovar-1991",
+    "name": "HNK Vukovar 1991",
+    "league": "Croatian Football League (HNL)",
+    "country": "Croatia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "HV1"
+  },
+  {
+    "id": "nk-istra-1961",
+    "name": "NK Istra 1961",
+    "league": "Croatian Football League (HNL)",
+    "country": "Croatia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "NI1"
+  },
+  {
+    "id": "nk-lokomotiva-zagreb",
+    "name": "NK Lokomotiva Zagreb",
+    "league": "Croatian Football League (HNL)",
+    "country": "Croatia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "NLZ"
+  },
+  {
+    "id": "nk-osijek",
+    "name": "NK Osijek",
+    "league": "Croatian Football League (HNL)",
+    "country": "Croatia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "NO"
+  },
+  {
+    "id": "nk-slaven-belupo",
+    "name": "NK Slaven Belupo",
+    "league": "Croatian Football League (HNL)",
+    "country": "Croatia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "NSB"
+  },
+  {
+    "id": "nk-varazdin",
+    "name": "Nk Varazdin",
+    "league": "Croatian Football League (HNL)",
+    "country": "Croatia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "NV"
+  },
+  {
+    "id": "agf",
+    "name": "Agf",
+    "league": "Danish Superliga",
+    "country": "Denmark",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "AGF"
+  },
+  {
+    "id": "brndby-if",
+    "name": "Brøndby IF",
+    "league": "Danish Superliga",
+    "country": "Denmark",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "BI"
+  },
+  {
+    "id": "fc-fredericia",
+    "name": "FC Fredericia",
+    "league": "Danish Superliga",
+    "country": "Denmark",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FF"
+  },
+  {
+    "id": "fc-kbenhavn",
+    "name": "FC København",
+    "league": "Danish Superliga",
+    "country": "Denmark",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FK"
+  },
+  {
+    "id": "fc-midtjylland",
+    "name": "FC Midtjylland",
+    "league": "Danish Superliga",
+    "country": "Denmark",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FM"
+  },
+  {
+    "id": "fc-nordsjlland",
+    "name": "FC Nordsjælland",
+    "league": "Danish Superliga",
+    "country": "Denmark",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FN"
+  },
+  {
+    "id": "odense-boldklub",
+    "name": "Odense Boldklub",
+    "league": "Danish Superliga",
+    "country": "Denmark",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "OB"
+  },
+  {
+    "id": "randers-fc",
+    "name": "Randers FC",
+    "league": "Danish Superliga",
+    "country": "Denmark",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "RF"
+  },
+  {
+    "id": "silkeborg-if",
+    "name": "Silkeborg IF",
+    "league": "Danish Superliga",
+    "country": "Denmark",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SI"
+  },
+  {
+    "id": "snderjyske-fodbold",
+    "name": "SønderjyskE",
+    "league": "Danish Superliga",
+    "country": "Denmark",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SND"
+  },
+  {
+    "id": "vejle",
+    "name": "Vejle",
+    "league": "Danish Superliga",
+    "country": "Denmark",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "VEJ"
+  },
+  {
+    "id": "viborg-ff",
+    "name": "Viborg Ff",
+    "league": "Danish Superliga",
+    "country": "Denmark",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "VF"
+  },
+  {
+    "id": "afc-ajax",
+    "name": "AFC Ajax",
+    "league": "Eredivisie",
+    "country": "Netherlands",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "AA"
+  },
+  {
+    "id": "az-alkmaar",
+    "name": "AZ Alkmaar",
+    "league": "Eredivisie",
+    "country": "Netherlands",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "AA"
+  },
+  {
+    "id": "excelsior",
+    "name": "Excelsior",
+    "league": "Eredivisie",
+    "country": "Netherlands",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "EXC"
+  },
+  {
+    "id": "fc-groningen",
+    "name": "FC Groningen",
+    "league": "Eredivisie",
+    "country": "Netherlands",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FG"
+  },
+  {
+    "id": "fc-twente",
+    "name": "FC Twente",
+    "league": "Eredivisie",
+    "country": "Netherlands",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FT"
+  },
+  {
+    "id": "fc-utrecht",
+    "name": "FC Utrecht",
+    "league": "Eredivisie",
+    "country": "Netherlands",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FU"
+  },
+  {
+    "id": "fc-volendam",
+    "name": "FC Volendam",
+    "league": "Eredivisie",
+    "country": "Netherlands",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FV"
+  },
+  {
+    "id": "feyenoord",
+    "name": "Feyenoord",
+    "league": "Eredivisie",
+    "country": "Netherlands",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FEY"
+  },
+  {
+    "id": "fortuna-sittard",
+    "name": "Fortuna Sittard",
+    "league": "Eredivisie",
+    "country": "Netherlands",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FS"
+  },
+  {
+    "id": "go-ahead-eagles",
+    "name": "Go Ahead Eagles",
+    "league": "Eredivisie",
+    "country": "Netherlands",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "GAE"
+  },
+  {
+    "id": "heracles-almelo",
+    "name": "Heracles Almelo",
+    "league": "Eredivisie",
+    "country": "Netherlands",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "HA"
+  },
+  {
+    "id": "nac-breda",
+    "name": "NAC Breda",
+    "league": "Eredivisie",
+    "country": "Netherlands",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "NB"
+  },
+  {
+    "id": "nec-nijmegen",
+    "name": "NEC Nijmegen",
+    "league": "Eredivisie",
+    "country": "Netherlands",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "NN"
+  },
+  {
+    "id": "pec-zwolle",
+    "name": "PEC Zwolle",
+    "league": "Eredivisie",
+    "country": "Netherlands",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "PZ"
+  },
+  {
+    "id": "psv-eindhoven",
+    "name": "PSV Eindhoven",
+    "league": "Eredivisie",
+    "country": "Netherlands",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "PE"
+  },
+  {
+    "id": "sc-heerenveen",
+    "name": "SC Heerenveen",
+    "league": "Eredivisie",
+    "country": "Netherlands",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SH"
+  },
+  {
+    "id": "sc-telstar",
+    "name": "SC Telstar",
+    "league": "Eredivisie",
+    "country": "Netherlands",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ST"
+  },
+  {
+    "id": "sparta-rotterdam",
+    "name": "Sparta Rotterdam",
+    "league": "Eredivisie",
+    "country": "Netherlands",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SR"
+  },
+  {
+    "id": "athletic-club",
+    "name": "Athletic Club",
+    "league": "LaLiga",
+    "country": "Spain",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "AC"
+  },
+  {
+    "id": "atletico-madrid",
+    "name": "Atlético Madrid",
+    "league": "LaLiga",
+    "country": "Spain",
+    "primaryColor": "#CB3524",
+    "secondaryColor": "#FFFFFF",
+    "badge": "AM"
+  },
+  {
+    "id": "celta-vigo",
+    "name": "Celta Vigo",
+    "league": "LaLiga",
+    "country": "Spain",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "CV"
+  },
+  {
+    "id": "deportivo-alaves",
+    "name": "Deportivo Alavés",
+    "league": "LaLiga",
+    "country": "Spain",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "DA"
+  },
+  {
+    "id": "elche",
+    "name": "Elche",
+    "league": "LaLiga",
+    "country": "Spain",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ELC"
+  },
+  {
+    "id": "espanyol",
+    "name": "Espanyol",
+    "league": "LaLiga",
+    "country": "Spain",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ESP"
+  },
+  {
+    "id": "fc-barcelona",
+    "name": "FC Barcelona",
+    "league": "LaLiga",
+    "country": "Spain",
+    "primaryColor": "#004D98",
+    "secondaryColor": "#A50044",
+    "badge": "FB"
+  },
+  {
+    "id": "getafe",
+    "name": "Getafe",
+    "league": "LaLiga",
+    "country": "Spain",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "GET"
+  },
+  {
+    "id": "girona-fc",
+    "name": "Girona FC",
+    "league": "LaLiga",
+    "country": "Spain",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "GF"
+  },
+  {
+    "id": "levante-ud",
+    "name": "Levante UD",
+    "league": "LaLiga",
+    "country": "Spain",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "LU"
+  },
+  {
+    "id": "mallorca",
+    "name": "Mallorca",
+    "league": "LaLiga",
+    "country": "Spain",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "MAL"
+  },
+  {
+    "id": "osasuna",
+    "name": "Osasuna",
+    "league": "LaLiga",
+    "country": "Spain",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "OSA"
+  },
+  {
+    "id": "rayo-vallecano",
+    "name": "Rayo Vallecano",
+    "league": "LaLiga",
+    "country": "Spain",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "RV"
+  },
+  {
+    "id": "real-betis",
+    "name": "Real Betis",
+    "league": "LaLiga",
+    "country": "Spain",
+    "primaryColor": "#009A44",
+    "secondaryColor": "#FFFFFF",
+    "badge": "RB"
+  },
+  {
+    "id": "real-madrid",
+    "name": "Real Madrid",
+    "league": "LaLiga",
+    "country": "Spain",
+    "primaryColor": "#FFFFFF",
+    "secondaryColor": "#112E51",
+    "badge": "RM"
+  },
+  {
+    "id": "real-oviedo",
+    "name": "Real Oviedo",
+    "league": "LaLiga",
+    "country": "Spain",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "RO"
+  },
+  {
+    "id": "real-sociedad",
+    "name": "Real Sociedad",
+    "league": "LaLiga",
+    "country": "Spain",
+    "primaryColor": "#00529F",
+    "secondaryColor": "#FFFFFF",
+    "badge": "RS"
+  },
+  {
+    "id": "sevilla",
+    "name": "Sevilla",
+    "league": "LaLiga",
+    "country": "Spain",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SEV"
+  },
+  {
+    "id": "valencia",
+    "name": "Valencia",
+    "league": "LaLiga",
+    "country": "Spain",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "VAL"
+  },
+  {
+    "id": "villarreal",
+    "name": "Villarreal",
+    "league": "LaLiga",
+    "country": "Spain",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "VIL"
+  },
+  {
+    "id": "avs-futebol-sad",
+    "name": "Avs Futebol Sad",
+    "league": "Liga Portugal",
+    "country": "Portugal",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "AFS"
+  },
+  {
+    "id": "benfica",
+    "name": "Benfica",
+    "league": "Liga Portugal",
+    "country": "Portugal",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "BEN"
+  },
+  {
+    "id": "cf-estrela-amadora",
+    "name": "CF Estrela da Amadora",
+    "league": "Liga Portugal",
+    "country": "Portugal",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "CED"
+  },
+  {
+    "id": "casa-pia",
+    "name": "Casa Pia",
+    "league": "Liga Portugal",
+    "country": "Portugal",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "CP"
+  },
+  {
+    "id": "cd-nacional",
+    "name": "Cd Nacional",
+    "league": "Liga Portugal",
+    "country": "Portugal",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "CN"
+  },
+  {
+    "id": "estoril-praia",
+    "name": "Estoril Praia",
+    "league": "Liga Portugal",
+    "country": "Portugal",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "EP"
+  },
+  {
+    "id": "fc-alverca",
+    "name": "FC Alverca",
+    "league": "Liga Portugal",
+    "country": "Portugal",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FA"
+  },
+  {
+    "id": "fc-arouca",
+    "name": "FC Arouca",
+    "league": "Liga Portugal",
+    "country": "Portugal",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FA"
+  },
+  {
+    "id": "fc-porto",
+    "name": "FC Porto",
+    "league": "Liga Portugal",
+    "country": "Portugal",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FP"
+  },
+  {
+    "id": "famalicao",
+    "name": "Famalicao",
+    "league": "Liga Portugal",
+    "country": "Portugal",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FAM"
+  },
+  {
+    "id": "gil-vicente",
+    "name": "Gil Vicente",
+    "league": "Liga Portugal",
+    "country": "Portugal",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "GV"
+  },
+  {
+    "id": "moreirense",
+    "name": "Moreirense",
+    "league": "Liga Portugal",
+    "country": "Portugal",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "MOR"
+  },
+  {
+    "id": "rio-ave",
+    "name": "Rio Ave",
+    "league": "Liga Portugal",
+    "country": "Portugal",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "RA"
+  },
+  {
+    "id": "santa-clara",
+    "name": "Santa Clara",
+    "league": "Liga Portugal",
+    "country": "Portugal",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SC"
+  },
+  {
+    "id": "sporting-braga",
+    "name": "Sporting Braga",
+    "league": "Liga Portugal",
+    "country": "Portugal",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SB"
+  },
+  {
+    "id": "sporting-cp",
+    "name": "Sporting CP",
+    "league": "Liga Portugal",
+    "country": "Portugal",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SC"
+  },
+  {
+    "id": "tondela",
+    "name": "Tondela",
+    "league": "Liga Portugal",
+    "country": "Portugal",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "TON"
+  },
+  {
+    "id": "vitoria-sc",
+    "name": "Vitória SC",
+    "league": "Liga Portugal",
+    "country": "Portugal",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "VS"
+  },
+  {
+    "id": "as-monaco",
+    "name": "AS Monaco",
+    "league": "Ligue 1",
+    "country": "France",
+    "primaryColor": "#E30613",
+    "secondaryColor": "#FFFFFF",
+    "badge": "AM"
+  },
+  {
+    "id": "angers",
+    "name": "Angers",
+    "league": "Ligue 1",
+    "country": "France",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ANG"
+  },
+  {
+    "id": "auxerre",
+    "name": "Auxerre",
+    "league": "Ligue 1",
+    "country": "France",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "AUX"
+  },
+  {
+    "id": "le-havre",
+    "name": "Le Havre",
+    "league": "Ligue 1",
+    "country": "France",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "LH"
+  },
+  {
+    "id": "lille",
+    "name": "Lille",
+    "league": "Ligue 1",
+    "country": "France",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "LIL"
+  },
+  {
+    "id": "lorient",
+    "name": "Lorient",
+    "league": "Ligue 1",
+    "country": "France",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "LOR"
+  },
+  {
+    "id": "metz",
+    "name": "Metz",
+    "league": "Ligue 1",
+    "country": "France",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "MET"
+  },
+  {
+    "id": "nantes",
+    "name": "Nantes",
+    "league": "Ligue 1",
+    "country": "France",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "NAN"
+  },
+  {
+    "id": "nice",
+    "name": "Nice",
+    "league": "Ligue 1",
+    "country": "France",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "NIC"
+  },
+  {
+    "id": "olympique-de-marseille",
+    "name": "Olympique De Marseille",
+    "league": "Ligue 1",
+    "country": "France",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ODM"
+  },
+  {
+    "id": "olympique-lyonnais",
+    "name": "Olympique Lyonnais",
+    "league": "Ligue 1",
+    "country": "France",
+    "primaryColor": "#00205B",
+    "secondaryColor": "#D12630",
+    "badge": "OL"
+  },
+  {
+    "id": "paris-fc",
+    "name": "Paris FC",
+    "league": "Ligue 1",
+    "country": "France",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "PF"
+  },
+  {
+    "id": "paris-saintgermain",
+    "name": "Paris Saint-Germain",
+    "league": "Ligue 1",
+    "country": "France",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "PSG"
+  },
+  {
+    "id": "rc-lens",
+    "name": "RC Lens",
+    "league": "Ligue 1",
+    "country": "France",
+    "primaryColor": "#EC1C24",
+    "secondaryColor": "#FFF200",
+    "badge": "RL"
+  },
+  {
+    "id": "rc-strasbourg",
+    "name": "RC Strasbourg",
+    "league": "Ligue 1",
+    "country": "France",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "RS"
+  },
+  {
+    "id": "stade-brestois",
+    "name": "Stade Brestois 29",
+    "league": "Ligue 1",
+    "country": "France",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SB2"
+  },
+  {
+    "id": "stade-rennais",
+    "name": "Stade Rennais",
+    "league": "Ligue 1",
+    "country": "France",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SR"
+  },
+  {
+    "id": "toulouse",
+    "name": "Toulouse",
+    "league": "Ligue 1",
+    "country": "France",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "TOU"
+  },
+  {
+    "id": "arsenal",
+    "name": "Arsenal",
+    "league": "Premier League",
+    "country": "England",
+    "primaryColor": "#EF0107",
+    "secondaryColor": "#FFFFFF",
+    "badge": "ARS"
+  },
+  {
+    "id": "aston-villa",
+    "name": "Aston Villa",
+    "league": "Premier League",
+    "country": "England",
+    "primaryColor": "#95BFE5",
+    "secondaryColor": "#7A263A",
+    "badge": "AV"
+  },
+  {
+    "id": "bournemouth",
+    "name": "Bournemouth",
+    "league": "Premier League",
+    "country": "England",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "BOU"
+  },
+  {
+    "id": "brentford",
+    "name": "Brentford",
+    "league": "Premier League",
+    "country": "England",
+    "primaryColor": "#E30613",
+    "secondaryColor": "#000000",
+    "badge": "BRE"
+  },
+  {
+    "id": "brighton-hove-albion",
+    "name": "Brighton Hove Albion",
+    "league": "Premier League",
+    "country": "England",
+    "primaryColor": "#0057B8",
+    "secondaryColor": "#FFFFFF",
+    "badge": "BHA"
+  },
+  {
+    "id": "burnley",
+    "name": "Burnley",
+    "league": "Premier League",
+    "country": "England",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "BUR"
+  },
+  {
+    "id": "chelsea",
+    "name": "Chelsea",
+    "league": "Premier League",
+    "country": "England",
+    "primaryColor": "#034694",
+    "secondaryColor": "#FFFFFF",
+    "badge": "CHE"
+  },
+  {
+    "id": "crystal-palace",
+    "name": "Crystal Palace",
+    "league": "Premier League",
+    "country": "England",
+    "primaryColor": "#1B458F",
+    "secondaryColor": "#C4122E",
+    "badge": "CP"
+  },
+  {
+    "id": "everton",
+    "name": "Everton",
+    "league": "Premier League",
+    "country": "England",
+    "primaryColor": "#003399",
+    "secondaryColor": "#FFFFFF",
+    "badge": "EVE"
+  },
+  {
+    "id": "fulham",
+    "name": "Fulham",
+    "league": "Premier League",
+    "country": "England",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FUL"
+  },
+  {
+    "id": "leeds-united",
+    "name": "Leeds United",
+    "league": "Premier League",
+    "country": "England",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "LU"
+  },
+  {
+    "id": "liverpool",
+    "name": "Liverpool",
+    "league": "Premier League",
+    "country": "England",
+    "primaryColor": "#C8102E",
+    "secondaryColor": "#F6EB61",
+    "badge": "LIV"
+  },
+  {
+    "id": "manchester-city",
+    "name": "Manchester City",
+    "league": "Premier League",
+    "country": "England",
+    "primaryColor": "#6CABDD",
+    "secondaryColor": "#1C2C5B",
+    "badge": "MC"
+  },
+  {
+    "id": "manchester-united",
+    "name": "Manchester United",
+    "league": "Premier League",
+    "country": "England",
+    "primaryColor": "#DA291C",
+    "secondaryColor": "#000000",
+    "badge": "MU"
+  },
+  {
+    "id": "newcastle-united",
+    "name": "Newcastle United",
+    "league": "Premier League",
+    "country": "England",
+    "primaryColor": "#000000",
+    "secondaryColor": "#FFFFFF",
+    "badge": "NU"
+  },
+  {
+    "id": "nottingham-forest",
+    "name": "Nottingham Forest",
+    "league": "Premier League",
+    "country": "England",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "NF"
+  },
+  {
+    "id": "sunderland",
+    "name": "Sunderland",
+    "league": "Premier League",
+    "country": "England",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SUN"
+  },
+  {
+    "id": "tottenham-hotspur",
+    "name": "Tottenham Hotspur",
+    "league": "Premier League",
+    "country": "England",
+    "primaryColor": "#FFFFFF",
+    "secondaryColor": "#132257",
+    "badge": "TH"
+  },
+  {
+    "id": "west-ham-united",
+    "name": "West Ham United",
+    "league": "Premier League",
+    "country": "England",
+    "primaryColor": "#7A263A",
+    "secondaryColor": "#1BB1E7",
+    "badge": "WHU"
+  },
+  {
+    "id": "wolverhampton",
+    "name": "Wolverhampton",
+    "league": "Premier League",
+    "country": "England",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "WOL"
+  },
+  {
+    "id": "alahli",
+    "name": "Alahli",
+    "league": "Saudi Pro League",
+    "country": "Saudi Arabia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ALA"
+  },
+  {
+    "id": "alettifaq",
+    "name": "Alettifaq",
+    "league": "Saudi Pro League",
+    "country": "Saudi Arabia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ALE"
+  },
+  {
+    "id": "alfateh",
+    "name": "Alfateh",
+    "league": "Saudi Pro League",
+    "country": "Saudi Arabia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ALF"
+  },
+  {
+    "id": "alfayha",
+    "name": "Alfayha",
+    "league": "Saudi Pro League",
+    "country": "Saudi Arabia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ALF"
+  },
+  {
+    "id": "alhazem",
+    "name": "Alhazem",
+    "league": "Saudi Pro League",
+    "country": "Saudi Arabia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ALH"
+  },
+  {
+    "id": "alhilal",
+    "name": "Alhilal",
+    "league": "Saudi Pro League",
+    "country": "Saudi Arabia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ALH"
+  },
+  {
+    "id": "alittihad",
+    "name": "Alittihad",
+    "league": "Saudi Pro League",
+    "country": "Saudi Arabia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ALI"
+  },
+  {
+    "id": "alkhaleej",
+    "name": "Alkhaleej",
+    "league": "Saudi Pro League",
+    "country": "Saudi Arabia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ALK"
+  },
+  {
+    "id": "alkholood",
+    "name": "Alkholood",
+    "league": "Saudi Pro League",
+    "country": "Saudi Arabia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ALK"
+  },
+  {
+    "id": "alnajma-sc",
+    "name": "Alnajma SC",
+    "league": "Saudi Pro League",
+    "country": "Saudi Arabia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "AS"
+  },
+  {
+    "id": "alnassr",
+    "name": "Alnassr",
+    "league": "Saudi Pro League",
+    "country": "Saudi Arabia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ALN"
+  },
+  {
+    "id": "alokhdood",
+    "name": "Alokhdood",
+    "league": "Saudi Pro League",
+    "country": "Saudi Arabia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ALO"
+  },
+  {
+    "id": "alqadsiah",
+    "name": "Alqadsiah",
+    "league": "Saudi Pro League",
+    "country": "Saudi Arabia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ALQ"
+  },
+  {
+    "id": "alriyadh",
+    "name": "Alriyadh",
+    "league": "Saudi Pro League",
+    "country": "Saudi Arabia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ALR"
+  },
+  {
+    "id": "alshabab",
+    "name": "Alshabab",
+    "league": "Saudi Pro League",
+    "country": "Saudi Arabia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ALS"
+  },
+  {
+    "id": "altaawoun",
+    "name": "Altaawoun",
+    "league": "Saudi Pro League",
+    "country": "Saudi Arabia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ALT"
+  },
+  {
+    "id": "damac-fc",
+    "name": "Damac FC",
+    "league": "Saudi Pro League",
+    "country": "Saudi Arabia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "DF"
+  },
+  {
+    "id": "neom-sc",
+    "name": "NEOM SC",
+    "league": "Saudi Pro League",
+    "country": "Saudi Arabia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "NS"
+  },
+  {
+    "id": "aberdeen",
+    "name": "Aberdeen",
+    "league": "Scottish Premiership",
+    "country": "Scotland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ABE"
+  },
+  {
+    "id": "celtic",
+    "name": "Celtic",
+    "league": "Scottish Premiership",
+    "country": "Scotland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "CEL"
+  },
+  {
+    "id": "dundee-fc",
+    "name": "Dundee FC",
+    "league": "Scottish Premiership",
+    "country": "Scotland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "DF"
+  },
+  {
+    "id": "dundee-united",
+    "name": "Dundee United",
+    "league": "Scottish Premiership",
+    "country": "Scotland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "DU"
+  },
+  {
+    "id": "falkirk-fc",
+    "name": "Falkirk FC",
+    "league": "Scottish Premiership",
+    "country": "Scotland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FF"
+  },
+  {
+    "id": "heart-of-midlothian",
+    "name": "Heart Of Midlothian",
+    "league": "Scottish Premiership",
+    "country": "Scotland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "HOM"
+  },
+  {
+    "id": "hibernian",
+    "name": "Hibernian",
+    "league": "Scottish Premiership",
+    "country": "Scotland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "HIB"
+  },
+  {
+    "id": "kilmarnock",
+    "name": "Kilmarnock",
+    "league": "Scottish Premiership",
+    "country": "Scotland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "KIL"
+  },
+  {
+    "id": "livingston",
+    "name": "Livingston",
+    "league": "Scottish Premiership",
+    "country": "Scotland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "LIV"
+  },
+  {
+    "id": "motherwell",
+    "name": "Motherwell",
+    "league": "Scottish Premiership",
+    "country": "Scotland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "MOT"
+  },
+  {
+    "id": "rangers",
+    "name": "Rangers",
+    "league": "Scottish Premiership",
+    "country": "Scotland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "RAN"
+  },
+  {
+    "id": "st-mirren",
+    "name": "St Mirren",
+    "league": "Scottish Premiership",
+    "country": "Scotland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SM"
+  },
+  {
+    "id": "fk-crvena-zvezda",
+    "name": "FK Crvena zvezda",
+    "league": "Serbian SuperLiga",
+    "country": "Serbia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FCZ"
+  },
+  {
+    "id": "fk-imt-beograd",
+    "name": "FK IMT Belgrad",
+    "league": "Serbian SuperLiga",
+    "country": "Serbia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FIB"
+  },
+  {
+    "id": "fk-radnicki-1923",
+    "name": "FK Radnički 1923",
+    "league": "Serbian SuperLiga",
+    "country": "Serbia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FR1"
+  },
+  {
+    "id": "fk-radnicki-nis",
+    "name": "FK Radnički Niš",
+    "league": "Serbian SuperLiga",
+    "country": "Serbia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FRN"
+  },
+  {
+    "id": "fk-spartak-subotica",
+    "name": "FK Spartak Subotica",
+    "league": "Serbian SuperLiga",
+    "country": "Serbia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FSS"
+  },
+  {
+    "id": "fk-tsc-backa-topola",
+    "name": "FK TSC Bačka Topola",
+    "league": "Serbian SuperLiga",
+    "country": "Serbia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FTB"
+  },
+  {
+    "id": "fk-cukaricki",
+    "name": "Fk Cukaricki",
+    "league": "Serbian SuperLiga",
+    "country": "Serbia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FC"
+  },
+  {
+    "id": "fk-javor-ivanjica",
+    "name": "Fk Javor Ivanjica",
+    "league": "Serbian SuperLiga",
+    "country": "Serbia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FJI"
+  },
+  {
+    "id": "fk-mladost-lucani",
+    "name": "Fk Mladost Lucani",
+    "league": "Serbian SuperLiga",
+    "country": "Serbia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FML"
+  },
+  {
+    "id": "fk-napredak-krusevac",
+    "name": "Fk Napredak Krusevac",
+    "league": "Serbian SuperLiga",
+    "country": "Serbia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FNK"
+  },
+  {
+    "id": "fk-novi-pazar",
+    "name": "Fk Novi Pazar",
+    "league": "Serbian SuperLiga",
+    "country": "Serbia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FNP"
+  },
+  {
+    "id": "fk-partizan",
+    "name": "Fk Partizan",
+    "league": "Serbian SuperLiga",
+    "country": "Serbia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FP"
+  },
+  {
+    "id": "fk-radnik-surdulica",
+    "name": "Fk Radnik Surdulica",
+    "league": "Serbian SuperLiga",
+    "country": "Serbia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FRS"
+  },
+  {
+    "id": "fk-vojvodina",
+    "name": "Fk Vojvodina",
+    "league": "Serbian SuperLiga",
+    "country": "Serbia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FV"
+  },
+  {
+    "id": "fk-zeleznicar-pancevo",
+    "name": "Fk Zeleznicar Pancevo",
+    "league": "Serbian SuperLiga",
+    "country": "Serbia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FZP"
+  },
+  {
+    "id": "ofk-beograd",
+    "name": "OFK Beograd",
+    "league": "Serbian SuperLiga",
+    "country": "Serbia",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "OB"
+  },
+  {
+    "id": "atalanta",
+    "name": "Atalanta",
+    "league": "Serie A",
+    "country": "Italy",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ATA"
+  },
+  {
+    "id": "bologna",
+    "name": "Bologna",
+    "league": "Serie A",
+    "country": "Italy",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "BOL"
+  },
+  {
+    "id": "cagliari",
+    "name": "Cagliari",
+    "league": "Serie A",
+    "country": "Italy",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "CAG"
+  },
+  {
+    "id": "como",
+    "name": "Como",
+    "league": "Serie A",
+    "country": "Italy",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "COM"
+  },
+  {
+    "id": "cremonese",
+    "name": "Cremonese",
+    "league": "Serie A",
+    "country": "Italy",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "CRE"
+  },
+  {
+    "id": "fiorentina",
+    "name": "Fiorentina",
+    "league": "Serie A",
+    "country": "Italy",
+    "primaryColor": "#4A225D",
+    "secondaryColor": "#FFFFFF",
+    "badge": "FIO"
+  },
+  {
+    "id": "genoa",
+    "name": "Genoa",
+    "league": "Serie A",
+    "country": "Italy",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "GEN"
+  },
+  {
+    "id": "hellas-verona",
+    "name": "Hellas Verona",
+    "league": "Serie A",
+    "country": "Italy",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "HV"
+  },
+  {
+    "id": "inter",
+    "name": "Inter",
+    "league": "Serie A",
+    "country": "Italy",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "INT"
+  },
+  {
+    "id": "juventus",
+    "name": "Juventus",
+    "league": "Serie A",
+    "country": "Italy",
+    "primaryColor": "#000000",
+    "secondaryColor": "#FFFFFF",
+    "badge": "JUV"
+  },
+  {
+    "id": "lazio",
+    "name": "Lazio",
+    "league": "Serie A",
+    "country": "Italy",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "LAZ"
+  },
+  {
+    "id": "lecce",
+    "name": "Lecce",
+    "league": "Serie A",
+    "country": "Italy",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "LEC"
+  },
+  {
+    "id": "milan",
+    "name": "Milan",
+    "league": "Serie A",
+    "country": "Italy",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "MIL"
+  },
+  {
+    "id": "napoli",
+    "name": "Napoli",
+    "league": "Serie A",
+    "country": "Italy",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "NAP"
+  },
+  {
+    "id": "parma",
+    "name": "Parma",
+    "league": "Serie A",
+    "country": "Italy",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "PAR"
+  },
+  {
+    "id": "pisa",
+    "name": "Pisa",
+    "league": "Serie A",
+    "country": "Italy",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "PIS"
+  },
+  {
+    "id": "roma",
+    "name": "Roma",
+    "league": "Serie A",
+    "country": "Italy",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ROM"
+  },
+  {
+    "id": "sassuolo",
+    "name": "Sassuolo",
+    "league": "Serie A",
+    "country": "Italy",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SAS"
+  },
+  {
+    "id": "torino",
+    "name": "Torino",
+    "league": "Serie A",
+    "country": "Italy",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "TOR"
+  },
+  {
+    "id": "udinese",
+    "name": "Udinese",
+    "league": "Serie A",
+    "country": "Italy",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "UDI"
+  },
+  {
+    "id": "aek-athens",
+    "name": "AEK Athens",
+    "league": "Super League Greece",
+    "country": "Greece",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "AA"
+  },
+  {
+    "id": "ael-novibet",
+    "name": "Ael Novibet",
+    "league": "Super League Greece",
+    "country": "Greece",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "AN"
+  },
+  {
+    "id": "aris-thessaloniki",
+    "name": "Aris Thessaloniki",
+    "league": "Super League Greece",
+    "country": "Greece",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "AT"
+  },
+  {
+    "id": "asteras-aktor",
+    "name": "Asteras Aktor",
+    "league": "Super League Greece",
+    "country": "Greece",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "AA"
+  },
+  {
+    "id": "aps-atromitos-athinon",
+    "name": "Atromitos Athens",
+    "league": "Super League Greece",
+    "country": "Greece",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "AA"
+  },
+  {
+    "id": "gfs-panetolikos",
+    "name": "Gfs Panetolikos",
+    "league": "Super League Greece",
+    "country": "Greece",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "GP"
+  },
+  {
+    "id": "ae-kifisia",
+    "name": "Kifisia FC",
+    "league": "Super League Greece",
+    "country": "Greece",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "KF"
+  },
+  {
+    "id": "apo-levadiakos",
+    "name": "Levadiakos FC",
+    "league": "Super League Greece",
+    "country": "Greece",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "LF"
+  },
+  {
+    "id": "mgs-panserraikos",
+    "name": "Mgs Panserraikos",
+    "league": "Super League Greece",
+    "country": "Greece",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "MP"
+  },
+  {
+    "id": "nps-volos",
+    "name": "Nps Volos",
+    "league": "Super League Greece",
+    "country": "Greece",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "NV"
+  },
+  {
+    "id": "ofi-crete",
+    "name": "Ofi Crete",
+    "league": "Super League Greece",
+    "country": "Greece",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "OC"
+  },
+  {
+    "id": "olympiacos-fc",
+    "name": "Olympiacos FC",
+    "league": "Super League Greece",
+    "country": "Greece",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "OF"
+  },
+  {
+    "id": "panathinaikos-fc",
+    "name": "Panathinaikos FC",
+    "league": "Super League Greece",
+    "country": "Greece",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "PF"
+  },
+  {
+    "id": "paok",
+    "name": "Paok",
+    "league": "Super League Greece",
+    "country": "Greece",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "PAO"
+  },
+  {
+    "id": "bsc-young-boys",
+    "name": "BSC Young Boys",
+    "league": "Swiss Super League",
+    "country": "Switzerland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "BYB"
+  },
+  {
+    "id": "basel",
+    "name": "Basel",
+    "league": "Swiss Super League",
+    "country": "Switzerland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "BAS"
+  },
+  {
+    "id": "fc-lausannesport",
+    "name": "FC Lausanne-Sport",
+    "league": "Swiss Super League",
+    "country": "Switzerland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FLS"
+  },
+  {
+    "id": "fc-lugano",
+    "name": "FC Lugano",
+    "league": "Swiss Super League",
+    "country": "Switzerland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FL"
+  },
+  {
+    "id": "fc-luzern",
+    "name": "FC Luzern",
+    "league": "Swiss Super League",
+    "country": "Switzerland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FL"
+  },
+  {
+    "id": "fc-sion",
+    "name": "FC Sion",
+    "league": "Swiss Super League",
+    "country": "Switzerland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FS"
+  },
+  {
+    "id": "fc-st-gallen-1879",
+    "name": "FC St Gallen 1879",
+    "league": "Swiss Super League",
+    "country": "Switzerland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FSG"
+  },
+  {
+    "id": "fc-thun",
+    "name": "FC Thun",
+    "league": "Swiss Super League",
+    "country": "Switzerland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FT"
+  },
+  {
+    "id": "fc-winterthur",
+    "name": "FC Winterthur",
+    "league": "Swiss Super League",
+    "country": "Switzerland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FW"
+  },
+  {
+    "id": "fc-zurich",
+    "name": "FC Zurich",
+    "league": "Swiss Super League",
+    "country": "Switzerland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FZ"
+  },
+  {
+    "id": "grasshopper-club-zurich",
+    "name": "Grasshopper Club Zurich",
+    "league": "Swiss Super League",
+    "country": "Switzerland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "GCZ"
+  },
+  {
+    "id": "servette-fc",
+    "name": "Servette FC",
+    "league": "Swiss Super League",
+    "country": "Switzerland",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SF"
+  },
+  {
+    "id": "alanyaspor",
+    "name": "Alanyaspor",
+    "league": "Trendyol Süper Lig",
+    "country": "Türkiye",
+    "primaryColor": "#FED100",
+    "secondaryColor": "#008B45",
+    "badge": "ALA"
+  },
+  {
+    "id": "antalyaspor",
+    "name": "Antalyaspor",
+    "league": "Trendyol Süper Lig",
+    "country": "Türkiye",
+    "primaryColor": "#E30613",
+    "secondaryColor": "#FFFFFF",
+    "badge": "ANT"
+  },
+  {
+    "id": "basaksehir-fk",
+    "name": "Başakşehir FK",
+    "league": "Trendyol Süper Lig",
+    "country": "Türkiye",
+    "primaryColor": "#0038A8",
+    "secondaryColor": "#FF4F00",
+    "badge": "BF"
+  },
+  {
+    "id": "besiktas-jk",
+    "name": "Beşiktaş JK",
+    "league": "Trendyol Süper Lig",
+    "country": "Türkiye",
+    "primaryColor": "#000000",
+    "secondaryColor": "#FFFFFF",
+    "badge": "BJ"
+  },
+  {
+    "id": "caykur-rizespor",
+    "name": "Caykur Rizespor",
+    "league": "Trendyol Süper Lig",
+    "country": "Türkiye",
+    "primaryColor": "#005A9C",
+    "secondaryColor": "#008C45",
+    "badge": "CR"
+  },
+  {
+    "id": "eyupspor",
+    "name": "Eyupspor",
+    "league": "Trendyol Süper Lig",
+    "country": "Türkiye",
+    "primaryColor": "#7C287B",
+    "secondaryColor": "#FFE000",
+    "badge": "EYU"
+  },
+  {
+    "id": "fatih-karagumruk",
+    "name": "Fatih Karagumruk",
+    "league": "Trendyol Süper Lig",
+    "country": "Türkiye",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FK"
+  },
+  {
+    "id": "fenerbahce",
+    "name": "Fenerbahçe",
+    "league": "Trendyol Süper Lig",
+    "country": "Türkiye",
+    "primaryColor": "#FED500",
+    "secondaryColor": "#0B2647",
+    "badge": "FEN"
+  },
+  {
+    "id": "galatasaray",
+    "name": "Galatasaray",
+    "league": "Trendyol Süper Lig",
+    "country": "Türkiye",
+    "primaryColor": "#A90432",
+    "secondaryColor": "#FDB912",
+    "badge": "GAL"
+  },
+  {
+    "id": "gaziantep-fk",
+    "name": "Gaziantep FK",
+    "league": "Trendyol Süper Lig",
+    "country": "Türkiye",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "GF"
+  },
+  {
+    "id": "genclerbirligi",
+    "name": "Genclerbirligi",
+    "league": "Trendyol Süper Lig",
+    "country": "Türkiye",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "GEN"
+  },
+  {
+    "id": "goztepe",
+    "name": "Göztepe",
+    "league": "Trendyol Süper Lig",
+    "country": "Türkiye",
+    "primaryColor": "#FED100",
+    "secondaryColor": "#E30613",
+    "badge": "GOZ"
+  },
+  {
+    "id": "kasmpasa",
+    "name": "Kasımpaşa",
+    "league": "Trendyol Süper Lig",
+    "country": "Türkiye",
+    "primaryColor": "#0052B4",
+    "secondaryColor": "#FFFFFF",
+    "badge": "KAS"
+  },
+  {
+    "id": "kayserispor",
+    "name": "Kayserispor",
+    "league": "Trendyol Süper Lig",
+    "country": "Türkiye",
+    "primaryColor": "#FED100",
+    "secondaryColor": "#E30613",
+    "badge": "KAY"
+  },
+  {
+    "id": "kocaelispor",
+    "name": "Kocaelispor",
+    "league": "Trendyol Süper Lig",
+    "country": "Türkiye",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "KOC"
+  },
+  {
+    "id": "konyaspor",
+    "name": "Konyaspor",
+    "league": "Trendyol Süper Lig",
+    "country": "Türkiye",
+    "primaryColor": "#007A33",
+    "secondaryColor": "#FFFFFF",
+    "badge": "KON"
+  },
+  {
+    "id": "samsunspor",
+    "name": "Samsunspor",
+    "league": "Trendyol Süper Lig",
+    "country": "Türkiye",
+    "primaryColor": "#E30613",
+    "secondaryColor": "#FFFFFF",
+    "badge": "SAM"
+  },
+  {
+    "id": "trabzonspor",
+    "name": "Trabzonspor",
+    "league": "Trendyol Süper Lig",
+    "country": "Türkiye",
+    "primaryColor": "#70162B",
+    "secondaryColor": "#4AA6E2",
+    "badge": "TRA"
+  },
+  {
+    "id": "dynamo-kyiv",
+    "name": "Dynamo Kyiv",
+    "league": "Ukrainian Premier League",
+    "country": "Ukraine",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "DK"
+  },
+  {
+    "id": "fc-epicentr-dunaivtsi",
+    "name": "FC Epicentr Dunaivtsi",
+    "league": "Ukrainian Premier League",
+    "country": "Ukraine",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FED"
+  },
+  {
+    "id": "fc-kryvbas-kryvyi-rih",
+    "name": "FC Kryvbas Kryvyi Rih",
+    "league": "Ukrainian Premier League",
+    "country": "Ukraine",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "FKK"
+  },
+  {
+    "id": "karpaty-lviv",
+    "name": "Karpaty Lviv",
+    "league": "Ukrainian Premier League",
+    "country": "Ukraine",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "KL"
+  },
+  {
+    "id": "kolos-kovalivka",
+    "name": "Kolos Kovalivka",
+    "league": "Ukrainian Premier League",
+    "country": "Ukraine",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "KK"
+  },
+  {
+    "id": "kudrivka",
+    "name": "Kudrivka",
+    "league": "Ukrainian Premier League",
+    "country": "Ukraine",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "KUD"
+  },
+  {
+    "id": "lnz-cherkasy",
+    "name": "LNZ Cherkasy",
+    "league": "Ukrainian Premier League",
+    "country": "Ukraine",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "LC"
+  },
+  {
+    "id": "metalist-1925",
+    "name": "Metalist 1925",
+    "league": "Ukrainian Premier League",
+    "country": "Ukraine",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "M1"
+  },
+  {
+    "id": "nk-veres-rivne",
+    "name": "Nk Veres Rivne",
+    "league": "Ukrainian Premier League",
+    "country": "Ukraine",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "NVR"
+  },
+  {
+    "id": "obolon-kyiv",
+    "name": "Obolon Kyiv",
+    "league": "Ukrainian Premier League",
+    "country": "Ukraine",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "OK"
+  },
+  {
+    "id": "oleksandria",
+    "name": "Oleksandria",
+    "league": "Ukrainian Premier League",
+    "country": "Ukraine",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "OLE"
+  },
+  {
+    "id": "polissya-zhytomyr",
+    "name": "Polissya Zhytomyr",
+    "league": "Ukrainian Premier League",
+    "country": "Ukraine",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "PZ"
+  },
+  {
+    "id": "rukh-lviv",
+    "name": "Rukh Lviv",
+    "league": "Ukrainian Premier League",
+    "country": "Ukraine",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "RL"
+  },
+  {
+    "id": "sc-poltava",
+    "name": "SC Poltava",
+    "league": "Ukrainian Premier League",
+    "country": "Ukraine",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SP"
+  },
+  {
+    "id": "shakhtar-donetsk",
+    "name": "Shakhtar Donetsk",
+    "league": "Ukrainian Premier League",
+    "country": "Ukraine",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "SD"
+  },
+  {
+    "id": "zoria-luhansk",
+    "name": "Zoria Luhansk",
+    "league": "Ukrainian Premier League",
+    "country": "Ukraine",
+    "primaryColor": "#334155",
+    "secondaryColor": "#0f172a",
+    "badge": "ZL"
+  }
+]

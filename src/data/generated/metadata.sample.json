@@ -1,0 +1,33 @@
+{
+  "generatedAt": "2026-06-08T19:46:38.272463+00:00",
+  "sourceDataset": "Model/data/processed/engineered_master_dataset_high_r2.csv",
+  "sampleStrategy": "Top 50 unique players by PD_Guncel, then player name and Oyuncu_ID.",
+  "rowCountRead": 20744,
+  "columnCountRead": 136,
+  "playersExported": 50,
+  "teamsExported": 16,
+  "canonicalColumns": {
+    "playerId": "Oyuncu_ID",
+    "playerName": "İsim",
+    "teamKey": "Team",
+    "teamName": "Team-derived display name; Takim_Adi used only when compatible with Team",
+    "leagueKey": "League",
+    "leagueName": "League-derived display name; Turnuva_Ligi kept as observed competition label only",
+    "position": "TM_Sub_Position",
+    "positionFallback": "TM_Position",
+    "currentMarketValue": "PD_Guncel"
+  },
+  "marketValueUnit": "Dataset values appear to be raw EUR numeric amounts; JSON values are divided by 1,000,000 for EUR millions.",
+  "scoreFormula": "v1 UI scoring formulas: min-max normalize inputs to 0-99, inverse risk metrics where documented, average category scores, scale average category score to 0-10000 for aiQualityScore.",
+  "unknownFields": [
+    "player.nationality",
+    "team.country",
+    "rawMetrics.Overview.Appearances",
+    "rawMetrics.Overview.Matches Started",
+    "rawMetrics.Attack & Shooting.Penalty Goals",
+    "rawMetrics.Playmaking & Passing.Total Passes",
+    "rawMetrics.Physicality & Duels.Total Contest"
+  ],
+  "modelStatus": "No .pkl model files were loaded or connected.",
+  "frontendStatus": "Generated JSON only; frontend imports still use src/data/mockData.js."
+}

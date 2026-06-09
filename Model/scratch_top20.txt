@@ -1,0 +1,45 @@
+--- MODEL 1 (Linear Stacking) EN DEĞERLİ 20 OYUNCU ---
+             İsim TM_Position  PD_Guncel  Model1_Predict
+    Kylian Mbappé      Attack  200000000       217065409
+  Vinicius Júnior      Attack  150000000       163374077
+            Pedri    Midfield  150000000       162670641
+  Jude Bellingham    Midfield  140000000       152637473
+    Michael Olise      Attack  140000000       152092511
+     Lamine Yamal      Attack  200000000       131000526
+Federico Valverde    Midfield  120000000       130751045
+      Declan Rice    Midfield  120000000       130736803
+      Bukayo Saka      Attack  120000000       130398200
+    Jamal Musiala    Midfield  120000000       129620388
+   Erling Haaland      Attack  200000000       125099270
+          Vitinha    Midfield  110000000       119137577
+   Moisés Caicedo    Midfield  110000000       119012753
+      Cole Palmer    Midfield  110000000       118849840
+     Fermín López    Midfield  100000000       106463512
+    Florian Wirtz    Midfield  110000000       103912650
+ Ryan Gravenberch    Midfield   90000000        98769611
+   William Saliba    Defender   90000000        98191151
+   Enzo Fernández    Midfield   90000000        97261976
+       Arda Güler    Midfield   90000000        97209821
+
+--- MODEL 2 (Logarithmic Superstar) EN DEĞERLİ 20 OYUNCU ---
+             İsim TM_Position  PD_Guncel  Model2_Predict
+    Kylian Mbappé      Attack  200000000       162423867
+  Vinicius Júnior      Attack  150000000       136401512
+            Pedri    Midfield  150000000       130729252
+    Michael Olise      Attack  140000000       128228182
+      Bukayo Saka      Attack  120000000       117393361
+  Jude Bellingham    Midfield  140000000       117213810
+      Declan Rice    Midfield  120000000       105948508
+Federico Valverde    Midfield  120000000       105686062
+   Moisés Caicedo    Midfield  110000000        96336730
+      Cole Palmer    Midfield  110000000        95803597
+          Vitinha    Midfield  110000000        93398862
+    Jamal Musiala    Midfield  120000000        91688513
+ Ryan Gravenberch    Midfield   90000000        90160670
+     Hugo Ekitiké      Attack   90000000        89281463
+      Pau Cubarsí    Defender   80000000        84909545
+   Enzo Fernández    Midfield   90000000        82976688
+          Estêvão      Attack   80000000        81960366
+     Fermín López    Midfield  100000000        81737431
+   William Saliba    Defender   90000000        81715082
+       Phil Foden    Midfield   80000000        79602141

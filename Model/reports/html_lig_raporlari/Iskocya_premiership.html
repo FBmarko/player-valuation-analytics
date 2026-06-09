@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iskocya Premiership — Model tabloları</title>
+<style>
+
+        :root {
+            --bg: #0b1220;
+            --panel: #151d2e;
+            --text: #e8edf5;
+            --muted: #8b9bb4;
+            --border: #2a3548;
+            --accent: #3b82f6;
+            --good: #22c55e;
+            --mid: #eab308;
+            --bad: #f87171;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: "Segoe UI", system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 24px;
+            line-height: 1.45;
+        }
+        .wrap { max-width: 1200px; margin: 0 auto; }
+        h1 { font-size: 1.65rem; margin: 0 0 8px; font-weight: 650; }
+        .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 28px; }
+        .team-block {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 22px;
+            overflow: hidden;
+        }
+        .team-block h2 {
+            margin: 0;
+            padding: 12px 16px;
+            font-size: 1.05rem;
+            background: rgba(59, 130, 246, 0.12);
+            border-bottom: 1px solid var(--border);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+        th, td {
+            text-align: left;
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            color: var(--muted);
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(255,255,255,0.03); }
+        td.num { text-align: right; font-variant-numeric: tabular-nums; }
+        .pct-high { color: var(--good); font-weight: 600; }
+        .pct-mid { color: var(--mid); font-weight: 600; }
+        .pct-low { color: var(--bad); font-weight: 600; }
+        .note {
+            margin-top: 32px;
+            padding: 14px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+        a.back { color: var(--accent); text-decoration: none; }
+        a.back:hover { text-decoration: underline; }
+    
+</style>
+</head>
+<body>
+<div class="wrap">
+<p><a class="back" href="index.html">← Tüm ligler</a></p>
+<h1>Iskocya Premiership</h1>
+<p class="meta">Model: elite_stacking_model.pkl · Üretim: 2026-04-12 15:42 · Takım: 12 · Oyuncu satırı: 302</p>
+<div class="team-block">
+<h2>Aberdeen</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Jesper Karlsson</td><td class="num">4.000.000 €</td><td class="num">3.077.392 €</td><td class="num pct-high">76.9 %</td></tr>
+<tr><td>Dennis Geiger</td><td class="num">1.500.000 €</td><td class="num">1.138.070 €</td><td class="num pct-high">75.9 %</td></tr>
+<tr><td>Lyall Cameron</td><td class="num">1.500.000 €</td><td class="num">1.396.825 €</td><td class="num pct-high">93.1 %</td></tr>
+<tr><td>Topi Keskinen</td><td class="num">1.400.000 €</td><td class="num">1.093.629 €</td><td class="num pct-high">78.1 %</td></tr>
+<tr><td>Alexander Jensen</td><td class="num">1.300.000 €</td><td class="num">1.241.582 €</td><td class="num pct-high">95.5 %</td></tr>
+<tr><td>Jack Milne</td><td class="num">1.200.000 €</td><td class="num">1.147.334 €</td><td class="num pct-high">95.6 %</td></tr>
+<tr><td>Kevin Nisbet</td><td class="num">1.200.000 €</td><td class="num">1.518.025 €</td><td class="num pct-high">73.5 %</td></tr>
+<tr><td>Ester Sokler</td><td class="num">1.200.000 €</td><td class="num">1.060.121 €</td><td class="num pct-high">88.3 %</td></tr>
+<tr><td>Liam Morrison</td><td class="num">1.000.000 €</td><td class="num">912.622 €</td><td class="num pct-high">91.3 %</td></tr>
+<tr><td>Kristers Tobers</td><td class="num">800.000 €</td><td class="num">905.086 €</td><td class="num pct-high">86.9 %</td></tr>
+<tr><td>Marko Lazetić</td><td class="num">800.000 €</td><td class="num">493.434 €</td><td class="num pct-mid">61.7 %</td></tr>
+<tr><td>Dimitar Mitov</td><td class="num">800.000 €</td><td class="num">761.262 €</td><td class="num pct-high">95.2 %</td></tr>
+<tr><td>Nicolas Milanović</td><td class="num">600.000 €</td><td class="num">387.930 €</td><td class="num pct-mid">64.7 %</td></tr>
+<tr><td>Mats Knoester</td><td class="num">600.000 €</td><td class="num">650.386 €</td><td class="num pct-high">91.6 %</td></tr>
+<tr><td>Afeez Aremu</td><td class="num">600.000 €</td><td class="num">340.751 €</td><td class="num pct-mid">56.8 %</td></tr>
+<tr><td>Gavin Molloy</td><td class="num">600.000 €</td><td class="num">589.591 €</td><td class="num pct-high">98.3 %</td></tr>
+<tr><td>Per Kristian Bråtveit</td><td class="num">600.000 €</td><td class="num">238.898 €</td><td class="num pct-low">39.8 %</td></tr>
+<tr><td>Ante Palaversa</td><td class="num">550.000 €</td><td class="num">503.801 €</td><td class="num pct-high">91.6 %</td></tr>
+<tr><td>Tom McIntyre</td><td class="num">500.000 €</td><td class="num">552.466 €</td><td class="num pct-high">89.5 %</td></tr>
+<tr><td>Toyosi Olusanya</td><td class="num">500.000 €</td><td class="num">116.137 €</td><td class="num pct-low">23.2 %</td></tr>
+<tr><td>Kenan Bilalovic</td><td class="num">500.000 €</td><td class="num">880.240 €</td><td class="num pct-low">24.0 %</td></tr>
+<tr><td>Stuart Armstrong</td><td class="num">400.000 €</td><td class="num">215.654 €</td><td class="num pct-mid">53.9 %</td></tr>
+<tr><td>Nicky Devlin</td><td class="num">300.000 €</td><td class="num">19.889 €</td><td class="num pct-low">6.6 %</td></tr>
+<tr><td>Dylan Lobban</td><td class="num">250.000 €</td><td class="num">-221.808 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Graeme Shinnie</td><td class="num">200.000 €</td><td class="num">41.832 €</td><td class="num pct-low">20.9 %</td></tr>
+<tr><td>Emmanuel Gyamfi</td><td class="num">200.000 €</td><td class="num">286.241 €</td><td class="num pct-mid">56.9 %</td></tr>
+<tr><td>Kjartan Mar Kjartansson</td><td class="num">150.000 €</td><td class="num">108.151 €</td><td class="num pct-high">72.1 %</td></tr>
+<tr><td>Mitchel Frame</td><td class="num">100.000 €</td><td class="num">66.498 €</td><td class="num pct-mid">66.5 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Celtic</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Arne Engels</td><td class="num">18.000.000 €</td><td class="num">17.505.747 €</td><td class="num pct-high">97.3 %</td></tr>
+<tr><td>Daizen Maeda</td><td class="num">12.000.000 €</td><td class="num">11.630.545 €</td><td class="num pct-high">96.9 %</td></tr>
+<tr><td>Reo Hatate</td><td class="num">10.000.000 €</td><td class="num">10.098.058 €</td><td class="num pct-high">99.0 %</td></tr>
+<tr><td>Cameron Carter-Vickers</td><td class="num">10.000.000 €</td><td class="num">12.381.830 €</td><td class="num pct-high">76.2 %</td></tr>
+<tr><td>Benjamin Nygren</td><td class="num">10.000.000 €</td><td class="num">9.075.831 €</td><td class="num pct-high">90.8 %</td></tr>
+<tr><td>Julián Araujo</td><td class="num">10.000.000 €</td><td class="num">10.393.111 €</td><td class="num pct-high">96.1 %</td></tr>
+<tr><td>Kieran Tierney</td><td class="num">8.000.000 €</td><td class="num">8.262.169 €</td><td class="num pct-high">96.7 %</td></tr>
+<tr><td>Alistair Johnston</td><td class="num">8.000.000 €</td><td class="num">8.245.559 €</td><td class="num pct-high">96.9 %</td></tr>
+<tr><td>Jahmai Simpson-Pusey</td><td class="num">6.000.000 €</td><td class="num">6.128.878 €</td><td class="num pct-high">97.9 %</td></tr>
+<tr><td>Sebastian Tounekti</td><td class="num">6.000.000 €</td><td class="num">4.778.608 €</td><td class="num pct-high">79.6 %</td></tr>
+<tr><td>Auston Trusty</td><td class="num">6.000.000 €</td><td class="num">5.357.258 €</td><td class="num pct-high">89.3 %</td></tr>
+<tr><td>Liam Scales</td><td class="num">5.000.000 €</td><td class="num">4.592.228 €</td><td class="num pct-high">91.8 %</td></tr>
+<tr><td>Junior Adamu</td><td class="num">4.000.000 €</td><td class="num">4.010.870 €</td><td class="num pct-high">99.7 %</td></tr>
+<tr><td>Paulo Bernardo</td><td class="num">4.000.000 €</td><td class="num">5.032.071 €</td><td class="num pct-high">74.2 %</td></tr>
+<tr><td>Kelechi Iheanacho</td><td class="num">3.000.000 €</td><td class="num">3.150.082 €</td><td class="num pct-high">95.0 %</td></tr>
+<tr><td>Yang Hyun-Jun</td><td class="num">3.000.000 €</td><td class="num">3.499.280 €</td><td class="num pct-high">83.4 %</td></tr>
+<tr><td>Callum McGregor</td><td class="num">3.000.000 €</td><td class="num">3.248.023 €</td><td class="num pct-high">91.7 %</td></tr>
+<tr><td>Tomáš Čvančara</td><td class="num">2.500.000 €</td><td class="num">2.357.138 €</td><td class="num pct-high">94.3 %</td></tr>
+<tr><td>Marcelo Saracchi</td><td class="num">2.000.000 €</td><td class="num">1.790.350 €</td><td class="num pct-high">89.5 %</td></tr>
+<tr><td>Luke McCowan</td><td class="num">2.000.000 €</td><td class="num">2.106.539 €</td><td class="num pct-high">94.7 %</td></tr>
+<tr><td>Anthony Ralston</td><td class="num">1.500.000 €</td><td class="num">1.730.493 €</td><td class="num pct-high">84.6 %</td></tr>
+<tr><td>Alex Oxlade-Chamberlain</td><td class="num">1.500.000 €</td><td class="num">981.777 €</td><td class="num pct-mid">65.5 %</td></tr>
+<tr><td>Viljami Sinisalo</td><td class="num">1.000.000 €</td><td class="num">1.308.340 €</td><td class="num pct-mid">69.2 %</td></tr>
+<tr><td>Colby Donovan</td><td class="num">1.000.000 €</td><td class="num">866.502 €</td><td class="num pct-high">86.7 %</td></tr>
+<tr><td>James Forrest</td><td class="num">400.000 €</td><td class="num">358.392 €</td><td class="num pct-high">89.6 %</td></tr>
+<tr><td>Dane Murray</td><td class="num">350.000 €</td><td class="num">746.666 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Kasper Schmeichel</td><td class="num">300.000 €</td><td class="num">124.641 €</td><td class="num pct-low">41.5 %</td></tr>
+<tr><td>Benjamin Arthur</td><td class="num">100.000 €</td><td class="num">132.255 €</td><td class="num pct-mid">67.7 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Dundee Fc</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Luke Graham</td><td class="num">1.200.000 €</td><td class="num">1.080.374 €</td><td class="num pct-high">90.0 %</td></tr>
+<tr><td>Ryan Astley</td><td class="num">600.000 €</td><td class="num">1.092.124 €</td><td class="num pct-low">18.0 %</td></tr>
+<tr><td>Scott Wright</td><td class="num">600.000 €</td><td class="num">679.450 €</td><td class="num pct-high">86.8 %</td></tr>
+<tr><td>Yan Dhanda</td><td class="num">500.000 €</td><td class="num">408.816 €</td><td class="num pct-high">81.8 %</td></tr>
+<tr><td>Jon McCracken</td><td class="num">500.000 €</td><td class="num">431.921 €</td><td class="num pct-high">86.4 %</td></tr>
+<tr><td>Cameron Congreve</td><td class="num">450.000 €</td><td class="num">636.263 €</td><td class="num pct-mid">58.6 %</td></tr>
+<tr><td>Aaron Donnelly</td><td class="num">400.000 €</td><td class="num">2.107.724 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Billy Koumetio</td><td class="num">400.000 €</td><td class="num">274.680 €</td><td class="num pct-mid">68.7 %</td></tr>
+<tr><td>Ethan Hamilton</td><td class="num">400.000 €</td><td class="num">617.656 €</td><td class="num pct-mid">45.6 %</td></tr>
+<tr><td>Finlay Robertson</td><td class="num">300.000 €</td><td class="num">291.116 €</td><td class="num pct-high">97.0 %</td></tr>
+<tr><td>Imari Samuels</td><td class="num">300.000 €</td><td class="num">496.943 €</td><td class="num pct-low">34.4 %</td></tr>
+<tr><td>Callum Jones</td><td class="num">300.000 €</td><td class="num">447.326 €</td><td class="num pct-mid">50.9 %</td></tr>
+<tr><td>Brad Halliday</td><td class="num">250.000 €</td><td class="num">98.320 €</td><td class="num pct-low">39.3 %</td></tr>
+<tr><td>Drey Wright</td><td class="num">150.000 €</td><td class="num">-30.722 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Paul Digby</td><td class="num">150.000 €</td><td class="num">-269.134 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Tony Yogane</td><td class="num">150.000 €</td><td class="num">665.267 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Joel Cotterill</td><td class="num">150.000 €</td><td class="num">362.583 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Joe Westley</td><td class="num">150.000 €</td><td class="num">-628.635 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Clark Robertson</td><td class="num">100.000 €</td><td class="num">103.987 €</td><td class="num pct-high">96.0 %</td></tr>
+<tr><td>Simon Murray</td><td class="num">100.000 €</td><td class="num">7.729 €</td><td class="num pct-low">7.7 %</td></tr>
+<tr><td>Charlie Reilly</td><td class="num">100.000 €</td><td class="num">587.796 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Ashley Hay</td><td class="num">100.000 €</td><td class="num">262.473 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Joe Bevan</td><td class="num">75.000 €</td><td class="num">-7.036 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Dundee United</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Luca Stephenson</td><td class="num">1.000.000 €</td><td class="num">1.691.643 €</td><td class="num pct-low">30.8 %</td></tr>
+<tr><td>Ivan Dolček</td><td class="num">900.000 €</td><td class="num">383.945 €</td><td class="num pct-low">42.7 %</td></tr>
+<tr><td>Will Ferry</td><td class="num">800.000 €</td><td class="num">638.094 €</td><td class="num pct-high">79.8 %</td></tr>
+<tr><td>Julius Eskesen</td><td class="num">750.000 €</td><td class="num">308.312 €</td><td class="num pct-low">41.1 %</td></tr>
+<tr><td>Zachary Sapsford</td><td class="num">700.000 €</td><td class="num">725.081 €</td><td class="num pct-high">96.4 %</td></tr>
+<tr><td>Vicko Ševelj</td><td class="num">650.000 €</td><td class="num">522.492 €</td><td class="num pct-high">80.4 %</td></tr>
+<tr><td>Kristijan Trapanovski</td><td class="num">600.000 €</td><td class="num">385.905 €</td><td class="num pct-mid">64.3 %</td></tr>
+<tr><td>Ross Graham</td><td class="num">550.000 €</td><td class="num">564.129 €</td><td class="num pct-high">97.4 %</td></tr>
+<tr><td>Amar Fatah</td><td class="num">500.000 €</td><td class="num">981.969 €</td><td class="num pct-low">3.6 %</td></tr>
+<tr><td>Ryan Strain</td><td class="num">450.000 €</td><td class="num">292.932 €</td><td class="num pct-mid">65.1 %</td></tr>
+<tr><td>Yevhenii Kucherenko</td><td class="num">400.000 €</td><td class="num">361.198 €</td><td class="num pct-high">90.3 %</td></tr>
+<tr><td>Max Watters</td><td class="num">400.000 €</td><td class="num">91.132 €</td><td class="num pct-low">22.8 %</td></tr>
+<tr><td>Panutche Camará</td><td class="num">350.000 €</td><td class="num">504.069 €</td><td class="num pct-mid">56.0 %</td></tr>
+<tr><td>Krisztián Keresztes</td><td class="num">350.000 €</td><td class="num">165.575 €</td><td class="num pct-mid">47.3 %</td></tr>
+<tr><td>Bert Esselink</td><td class="num">350.000 €</td><td class="num">341.870 €</td><td class="num pct-high">97.7 %</td></tr>
+<tr><td>Craig Sibbald</td><td class="num">300.000 €</td><td class="num">189.997 €</td><td class="num pct-mid">63.3 %</td></tr>
+<tr><td>Dario Naamo</td><td class="num">300.000 €</td><td class="num">378.586 €</td><td class="num pct-high">73.8 %</td></tr>
+<tr><td>Iurie Iovu</td><td class="num">300.000 €</td><td class="num">359.873 €</td><td class="num pct-high">80.0 %</td></tr>
+<tr><td>Isaac Pappoe</td><td class="num">250.000 €</td><td class="num">800.333 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Emmanuel Agyei</td><td class="num">250.000 €</td><td class="num">638.656 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Neil Farrugia</td><td class="num">125.000 €</td><td class="num">25.916 €</td><td class="num pct-low">20.7 %</td></tr>
+<tr><td>Dave Richards</td><td class="num">75.000 €</td><td class="num">-259.087 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Falkirk Fc</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Lewis Neilson</td><td class="num">700.000 €</td><td class="num">591.308 €</td><td class="num pct-high">84.5 %</td></tr>
+<tr><td>Dylan Tait</td><td class="num">500.000 €</td><td class="num">247.439 €</td><td class="num pct-mid">49.5 %</td></tr>
+<tr><td>Barney Stewart</td><td class="num">500.000 €</td><td class="num">1.163.675 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Finn Yeats</td><td class="num">400.000 €</td><td class="num">39.836 €</td><td class="num pct-low">10.0 %</td></tr>
+<tr><td>Ethan Williams</td><td class="num">400.000 €</td><td class="num">403.819 €</td><td class="num pct-high">99.0 %</td></tr>
+<tr><td>Calvin Miller</td><td class="num">350.000 €</td><td class="num">828.898 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Ethan Ross</td><td class="num">250.000 €</td><td class="num">-74.664 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Filip Lissah</td><td class="num">250.000 €</td><td class="num">279.136 €</td><td class="num pct-high">88.3 %</td></tr>
+<tr><td>Connor Allan</td><td class="num">250.000 €</td><td class="num">408.788 €</td><td class="num pct-low">36.5 %</td></tr>
+<tr><td>Keelan Adams</td><td class="num">250.000 €</td><td class="num">-121.789 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Ben Broggio</td><td class="num">250.000 €</td><td class="num">-637.662 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Brad Spencer</td><td class="num">225.000 €</td><td class="num">258.908 €</td><td class="num pct-high">84.9 %</td></tr>
+<tr><td>Ross Maclver</td><td class="num">200.000 €</td><td class="num">266.272 €</td><td class="num pct-mid">66.9 %</td></tr>
+<tr><td>Louie Marsh</td><td class="num">150.000 €</td><td class="num">370.224 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Ben Parkinson</td><td class="num">150.000 €</td><td class="num">299.619 €</td><td class="num pct-low">0.3 %</td></tr>
+<tr><td>Nicky Hogarth</td><td class="num">150.000 €</td><td class="num">148.261 €</td><td class="num pct-high">98.8 %</td></tr>
+<tr><td>Sam Hart</td><td class="num">100.000 €</td><td class="num">-135.484 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Scott Bain</td><td class="num">100.000 €</td><td class="num">-5.026 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Leon McCann</td><td class="num">100.000 €</td><td class="num">321.567 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Coll Donaldson</td><td class="num">100.000 €</td><td class="num">162.464 €</td><td class="num pct-low">37.5 %</td></tr>
+<tr><td>Liam Henderson</td><td class="num">100.000 €</td><td class="num">176.864 €</td><td class="num pct-low">23.1 %</td></tr>
+<tr><td>Kyrell Wilson</td><td class="num">100.000 €</td><td class="num">-556.154 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Gary Oliver</td><td class="num">75.000 €</td><td class="num">9.362 €</td><td class="num pct-low">12.5 %</td></tr>
+<tr><td>Brian Graham</td><td class="num">50.000 €</td><td class="num">30.899 €</td><td class="num pct-mid">61.8 %</td></tr>
+<tr><td>Henry Cartwright</td><td class="num">50.000 €</td><td class="num">-173.207 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Heart Of Midlothian</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Cláudio Braga</td><td class="num">6.000.000 €</td><td class="num">5.290.667 €</td><td class="num pct-high">88.2 %</td></tr>
+<tr><td>Alexandros Kyziridis</td><td class="num">3.500.000 €</td><td class="num">2.531.562 €</td><td class="num pct-high">72.3 %</td></tr>
+<tr><td>Lawrence Shankland</td><td class="num">2.800.000 €</td><td class="num">2.534.911 €</td><td class="num pct-high">90.5 %</td></tr>
+<tr><td>Beni Baningime</td><td class="num">1.500.000 €</td><td class="num">1.342.112 €</td><td class="num pct-high">89.5 %</td></tr>
+<tr><td>Ageu</td><td class="num">1.300.000 €</td><td class="num">928.651 €</td><td class="num pct-high">71.4 %</td></tr>
+<tr><td>Islam Chesnokov</td><td class="num">1.200.000 €</td><td class="num">748.272 €</td><td class="num pct-mid">62.4 %</td></tr>
+<tr><td>Michael Steinwender</td><td class="num">1.200.000 €</td><td class="num">1.289.095 €</td><td class="num pct-high">92.6 %</td></tr>
+<tr><td>Marc Leonard</td><td class="num">1.000.000 €</td><td class="num">1.433.539 €</td><td class="num pct-mid">56.6 %</td></tr>
+<tr><td>Stuart Findlay</td><td class="num">700.000 €</td><td class="num">234.647 €</td><td class="num pct-low">33.5 %</td></tr>
+<tr><td>Blair Spittal</td><td class="num">600.000 €</td><td class="num">429.721 €</td><td class="num pct-high">71.6 %</td></tr>
+<tr><td>Harry Milne</td><td class="num">550.000 €</td><td class="num">347.263 €</td><td class="num pct-mid">63.1 %</td></tr>
+<tr><td>Elton Kabangu</td><td class="num">500.000 €</td><td class="num">549.094 €</td><td class="num pct-high">90.2 %</td></tr>
+<tr><td>Tomas Magnusson</td><td class="num">500.000 €</td><td class="num">1.213.306 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Craig Halkett</td><td class="num">500.000 €</td><td class="num">244.740 €</td><td class="num pct-mid">48.9 %</td></tr>
+<tr><td>Alexander Schwolow</td><td class="num">450.000 €</td><td class="num">359.256 €</td><td class="num pct-high">79.8 %</td></tr>
+<tr><td>Christian Borchgrevink</td><td class="num">450.000 €</td><td class="num">494.633 €</td><td class="num pct-high">90.1 %</td></tr>
+<tr><td>Frankie Kent</td><td class="num">400.000 €</td><td class="num">505.596 €</td><td class="num pct-high">73.6 %</td></tr>
+<tr><td>Jordi Altena</td><td class="num">400.000 €</td><td class="num">-23.794 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Jamie McCart</td><td class="num">350.000 €</td><td class="num">161.825 €</td><td class="num pct-mid">46.2 %</td></tr>
+<tr><td>Pierre Landry Kaboré</td><td class="num">300.000 €</td><td class="num">475.732 €</td><td class="num pct-low">41.4 %</td></tr>
+<tr><td>Alan Forrest</td><td class="num">250.000 €</td><td class="num">288.237 €</td><td class="num pct-high">84.7 %</td></tr>
+<tr><td>Sabah Kerjota</td><td class="num">250.000 €</td><td class="num">-92.445 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Oisin McEntee</td><td class="num">200.000 €</td><td class="num">843.122 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Stephen Kingsley</td><td class="num">70.000 €</td><td class="num">-170.969 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Craig Gordon</td><td class="num">50.000 €</td><td class="num">21.909 €</td><td class="num pct-low">43.8 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Hibernian</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Kieron Bowie</td><td class="num">6.000.000 €</td><td class="num">4.163.112 €</td><td class="num pct-mid">69.4 %</td></tr>
+<tr><td>Thibault Klidjé</td><td class="num">2.200.000 €</td><td class="num">3.415.567 €</td><td class="num pct-low">44.7 %</td></tr>
+<tr><td>Munashe Garananga</td><td class="num">2.000.000 €</td><td class="num">2.387.018 €</td><td class="num pct-high">80.6 %</td></tr>
+<tr><td>Dane Scarlett</td><td class="num">2.000.000 €</td><td class="num">2.020.430 €</td><td class="num pct-high">99.0 %</td></tr>
+<tr><td>Daniel Barlaser</td><td class="num">1.800.000 €</td><td class="num">1.572.633 €</td><td class="num pct-high">87.4 %</td></tr>
+<tr><td>Josh Mulligan</td><td class="num">1.500.000 €</td><td class="num">1.187.764 €</td><td class="num pct-high">79.2 %</td></tr>
+<tr><td>Miguel Changa Chaiwa</td><td class="num">1.200.000 €</td><td class="num">1.116.646 €</td><td class="num pct-high">93.1 %</td></tr>
+<tr><td>Thody Elie Youan</td><td class="num">1.200.000 €</td><td class="num">1.011.770 €</td><td class="num pct-high">84.3 %</td></tr>
+<tr><td>Jamie McGrath</td><td class="num">1.200.000 €</td><td class="num">971.121 €</td><td class="num pct-high">80.9 %</td></tr>
+<tr><td>Josh Campbell</td><td class="num">1.000.000 €</td><td class="num">1.100.018 €</td><td class="num pct-high">90.0 %</td></tr>
+<tr><td>Rocky Bushiri Kiranga</td><td class="num">900.000 €</td><td class="num">988.554 €</td><td class="num pct-high">90.2 %</td></tr>
+<tr><td>Felix Passlack</td><td class="num">700.000 €</td><td class="num">983.997 €</td><td class="num pct-mid">59.4 %</td></tr>
+<tr><td>Nicky Cadden</td><td class="num">700.000 €</td><td class="num">464.990 €</td><td class="num pct-mid">66.4 %</td></tr>
+<tr><td>Ante Šuto</td><td class="num">700.000 €</td><td class="num">730.531 €</td><td class="num pct-high">95.6 %</td></tr>
+<tr><td>Christopher Cadden</td><td class="num">600.000 €</td><td class="num">273.600 €</td><td class="num pct-mid">45.6 %</td></tr>
+<tr><td>Warren O&#x27;Hora</td><td class="num">550.000 €</td><td class="num">529.793 €</td><td class="num pct-high">96.3 %</td></tr>
+<tr><td>Raphael Sallinger</td><td class="num">450.000 €</td><td class="num">572.994 €</td><td class="num pct-high">72.7 %</td></tr>
+<tr><td>Alasana Manneh</td><td class="num">450.000 €</td><td class="num">604.937 €</td><td class="num pct-mid">65.6 %</td></tr>
+<tr><td>Martin Boyle</td><td class="num">400.000 €</td><td class="num">106.198 €</td><td class="num pct-low">26.5 %</td></tr>
+<tr><td>Rudi Allan Molotnikov</td><td class="num">400.000 €</td><td class="num">170.619 €</td><td class="num pct-low">42.7 %</td></tr>
+<tr><td>Kai Andrews</td><td class="num">400.000 €</td><td class="num">557.196 €</td><td class="num pct-mid">60.7 %</td></tr>
+<tr><td>Owen Elding</td><td class="num">400.000 €</td><td class="num">1.904.729 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Joe Newell</td><td class="num">350.000 €</td><td class="num">92.043 €</td><td class="num pct-low">26.3 %</td></tr>
+<tr><td>Grant Hanley</td><td class="num">350.000 €</td><td class="num">89.159 €</td><td class="num pct-low">25.5 %</td></tr>
+<tr><td>Jack Iredale</td><td class="num">250.000 €</td><td class="num">156.640 €</td><td class="num pct-mid">62.7 %</td></tr>
+<tr><td>Jordan Obita</td><td class="num">150.000 €</td><td class="num">-263.014 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Kanayochukwu Megwa</td><td class="num">150.000 €</td><td class="num">194.815 €</td><td class="num pct-high">70.1 %</td></tr>
+<tr><td>Jordan Smith</td><td class="num">100.000 €</td><td class="num">-158.200 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Kilmarnock</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>David Watson</td><td class="num">1.800.000 €</td><td class="num">1.299.805 €</td><td class="num pct-high">72.2 %</td></tr>
+<tr><td>Findlay Curtis</td><td class="num">900.000 €</td><td class="num">1.109.793 €</td><td class="num pct-high">76.7 %</td></tr>
+<tr><td>Tyreece John-Jules</td><td class="num">600.000 €</td><td class="num">655.280 €</td><td class="num pct-high">90.8 %</td></tr>
+<tr><td>Lewis Mayo</td><td class="num">600.000 €</td><td class="num">624.070 €</td><td class="num pct-high">96.0 %</td></tr>
+<tr><td>Robbie Deas</td><td class="num">500.000 €</td><td class="num">488.457 €</td><td class="num pct-high">97.7 %</td></tr>
+<tr><td>Zac Williams</td><td class="num">450.000 €</td><td class="num">481.590 €</td><td class="num pct-high">93.0 %</td></tr>
+<tr><td>Dominic Thompson</td><td class="num">400.000 €</td><td class="num">-131.655 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Kyle Magennis</td><td class="num">350.000 €</td><td class="num">420.154 €</td><td class="num pct-high">80.0 %</td></tr>
+<tr><td>Michael Schjønning-Larsen</td><td class="num">350.000 €</td><td class="num">366.759 €</td><td class="num pct-high">95.2 %</td></tr>
+<tr><td>Bradley Lyons</td><td class="num">350.000 €</td><td class="num">387.050 €</td><td class="num pct-high">89.4 %</td></tr>
+<tr><td>Greg Kiltie</td><td class="num">300.000 €</td><td class="num">654.516 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Bruce Anderson</td><td class="num">300.000 €</td><td class="num">95.060 €</td><td class="num pct-low">31.7 %</td></tr>
+<tr><td>Joe Hugill</td><td class="num">275.000 €</td><td class="num">684.997 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Aaron Tshibola</td><td class="num">250.000 €</td><td class="num">92.566 €</td><td class="num pct-low">37.0 %</td></tr>
+<tr><td>Jack Thomson</td><td class="num">250.000 €</td><td class="num">-182.892 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Jamie Brandon</td><td class="num">250.000 €</td><td class="num">77.893 €</td><td class="num pct-low">31.2 %</td></tr>
+<tr><td>Scott Tiffoney</td><td class="num">250.000 €</td><td class="num">99.942 €</td><td class="num pct-low">40.0 %</td></tr>
+<tr><td>George Stanger</td><td class="num">200.000 €</td><td class="num">45.532 €</td><td class="num pct-low">22.8 %</td></tr>
+<tr><td>Djenairo Daniels</td><td class="num">200.000 €</td><td class="num">596.631 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Kelle Roos</td><td class="num">200.000 €</td><td class="num">12.260 €</td><td class="num pct-low">6.1 %</td></tr>
+<tr><td>Tom Lowery</td><td class="num">175.000 €</td><td class="num">36.051 €</td><td class="num pct-low">20.6 %</td></tr>
+<tr><td>Liam Polworth</td><td class="num">150.000 €</td><td class="num">-92.259 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Rory McKenzie</td><td class="num">100.000 €</td><td class="num">-55.426 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Marley Watkins</td><td class="num">50.000 €</td><td class="num">210.919 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Livingston</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Joshua Brenet</td><td class="num">1.200.000 €</td><td class="num">1.221.265 €</td><td class="num pct-high">98.2 %</td></tr>
+<tr><td>Mahamadou Susoho</td><td class="num">1.000.000 €</td><td class="num">1.866.888 €</td><td class="num pct-low">13.3 %</td></tr>
+<tr><td>Alex Matthias Tamm</td><td class="num">600.000 €</td><td class="num">391.681 €</td><td class="num pct-mid">65.3 %</td></tr>
+<tr><td>Macaulay Tait</td><td class="num">400.000 €</td><td class="num">864.189 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Adam Montgomery</td><td class="num">400.000 €</td><td class="num">603.775 €</td><td class="num pct-mid">49.1 %</td></tr>
+<tr><td>Emmanuel Danso</td><td class="num">400.000 €</td><td class="num">179.800 €</td><td class="num pct-low">44.9 %</td></tr>
+<tr><td>Babacar Fati</td><td class="num">350.000 €</td><td class="num">215.869 €</td><td class="num pct-mid">61.7 %</td></tr>
+<tr><td>Joshua Zimmerman</td><td class="num">325.000 €</td><td class="num">130.401 €</td><td class="num pct-low">40.1 %</td></tr>
+<tr><td>Joel Nouble</td><td class="num">200.000 €</td><td class="num">310.721 €</td><td class="num pct-low">44.6 %</td></tr>
+<tr><td>Daniel Finlayson</td><td class="num">200.000 €</td><td class="num">143.562 €</td><td class="num pct-high">71.8 %</td></tr>
+<tr><td>Robbie Muirhead</td><td class="num">175.000 €</td><td class="num">177.274 €</td><td class="num pct-high">98.7 %</td></tr>
+<tr><td>Barrie McKay</td><td class="num">150.000 €</td><td class="num">-129.478 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Jérôme Prior</td><td class="num">150.000 €</td><td class="num">312.014 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Connor McLennan</td><td class="num">150.000 €</td><td class="num">332.114 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Lewis Smith</td><td class="num">150.000 €</td><td class="num">-59.209 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Samson Lawal</td><td class="num">150.000 €</td><td class="num">-17.172 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Danny Wilson</td><td class="num">125.000 €</td><td class="num">-136.289 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Cristian Montaño</td><td class="num">100.000 €</td><td class="num">-280.010 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Cammy Kerr</td><td class="num">100.000 €</td><td class="num">-77.322 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Stevie May</td><td class="num">75.000 €</td><td class="num">-292.188 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Mohammad Sylla</td><td class="num">75.000 €</td><td class="num">44.966 €</td><td class="num pct-mid">60.0 %</td></tr>
+<tr><td>Andrew Shinnie</td><td class="num">50.000 €</td><td class="num">-132.241 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Ryan McGowan</td><td class="num">50.000 €</td><td class="num">-204.473 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Jeremy Bokila</td><td class="num">50.000 €</td><td class="num">-12.750 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Scott Arfield</td><td class="num">50.000 €</td><td class="num">-343.940 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Scott Pittman</td><td class="num">50.000 €</td><td class="num">-102.689 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Brooklyn Kabongolo</td><td class="num">25.000 €</td><td class="num">401.302 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Motherwell</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Tawanda Maswanhise</td><td class="num">3.500.000 €</td><td class="num">3.264.877 €</td><td class="num pct-high">93.3 %</td></tr>
+<tr><td>Stephen Welsh</td><td class="num">1.500.000 €</td><td class="num">1.872.897 €</td><td class="num pct-high">75.1 %</td></tr>
+<tr><td>Elijah Just</td><td class="num">1.500.000 €</td><td class="num">1.536.929 €</td><td class="num pct-high">97.5 %</td></tr>
+<tr><td>Emmanuel Longelo</td><td class="num">1.200.000 €</td><td class="num">1.455.697 €</td><td class="num pct-high">78.7 %</td></tr>
+<tr><td>Ibrahim Said</td><td class="num">1.000.000 €</td><td class="num">1.336.885 €</td><td class="num pct-mid">66.3 %</td></tr>
+<tr><td>Elliot Watt</td><td class="num">1.000.000 €</td><td class="num">1.069.558 €</td><td class="num pct-high">93.0 %</td></tr>
+<tr><td>Calum Ward</td><td class="num">750.000 €</td><td class="num">180.961 €</td><td class="num pct-low">24.1 %</td></tr>
+<tr><td>Regan Charles-Cook</td><td class="num">600.000 €</td><td class="num">353.667 €</td><td class="num pct-mid">58.9 %</td></tr>
+<tr><td>Callum Slattery</td><td class="num">450.000 €</td><td class="num">968.636 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Eythor Bjørgolfsson</td><td class="num">400.000 €</td><td class="num">36.980 €</td><td class="num pct-low">9.2 %</td></tr>
+<tr><td>Johnny Koutroumbis</td><td class="num">350.000 €</td><td class="num">479.282 €</td><td class="num pct-mid">63.1 %</td></tr>
+<tr><td>Liam Gordon</td><td class="num">350.000 €</td><td class="num">156.802 €</td><td class="num pct-low">44.8 %</td></tr>
+<tr><td>Lukas Fadinger</td><td class="num">350.000 €</td><td class="num">-79.344 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Oscar Priestman</td><td class="num">300.000 €</td><td class="num">1.133.899 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Callum Hendry</td><td class="num">225.000 €</td><td class="num">-36.694 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Jordan McGhee</td><td class="num">200.000 €</td><td class="num">52.088 €</td><td class="num pct-low">26.0 %</td></tr>
+<tr><td>Andy Halliday</td><td class="num">150.000 €</td><td class="num">-95.659 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Sam Nicholson</td><td class="num">100.000 €</td><td class="num">19.696 €</td><td class="num pct-low">19.7 %</td></tr>
+<tr><td>Tom Sparrow</td><td class="num">100.000 €</td><td class="num">29.898 €</td><td class="num pct-low">29.9 %</td></tr>
+<tr><td>Paul McGinn</td><td class="num">100.000 €</td><td class="num">-40.657 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Stephen O&#x27;Donnell</td><td class="num">50.000 €</td><td class="num">-82.447 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Luca Ross</td><td class="num">50.000 €</td><td class="num">111.723 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Rangers</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Mikey Moore</td><td class="num">16.000.000 €</td><td class="num">16.835.578 €</td><td class="num pct-high">94.8 %</td></tr>
+<tr><td>Nicolas Raskin</td><td class="num">12.000.000 €</td><td class="num">11.708.639 €</td><td class="num pct-high">97.6 %</td></tr>
+<tr><td>Emmanuel Fernandez</td><td class="num">9.000.000 €</td><td class="num">7.778.729 €</td><td class="num pct-high">86.4 %</td></tr>
+<tr><td>Youssef Chermiti</td><td class="num">9.000.000 €</td><td class="num">9.994.956 €</td><td class="num pct-high">88.9 %</td></tr>
+<tr><td>Andreas Skov Olsen</td><td class="num">8.000.000 €</td><td class="num">8.816.433 €</td><td class="num pct-high">89.8 %</td></tr>
+<tr><td>Mohammed Diomande</td><td class="num">7.000.000 €</td><td class="num">7.588.604 €</td><td class="num pct-high">91.6 %</td></tr>
+<tr><td>Djeidi Gassama</td><td class="num">7.000.000 €</td><td class="num">6.511.531 €</td><td class="num pct-high">93.0 %</td></tr>
+<tr><td>Nasser Djiga</td><td class="num">6.000.000 €</td><td class="num">6.365.843 €</td><td class="num pct-high">93.9 %</td></tr>
+<tr><td>Tochi Chukwuani</td><td class="num">5.000.000 €</td><td class="num">4.837.807 €</td><td class="num pct-high">96.8 %</td></tr>
+<tr><td>Tuur Rommens</td><td class="num">5.000.000 €</td><td class="num">5.130.377 €</td><td class="num pct-high">97.4 %</td></tr>
+<tr><td>Ryan Don Naderi</td><td class="num">4.500.000 €</td><td class="num">2.606.715 €</td><td class="num pct-mid">57.9 %</td></tr>
+<tr><td>Max Aarons</td><td class="num">4.000.000 €</td><td class="num">3.803.098 €</td><td class="num pct-high">95.1 %</td></tr>
+<tr><td>Oliver Antman</td><td class="num">4.000.000 €</td><td class="num">5.472.464 €</td><td class="num pct-mid">63.2 %</td></tr>
+<tr><td>Jefté</td><td class="num">4.000.000 €</td><td class="num">4.815.082 €</td><td class="num pct-high">79.6 %</td></tr>
+<tr><td>Cyriel Dessers</td><td class="num">3.500.000 €</td><td class="num">2.847.409 €</td><td class="num pct-high">81.4 %</td></tr>
+<tr><td>Derek Cornelius</td><td class="num">3.000.000 €</td><td class="num">3.650.536 €</td><td class="num pct-high">78.3 %</td></tr>
+<tr><td>John Souttar</td><td class="num">3.000.000 €</td><td class="num">3.046.411 €</td><td class="num pct-high">98.5 %</td></tr>
+<tr><td>Thelo Aasgaard</td><td class="num">2.800.000 €</td><td class="num">2.516.276 €</td><td class="num pct-high">89.9 %</td></tr>
+<tr><td>Dujon Sterling</td><td class="num">2.500.000 €</td><td class="num">2.460.037 €</td><td class="num pct-high">98.4 %</td></tr>
+<tr><td>Bojan Miovski</td><td class="num">2.500.000 €</td><td class="num">2.246.890 €</td><td class="num pct-high">89.9 %</td></tr>
+<tr><td>Connor Barron</td><td class="num">2.500.000 €</td><td class="num">2.665.720 €</td><td class="num pct-high">93.4 %</td></tr>
+<tr><td>Nedim Bajrami</td><td class="num">2.500.000 €</td><td class="num">2.241.120 €</td><td class="num pct-high">89.6 %</td></tr>
+<tr><td>Danilo</td><td class="num">2.000.000 €</td><td class="num">1.858.139 €</td><td class="num pct-high">92.9 %</td></tr>
+<tr><td>Jayden Meghoma</td><td class="num">2.000.000 €</td><td class="num">2.618.525 €</td><td class="num pct-mid">69.1 %</td></tr>
+<tr><td>Jack Butland</td><td class="num">1.500.000 €</td><td class="num">1.127.100 €</td><td class="num pct-high">75.1 %</td></tr>
+<tr><td>James Tavernier</td><td class="num">1.000.000 €</td><td class="num">1.339.228 €</td><td class="num pct-mid">66.1 %</td></tr>
+<tr><td>Clinton Nsiala</td><td class="num">500.000 €</td><td class="num">820.808 €</td><td class="num pct-low">35.8 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>St Mirren</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Killian Phillips</td><td class="num">1.000.000 €</td><td class="num">758.678 €</td><td class="num pct-high">75.9 %</td></tr>
+<tr><td>Kion Etete</td><td class="num">900.000 €</td><td class="num">1.275.167 €</td><td class="num pct-mid">58.3 %</td></tr>
+<tr><td>Allan Campbell</td><td class="num">800.000 €</td><td class="num">1.010.129 €</td><td class="num pct-high">73.7 %</td></tr>
+<tr><td>Keanu Baccus</td><td class="num">700.000 €</td><td class="num">754.967 €</td><td class="num pct-high">92.1 %</td></tr>
+<tr><td>Mark O&#x27;Hara</td><td class="num">600.000 €</td><td class="num">313.978 €</td><td class="num pct-mid">52.3 %</td></tr>
+<tr><td>Jonah Ayunga</td><td class="num">450.000 €</td><td class="num">515.765 €</td><td class="num pct-high">85.4 %</td></tr>
+<tr><td>Liam Donnelly</td><td class="num">350.000 €</td><td class="num">248.838 €</td><td class="num pct-high">71.1 %</td></tr>
+<tr><td>Jayden Richardson</td><td class="num">350.000 €</td><td class="num">202.112 €</td><td class="num pct-mid">57.7 %</td></tr>
+<tr><td>Dan N&#x27;Lundulu</td><td class="num">350.000 €</td><td class="num">631.477 €</td><td class="num pct-low">19.6 %</td></tr>
+<tr><td>Marcus Fraser</td><td class="num">300.000 €</td><td class="num">141.010 €</td><td class="num pct-mid">47.0 %</td></tr>
+<tr><td>Shamal George</td><td class="num">300.000 €</td><td class="num">388.866 €</td><td class="num pct-high">70.4 %</td></tr>
+<tr><td>Jacob Devaney</td><td class="num">250.000 €</td><td class="num">6.841 €</td><td class="num pct-low">2.7 %</td></tr>
+<tr><td>Alexander Gogić</td><td class="num">250.000 €</td><td class="num">318.110 €</td><td class="num pct-high">72.8 %</td></tr>
+<tr><td>Scott Tanser</td><td class="num">250.000 €</td><td class="num">194.217 €</td><td class="num pct-high">77.7 %</td></tr>
+<tr><td>Declan John</td><td class="num">250.000 €</td><td class="num">136.761 €</td><td class="num pct-mid">54.7 %</td></tr>
+<tr><td>Richard King</td><td class="num">250.000 €</td><td class="num">702.232 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Jake Young</td><td class="num">225.000 €</td><td class="num">320.260 €</td><td class="num pct-mid">57.7 %</td></tr>
+<tr><td>Miguel Freckleton</td><td class="num">200.000 €</td><td class="num">690.396 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Conor McMenamin</td><td class="num">150.000 €</td><td class="num">134.334 €</td><td class="num pct-high">89.6 %</td></tr>
+<tr><td>Mikael Mandron</td><td class="num">150.000 €</td><td class="num">500.048 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Roland Idowu</td><td class="num">150.000 €</td><td class="num">229.776 €</td><td class="num pct-mid">46.8 %</td></tr>
+<tr><td>Jalmaro Calvin</td><td class="num">100.000 €</td><td class="num">281.967 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Malik Dijksteel</td><td class="num">75.000 €</td><td class="num">27.892 €</td><td class="num pct-low">37.2 %</td></tr>
+</tbody></table></div>
+<p class="note">Başarı %: TM ile tahmin arasındaki göreli hataya göre 100 − (|tahmin−TM|/TM×100), 0–100 aralığına sıkıştırılmıştır. Çoklu sezon için oyuncu başına en yüksek <code>minutesPlayed</code> satırı seçilmiştir.</p>
+</div></body></html>

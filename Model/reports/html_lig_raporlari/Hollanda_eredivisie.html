@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hollanda Eredivisie — Model tabloları</title>
+<style>
+
+        :root {
+            --bg: #0b1220;
+            --panel: #151d2e;
+            --text: #e8edf5;
+            --muted: #8b9bb4;
+            --border: #2a3548;
+            --accent: #3b82f6;
+            --good: #22c55e;
+            --mid: #eab308;
+            --bad: #f87171;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: "Segoe UI", system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 24px;
+            line-height: 1.45;
+        }
+        .wrap { max-width: 1200px; margin: 0 auto; }
+        h1 { font-size: 1.65rem; margin: 0 0 8px; font-weight: 650; }
+        .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 28px; }
+        .team-block {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 22px;
+            overflow: hidden;
+        }
+        .team-block h2 {
+            margin: 0;
+            padding: 12px 16px;
+            font-size: 1.05rem;
+            background: rgba(59, 130, 246, 0.12);
+            border-bottom: 1px solid var(--border);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+        th, td {
+            text-align: left;
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            color: var(--muted);
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(255,255,255,0.03); }
+        td.num { text-align: right; font-variant-numeric: tabular-nums; }
+        .pct-high { color: var(--good); font-weight: 600; }
+        .pct-mid { color: var(--mid); font-weight: 600; }
+        .pct-low { color: var(--bad); font-weight: 600; }
+        .note {
+            margin-top: 32px;
+            padding: 14px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+        a.back { color: var(--accent); text-decoration: none; }
+        a.back:hover { text-decoration: underline; }
+    
+</style>
+</head>
+<body>
+<div class="wrap">
+<p><a class="back" href="index.html">← Tüm ligler</a></p>
+<h1>Hollanda Eredivisie</h1>
+<p class="meta">Model: elite_stacking_model.pkl · Üretim: 2026-04-12 15:42 · Takım: 18 · Oyuncu satırı: 430</p>
+<div class="team-block">
+<h2>Afc Ajax</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Mika Godts</td><td class="num">25.000.000 €</td><td class="num">25.292.110 €</td><td class="num pct-high">98.8 %</td></tr>
+<tr><td>Kenneth Taylor</td><td class="num">20.000.000 €</td><td class="num">19.999.517 €</td><td class="num pct-high">100.0 %</td></tr>
+<tr><td>Youri Baas</td><td class="num">20.000.000 €</td><td class="num">19.763.978 €</td><td class="num pct-high">98.8 %</td></tr>
+<tr><td>Josip Šutalo</td><td class="num">15.000.000 €</td><td class="num">15.086.889 €</td><td class="num pct-high">99.4 %</td></tr>
+<tr><td>Oscar Gloukh</td><td class="num">15.000.000 €</td><td class="num">14.818.261 €</td><td class="num pct-high">98.8 %</td></tr>
+<tr><td>Maher Carrizo</td><td class="num">10.000.000 €</td><td class="num">9.662.669 €</td><td class="num pct-high">96.6 %</td></tr>
+<tr><td>Ko Itakura</td><td class="num">10.000.000 €</td><td class="num">10.171.204 €</td><td class="num pct-high">98.3 %</td></tr>
+<tr><td>Kasper Dolberg</td><td class="num">10.000.000 €</td><td class="num">9.896.928 €</td><td class="num pct-high">99.0 %</td></tr>
+<tr><td>Takehiro Tomiyasu</td><td class="num">8.000.000 €</td><td class="num">9.925.587 €</td><td class="num pct-high">75.9 %</td></tr>
+<tr><td>Jorthy Mokio</td><td class="num">8.000.000 €</td><td class="num">8.763.576 €</td><td class="num pct-high">90.5 %</td></tr>
+<tr><td>Sean Steur</td><td class="num">6.000.000 €</td><td class="num">5.716.711 €</td><td class="num pct-high">95.3 %</td></tr>
+<tr><td>Vítězslav Jaroš</td><td class="num">5.000.000 €</td><td class="num">4.582.005 €</td><td class="num pct-high">91.6 %</td></tr>
+<tr><td>Raúl Moro</td><td class="num">5.000.000 €</td><td class="num">5.121.253 €</td><td class="num pct-high">97.6 %</td></tr>
+<tr><td>Anton Gaaei</td><td class="num">5.000.000 €</td><td class="num">7.599.840 €</td><td class="num pct-mid">48.0 %</td></tr>
+<tr><td>Rayane Bounida</td><td class="num">5.000.000 €</td><td class="num">5.042.302 €</td><td class="num pct-high">99.2 %</td></tr>
+<tr><td>Youri Regeer</td><td class="num">5.000.000 €</td><td class="num">6.000.476 €</td><td class="num pct-high">80.0 %</td></tr>
+<tr><td>Bertrand Traoré</td><td class="num">5.000.000 €</td><td class="num">4.882.582 €</td><td class="num pct-high">97.7 %</td></tr>
+<tr><td>Oliver Edvardsen</td><td class="num">4.000.000 €</td><td class="num">6.703.517 €</td><td class="num pct-low">32.4 %</td></tr>
+<tr><td>Owen Wijndal</td><td class="num">4.000.000 €</td><td class="num">4.105.616 €</td><td class="num pct-high">97.4 %</td></tr>
+<tr><td>Lucas Rosa</td><td class="num">4.000.000 €</td><td class="num">3.925.565 €</td><td class="num pct-high">98.1 %</td></tr>
+<tr><td>Kian Fitz-Jim</td><td class="num">3.500.000 €</td><td class="num">4.530.144 €</td><td class="num pct-high">70.6 %</td></tr>
+<tr><td>Steven Berghuis</td><td class="num">2.500.000 €</td><td class="num">2.419.589 €</td><td class="num pct-high">96.8 %</td></tr>
+<tr><td>Davy Klaassen</td><td class="num">2.500.000 €</td><td class="num">2.393.513 €</td><td class="num pct-high">95.7 %</td></tr>
+<tr><td>Wout Weghorst</td><td class="num">2.500.000 €</td><td class="num">2.144.717 €</td><td class="num pct-high">85.8 %</td></tr>
+<tr><td>Maarten Paes</td><td class="num">1.500.000 €</td><td class="num">1.502.467 €</td><td class="num pct-high">99.8 %</td></tr>
+<tr><td>Don-Angelo Konadu</td><td class="num">800.000 €</td><td class="num">755.672 €</td><td class="num pct-high">94.5 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Az Alkmaar</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Ernest Poku</td><td class="num">25.000.000 €</td><td class="num">22.757.398 €</td><td class="num pct-high">91.0 %</td></tr>
+<tr><td>Kees Smit</td><td class="num">25.000.000 €</td><td class="num">23.618.960 €</td><td class="num pct-high">94.5 %</td></tr>
+<tr><td>Troy Parrott</td><td class="num">22.000.000 €</td><td class="num">21.333.275 €</td><td class="num pct-high">97.0 %</td></tr>
+<tr><td>Wouter Goes</td><td class="num">15.000.000 €</td><td class="num">15.076.360 €</td><td class="num pct-high">99.5 %</td></tr>
+<tr><td>Sven Mijnans</td><td class="num">14.000.000 €</td><td class="num">12.512.111 €</td><td class="num pct-high">89.4 %</td></tr>
+<tr><td>Mexx Meerdink</td><td class="num">10.000.000 €</td><td class="num">10.945.069 €</td><td class="num pct-high">90.5 %</td></tr>
+<tr><td>Peer Koopmeiners</td><td class="num">10.000.000 €</td><td class="num">10.512.069 €</td><td class="num pct-high">94.9 %</td></tr>
+<tr><td>Alexandre Penetra</td><td class="num">9.000.000 €</td><td class="num">9.491.601 €</td><td class="num pct-high">94.5 %</td></tr>
+<tr><td>Denso Kasius</td><td class="num">6.000.000 €</td><td class="num">5.798.103 €</td><td class="num pct-high">96.6 %</td></tr>
+<tr><td>Weslley Patati</td><td class="num">6.000.000 €</td><td class="num">5.997.821 €</td><td class="num pct-high">100.0 %</td></tr>
+<tr><td>Mees de Wit</td><td class="num">4.500.000 €</td><td class="num">2.897.846 €</td><td class="num pct-mid">64.4 %</td></tr>
+<tr><td>Ayoub Oufkir</td><td class="num">4.000.000 €</td><td class="num">3.827.160 €</td><td class="num pct-high">95.7 %</td></tr>
+<tr><td>Isak Steiner Jensen</td><td class="num">3.500.000 €</td><td class="num">3.651.364 €</td><td class="num pct-high">95.7 %</td></tr>
+<tr><td>Ibrahim Sadiq</td><td class="num">3.000.000 €</td><td class="num">3.372.049 €</td><td class="num pct-high">87.6 %</td></tr>
+<tr><td>Jizz Hornkamp</td><td class="num">3.000.000 €</td><td class="num">1.903.254 €</td><td class="num pct-mid">63.4 %</td></tr>
+<tr><td>Kasper Boogaard</td><td class="num">3.000.000 €</td><td class="num">1.700.639 €</td><td class="num pct-mid">56.7 %</td></tr>
+<tr><td>Seiya Maikuma</td><td class="num">3.000.000 €</td><td class="num">3.111.867 €</td><td class="num pct-high">96.3 %</td></tr>
+<tr><td>Elijah Dijkstra</td><td class="num">2.500.000 €</td><td class="num">2.639.298 €</td><td class="num pct-high">94.4 %</td></tr>
+<tr><td>Ro-Zangelo Daal</td><td class="num">2.000.000 €</td><td class="num">2.521.299 €</td><td class="num pct-high">73.9 %</td></tr>
+<tr><td>Jordy Clasie</td><td class="num">1.200.000 €</td><td class="num">1.285.096 €</td><td class="num pct-high">92.9 %</td></tr>
+<tr><td>Billy van Duijl</td><td class="num">800.000 €</td><td class="num">1.635.931 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Jeroen Zoet</td><td class="num">300.000 €</td><td class="num">101.977 €</td><td class="num pct-low">34.0 %</td></tr>
+<tr><td>Hobie Verhulst</td><td class="num">200.000 €</td><td class="num">20.832 €</td><td class="num pct-low">10.4 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Excelsior</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Irakli Yegoian</td><td class="num">1.500.000 €</td><td class="num">917.985 €</td><td class="num pct-mid">61.2 %</td></tr>
+<tr><td>Arthur Zagre</td><td class="num">1.200.000 €</td><td class="num">1.685.297 €</td><td class="num pct-mid">59.6 %</td></tr>
+<tr><td>Emil Hansson</td><td class="num">1.000.000 €</td><td class="num">796.028 €</td><td class="num pct-high">79.6 %</td></tr>
+<tr><td>Noah Naujoks</td><td class="num">1.000.000 €</td><td class="num">873.917 €</td><td class="num pct-high">87.4 %</td></tr>
+<tr><td>Casper Widell</td><td class="num">900.000 €</td><td class="num">567.029 €</td><td class="num pct-mid">63.0 %</td></tr>
+<tr><td>Stefan Mitrović</td><td class="num">900.000 €</td><td class="num">642.111 €</td><td class="num pct-high">71.3 %</td></tr>
+<tr><td>Stijn van Gassel</td><td class="num">900.000 €</td><td class="num">579.909 €</td><td class="num pct-mid">64.4 %</td></tr>
+<tr><td>Miliano Jonathans</td><td class="num">900.000 €</td><td class="num">1.083.268 €</td><td class="num pct-high">79.6 %</td></tr>
+<tr><td>Szymon Włodarczyk</td><td class="num">750.000 €</td><td class="num">908.088 €</td><td class="num pct-high">78.9 %</td></tr>
+<tr><td>Rick Meissen</td><td class="num">700.000 €</td><td class="num">738.933 €</td><td class="num pct-high">94.4 %</td></tr>
+<tr><td>Ilias Bronkhorst</td><td class="num">650.000 €</td><td class="num">293.003 €</td><td class="num pct-mid">45.1 %</td></tr>
+<tr><td>Gyan de Regt</td><td class="num">650.000 €</td><td class="num">544.513 €</td><td class="num pct-high">83.8 %</td></tr>
+<tr><td>Derensili Sanches Fernandes</td><td class="num">600.000 €</td><td class="num">536.232 €</td><td class="num pct-high">89.4 %</td></tr>
+<tr><td>Lennard Hartjes</td><td class="num">600.000 €</td><td class="num">461.616 €</td><td class="num pct-high">76.9 %</td></tr>
+<tr><td>Adam Carlén</td><td class="num">500.000 €</td><td class="num">112.685 €</td><td class="num pct-low">22.5 %</td></tr>
+<tr><td>Mathijs Tielemans</td><td class="num">500.000 €</td><td class="num">830.205 €</td><td class="num pct-low">34.0 %</td></tr>
+<tr><td>Stan Henderikx</td><td class="num">450.000 €</td><td class="num">259.526 €</td><td class="num pct-mid">57.7 %</td></tr>
+<tr><td>Simon Janssen</td><td class="num">450.000 €</td><td class="num">295.099 €</td><td class="num pct-mid">65.6 %</td></tr>
+<tr><td>Calvin Raatsie</td><td class="num">400.000 €</td><td class="num">367.100 €</td><td class="num pct-high">91.8 %</td></tr>
+<tr><td>Jerolldino Bergraaf</td><td class="num">400.000 €</td><td class="num">758.528 €</td><td class="num pct-low">10.4 %</td></tr>
+<tr><td>Lewis Schouten</td><td class="num">400.000 €</td><td class="num">586.418 €</td><td class="num pct-mid">53.4 %</td></tr>
+<tr><td>Mike van Duinen</td><td class="num">150.000 €</td><td class="num">-108.898 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Tijmen Holla</td><td class="num">75.000 €</td><td class="num">-272.158 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Fc Groningen</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Stije Resink</td><td class="num">7.000.000 €</td><td class="num">6.957.215 €</td><td class="num pct-high">99.4 %</td></tr>
+<tr><td>Dies Janse</td><td class="num">4.500.000 €</td><td class="num">4.245.177 €</td><td class="num pct-high">94.3 %</td></tr>
+<tr><td>Thijmen Blokzijl</td><td class="num">3.500.000 €</td><td class="num">3.509.286 €</td><td class="num pct-high">99.7 %</td></tr>
+<tr><td>Younes Taha</td><td class="num">3.000.000 €</td><td class="num">2.649.632 €</td><td class="num pct-high">88.3 %</td></tr>
+<tr><td>Etienne Vaessen</td><td class="num">2.500.000 €</td><td class="num">2.042.094 €</td><td class="num pct-high">81.7 %</td></tr>
+<tr><td>Thom van Bergen</td><td class="num">2.000.000 €</td><td class="num">2.378.424 €</td><td class="num pct-high">81.1 %</td></tr>
+<tr><td>Jorg Schreuders</td><td class="num">1.500.000 €</td><td class="num">2.255.665 €</td><td class="num pct-mid">49.6 %</td></tr>
+<tr><td>Tygo Land</td><td class="num">1.500.000 €</td><td class="num">2.464.658 €</td><td class="num pct-low">35.7 %</td></tr>
+<tr><td>Brynjólfur Darri Willumsson</td><td class="num">1.300.000 €</td><td class="num">1.064.270 €</td><td class="num pct-high">81.9 %</td></tr>
+<tr><td>Tika de Jonge</td><td class="num">1.300.000 €</td><td class="num">1.386.594 €</td><td class="num pct-high">93.3 %</td></tr>
+<tr><td>David van der Werff</td><td class="num">1.200.000 €</td><td class="num">517.250 €</td><td class="num pct-low">43.1 %</td></tr>
+<tr><td>Marco Rente</td><td class="num">1.000.000 €</td><td class="num">788.158 €</td><td class="num pct-high">78.8 %</td></tr>
+<tr><td>Wouter Prins</td><td class="num">600.000 €</td><td class="num">1.011.643 €</td><td class="num pct-low">31.4 %</td></tr>
+<tr><td>Tyrique Mercera</td><td class="num">600.000 €</td><td class="num">395.508 €</td><td class="num pct-mid">65.9 %</td></tr>
+<tr><td>Oskar Zawada</td><td class="num">500.000 €</td><td class="num">797.864 €</td><td class="num pct-low">40.4 %</td></tr>
+<tr><td>Mats Seuntjens</td><td class="num">350.000 €</td><td class="num">117.955 €</td><td class="num pct-low">33.7 %</td></tr>
+<tr><td>Marvin Peersman</td><td class="num">300.000 €</td><td class="num">71.550 €</td><td class="num pct-low">23.9 %</td></tr>
+<tr><td>Hidde Jurjus</td><td class="num">250.000 €</td><td class="num">25.466 €</td><td class="num pct-low">10.2 %</td></tr>
+<tr><td>Travis Hernes</td><td class="num">250.000 €</td><td class="num">1.168.597 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Rui Mendes</td><td class="num">200.000 €</td><td class="num">492.170 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Mark Hoekstra</td><td class="num">75.000 €</td><td class="num">116.984 €</td><td class="num pct-low">44.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Fc Twente</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Mats Rots</td><td class="num">10.000.000 €</td><td class="num">9.927.283 €</td><td class="num pct-high">99.3 %</td></tr>
+<tr><td>Bart van Rooij</td><td class="num">9.000.000 €</td><td class="num">7.501.261 €</td><td class="num pct-high">83.3 %</td></tr>
+<tr><td>Ruud Nijstad</td><td class="num">8.000.000 €</td><td class="num">6.374.908 €</td><td class="num pct-high">79.7 %</td></tr>
+<tr><td>Ramiz Zerrouki</td><td class="num">6.000.000 €</td><td class="num">5.884.341 €</td><td class="num pct-high">98.1 %</td></tr>
+<tr><td>Sondre Ørjasæter</td><td class="num">6.000.000 €</td><td class="num">6.767.423 €</td><td class="num pct-high">87.2 %</td></tr>
+<tr><td>Kristian Hlynsson</td><td class="num">4.000.000 €</td><td class="num">4.886.062 €</td><td class="num pct-high">77.8 %</td></tr>
+<tr><td>Daan Rots</td><td class="num">4.000.000 €</td><td class="num">2.035.114 €</td><td class="num pct-mid">50.9 %</td></tr>
+<tr><td>Thomas Van den Belt</td><td class="num">3.000.000 €</td><td class="num">1.217.601 €</td><td class="num pct-low">40.6 %</td></tr>
+<tr><td>Stav Lemkin</td><td class="num">3.000.000 €</td><td class="num">2.283.910 €</td><td class="num pct-high">76.1 %</td></tr>
+<tr><td>Sam Lammers</td><td class="num">3.000.000 €</td><td class="num">3.446.576 €</td><td class="num pct-high">85.1 %</td></tr>
+<tr><td>Max Bruns</td><td class="num">2.500.000 €</td><td class="num">3.182.225 €</td><td class="num pct-high">72.7 %</td></tr>
+<tr><td>Robin Pröpper</td><td class="num">2.000.000 €</td><td class="num">1.536.078 €</td><td class="num pct-high">76.8 %</td></tr>
+<tr><td>Marko Pjaca</td><td class="num">2.000.000 €</td><td class="num">2.060.262 €</td><td class="num pct-high">97.0 %</td></tr>
+<tr><td>Lars Unnerstall</td><td class="num">1.500.000 €</td><td class="num">1.459.542 €</td><td class="num pct-high">97.3 %</td></tr>
+<tr><td>Mathias Kjølø</td><td class="num">1.500.000 €</td><td class="num">1.818.858 €</td><td class="num pct-high">78.7 %</td></tr>
+<tr><td>Taylor Booth</td><td class="num">1.500.000 €</td><td class="num">1.349.815 €</td><td class="num pct-high">90.0 %</td></tr>
+<tr><td>Daouda Weidmann</td><td class="num">1.000.000 €</td><td class="num">917.608 €</td><td class="num pct-high">91.8 %</td></tr>
+<tr><td>Arno Verschueren</td><td class="num">1.000.000 €</td><td class="num">856.196 €</td><td class="num pct-high">85.6 %</td></tr>
+<tr><td>Bas Kuipers</td><td class="num">800.000 €</td><td class="num">125.953 €</td><td class="num pct-low">15.7 %</td></tr>
+<tr><td>Ricky van Wolfswinkel</td><td class="num">400.000 €</td><td class="num">180.273 €</td><td class="num pct-mid">45.1 %</td></tr>
+<tr><td>Lucas Vennegoor of Hesselink</td><td class="num">300.000 €</td><td class="num">713.928 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Przemysław Tytoń</td><td class="num">75.000 €</td><td class="num">-612 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Fc Utrecht</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Souffian El Karouani</td><td class="num">15.000.000 €</td><td class="num">13.917.260 €</td><td class="num pct-high">92.8 %</td></tr>
+<tr><td>Gjivai Zechiël</td><td class="num">7.000.000 €</td><td class="num">7.833.078 €</td><td class="num pct-high">88.1 %</td></tr>
+<tr><td>Yoann Cathline</td><td class="num">7.000.000 €</td><td class="num">8.532.305 €</td><td class="num pct-high">78.1 %</td></tr>
+<tr><td>Alonzo Engwanda</td><td class="num">7.000.000 €</td><td class="num">5.570.512 €</td><td class="num pct-high">79.6 %</td></tr>
+<tr><td>Siebe Horemans</td><td class="num">4.500.000 €</td><td class="num">4.089.483 €</td><td class="num pct-high">90.9 %</td></tr>
+<tr><td>Miguel Rodríguez</td><td class="num">4.500.000 €</td><td class="num">4.832.003 €</td><td class="num pct-high">92.6 %</td></tr>
+<tr><td>Jesper Karlsson</td><td class="num">4.000.000 €</td><td class="num">4.044.895 €</td><td class="num pct-high">98.9 %</td></tr>
+<tr><td>Vasilis Barkas</td><td class="num">3.500.000 €</td><td class="num">2.896.987 €</td><td class="num pct-high">82.8 %</td></tr>
+<tr><td>Matisse Didden</td><td class="num">3.000.000 €</td><td class="num">255.284 €</td><td class="num pct-low">8.5 %</td></tr>
+<tr><td>Ángel Alarcón</td><td class="num">3.000.000 €</td><td class="num">2.818.994 €</td><td class="num pct-high">94.0 %</td></tr>
+<tr><td>Dani de Wit</td><td class="num">2.500.000 €</td><td class="num">1.689.293 €</td><td class="num pct-mid">67.6 %</td></tr>
+<tr><td>Victor Jensen</td><td class="num">2.500.000 €</td><td class="num">1.816.471 €</td><td class="num pct-high">72.7 %</td></tr>
+<tr><td>Can Bozdoğan</td><td class="num">2.500.000 €</td><td class="num">3.473.835 €</td><td class="num pct-mid">61.0 %</td></tr>
+<tr><td>Adrian Blake</td><td class="num">2.000.000 €</td><td class="num">1.585.424 €</td><td class="num pct-high">79.3 %</td></tr>
+<tr><td>Mike Eerdhuijzen</td><td class="num">1.700.000 €</td><td class="num">1.816.516 €</td><td class="num pct-high">93.1 %</td></tr>
+<tr><td>Artem Stepanov</td><td class="num">1.500.000 €</td><td class="num">2.433.530 €</td><td class="num pct-low">37.8 %</td></tr>
+<tr><td>David Min</td><td class="num">1.500.000 €</td><td class="num">1.460.809 €</td><td class="num pct-high">97.4 %</td></tr>
+<tr><td>Sébastien Haller</td><td class="num">1.300.000 €</td><td class="num">874.778 €</td><td class="num pct-mid">67.3 %</td></tr>
+<tr><td>Mike van der Hoorn</td><td class="num">800.000 €</td><td class="num">579.585 €</td><td class="num pct-high">72.4 %</td></tr>
+<tr><td>Niklas Vesterlund</td><td class="num">800.000 €</td><td class="num">628.536 €</td><td class="num pct-high">78.6 %</td></tr>
+<tr><td>Oualid Agougil</td><td class="num">450.000 €</td><td class="num">84.502 €</td><td class="num pct-low">18.8 %</td></tr>
+<tr><td>Nick Viergever</td><td class="num">350.000 €</td><td class="num">151.883 €</td><td class="num pct-low">43.4 %</td></tr>
+<tr><td>Michael Brouwer</td><td class="num">300.000 €</td><td class="num">207.701 €</td><td class="num pct-mid">69.2 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Fc Volendam</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Juninho Bacuna</td><td class="num">2.200.000 €</td><td class="num">2.107.991 €</td><td class="num pct-high">95.8 %</td></tr>
+<tr><td>Kayne van Oevelen</td><td class="num">2.000.000 €</td><td class="num">1.804.895 €</td><td class="num pct-high">90.2 %</td></tr>
+<tr><td>Dave Kwakman</td><td class="num">1.500.000 €</td><td class="num">2.637.172 €</td><td class="num pct-low">24.2 %</td></tr>
+<tr><td>Robin van Cruijsen</td><td class="num">1.500.000 €</td><td class="num">1.484.942 €</td><td class="num pct-high">99.0 %</td></tr>
+<tr><td>Xavier Mbuyamba</td><td class="num">1.000.000 €</td><td class="num">402.321 €</td><td class="num pct-low">40.2 %</td></tr>
+<tr><td>Gibson Yah</td><td class="num">1.000.000 €</td><td class="num">1.276.606 €</td><td class="num pct-high">72.3 %</td></tr>
+<tr><td>Yannick Leliendal</td><td class="num">1.000.000 €</td><td class="num">989.434 €</td><td class="num pct-high">98.9 %</td></tr>
+<tr><td>Benjamin Pauwels</td><td class="num">1.000.000 €</td><td class="num">-230.084 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Nick Verschuren</td><td class="num">900.000 €</td><td class="num">1.208.831 €</td><td class="num pct-mid">65.7 %</td></tr>
+<tr><td>Bilal Ould-Chikh</td><td class="num">800.000 €</td><td class="num">965.872 €</td><td class="num pct-high">79.3 %</td></tr>
+<tr><td>Nordin Bukala</td><td class="num">600.000 €</td><td class="num">499.011 €</td><td class="num pct-high">83.2 %</td></tr>
+<tr><td>Anthony Descotte</td><td class="num">550.000 €</td><td class="num">687.623 €</td><td class="num pct-high">75.0 %</td></tr>
+<tr><td>Aurelio Oehlers</td><td class="num">500.000 €</td><td class="num">331.047 €</td><td class="num pct-mid">66.2 %</td></tr>
+<tr><td>Ozan Kökçü</td><td class="num">450.000 €</td><td class="num">319.315 €</td><td class="num pct-high">71.0 %</td></tr>
+<tr><td>Deron Payne</td><td class="num">450.000 €</td><td class="num">140.064 €</td><td class="num pct-low">31.1 %</td></tr>
+<tr><td>Alex Plat</td><td class="num">400.000 €</td><td class="num">251.545 €</td><td class="num pct-mid">62.9 %</td></tr>
+<tr><td>Precious Ugwu</td><td class="num">400.000 €</td><td class="num">421.317 €</td><td class="num pct-high">94.7 %</td></tr>
+<tr><td>Joel Ideho</td><td class="num">400.000 €</td><td class="num">917.836 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Henk Veerman</td><td class="num">325.000 €</td><td class="num">-57.976 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Brandley Kuwas</td><td class="num">300.000 €</td><td class="num">302.914 €</td><td class="num pct-high">99.0 %</td></tr>
+<tr><td>Mawouna Amevor</td><td class="num">225.000 €</td><td class="num">-156.052 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Robert Mühren</td><td class="num">200.000 €</td><td class="num">105.339 €</td><td class="num pct-mid">52.7 %</td></tr>
+<tr><td>Silvinho Esajas</td><td class="num">200.000 €</td><td class="num">187.453 €</td><td class="num pct-high">93.7 %</td></tr>
+<tr><td>Aaron Meijers</td><td class="num">75.000 €</td><td class="num">-163.249 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Feyenoord</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Quinten Timber</td><td class="num">25.000.000 €</td><td class="num">28.676.571 €</td><td class="num pct-high">85.3 %</td></tr>
+<tr><td>Givairo Read</td><td class="num">25.000.000 €</td><td class="num">25.657.316 €</td><td class="num pct-high">97.4 %</td></tr>
+<tr><td>Anis Hadj Moussa</td><td class="num">20.000.000 €</td><td class="num">19.965.067 €</td><td class="num pct-high">99.8 %</td></tr>
+<tr><td>Luciano Valente</td><td class="num">18.000.000 €</td><td class="num">16.865.239 €</td><td class="num pct-high">93.7 %</td></tr>
+<tr><td>Ayase Ueda</td><td class="num">15.000.000 €</td><td class="num">12.350.732 €</td><td class="num pct-high">82.3 %</td></tr>
+<tr><td>Oussama Targhalline</td><td class="num">12.000.000 €</td><td class="num">10.147.805 €</td><td class="num pct-high">84.6 %</td></tr>
+<tr><td>Anel Ahmedhodžić</td><td class="num">12.000.000 €</td><td class="num">13.930.341 €</td><td class="num pct-high">83.9 %</td></tr>
+<tr><td>Sem Steijn</td><td class="num">11.000.000 €</td><td class="num">12.149.389 €</td><td class="num pct-high">89.6 %</td></tr>
+<tr><td>Jakub Moder</td><td class="num">10.000.000 €</td><td class="num">12.735.776 €</td><td class="num pct-high">72.6 %</td></tr>
+<tr><td>Tsuyoshi Watanabe</td><td class="num">10.000.000 €</td><td class="num">9.238.776 €</td><td class="num pct-high">92.4 %</td></tr>
+<tr><td>Jordan Bos</td><td class="num">8.000.000 €</td><td class="num">6.966.923 €</td><td class="num pct-high">87.1 %</td></tr>
+<tr><td>In-Beom Hwang</td><td class="num">8.000.000 €</td><td class="num">9.344.565 €</td><td class="num pct-high">83.2 %</td></tr>
+<tr><td>Leo Sauer</td><td class="num">7.000.000 €</td><td class="num">6.987.106 €</td><td class="num pct-high">99.8 %</td></tr>
+<tr><td>Gijs Smal</td><td class="num">6.000.000 €</td><td class="num">6.292.852 €</td><td class="num pct-high">95.1 %</td></tr>
+<tr><td>Timon Wellenreuther</td><td class="num">6.000.000 €</td><td class="num">5.542.036 €</td><td class="num pct-high">92.4 %</td></tr>
+<tr><td>Raheem Sterling</td><td class="num">5.000.000 €</td><td class="num">5.374.063 €</td><td class="num pct-high">92.5 %</td></tr>
+<tr><td>Casper Tengstedt</td><td class="num">4.000.000 €</td><td class="num">5.017.558 €</td><td class="num pct-high">74.6 %</td></tr>
+<tr><td>Gonçalo Borges</td><td class="num">4.000.000 €</td><td class="num">4.351.231 €</td><td class="num pct-high">91.2 %</td></tr>
+<tr><td>Jordan Lotomba</td><td class="num">3.500.000 €</td><td class="num">4.886.776 €</td><td class="num pct-mid">60.4 %</td></tr>
+<tr><td>Thijs Kraaijeveld</td><td class="num">3.000.000 €</td><td class="num">2.063.418 €</td><td class="num pct-mid">68.8 %</td></tr>
+<tr><td>Jeremiah St. Juste</td><td class="num">3.000.000 €</td><td class="num">3.151.207 €</td><td class="num pct-high">95.0 %</td></tr>
+<tr><td>Aymen Sliti</td><td class="num">3.000.000 €</td><td class="num">1.741.874 €</td><td class="num pct-mid">58.1 %</td></tr>
+<tr><td>Gaoussou Diarra</td><td class="num">2.000.000 €</td><td class="num">1.901.240 €</td><td class="num pct-high">95.1 %</td></tr>
+<tr><td>Mats Deijl</td><td class="num">2.000.000 €</td><td class="num">1.966.646 €</td><td class="num pct-high">98.3 %</td></tr>
+<tr><td>Bart Nieuwkoop</td><td class="num">2.000.000 €</td><td class="num">1.535.683 €</td><td class="num pct-high">76.8 %</td></tr>
+<tr><td>Malcolm Jeng</td><td class="num">2.000.000 €</td><td class="num">2.525.454 €</td><td class="num pct-high">73.7 %</td></tr>
+<tr><td>Shaqueel van Persie</td><td class="num">1.500.000 €</td><td class="num">1.576.011 €</td><td class="num pct-high">94.9 %</td></tr>
+<tr><td>Steven Benda</td><td class="num">1.000.000 €</td><td class="num">720.216 €</td><td class="num pct-high">72.0 %</td></tr>
+<tr><td>Tobias van den Elshout</td><td class="num">600.000 €</td><td class="num">1.099.127 €</td><td class="num pct-low">16.8 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Fortuna Sittard</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Mohamed Ihattaren</td><td class="num">3.000.000 €</td><td class="num">2.475.609 €</td><td class="num pct-high">82.5 %</td></tr>
+<tr><td>Ryan Fosso</td><td class="num">2.000.000 €</td><td class="num">2.138.809 €</td><td class="num pct-high">93.1 %</td></tr>
+<tr><td>Neraysho Kasanwirjo</td><td class="num">1.500.000 €</td><td class="num">2.097.534 €</td><td class="num pct-mid">60.2 %</td></tr>
+<tr><td>Kaj Sierhuis</td><td class="num">1.300.000 €</td><td class="num">1.310.337 €</td><td class="num pct-high">99.2 %</td></tr>
+<tr><td>Jasper Dahlhaus</td><td class="num">1.300.000 €</td><td class="num">1.573.019 €</td><td class="num pct-high">79.0 %</td></tr>
+<tr><td>Philip Brittijn</td><td class="num">1.300.000 €</td><td class="num">825.447 €</td><td class="num pct-mid">63.5 %</td></tr>
+<tr><td>Édouard Michut</td><td class="num">1.200.000 €</td><td class="num">1.988.782 €</td><td class="num pct-low">34.3 %</td></tr>
+<tr><td>Shawn Adewoye</td><td class="num">900.000 €</td><td class="num">712.295 €</td><td class="num pct-high">79.1 %</td></tr>
+<tr><td>Mattijs Branderhorst</td><td class="num">850.000 €</td><td class="num">840.375 €</td><td class="num pct-high">98.9 %</td></tr>
+<tr><td>Justin Hubner</td><td class="num">800.000 €</td><td class="num">587.274 €</td><td class="num pct-high">73.4 %</td></tr>
+<tr><td>Yassin Oukili</td><td class="num">800.000 €</td><td class="num">186.294 €</td><td class="num pct-low">23.3 %</td></tr>
+<tr><td>Justin Lonwijk</td><td class="num">800.000 €</td><td class="num">851.430 €</td><td class="num pct-high">93.6 %</td></tr>
+<tr><td>Lance Duijvestijn</td><td class="num">800.000 €</td><td class="num">1.036.467 €</td><td class="num pct-high">70.4 %</td></tr>
+<tr><td>Makan Aïko</td><td class="num">800.000 €</td><td class="num">237.819 €</td><td class="num pct-low">29.7 %</td></tr>
+<tr><td>Dimitris Limnios</td><td class="num">800.000 €</td><td class="num">710.525 €</td><td class="num pct-high">88.8 %</td></tr>
+<tr><td>Houboulang Mendes</td><td class="num">700.000 €</td><td class="num">632.127 €</td><td class="num pct-high">90.3 %</td></tr>
+<tr><td>Kristoffer Peterson</td><td class="num">600.000 €</td><td class="num">369.771 €</td><td class="num pct-mid">61.6 %</td></tr>
+<tr><td>Syb van Ottele</td><td class="num">600.000 €</td><td class="num">1.129.480 €</td><td class="num pct-low">11.8 %</td></tr>
+<tr><td>Alen Halilović</td><td class="num">550.000 €</td><td class="num">583.380 €</td><td class="num pct-high">93.9 %</td></tr>
+<tr><td>Iván Márquez</td><td class="num">550.000 €</td><td class="num">431.996 €</td><td class="num pct-high">78.5 %</td></tr>
+<tr><td>Samuel Bastien</td><td class="num">400.000 €</td><td class="num">193.440 €</td><td class="num pct-mid">48.4 %</td></tr>
+<tr><td>Luka Tunjić</td><td class="num">400.000 €</td><td class="num">902.851 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Ivo Pinto</td><td class="num">250.000 €</td><td class="num">-25.060 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Paul Gladon</td><td class="num">200.000 €</td><td class="num">430.246 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Luuk Koopmans</td><td class="num">150.000 €</td><td class="num">31.487 €</td><td class="num pct-low">21.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Go Ahead Eagles</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Jakob Breum</td><td class="num">4.500.000 €</td><td class="num">5.783.995 €</td><td class="num pct-high">71.5 %</td></tr>
+<tr><td>Mathis Suray</td><td class="num">3.000.000 €</td><td class="num">2.862.480 €</td><td class="num pct-high">95.4 %</td></tr>
+<tr><td>Jari De Busser</td><td class="num">3.000.000 €</td><td class="num">2.679.384 €</td><td class="num pct-high">89.3 %</td></tr>
+<tr><td>Stefán Ingi Sigurðarson</td><td class="num">2.000.000 €</td><td class="num">1.341.705 €</td><td class="num pct-mid">67.1 %</td></tr>
+<tr><td>Dean James</td><td class="num">2.000.000 €</td><td class="num">1.350.765 €</td><td class="num pct-mid">67.5 %</td></tr>
+<tr><td>Melle Meulensteen</td><td class="num">2.000.000 €</td><td class="num">1.542.968 €</td><td class="num pct-high">77.1 %</td></tr>
+<tr><td>Joris Kramer</td><td class="num">1.800.000 €</td><td class="num">1.758.709 €</td><td class="num pct-high">97.7 %</td></tr>
+<tr><td>Evert Linthorst</td><td class="num">1.500.000 €</td><td class="num">1.944.398 €</td><td class="num pct-high">70.4 %</td></tr>
+<tr><td>Alfons Sampsted</td><td class="num">1.500.000 €</td><td class="num">1.593.514 €</td><td class="num pct-high">93.8 %</td></tr>
+<tr><td>Victor Kaj Edvardsen</td><td class="num">1.000.000 €</td><td class="num">791.709 €</td><td class="num pct-high">79.2 %</td></tr>
+<tr><td>Kenzo Goudmijn</td><td class="num">900.000 €</td><td class="num">791.815 €</td><td class="num pct-high">88.0 %</td></tr>
+<tr><td>Jaden Slory</td><td class="num">800.000 €</td><td class="num">1.648.232 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Aske Adelgaard</td><td class="num">700.000 €</td><td class="num">987.441 €</td><td class="num pct-mid">58.9 %</td></tr>
+<tr><td>Søren Tengstedt</td><td class="num">700.000 €</td><td class="num">581.956 €</td><td class="num pct-high">83.1 %</td></tr>
+<tr><td>Richonell Margaret</td><td class="num">700.000 €</td><td class="num">1.245.865 €</td><td class="num pct-low">22.0 %</td></tr>
+<tr><td>Oskar Siira Sivertsen</td><td class="num">500.000 €</td><td class="num">613.700 €</td><td class="num pct-high">77.3 %</td></tr>
+<tr><td>Thibo Baeten</td><td class="num">500.000 €</td><td class="num">254.488 €</td><td class="num pct-mid">50.9 %</td></tr>
+<tr><td>Yassir Rahmouni</td><td class="num">450.000 €</td><td class="num">-804.554 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Gerrit Nauber</td><td class="num">350.000 €</td><td class="num">-42.817 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Julius Dirksen</td><td class="num">350.000 €</td><td class="num">398.044 €</td><td class="num pct-high">86.3 %</td></tr>
+<tr><td>Finn Stokkers</td><td class="num">300.000 €</td><td class="num">450.733 €</td><td class="num pct-mid">49.8 %</td></tr>
+<tr><td>Giovanni van Zwam</td><td class="num">300.000 €</td><td class="num">-67.258 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Robbin Weijenberg</td><td class="num">250.000 €</td><td class="num">8.031 €</td><td class="num pct-low">3.2 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Heracles Almelo</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Naci Ünüvar</td><td class="num">1.500.000 €</td><td class="num">1.873.381 €</td><td class="num pct-high">75.1 %</td></tr>
+<tr><td>Luka Kulenović</td><td class="num">850.000 €</td><td class="num">1.048.427 €</td><td class="num pct-high">76.7 %</td></tr>
+<tr><td>Lequincio Zeefuik</td><td class="num">850.000 €</td><td class="num">625.985 €</td><td class="num pct-high">73.6 %</td></tr>
+<tr><td>Alec Van Hoorenbeeck</td><td class="num">800.000 €</td><td class="num">670.614 €</td><td class="num pct-high">83.8 %</td></tr>
+<tr><td>Sem Scheperman</td><td class="num">700.000 €</td><td class="num">1.042.402 €</td><td class="num pct-mid">51.1 %</td></tr>
+<tr><td>Ajdin Hrustić</td><td class="num">700.000 €</td><td class="num">458.085 €</td><td class="num pct-mid">65.4 %</td></tr>
+<tr><td>Ivan Mesík</td><td class="num">700.000 €</td><td class="num">986.150 €</td><td class="num pct-mid">59.1 %</td></tr>
+<tr><td>Jeff Reine-Adélaïde</td><td class="num">700.000 €</td><td class="num">827.564 €</td><td class="num pct-high">81.8 %</td></tr>
+<tr><td>Walid Ould-Chikh</td><td class="num">650.000 €</td><td class="num">793.482 €</td><td class="num pct-high">77.9 %</td></tr>
+<tr><td>Mimeirhel Benita</td><td class="num">600.000 €</td><td class="num">797.856 €</td><td class="num pct-mid">67.0 %</td></tr>
+<tr><td>Damon Mirani</td><td class="num">550.000 €</td><td class="num">448.564 €</td><td class="num pct-high">81.6 %</td></tr>
+<tr><td>Yvandro Borges Sanches</td><td class="num">500.000 €</td><td class="num">335.168 €</td><td class="num pct-mid">67.0 %</td></tr>
+<tr><td>Jan Žambůrek</td><td class="num">500.000 €</td><td class="num">428.068 €</td><td class="num pct-high">85.6 %</td></tr>
+<tr><td>Fabian de Keijzer</td><td class="num">500.000 €</td><td class="num">1.043.985 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Bryan Limbombe</td><td class="num">500.000 €</td><td class="num">-325.506 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Erik Ahlstrand</td><td class="num">500.000 €</td><td class="num">105.363 €</td><td class="num pct-low">21.1 %</td></tr>
+<tr><td>Djevencio van der Kust</td><td class="num">450.000 €</td><td class="num">593.521 €</td><td class="num pct-mid">68.1 %</td></tr>
+<tr><td>Jannes Wieckhoff</td><td class="num">400.000 €</td><td class="num">427.618 €</td><td class="num pct-high">93.1 %</td></tr>
+<tr><td>Rhys Bozinovski</td><td class="num">400.000 €</td><td class="num">23.668 €</td><td class="num pct-low">5.9 %</td></tr>
+<tr><td>Tristan van Gilst</td><td class="num">400.000 €</td><td class="num">71.894 €</td><td class="num pct-low">18.0 %</td></tr>
+<tr><td>Mario Engels</td><td class="num">400.000 €</td><td class="num">402.994 €</td><td class="num pct-high">99.3 %</td></tr>
+<tr><td>Thomas Bruns</td><td class="num">250.000 €</td><td class="num">113.812 €</td><td class="num pct-mid">45.5 %</td></tr>
+<tr><td>Mike te Wierik</td><td class="num">250.000 €</td><td class="num">-277.516 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Timo Jansink</td><td class="num">200.000 €</td><td class="num">224.399 €</td><td class="num pct-high">87.8 %</td></tr>
+<tr><td>Remko Pasveer</td><td class="num">150.000 €</td><td class="num">-10.039 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Nac Breda</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Amine Salama</td><td class="num">1.500.000 €</td><td class="num">1.210.973 €</td><td class="num pct-high">80.7 %</td></tr>
+<tr><td>Leo Greiml</td><td class="num">1.500.000 €</td><td class="num">1.255.273 €</td><td class="num pct-high">83.7 %</td></tr>
+<tr><td>Sydney van Hooijdonk</td><td class="num">1.300.000 €</td><td class="num">274.845 €</td><td class="num pct-low">21.1 %</td></tr>
+<tr><td>Daniel Bielica</td><td class="num">1.000.000 €</td><td class="num">939.470 €</td><td class="num pct-high">93.9 %</td></tr>
+<tr><td>Boy Kemper</td><td class="num">850.000 €</td><td class="num">960.664 €</td><td class="num pct-high">87.0 %</td></tr>
+<tr><td>Rio Hillen</td><td class="num">800.000 €</td><td class="num">795.395 €</td><td class="num pct-high">99.4 %</td></tr>
+<tr><td>Moussa Soumano</td><td class="num">800.000 €</td><td class="num">2.317.673 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Juho Talvitie</td><td class="num">800.000 €</td><td class="num">1.787.891 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Kamal Sowah</td><td class="num">750.000 €</td><td class="num">710.639 €</td><td class="num pct-high">94.8 %</td></tr>
+<tr><td>Mohamed Nassoh</td><td class="num">700.000 €</td><td class="num">433.978 €</td><td class="num pct-mid">62.0 %</td></tr>
+<tr><td>Cherrion Valerius</td><td class="num">700.000 €</td><td class="num">1.454.268 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Charles-Andreas Brym</td><td class="num">450.000 €</td><td class="num">514.036 €</td><td class="num pct-high">85.8 %</td></tr>
+<tr><td>Clint Leemans</td><td class="num">450.000 €</td><td class="num">426.095 €</td><td class="num pct-high">94.7 %</td></tr>
+<tr><td>Boyd Lucassen</td><td class="num">450.000 €</td><td class="num">405.073 €</td><td class="num pct-high">90.0 %</td></tr>
+<tr><td>Lewis Holtby</td><td class="num">400.000 €</td><td class="num">265.378 €</td><td class="num pct-mid">66.3 %</td></tr>
+<tr><td>Raul Paula</td><td class="num">350.000 €</td><td class="num">569.286 €</td><td class="num pct-low">37.3 %</td></tr>
+<tr><td>André Ayew</td><td class="num">300.000 €</td><td class="num">345.159 €</td><td class="num pct-high">84.9 %</td></tr>
+<tr><td>Pepijn Reulen</td><td class="num">300.000 €</td><td class="num">543.265 €</td><td class="num pct-low">18.9 %</td></tr>
+<tr><td>Enes Mahmutović</td><td class="num">300.000 €</td><td class="num">278.926 €</td><td class="num pct-high">93.0 %</td></tr>
+<tr><td>Fredrik Jensen</td><td class="num">300.000 €</td><td class="num">108.956 €</td><td class="num pct-low">36.3 %</td></tr>
+<tr><td>Brahim Ghalidi</td><td class="num">200.000 €</td><td class="num">304.117 €</td><td class="num pct-mid">47.9 %</td></tr>
+<tr><td>Denis Odoi</td><td class="num">200.000 €</td><td class="num">234.281 €</td><td class="num pct-high">82.9 %</td></tr>
+<tr><td>Kostas Lamprou</td><td class="num">150.000 €</td><td class="num">-47.461 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Jayden Candelaria</td><td class="num">150.000 €</td><td class="num">122.859 €</td><td class="num pct-high">81.9 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Nec Nijmegen</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Kodai Sano</td><td class="num">12.000.000 €</td><td class="num">11.513.639 €</td><td class="num pct-high">95.9 %</td></tr>
+<tr><td>Kento Shiogai</td><td class="num">8.000.000 €</td><td class="num">6.652.198 €</td><td class="num pct-high">83.2 %</td></tr>
+<tr><td>Sami Ouaissa</td><td class="num">5.000.000 €</td><td class="num">4.624.751 €</td><td class="num pct-high">92.5 %</td></tr>
+<tr><td>Ahmetcan Kaplan</td><td class="num">5.000.000 €</td><td class="num">5.254.769 €</td><td class="num pct-high">94.9 %</td></tr>
+<tr><td>Başar Önal</td><td class="num">4.000.000 €</td><td class="num">3.154.273 €</td><td class="num pct-high">78.9 %</td></tr>
+<tr><td>Willum Thor Willumsson</td><td class="num">3.500.000 €</td><td class="num">3.715.946 €</td><td class="num pct-high">93.8 %</td></tr>
+<tr><td>Darko Nejašmić</td><td class="num">3.000.000 €</td><td class="num">2.075.729 €</td><td class="num pct-mid">69.2 %</td></tr>
+<tr><td>Gonzalo Crettaz</td><td class="num">3.000.000 €</td><td class="num">2.158.539 €</td><td class="num pct-high">72.0 %</td></tr>
+<tr><td>Calvin Verdonk</td><td class="num">3.000.000 €</td><td class="num">2.948.912 €</td><td class="num pct-high">98.3 %</td></tr>
+<tr><td>Koki Ogawa</td><td class="num">2.500.000 €</td><td class="num">2.193.948 €</td><td class="num pct-high">87.8 %</td></tr>
+<tr><td>Philippe Sandler</td><td class="num">2.000.000 €</td><td class="num">2.312.279 €</td><td class="num pct-high">84.4 %</td></tr>
+<tr><td>Noe Lebreton</td><td class="num">2.000.000 €</td><td class="num">1.744.982 €</td><td class="num pct-high">87.2 %</td></tr>
+<tr><td>Danilo</td><td class="num">2.000.000 €</td><td class="num">1.276.436 €</td><td class="num pct-mid">63.8 %</td></tr>
+<tr><td>Dirk Proper</td><td class="num">2.000.000 €</td><td class="num">3.271.618 €</td><td class="num pct-low">36.4 %</td></tr>
+<tr><td>Deveron Fonville</td><td class="num">1.000.000 €</td><td class="num">134.924 €</td><td class="num pct-low">13.5 %</td></tr>
+<tr><td>Brayann Pereira</td><td class="num">1.000.000 €</td><td class="num">2.107.589 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Thomas Ouwejan</td><td class="num">900.000 €</td><td class="num">870.711 €</td><td class="num pct-high">96.7 %</td></tr>
+<tr><td>Eli Dasa</td><td class="num">800.000 €</td><td class="num">605.050 €</td><td class="num pct-high">75.6 %</td></tr>
+<tr><td>Youssef El Kachati</td><td class="num">700.000 €</td><td class="num">1.796.278 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Virgil Misidjan</td><td class="num">600.000 €</td><td class="num">151.122 €</td><td class="num pct-low">25.2 %</td></tr>
+<tr><td>Tjaronn Chery</td><td class="num">400.000 €</td><td class="num">243.799 €</td><td class="num pct-mid">60.9 %</td></tr>
+<tr><td>Bryan Linssen</td><td class="num">350.000 €</td><td class="num">350.345 €</td><td class="num pct-high">99.9 %</td></tr>
+<tr><td>Jasper Cillessen</td><td class="num">300.000 €</td><td class="num">340.957 €</td><td class="num pct-high">86.3 %</td></tr>
+<tr><td>Jetro Willems</td><td class="num">300.000 €</td><td class="num">243.859 €</td><td class="num pct-high">81.3 %</td></tr>
+<tr><td>Bram Nuytinck</td><td class="num">250.000 €</td><td class="num">42.256 €</td><td class="num pct-low">16.9 %</td></tr>
+<tr><td>Rijk Janse</td><td class="num">25.000 €</td><td class="num">-374.070 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Pec Zwolle</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Jasper Schendelaar</td><td class="num">2.000.000 €</td><td class="num">2.094.149 €</td><td class="num pct-high">95.3 %</td></tr>
+<tr><td>Shola Shoretire</td><td class="num">2.000.000 €</td><td class="num">2.563.585 €</td><td class="num pct-high">71.8 %</td></tr>
+<tr><td>Zico Buurmeester</td><td class="num">1.800.000 €</td><td class="num">3.551.973 €</td><td class="num pct-low">2.7 %</td></tr>
+<tr><td>Koen Kostons</td><td class="num">1.500.000 €</td><td class="num">2.377.807 €</td><td class="num pct-low">41.5 %</td></tr>
+<tr><td>Anselmo Garcia McNulty</td><td class="num">1.500.000 €</td><td class="num">1.838.365 €</td><td class="num pct-high">77.4 %</td></tr>
+<tr><td>Simon Graves</td><td class="num">1.500.000 €</td><td class="num">1.532.375 €</td><td class="num pct-high">97.8 %</td></tr>
+<tr><td>Tristan Gooijer</td><td class="num">1.500.000 €</td><td class="num">1.479.771 €</td><td class="num pct-high">98.7 %</td></tr>
+<tr><td>Jadiel Pereira da Gama</td><td class="num">1.500.000 €</td><td class="num">1.450.273 €</td><td class="num pct-high">96.7 %</td></tr>
+<tr><td>Kaj de Rooij</td><td class="num">1.000.000 €</td><td class="num">739.714 €</td><td class="num pct-high">74.0 %</td></tr>
+<tr><td>Younes Namli</td><td class="num">1.000.000 €</td><td class="num">575.703 €</td><td class="num pct-mid">57.6 %</td></tr>
+<tr><td>Tom de Graaff</td><td class="num">900.000 €</td><td class="num">656.347 €</td><td class="num pct-high">72.9 %</td></tr>
+<tr><td>Sherel Floranus</td><td class="num">800.000 €</td><td class="num">643.092 €</td><td class="num pct-high">80.4 %</td></tr>
+<tr><td>Jamiro Monteiro</td><td class="num">750.000 €</td><td class="num">518.558 €</td><td class="num pct-mid">69.1 %</td></tr>
+<tr><td>Thijs Oosting</td><td class="num">700.000 €</td><td class="num">609.345 €</td><td class="num pct-high">87.0 %</td></tr>
+<tr><td>Ryan Thomas</td><td class="num">700.000 €</td><td class="num">544.810 €</td><td class="num pct-high">77.8 %</td></tr>
+<tr><td>Jan Faberski</td><td class="num">700.000 €</td><td class="num">330.745 €</td><td class="num pct-mid">47.2 %</td></tr>
+<tr><td>Olivier Aertssen</td><td class="num">650.000 €</td><td class="num">437.078 €</td><td class="num pct-mid">67.2 %</td></tr>
+<tr><td>Odysseus Velanas</td><td class="num">500.000 €</td><td class="num">849.677 €</td><td class="num pct-low">30.1 %</td></tr>
+<tr><td>Damian van der Haar</td><td class="num">500.000 €</td><td class="num">874.321 €</td><td class="num pct-low">25.1 %</td></tr>
+<tr><td>Tijs Velthuis</td><td class="num">500.000 €</td><td class="num">957.955 €</td><td class="num pct-low">8.4 %</td></tr>
+<tr><td>Nick Fichtinger</td><td class="num">450.000 €</td><td class="num">873.257 €</td><td class="num pct-low">5.9 %</td></tr>
+<tr><td>Thomas Buitink</td><td class="num">350.000 €</td><td class="num">174.732 €</td><td class="num pct-mid">49.9 %</td></tr>
+<tr><td>Gabriel Reiziger</td><td class="num">175.000 €</td><td class="num">-150.272 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>David Voute</td><td class="num">100.000 €</td><td class="num">-393.204 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Psv Eindhoven</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Ismael Saibari</td><td class="num">32.000.000 €</td><td class="num">32.791.189 €</td><td class="num pct-high">97.5 %</td></tr>
+<tr><td>Joey Veerman</td><td class="num">27.000.000 €</td><td class="num">26.898.646 €</td><td class="num pct-high">99.6 %</td></tr>
+<tr><td>Ricardo Pepi</td><td class="num">25.000.000 €</td><td class="num">23.582.248 €</td><td class="num pct-high">94.3 %</td></tr>
+<tr><td>Jerdy Schouten</td><td class="num">22.000.000 €</td><td class="num">21.313.962 €</td><td class="num pct-high">96.9 %</td></tr>
+<tr><td>Paul Wanner</td><td class="num">18.000.000 €</td><td class="num">18.650.886 €</td><td class="num pct-high">96.4 %</td></tr>
+<tr><td>Sergiño Dest</td><td class="num">18.000.000 €</td><td class="num">18.015.859 €</td><td class="num pct-high">99.9 %</td></tr>
+<tr><td>Mauro Júnior</td><td class="num">17.000.000 €</td><td class="num">15.620.540 €</td><td class="num pct-high">91.9 %</td></tr>
+<tr><td>Yarek Gasiorowski</td><td class="num">16.000.000 €</td><td class="num">16.008.309 €</td><td class="num pct-high">99.9 %</td></tr>
+<tr><td>Guus Til</td><td class="num">15.000.000 €</td><td class="num">14.199.186 €</td><td class="num pct-high">94.7 %</td></tr>
+<tr><td>Ryan Flamingo</td><td class="num">14.000.000 €</td><td class="num">14.630.733 €</td><td class="num pct-high">95.5 %</td></tr>
+<tr><td>Dennis Man</td><td class="num">13.000.000 €</td><td class="num">12.226.994 €</td><td class="num pct-high">94.1 %</td></tr>
+<tr><td>Ruben van Bommel</td><td class="num">12.000.000 €</td><td class="num">11.640.049 €</td><td class="num pct-high">97.0 %</td></tr>
+<tr><td>Anass Salah-Eddine</td><td class="num">12.000.000 €</td><td class="num">11.445.569 €</td><td class="num pct-high">95.4 %</td></tr>
+<tr><td>Matěj Kovář</td><td class="num">7.000.000 €</td><td class="num">6.123.436 €</td><td class="num pct-high">87.5 %</td></tr>
+<tr><td>Couhaib Driouech</td><td class="num">6.000.000 €</td><td class="num">2.366.909 €</td><td class="num pct-low">39.4 %</td></tr>
+<tr><td>Kiliann Sildillia</td><td class="num">5.000.000 €</td><td class="num">6.209.614 €</td><td class="num pct-high">75.8 %</td></tr>
+<tr><td>Esmir Bajraktarević</td><td class="num">5.000.000 €</td><td class="num">4.972.397 €</td><td class="num pct-high">99.4 %</td></tr>
+<tr><td>Myron Boadu</td><td class="num">5.000.000 €</td><td class="num">6.425.730 €</td><td class="num pct-high">71.5 %</td></tr>
+<tr><td>Armando Obispo</td><td class="num">4.000.000 €</td><td class="num">3.155.310 €</td><td class="num pct-high">78.9 %</td></tr>
+<tr><td>Alassane Pléa</td><td class="num">3.000.000 €</td><td class="num">3.352.161 €</td><td class="num pct-high">88.3 %</td></tr>
+<tr><td>Noah Fernandez</td><td class="num">2.000.000 €</td><td class="num">2.456.744 €</td><td class="num pct-high">77.2 %</td></tr>
+<tr><td>Ivan Perišić</td><td class="num">1.300.000 €</td><td class="num">1.213.671 €</td><td class="num pct-high">93.4 %</td></tr>
+<tr><td>Niek Schiks</td><td class="num">300.000 €</td><td class="num">121.326 €</td><td class="num pct-low">40.4 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Sc Heerenveen</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Jacob Trenskow</td><td class="num">6.500.000 €</td><td class="num">6.743.628 €</td><td class="num pct-high">96.3 %</td></tr>
+<tr><td>Oliver Braude</td><td class="num">4.500.000 €</td><td class="num">7.393.229 €</td><td class="num pct-low">35.7 %</td></tr>
+<tr><td>Ringo Meerveld</td><td class="num">4.000.000 €</td><td class="num">4.922.576 €</td><td class="num pct-high">76.9 %</td></tr>
+<tr><td>Marcus Linday</td><td class="num">4.000.000 €</td><td class="num">7.656.868 €</td><td class="num pct-low">8.6 %</td></tr>
+<tr><td>Lasse Selvåg Nordås</td><td class="num">2.500.000 €</td><td class="num">2.773.439 €</td><td class="num pct-high">89.1 %</td></tr>
+<tr><td>Dylan Vente</td><td class="num">2.500.000 €</td><td class="num">2.423.449 €</td><td class="num pct-high">96.9 %</td></tr>
+<tr><td>Luuk Brouwers</td><td class="num">2.000.000 €</td><td class="num">2.006.957 €</td><td class="num pct-high">99.7 %</td></tr>
+<tr><td>Vasilios Zagaritis</td><td class="num">2.000.000 €</td><td class="num">1.162.094 €</td><td class="num pct-mid">58.1 %</td></tr>
+<tr><td>Levi Smans</td><td class="num">2.000.000 €</td><td class="num">2.108.788 €</td><td class="num pct-high">94.6 %</td></tr>
+<tr><td>Maxence Rivera</td><td class="num">2.000.000 €</td><td class="num">3.462.673 €</td><td class="num pct-low">26.9 %</td></tr>
+<tr><td>Sam Kersten</td><td class="num">1.500.000 €</td><td class="num">1.124.964 €</td><td class="num pct-high">75.0 %</td></tr>
+<tr><td>Bernt Klaverboer</td><td class="num">1.500.000 €</td><td class="num">1.004.109 €</td><td class="num pct-mid">66.9 %</td></tr>
+<tr><td>Maas Willemsen</td><td class="num">1.500.000 €</td><td class="num">1.225.573 €</td><td class="num pct-high">81.7 %</td></tr>
+<tr><td>Nikolai Soyset Hopland</td><td class="num">1.500.000 €</td><td class="num">3.544.579 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Espen Van Ee</td><td class="num">1.000.000 €</td><td class="num">1.250.305 €</td><td class="num pct-high">75.0 %</td></tr>
+<tr><td>Joris van Overeem</td><td class="num">900.000 €</td><td class="num">1.726.831 €</td><td class="num pct-low">8.1 %</td></tr>
+<tr><td>Luca Oyen</td><td class="num">900.000 €</td><td class="num">2.074.710 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Eser Gürbüz</td><td class="num">600.000 €</td><td class="num">1.549.470 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Hristiyan Petrov</td><td class="num">500.000 €</td><td class="num">433.478 €</td><td class="num pct-high">86.7 %</td></tr>
+<tr><td>Amourricho van Axel-Dongen</td><td class="num">400.000 €</td><td class="num">996.488 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Nordin Bakker</td><td class="num">400.000 €</td><td class="num">409.655 €</td><td class="num pct-high">97.6 %</td></tr>
+<tr><td>Andries Noppert</td><td class="num">350.000 €</td><td class="num">603.641 €</td><td class="num pct-low">27.5 %</td></tr>
+<tr><td>Mats Egbring</td><td class="num">300.000 €</td><td class="num">-70.298 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Sc Telstar</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Jochem Ritmeester van de Kamp</td><td class="num">1.300.000 €</td><td class="num">430.699 €</td><td class="num pct-low">33.1 %</td></tr>
+<tr><td>Cedric Hatenboer</td><td class="num">1.000.000 €</td><td class="num">1.602.338 €</td><td class="num pct-low">39.8 %</td></tr>
+<tr><td>Tyrese Noslin</td><td class="num">750.000 €</td><td class="num">525.308 €</td><td class="num pct-high">70.0 %</td></tr>
+<tr><td>Gerald Alders</td><td class="num">700.000 €</td><td class="num">56.079 €</td><td class="num pct-low">8.0 %</td></tr>
+<tr><td>Ronald Koeman Jr</td><td class="num">650.000 €</td><td class="num">661.515 €</td><td class="num pct-high">98.2 %</td></tr>
+<tr><td>Guus Offerhaus</td><td class="num">600.000 €</td><td class="num">628.151 €</td><td class="num pct-high">95.3 %</td></tr>
+<tr><td>Nils Rossen</td><td class="num">600.000 €</td><td class="num">1.342.007 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Tyrone Owusu</td><td class="num">550.000 €</td><td class="num">495.789 €</td><td class="num pct-high">90.1 %</td></tr>
+<tr><td>Neville Nwankwo</td><td class="num">500.000 €</td><td class="num">258.022 €</td><td class="num pct-mid">51.6 %</td></tr>
+<tr><td>Devon Koswal</td><td class="num">500.000 €</td><td class="num">438.917 €</td><td class="num pct-high">87.8 %</td></tr>
+<tr><td>Nökkvi Þórisson</td><td class="num">500.000 €</td><td class="num">-38.146 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Patrick Brouwer</td><td class="num">500.000 €</td><td class="num">409.684 €</td><td class="num pct-high">81.9 %</td></tr>
+<tr><td>Danny Bakker</td><td class="num">450.000 €</td><td class="num">723.381 €</td><td class="num pct-low">39.2 %</td></tr>
+<tr><td>Jeff Hardeveld</td><td class="num">450.000 €</td><td class="num">282.204 €</td><td class="num pct-mid">62.7 %</td></tr>
+<tr><td>Soufiane Hetli</td><td class="num">450.000 €</td><td class="num">396.083 €</td><td class="num pct-high">88.0 %</td></tr>
+<tr><td>Sem van Duijn</td><td class="num">400.000 €</td><td class="num">632.260 €</td><td class="num pct-low">41.9 %</td></tr>
+<tr><td>Dylan Mertens</td><td class="num">300.000 €</td><td class="num">310.225 €</td><td class="num pct-high">96.6 %</td></tr>
+<tr><td>Kay Tejan</td><td class="num">300.000 €</td><td class="num">118.827 €</td><td class="num pct-low">39.6 %</td></tr>
+<tr><td>Jelani Seedorf</td><td class="num">200.000 €</td><td class="num">-608.594 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Nigel Ogidi Nwankwo</td><td class="num">150.000 €</td><td class="num">-246.745 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Adil Lechkar</td><td class="num">150.000 €</td><td class="num">30.415 €</td><td class="num pct-low">20.3 %</td></tr>
+<tr><td>Daan Reiziger</td><td class="num">100.000 €</td><td class="num">-180.131 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Rojendro Oudsten</td><td class="num">100.000 €</td><td class="num">107.035 €</td><td class="num pct-high">93.0 %</td></tr>
+<tr><td>Dion Malone</td><td class="num">75.000 €</td><td class="num">42.357 €</td><td class="num pct-mid">56.5 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Sparta Rotterdam</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Marvin Young</td><td class="num">5.000.000 €</td><td class="num">4.849.315 €</td><td class="num pct-high">97.0 %</td></tr>
+<tr><td>Tobias Lauritsen</td><td class="num">3.500.000 €</td><td class="num">3.241.743 €</td><td class="num pct-high">92.6 %</td></tr>
+<tr><td>Joël Drommel</td><td class="num">2.500.000 €</td><td class="num">2.456.459 €</td><td class="num pct-high">98.3 %</td></tr>
+<tr><td>Joshua Kitolano</td><td class="num">2.500.000 €</td><td class="num">2.787.963 €</td><td class="num pct-high">88.5 %</td></tr>
+<tr><td>Shunsuke Mito</td><td class="num">2.000.000 €</td><td class="num">1.833.914 €</td><td class="num pct-high">91.7 %</td></tr>
+<tr><td>Casper Terho</td><td class="num">1.500.000 €</td><td class="num">1.385.170 €</td><td class="num pct-high">92.3 %</td></tr>
+<tr><td>Shurandy Sambo</td><td class="num">1.500.000 €</td><td class="num">1.686.690 €</td><td class="num pct-high">87.6 %</td></tr>
+<tr><td>Lushendry Edward Martes</td><td class="num">1.500.000 €</td><td class="num">-706.763 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Ayoni Santos</td><td class="num">1.300.000 €</td><td class="num">1.067.961 €</td><td class="num pct-high">82.2 %</td></tr>
+<tr><td>Teo Quintero</td><td class="num">1.000.000 €</td><td class="num">821.160 €</td><td class="num pct-high">82.1 %</td></tr>
+<tr><td>Vito van Crooij</td><td class="num">1.000.000 €</td><td class="num">1.428.789 €</td><td class="num pct-mid">57.1 %</td></tr>
+<tr><td>Mitchell van Bergen</td><td class="num">1.000.000 €</td><td class="num">1.542.647 €</td><td class="num pct-mid">45.7 %</td></tr>
+<tr><td>Julian Baas</td><td class="num">700.000 €</td><td class="num">750.930 €</td><td class="num pct-high">92.7 %</td></tr>
+<tr><td>Pelle Clement</td><td class="num">650.000 €</td><td class="num">700.702 €</td><td class="num pct-high">92.2 %</td></tr>
+<tr><td>Saïd Bakari</td><td class="num">400.000 €</td><td class="num">561.991 €</td><td class="num pct-mid">59.5 %</td></tr>
+<tr><td>Bruno Martins Indi</td><td class="num">400.000 €</td><td class="num">325.344 €</td><td class="num pct-high">81.3 %</td></tr>
+<tr><td>Patrick van Aanholt</td><td class="num">300.000 €</td><td class="num">202.188 €</td><td class="num pct-mid">67.4 %</td></tr>
+<tr><td>Jens Toornstra</td><td class="num">300.000 €</td><td class="num">111.498 €</td><td class="num pct-low">37.2 %</td></tr>
+<tr><td>Milan Zonneveld</td><td class="num">300.000 €</td><td class="num">574.319 €</td><td class="num pct-low">8.6 %</td></tr>
+<tr><td>Mike Kleijn</td><td class="num">250.000 €</td><td class="num">579.448 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Giannino Vianello</td><td class="num">150.000 €</td><td class="num">367.281 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Jonathan de Guzmán</td><td class="num">50.000 €</td><td class="num">55.941 €</td><td class="num pct-high">88.1 %</td></tr>
+</tbody></table></div>
+<p class="note">Başarı %: TM ile tahmin arasındaki göreli hataya göre 100 − (|tahmin−TM|/TM×100), 0–100 aralığına sıkıştırılmıştır. Çoklu sezon için oyuncu başına en yüksek <code>minutesPlayed</code> satırı seçilmiştir.</p>
+</div></body></html>

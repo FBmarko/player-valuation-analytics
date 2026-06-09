@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hirvatistan Hnl — Model tabloları</title>
+<style>
+
+        :root {
+            --bg: #0b1220;
+            --panel: #151d2e;
+            --text: #e8edf5;
+            --muted: #8b9bb4;
+            --border: #2a3548;
+            --accent: #3b82f6;
+            --good: #22c55e;
+            --mid: #eab308;
+            --bad: #f87171;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: "Segoe UI", system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 24px;
+            line-height: 1.45;
+        }
+        .wrap { max-width: 1200px; margin: 0 auto; }
+        h1 { font-size: 1.65rem; margin: 0 0 8px; font-weight: 650; }
+        .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 28px; }
+        .team-block {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 22px;
+            overflow: hidden;
+        }
+        .team-block h2 {
+            margin: 0;
+            padding: 12px 16px;
+            font-size: 1.05rem;
+            background: rgba(59, 130, 246, 0.12);
+            border-bottom: 1px solid var(--border);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+        th, td {
+            text-align: left;
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            color: var(--muted);
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(255,255,255,0.03); }
+        td.num { text-align: right; font-variant-numeric: tabular-nums; }
+        .pct-high { color: var(--good); font-weight: 600; }
+        .pct-mid { color: var(--mid); font-weight: 600; }
+        .pct-low { color: var(--bad); font-weight: 600; }
+        .note {
+            margin-top: 32px;
+            padding: 14px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+        a.back { color: var(--accent); text-decoration: none; }
+        a.back:hover { text-decoration: underline; }
+    
+</style>
+</head>
+<body>
+<div class="wrap">
+<p><a class="back" href="index.html">← Tüm ligler</a></p>
+<h1>Hirvatistan Hnl</h1>
+<p class="meta">Model: elite_stacking_model.pkl · Üretim: 2026-04-12 15:42 · Takım: 10 · Oyuncu satırı: 218</p>
+<div class="team-block">
+<h2>Gnk Dinamo Zagreb</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Ismaël Bennacer</td><td class="num">9.000.000 €</td><td class="num">10.226.683 €</td><td class="num pct-high">86.4 %</td></tr>
+<tr><td>Scott McKenna</td><td class="num">4.000.000 €</td><td class="num">3.566.300 €</td><td class="num pct-high">89.2 %</td></tr>
+<tr><td>Dominik Livaković</td><td class="num">4.000.000 €</td><td class="num">6.435.916 €</td><td class="num pct-low">39.1 %</td></tr>
+<tr><td>Sandro Kulenović</td><td class="num">4.000.000 €</td><td class="num">3.601.821 €</td><td class="num pct-high">90.0 %</td></tr>
+<tr><td>Dion Drena Beljo</td><td class="num">4.000.000 €</td><td class="num">3.872.193 €</td><td class="num pct-high">96.8 %</td></tr>
+<tr><td>Luka Stojković</td><td class="num">3.000.000 €</td><td class="num">3.562.366 €</td><td class="num pct-high">81.3 %</td></tr>
+<tr><td>Ronaël Pierre-Gabriel</td><td class="num">2.500.000 €</td><td class="num">3.527.519 €</td><td class="num pct-mid">58.9 %</td></tr>
+<tr><td>Arber Hoxha</td><td class="num">2.500.000 €</td><td class="num">1.049.426 €</td><td class="num pct-low">42.0 %</td></tr>
+<tr><td>Niko Galešić</td><td class="num">2.500.000 €</td><td class="num">2.673.885 €</td><td class="num pct-high">93.0 %</td></tr>
+<tr><td>Sergi Domínguez</td><td class="num">2.500.000 €</td><td class="num">3.823.353 €</td><td class="num pct-mid">47.1 %</td></tr>
+<tr><td>Matteo Pérez Vinlöf</td><td class="num">2.500.000 €</td><td class="num">1.962.395 €</td><td class="num pct-high">78.5 %</td></tr>
+<tr><td>Gabriel Vidović</td><td class="num">2.500.000 €</td><td class="num">2.929.244 €</td><td class="num pct-high">82.8 %</td></tr>
+<tr><td>Monsef Bakrar</td><td class="num">2.000.000 €</td><td class="num">1.694.166 €</td><td class="num pct-high">84.7 %</td></tr>
+<tr><td>Moris Valinčić</td><td class="num">2.000.000 €</td><td class="num">613.362 €</td><td class="num pct-low">30.7 %</td></tr>
+<tr><td>Gonzalo Villar</td><td class="num">1.800.000 €</td><td class="num">1.735.388 €</td><td class="num pct-high">96.4 %</td></tr>
+<tr><td>Miha Zajc</td><td class="num">1.300.000 €</td><td class="num">1.269.144 €</td><td class="num pct-high">97.6 %</td></tr>
+<tr><td>Bruno Goda</td><td class="num">1.300.000 €</td><td class="num">912.426 €</td><td class="num pct-high">70.2 %</td></tr>
+<tr><td>Mateo Lisica</td><td class="num">1.300.000 €</td><td class="num">1.006.923 €</td><td class="num pct-high">77.5 %</td></tr>
+<tr><td>Marko Soldo</td><td class="num">1.300.000 €</td><td class="num">1.465.755 €</td><td class="num pct-high">87.2 %</td></tr>
+<tr><td>Josip Mišić</td><td class="num">1.200.000 €</td><td class="num">1.401.478 €</td><td class="num pct-high">83.2 %</td></tr>
+<tr><td>Cardoso Varela</td><td class="num">1.000.000 €</td><td class="num">-1.137.537 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Ivan Nevistić</td><td class="num">1.000.000 €</td><td class="num">1.255.885 €</td><td class="num pct-high">74.4 %</td></tr>
+<tr><td>Fran Topić</td><td class="num">1.000.000 €</td><td class="num">987.756 €</td><td class="num pct-high">98.8 %</td></tr>
+<tr><td>Noa Mikić</td><td class="num">400.000 €</td><td class="num">283.786 €</td><td class="num pct-high">70.9 %</td></tr>
+<tr><td>Ivan Filipović</td><td class="num">350.000 €</td><td class="num">146.949 €</td><td class="num pct-low">42.0 %</td></tr>
+<tr><td>Kévin Théophile-Catherine</td><td class="num">250.000 €</td><td class="num">222.551 €</td><td class="num pct-high">89.0 %</td></tr>
+<tr><td>Paul Bismarck Tabinas</td><td class="num">200.000 €</td><td class="num">277.164 €</td><td class="num pct-mid">61.4 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Hnk Gorica</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Jurica Pršir</td><td class="num">1.500.000 €</td><td class="num">1.306.614 €</td><td class="num pct-high">87.1 %</td></tr>
+<tr><td>Žan Trontelj</td><td class="num">800.000 €</td><td class="num">1.225.523 €</td><td class="num pct-mid">46.8 %</td></tr>
+<tr><td>Iker Pozo</td><td class="num">750.000 €</td><td class="num">1.257.730 €</td><td class="num pct-low">32.3 %</td></tr>
+<tr><td>Ante Kavelj</td><td class="num">650.000 €</td><td class="num">771.182 €</td><td class="num pct-high">81.4 %</td></tr>
+<tr><td>Mateo Leš</td><td class="num">500.000 €</td><td class="num">640.244 €</td><td class="num pct-high">72.0 %</td></tr>
+<tr><td>Luka Vrzić</td><td class="num">450.000 €</td><td class="num">774.967 €</td><td class="num pct-low">27.8 %</td></tr>
+<tr><td>Theo Epailly</td><td class="num">400.000 €</td><td class="num">-76.266 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Davor Matijaš</td><td class="num">400.000 €</td><td class="num">488.467 €</td><td class="num pct-high">77.9 %</td></tr>
+<tr><td>Ognjen Bakić</td><td class="num">400.000 €</td><td class="num">270.820 €</td><td class="num pct-mid">67.7 %</td></tr>
+<tr><td>Marijan Čabraja</td><td class="num">350.000 €</td><td class="num">283.068 €</td><td class="num pct-high">80.9 %</td></tr>
+<tr><td>Bruno Bogojević</td><td class="num">350.000 €</td><td class="num">466.831 €</td><td class="num pct-mid">66.6 %</td></tr>
+<tr><td>Stefan Perić</td><td class="num">350.000 €</td><td class="num">282.859 €</td><td class="num pct-high">80.8 %</td></tr>
+<tr><td>Medin Gashi</td><td class="num">300.000 €</td><td class="num">-198.675 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Wisdom Sule</td><td class="num">250.000 €</td><td class="num">315.138 €</td><td class="num pct-high">73.9 %</td></tr>
+<tr><td>Domagoj Pavičić</td><td class="num">200.000 €</td><td class="num">38.458 €</td><td class="num pct-low">19.2 %</td></tr>
+<tr><td>Ivan Fiolić</td><td class="num">200.000 €</td><td class="num">125.094 €</td><td class="num pct-mid">62.5 %</td></tr>
+<tr><td>Elvir Duraković</td><td class="num">200.000 €</td><td class="num">290.933 €</td><td class="num pct-mid">54.5 %</td></tr>
+<tr><td>Jakov Filipović</td><td class="num">200.000 €</td><td class="num">110.198 €</td><td class="num pct-mid">55.1 %</td></tr>
+<tr><td>Ante Erceg</td><td class="num">50.000 €</td><td class="num">-336.899 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Stjepan Kučiš</td><td class="num">50.000 €</td><td class="num">27.222 €</td><td class="num pct-mid">54.4 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Hnk Hajduk Split</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Rokas Pukštas</td><td class="num">5.000.000 €</td><td class="num">5.008.862 €</td><td class="num pct-high">99.8 %</td></tr>
+<tr><td>Niko Sigur</td><td class="num">4.000.000 €</td><td class="num">4.705.399 €</td><td class="num pct-high">82.4 %</td></tr>
+<tr><td>Branimir Mlačić</td><td class="num">4.000.000 €</td><td class="num">4.265.598 €</td><td class="num pct-high">93.4 %</td></tr>
+<tr><td>Šimun Hrgović</td><td class="num">3.000.000 €</td><td class="num">2.457.282 €</td><td class="num pct-high">81.9 %</td></tr>
+<tr><td>Bruno Durdov</td><td class="num">3.000.000 €</td><td class="num">4.098.008 €</td><td class="num pct-mid">63.4 %</td></tr>
+<tr><td>Marko Livaja</td><td class="num">3.000.000 €</td><td class="num">3.189.557 €</td><td class="num pct-high">93.7 %</td></tr>
+<tr><td>Filip Krovinović</td><td class="num">2.000.000 €</td><td class="num">1.558.229 €</td><td class="num pct-high">77.9 %</td></tr>
+<tr><td>Hugo Guillamón</td><td class="num">2.000.000 €</td><td class="num">2.041.863 €</td><td class="num pct-high">97.9 %</td></tr>
+<tr><td>Michele Šego</td><td class="num">2.000.000 €</td><td class="num">1.536.955 €</td><td class="num pct-high">76.8 %</td></tr>
+<tr><td>Abdoulie Sanyang Bamba</td><td class="num">1.500.000 €</td><td class="num">663.739 €</td><td class="num pct-low">44.2 %</td></tr>
+<tr><td>Iker Almena</td><td class="num">1.500.000 €</td><td class="num">1.637.808 €</td><td class="num pct-high">90.8 %</td></tr>
+<tr><td>Ivica Ivušić</td><td class="num">1.500.000 €</td><td class="num">1.506.724 €</td><td class="num pct-high">99.6 %</td></tr>
+<tr><td>Adrion Pajaziti</td><td class="num">1.500.000 €</td><td class="num">1.463.419 €</td><td class="num pct-high">97.6 %</td></tr>
+<tr><td>Dario Marešić</td><td class="num">1.500.000 €</td><td class="num">1.201.665 €</td><td class="num pct-high">80.1 %</td></tr>
+<tr><td>Zvonimir Šarlija</td><td class="num">1.500.000 €</td><td class="num">1.437.662 €</td><td class="num pct-high">95.8 %</td></tr>
+<tr><td>Luka Hodak</td><td class="num">1.000.000 €</td><td class="num">777.487 €</td><td class="num pct-high">77.7 %</td></tr>
+<tr><td>Anthony Kalik</td><td class="num">800.000 €</td><td class="num">622.501 €</td><td class="num pct-high">77.8 %</td></tr>
+<tr><td>Ante Rebić</td><td class="num">750.000 €</td><td class="num">711.437 €</td><td class="num pct-high">94.9 %</td></tr>
+<tr><td>Ismaël Diallo</td><td class="num">750.000 €</td><td class="num">824.224 €</td><td class="num pct-high">90.1 %</td></tr>
+<tr><td>Dario Melnjak</td><td class="num">600.000 €</td><td class="num">359.339 €</td><td class="num pct-mid">59.9 %</td></tr>
+<tr><td>Toni Silić</td><td class="num">500.000 €</td><td class="num">854.547 €</td><td class="num pct-low">29.1 %</td></tr>
+<tr><td>Ron Raçi</td><td class="num">450.000 €</td><td class="num">1.986.625 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Roko Brajković</td><td class="num">400.000 €</td><td class="num">968.834 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Marino Skelin</td><td class="num">100.000 €</td><td class="num">-240.421 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Noa Skoko</td><td class="num">50.000 €</td><td class="num">46.965 €</td><td class="num pct-high">93.9 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Hnk Rijeka</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Toni Fruk</td><td class="num">9.000.000 €</td><td class="num">9.044.940 €</td><td class="num pct-high">99.5 %</td></tr>
+<tr><td>Stjepan Radeljić</td><td class="num">2.800.000 €</td><td class="num">2.530.166 €</td><td class="num pct-high">90.4 %</td></tr>
+<tr><td>Tiago Dantas</td><td class="num">2.800.000 €</td><td class="num">2.638.961 €</td><td class="num pct-high">94.2 %</td></tr>
+<tr><td>Samuele Vignato</td><td class="num">2.500.000 €</td><td class="num">2.461.586 €</td><td class="num pct-high">98.5 %</td></tr>
+<tr><td>Martin Zlomislić</td><td class="num">2.000.000 €</td><td class="num">1.595.474 €</td><td class="num pct-high">79.8 %</td></tr>
+<tr><td>Dejan Petrovič</td><td class="num">1.500.000 €</td><td class="num">1.305.341 €</td><td class="num pct-high">87.0 %</td></tr>
+<tr><td>Ante Oreč</td><td class="num">1.500.000 €</td><td class="num">1.377.031 €</td><td class="num pct-high">91.8 %</td></tr>
+<tr><td>Mladen Devetak</td><td class="num">1.000.000 €</td><td class="num">904.944 €</td><td class="num pct-high">90.5 %</td></tr>
+<tr><td>Anel Husić</td><td class="num">850.000 €</td><td class="num">476.164 €</td><td class="num pct-mid">56.0 %</td></tr>
+<tr><td>Daniel Adu-Adjei</td><td class="num">750.000 €</td><td class="num">899.251 €</td><td class="num pct-high">80.1 %</td></tr>
+<tr><td>Ante Matej Jurić</td><td class="num">700.000 €</td><td class="num">605.208 €</td><td class="num pct-high">86.5 %</td></tr>
+<tr><td>Gabriel Rukavina</td><td class="num">600.000 €</td><td class="num">807.074 €</td><td class="num pct-mid">65.5 %</td></tr>
+<tr><td>Ante Majstorović</td><td class="num">500.000 €</td><td class="num">290.049 €</td><td class="num pct-mid">58.0 %</td></tr>
+<tr><td>Justas Lasickas</td><td class="num">500.000 €</td><td class="num">365.440 €</td><td class="num pct-high">73.1 %</td></tr>
+<tr><td>Alfonso Barco</td><td class="num">500.000 €</td><td class="num">234.191 €</td><td class="num pct-mid">46.8 %</td></tr>
+<tr><td>Amer Gojak</td><td class="num">400.000 €</td><td class="num">219.249 €</td><td class="num pct-mid">54.8 %</td></tr>
+<tr><td>Branko Pavić</td><td class="num">400.000 €</td><td class="num">258.849 €</td><td class="num pct-mid">64.7 %</td></tr>
+<tr><td>Noel Bodetić</td><td class="num">400.000 €</td><td class="num">395.557 €</td><td class="num pct-high">98.9 %</td></tr>
+<tr><td>Tornike Morchiladze</td><td class="num">350.000 €</td><td class="num">400.250 €</td><td class="num pct-high">85.6 %</td></tr>
+<tr><td>Merveil Ndockyt</td><td class="num">300.000 €</td><td class="num">345.824 €</td><td class="num pct-high">84.7 %</td></tr>
+<tr><td>Téo Barišić</td><td class="num">100.000 €</td><td class="num">-169.228 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Aleksa Todorović</td><td class="num">50.000 €</td><td class="num">-204.642 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Hnk Vukovar 1991</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Robin González</td><td class="num">850.000 €</td><td class="num">619.814 €</td><td class="num pct-high">72.9 %</td></tr>
+<tr><td>Lovro Banovec</td><td class="num">600.000 €</td><td class="num">594.262 €</td><td class="num pct-high">99.0 %</td></tr>
+<tr><td>Lovre Kulušić</td><td class="num">500.000 €</td><td class="num">60.352 €</td><td class="num pct-low">12.1 %</td></tr>
+<tr><td>Eniss Shabani</td><td class="num">350.000 €</td><td class="num">597.900 €</td><td class="num pct-low">29.2 %</td></tr>
+<tr><td>Marino Bulat</td><td class="num">300.000 €</td><td class="num">85.315 €</td><td class="num pct-low">28.4 %</td></tr>
+<tr><td>Jakov Puljić</td><td class="num">250.000 €</td><td class="num">188.861 €</td><td class="num pct-high">75.5 %</td></tr>
+<tr><td>Moreno Živković</td><td class="num">250.000 €</td><td class="num">162.457 €</td><td class="num pct-mid">65.0 %</td></tr>
+<tr><td>Vito Čaić</td><td class="num">200.000 €</td><td class="num">361.735 €</td><td class="num pct-low">19.1 %</td></tr>
+<tr><td>Šimun Butić</td><td class="num">200.000 €</td><td class="num">-902.630 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Josip Špoljarić</td><td class="num">200.000 €</td><td class="num">171.644 €</td><td class="num pct-high">85.8 %</td></tr>
+<tr><td>Denis Pintol</td><td class="num">100.000 €</td><td class="num">66.047 €</td><td class="num pct-mid">66.0 %</td></tr>
+<tr><td>Jakov Biljan</td><td class="num">50.000 €</td><td class="num">-261.610 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Mario Tadić</td><td class="num">50.000 €</td><td class="num">-237.051 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Luka Klanac</td><td class="num">50.000 €</td><td class="num">-72.427 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Nk Istra 1961</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Ville Koski</td><td class="num">1.500.000 €</td><td class="num">951.196 €</td><td class="num pct-mid">63.4 %</td></tr>
+<tr><td>Allen Obando</td><td class="num">1.500.000 €</td><td class="num">6.772.118 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Stjepan Lončar</td><td class="num">1.300.000 €</td><td class="num">1.153.358 €</td><td class="num pct-high">88.7 %</td></tr>
+<tr><td>Josip Radošević</td><td class="num">1.000.000 €</td><td class="num">719.326 €</td><td class="num pct-high">71.9 %</td></tr>
+<tr><td>Antonio Maurić</td><td class="num">800.000 €</td><td class="num">981.390 €</td><td class="num pct-high">77.3 %</td></tr>
+<tr><td>Advan Kadušić</td><td class="num">600.000 €</td><td class="num">384.655 €</td><td class="num pct-mid">64.1 %</td></tr>
+<tr><td>Samuli Miettinen</td><td class="num">500.000 €</td><td class="num">509.065 €</td><td class="num pct-high">98.2 %</td></tr>
+<tr><td>Mohamed Nasraoui</td><td class="num">500.000 €</td><td class="num">1.048.529 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Filip Taraba</td><td class="num">400.000 €</td><td class="num">90.223 €</td><td class="num pct-low">22.6 %</td></tr>
+<tr><td>Franko Kolić</td><td class="num">400.000 €</td><td class="num">738.199 €</td><td class="num pct-low">15.5 %</td></tr>
+<tr><td>Raul Kumar</td><td class="num">350.000 €</td><td class="num">1.411.690 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Israel Ayuma</td><td class="num">300.000 €</td><td class="num">1.022.114 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Niko Šepić</td><td class="num">250.000 €</td><td class="num">-172.728 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Marcel Heister</td><td class="num">200.000 €</td><td class="num">-821 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Nk Lokomotiva Zagreb</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Aleks Stojaković</td><td class="num">900.000 €</td><td class="num">1.338.682 €</td><td class="num pct-mid">51.3 %</td></tr>
+<tr><td>Dušan Vuković</td><td class="num">800.000 €</td><td class="num">660.759 €</td><td class="num pct-high">82.6 %</td></tr>
+<tr><td>Marko Rog</td><td class="num">600.000 €</td><td class="num">319.652 €</td><td class="num pct-mid">53.3 %</td></tr>
+<tr><td>Tino Jukić</td><td class="num">500.000 €</td><td class="num">775.031 €</td><td class="num pct-low">45.0 %</td></tr>
+<tr><td>Denis Kolinger</td><td class="num">500.000 €</td><td class="num">203.869 €</td><td class="num pct-low">40.8 %</td></tr>
+<tr><td>Ivan Katić</td><td class="num">500.000 €</td><td class="num">419.389 €</td><td class="num pct-high">83.9 %</td></tr>
+<tr><td>Leon Belcar</td><td class="num">500.000 €</td><td class="num">873.868 €</td><td class="num pct-low">25.2 %</td></tr>
+<tr><td>Mirko Sušak</td><td class="num">400.000 €</td><td class="num">258.439 €</td><td class="num pct-mid">64.6 %</td></tr>
+<tr><td>Ibrahim Sabra</td><td class="num">400.000 €</td><td class="num">1.089.750 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Blaž Bošković</td><td class="num">350.000 €</td><td class="num">389.467 €</td><td class="num pct-high">88.7 %</td></tr>
+<tr><td>Matija Subotić</td><td class="num">350.000 €</td><td class="num">-620.217 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Luka Dajčer</td><td class="num">350.000 €</td><td class="num">509.447 €</td><td class="num pct-mid">54.4 %</td></tr>
+<tr><td>Dimitrije Kamenović</td><td class="num">300.000 €</td><td class="num">320.953 €</td><td class="num pct-high">93.0 %</td></tr>
+<tr><td>Franjo Posavac</td><td class="num">300.000 €</td><td class="num">-329.460 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Josip Posavec</td><td class="num">300.000 €</td><td class="num">206.807 €</td><td class="num pct-mid">68.9 %</td></tr>
+<tr><td>David Virgili Fernandez</td><td class="num">250.000 €</td><td class="num">263.325 €</td><td class="num pct-high">94.7 %</td></tr>
+<tr><td>Domagoj Antolić</td><td class="num">200.000 €</td><td class="num">81.577 €</td><td class="num pct-low">40.8 %</td></tr>
+<tr><td>Marko Pajač</td><td class="num">200.000 €</td><td class="num">-108.407 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Aleksandar Trajkovski</td><td class="num">175.000 €</td><td class="num">166.970 €</td><td class="num pct-high">95.4 %</td></tr>
+<tr><td>Marko Vešović</td><td class="num">150.000 €</td><td class="num">-132.803 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Mario Šitum</td><td class="num">100.000 €</td><td class="num">-20.550 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Marin Leovac</td><td class="num">50.000 €</td><td class="num">-155.225 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Mody Boune</td><td class="num">50.000 €</td><td class="num">-123.878 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Nk Osijek</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Anton Matković</td><td class="num">3.000.000 €</td><td class="num">3.135.573 €</td><td class="num pct-high">95.5 %</td></tr>
+<tr><td>Nail Omerović</td><td class="num">2.500.000 €</td><td class="num">2.294.432 €</td><td class="num pct-high">91.8 %</td></tr>
+<tr><td>Arnel Jakupović</td><td class="num">1.300.000 €</td><td class="num">1.435.871 €</td><td class="num pct-high">89.5 %</td></tr>
+<tr><td>Roko Jurišić</td><td class="num">1.000.000 €</td><td class="num">1.298.613 €</td><td class="num pct-high">70.1 %</td></tr>
+<tr><td>Luka Jelenić</td><td class="num">1.000.000 €</td><td class="num">846.551 €</td><td class="num pct-high">84.7 %</td></tr>
+<tr><td>Samuel Akere</td><td class="num">1.000.000 €</td><td class="num">1.536.621 €</td><td class="num pct-mid">46.3 %</td></tr>
+<tr><td>Luka Vrbančić</td><td class="num">1.000.000 €</td><td class="num">677.049 €</td><td class="num pct-mid">67.7 %</td></tr>
+<tr><td>Domagoj Bukvić</td><td class="num">800.000 €</td><td class="num">802.800 €</td><td class="num pct-high">99.7 %</td></tr>
+<tr><td>Oleksandr Petrusenko</td><td class="num">750.000 €</td><td class="num">573.545 €</td><td class="num pct-high">76.5 %</td></tr>
+<tr><td>Vladan Bubanja</td><td class="num">750.000 €</td><td class="num">736.077 €</td><td class="num pct-high">98.1 %</td></tr>
+<tr><td>David Čolina</td><td class="num">750.000 €</td><td class="num">959.731 €</td><td class="num pct-high">72.0 %</td></tr>
+<tr><td>Fran Karačić</td><td class="num">750.000 €</td><td class="num">696.350 €</td><td class="num pct-high">92.8 %</td></tr>
+<tr><td>Stanislav Shopov</td><td class="num">700.000 €</td><td class="num">1.043.432 €</td><td class="num pct-mid">50.9 %</td></tr>
+<tr><td>Borna Barišić</td><td class="num">600.000 €</td><td class="num">598.644 €</td><td class="num pct-high">99.8 %</td></tr>
+<tr><td>Tonio Teklić</td><td class="num">600.000 €</td><td class="num">956.715 €</td><td class="num pct-low">40.5 %</td></tr>
+<tr><td>Yannick Toure</td><td class="num">400.000 €</td><td class="num">153.663 €</td><td class="num pct-low">38.4 %</td></tr>
+<tr><td>Jon Mersinaj</td><td class="num">400.000 €</td><td class="num">485.329 €</td><td class="num pct-high">78.7 %</td></tr>
+<tr><td>Renan Guedes</td><td class="num">350.000 €</td><td class="num">353.386 €</td><td class="num pct-high">99.0 %</td></tr>
+<tr><td>Marko Malenica</td><td class="num">300.000 €</td><td class="num">138.296 €</td><td class="num pct-mid">46.1 %</td></tr>
+<tr><td>Emin Hasić</td><td class="num">300.000 €</td><td class="num">404.720 €</td><td class="num pct-mid">65.1 %</td></tr>
+<tr><td>David Mejía</td><td class="num">300.000 €</td><td class="num">557.903 €</td><td class="num pct-low">14.0 %</td></tr>
+<tr><td>Šimun Mikolčić</td><td class="num">300.000 €</td><td class="num">462.393 €</td><td class="num pct-mid">45.9 %</td></tr>
+<tr><td>Nikola Ćurčija</td><td class="num">100.000 €</td><td class="num">-132.123 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Miloš Jovičić</td><td class="num">50.000 €</td><td class="num">85.897 €</td><td class="num pct-low">28.2 %</td></tr>
+<tr><td>Niko Farkaš</td><td class="num">50.000 €</td><td class="num">99.110 €</td><td class="num pct-low">1.8 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Nk Slaven Belupo</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Adriano Jagušić</td><td class="num">5.000.000 €</td><td class="num">5.438.989 €</td><td class="num pct-high">91.2 %</td></tr>
+<tr><td>Josip Mitrović</td><td class="num">850.000 €</td><td class="num">564.196 €</td><td class="num pct-mid">66.4 %</td></tr>
+<tr><td>Ante Šuto</td><td class="num">700.000 €</td><td class="num">588.741 €</td><td class="num pct-high">84.1 %</td></tr>
+<tr><td>Dominik Kovačić</td><td class="num">600.000 €</td><td class="num">201.654 €</td><td class="num pct-low">33.6 %</td></tr>
+<tr><td>Alen Grgić</td><td class="num">450.000 €</td><td class="num">257.261 €</td><td class="num pct-mid">57.2 %</td></tr>
+<tr><td>Ljuban Crepulja</td><td class="num">400.000 €</td><td class="num">365.674 €</td><td class="num pct-high">91.4 %</td></tr>
+<tr><td>Ivan Ćubelić</td><td class="num">400.000 €</td><td class="num">942.222 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Osman Hadžikić</td><td class="num">400.000 €</td><td class="num">322.226 €</td><td class="num pct-high">80.6 %</td></tr>
+<tr><td>Filip Jović</td><td class="num">400.000 €</td><td class="num">199.911 €</td><td class="num pct-mid">50.0 %</td></tr>
+<tr><td>Filip Krušelj</td><td class="num">350.000 €</td><td class="num">448.636 €</td><td class="num pct-high">71.8 %</td></tr>
+<tr><td>Gabrijel Šivalec</td><td class="num">350.000 €</td><td class="num">124.684 €</td><td class="num pct-low">35.6 %</td></tr>
+<tr><td>Igor Lepinjica</td><td class="num">300.000 €</td><td class="num">265.553 €</td><td class="num pct-high">88.5 %</td></tr>
+<tr><td>Ivan Božić</td><td class="num">300.000 €</td><td class="num">324.534 €</td><td class="num pct-high">91.8 %</td></tr>
+<tr><td>Mihail Caimacov</td><td class="num">300.000 €</td><td class="num">367.753 €</td><td class="num pct-high">77.4 %</td></tr>
+<tr><td>Marko Dabro</td><td class="num">250.000 €</td><td class="num">72.065 €</td><td class="num pct-low">28.8 %</td></tr>
+<tr><td>Ilija Nestorovski</td><td class="num">200.000 €</td><td class="num">46.976 €</td><td class="num pct-low">23.5 %</td></tr>
+<tr><td>Filip Mažar</td><td class="num">200.000 €</td><td class="num">608.110 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Antonio Jakir</td><td class="num">200.000 €</td><td class="num">354.946 €</td><td class="num pct-low">22.5 %</td></tr>
+<tr><td>Zvonimir Katalinić</td><td class="num">150.000 €</td><td class="num">-165.148 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Leonard Žuta</td><td class="num">150.000 €</td><td class="num">-39.613 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Tomislav Božić</td><td class="num">100.000 €</td><td class="num">32.853 €</td><td class="num pct-low">32.9 %</td></tr>
+<tr><td>Karlo Išasegi</td><td class="num">100.000 €</td><td class="num">-9.888 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Vinko Međimorec</td><td class="num">50.000 €</td><td class="num">141.691 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Ivan Čović</td><td class="num">50.000 €</td><td class="num">-202.275 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Leon Bošnjak</td><td class="num">50.000 €</td><td class="num">226.004 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Ernis Qestaj</td><td class="num">50.000 €</td><td class="num">771.737 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Nk Varazdin</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Iuri Tavares</td><td class="num">1.200.000 €</td><td class="num">1.269.879 €</td><td class="num pct-high">94.2 %</td></tr>
+<tr><td>Luka Škaričić</td><td class="num">800.000 €</td><td class="num">1.418.541 €</td><td class="num pct-low">22.7 %</td></tr>
+<tr><td>Aleksa Latković</td><td class="num">800.000 €</td><td class="num">416.083 €</td><td class="num pct-mid">52.0 %</td></tr>
+<tr><td>Frane Maglica</td><td class="num">750.000 €</td><td class="num">871.363 €</td><td class="num pct-high">83.8 %</td></tr>
+<tr><td>Antonio Boršić</td><td class="num">700.000 €</td><td class="num">709.595 €</td><td class="num pct-high">98.6 %</td></tr>
+<tr><td>Luka Mamić</td><td class="num">600.000 €</td><td class="num">726.033 €</td><td class="num pct-high">79.0 %</td></tr>
+<tr><td>Ivan Mamut</td><td class="num">450.000 €</td><td class="num">458.218 €</td><td class="num pct-high">98.2 %</td></tr>
+<tr><td>Petar Bočkaj</td><td class="num">400.000 €</td><td class="num">472.769 €</td><td class="num pct-high">81.8 %</td></tr>
+<tr><td>Mateo Barać</td><td class="num">400.000 €</td><td class="num">65.306 €</td><td class="num pct-low">16.3 %</td></tr>
+<tr><td>Luka Posinkovic</td><td class="num">350.000 €</td><td class="num">335.645 €</td><td class="num pct-high">95.9 %</td></tr>
+<tr><td>Oliver Zelenika</td><td class="num">300.000 €</td><td class="num">157.120 €</td><td class="num pct-mid">52.4 %</td></tr>
+<tr><td>Stipe Jurić</td><td class="num">250.000 €</td><td class="num">209.365 €</td><td class="num pct-high">83.7 %</td></tr>
+<tr><td>Gregor Sikošek</td><td class="num">250.000 €</td><td class="num">74.346 €</td><td class="num pct-low">29.7 %</td></tr>
+<tr><td>Mario Mladenovski</td><td class="num">250.000 €</td><td class="num">135.694 €</td><td class="num pct-mid">54.3 %</td></tr>
+<tr><td>David Puclin</td><td class="num">200.000 €</td><td class="num">-105.716 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Novak Tepšić</td><td class="num">200.000 €</td><td class="num">265.597 €</td><td class="num pct-mid">67.2 %</td></tr>
+<tr><td>Josip Silić</td><td class="num">150.000 €</td><td class="num">179.220 €</td><td class="num pct-high">80.5 %</td></tr>
+<tr><td>Silvio Ilinković</td><td class="num">150.000 €</td><td class="num">219.319 €</td><td class="num pct-mid">53.8 %</td></tr>
+<tr><td>Ivan Canjuga</td><td class="num">150.000 €</td><td class="num">43.443 €</td><td class="num pct-low">29.0 %</td></tr>
+<tr><td>Roberto Punčec</td><td class="num">100.000 €</td><td class="num">-3.962 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Mario Marina</td><td class="num">100.000 €</td><td class="num">-118.377 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Sven Lesjak</td><td class="num">50.000 €</td><td class="num">818.058 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<p class="note">Başarı %: TM ile tahmin arasındaki göreli hataya göre 100 − (|tahmin−TM|/TM×100), 0–100 aralığına sıkıştırılmıştır. Çoklu sezon için oyuncu başına en yüksek <code>minutesPlayed</code> satırı seçilmiştir.</p>
+</div></body></html>

@@ -1,0 +1,10 @@
+{
+  "model": "models\\elite_stacking_model_high_r2.pkl",
+  "r2_pct_eur": 80.001,
+  "r2_pct_log_aligned": 89.593,
+  "mae_eur": 2633340.0734995613,
+  "n_train": 17630,
+  "n_test": 3114,
+  "n_features": 132,
+  "stacking_note": "log1p hedef + CB+XGB+LGB + Ridge meta"
+}

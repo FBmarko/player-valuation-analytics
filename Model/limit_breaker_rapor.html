@@ -1,0 +1,4023 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limit Breaker SIV Pozisyon Raporu</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0284c7;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --border: #334155;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        
+        .tab-btn {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn:hover {
+            background-color: var(--accent-hover);
+            border-color: var(--accent);
+        }
+        
+        .tab-btn.active {
+            background-color: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        th, td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        th {
+            background-color: rgba(0, 0, 0, 0.2);
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover {
+            background-color: rgba(56, 189, 248, 0.05);
+        }
+        
+        .player-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .rank {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            width: 30px;
+        }
+        
+        .name-club h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+        }
+        
+        .name-club span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        .tm-val {
+            color: var(--text-muted);
+            text-decoration: line-through;
+        }
+        
+        .siv-val {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+        
+        .badge.gem {
+            background-color: rgba(34, 197, 94, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+        
+        .badge.normal {
+            background-color: rgba(148, 163, 184, 0.1);
+            color: var(--text-muted);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+        
+        .badge.risk {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+    </style>
+    <script>
+        function openTab(evt, posId) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(posId).style.display = "block";
+            document.getElementById(posId).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Limit Breaker ⚡ SIV Pozisyon Raporu</h1>
+            <p>Saf Kariyer İvmesi ve Performans Algoritmasına Göre Dünyanın En Değerli Oyuncuları (Mevki Mevki Top 20)</p>
+        </div>
+        
+        <div class="tabs">
+<button class="tab-btn active" onclick="openTab(event, 'ST')">ST (Centre-Forward)</button>
+<button class="tab-btn " onclick="openTab(event, 'LW')">LW (Left Winger)</button>
+<button class="tab-btn " onclick="openTab(event, 'RW')">RW (Right Winger)</button>
+<button class="tab-btn " onclick="openTab(event, 'SS')">SS (Second Striker)</button>
+<button class="tab-btn " onclick="openTab(event, 'AM')">AM (Attacking Midfield)</button>
+<button class="tab-btn " onclick="openTab(event, 'CM')">CM (Central Midfield)</button>
+<button class="tab-btn " onclick="openTab(event, 'DM')">DM (Defensive Midfield)</button>
+<button class="tab-btn " onclick="openTab(event, 'LM')">LM (Left Midfield)</button>
+<button class="tab-btn " onclick="openTab(event, 'RM')">RM (Right Midfield)</button>
+<button class="tab-btn " onclick="openTab(event, 'LB')">LB (Left-Back)</button>
+<button class="tab-btn " onclick="openTab(event, 'CB')">CB (Centre-Back)</button>
+<button class="tab-btn " onclick="openTab(event, 'RB')">RB (Right-Back)</button>
+<button class="tab-btn " onclick="openTab(event, 'GK')">GK (Goalkeeper)</button>
+</div>
+
+<div id="ST" class="tab-content active" style="display: block;">
+<table>
+<thead>
+<tr>
+<th>Oyuncu</th>
+<th>Sezon/Takım</th>
+<th>Gerçek TM</th>
+<th>SIV (Saf Değer)</th>
+<th>Verim (SIV/TM)</th>
+</tr>
+</thead>
+<tbody>
+
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#1</div>
+                    <div class="name-club">
+                        <h3>Kylian Mbappé</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>real_madrid</td>
+            <td class="tm-val">€200,000,000</td>
+            <td class="siv-val">€500,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#2</div>
+                    <div class="name-club">
+                        <h3>Erling Haaland</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_city</td>
+            <td class="tm-val">€200,000,000</td>
+            <td class="siv-val">€500,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#3</div>
+                    <div class="name-club">
+                        <h3>Ousmane Dembélé</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>paris_saintgermain</td>
+            <td class="tm-val">€100,000,000</td>
+            <td class="siv-val">€250,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#4</div>
+                    <div class="name-club">
+                        <h3>Lautaro Martínez</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>inter</td>
+            <td class="tm-val">€85,000,000</td>
+            <td class="siv-val">€172,869,200</td>
+            <td><span class="badge gem">2.03x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#5</div>
+                    <div class="name-club">
+                        <h3>Hugo Ekitiké</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>liverpool</td>
+            <td class="tm-val">€90,000,000</td>
+            <td class="siv-val">€159,867,595</td>
+            <td><span class="badge gem">1.78x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#6</div>
+                    <div class="name-club">
+                        <h3>João Pedro</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>chelsea</td>
+            <td class="tm-val">€75,000,000</td>
+            <td class="siv-val">€137,953,565</td>
+            <td><span class="badge gem">1.84x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#7</div>
+                    <div class="name-club">
+                        <h3>Kai Havertz</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>arsenal</td>
+            <td class="tm-val">€50,000,000</td>
+            <td class="siv-val">€125,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#8</div>
+                    <div class="name-club">
+                        <h3>Benjamin Šeško</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_united</td>
+            <td class="tm-val">€65,000,000</td>
+            <td class="siv-val">€123,536,534</td>
+            <td><span class="badge gem">1.90x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#9</div>
+                    <div class="name-club">
+                        <h3>Igor Thiago</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>brentford</td>
+            <td class="tm-val">€50,000,000</td>
+            <td class="siv-val">€112,722,272</td>
+            <td><span class="badge gem">2.25x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#10</div>
+                    <div class="name-club">
+                        <h3>Alexander Isak</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>liverpool</td>
+            <td class="tm-val">€100,000,000</td>
+            <td class="siv-val">€103,635,581</td>
+            <td><span class="badge normal">1.04x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#11</div>
+                    <div class="name-club">
+                        <h3>Harry Kane</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_bayern_munchen</td>
+            <td class="tm-val">€65,000,000</td>
+            <td class="siv-val">€100,910,832</td>
+            <td><span class="badge gem">1.55x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#12</div>
+                    <div class="name-club">
+                        <h3>Julián Alvarez</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>atletico_madrid</td>
+            <td class="tm-val">€90,000,000</td>
+            <td class="siv-val">€100,329,231</td>
+            <td><span class="badge normal">1.11x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#13</div>
+                    <div class="name-club">
+                        <h3>Nicolas Jackson</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_bayern_munchen</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€100,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#14</div>
+                    <div class="name-club">
+                        <h3>Victor Osimhen</h3>
+                        <span>Turkiye_trendyol_super_lig</span>
+                    </div>
+                </div>
+            </td>
+            <td>galatasaray</td>
+            <td class="tm-val">€75,000,000</td>
+            <td class="siv-val">€95,137,116</td>
+            <td><span class="badge normal">1.27x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#15</div>
+                    <div class="name-club">
+                        <h3>Vitor Roque</h3>
+                        <span>Brezilya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>palmeiras</td>
+            <td class="tm-val">€38,000,000</td>
+            <td class="siv-val">€95,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#16</div>
+                    <div class="name-club">
+                        <h3>Dominic Solanke</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>tottenham_hotspur</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€87,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#17</div>
+                    <div class="name-club">
+                        <h3>Mateo Retegui</h3>
+                        <span>Suudi_arabistan_pro_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>alqadsiah</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€87,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#18</div>
+                    <div class="name-club">
+                        <h3>Gonçalo Ramos</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>paris_saintgermain</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€87,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#19</div>
+                    <div class="name-club">
+                        <h3>Endrick</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>olympique_lyonnais</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€87,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#20</div>
+                    <div class="name-club">
+                        <h3>Ange-Yoan Bonny</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>inter</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€87,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        </tbody>
+</table>
+</div>
+
+<div id="LW" class="tab-content " style="display: none;">
+<table>
+<thead>
+<tr>
+<th>Oyuncu</th>
+<th>Sezon/Takım</th>
+<th>Gerçek TM</th>
+<th>SIV (Saf Değer)</th>
+<th>Verim (SIV/TM)</th>
+</tr>
+</thead>
+<tbody>
+
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#1</div>
+                    <div class="name-club">
+                        <h3>Vinicius Júnior</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>real_madrid</td>
+            <td class="tm-val">€150,000,000</td>
+            <td class="siv-val">€199,610,939</td>
+            <td><span class="badge gem">1.33x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#2</div>
+                    <div class="name-club">
+                        <h3>Luis Díaz</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_bayern_munchen</td>
+            <td class="tm-val">€70,000,000</td>
+            <td class="siv-val">€175,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#3</div>
+                    <div class="name-club">
+                        <h3>Raphinha</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_barcelona</td>
+            <td class="tm-val">€80,000,000</td>
+            <td class="siv-val">€147,324,718</td>
+            <td><span class="badge gem">1.84x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#4</div>
+                    <div class="name-club">
+                        <h3>Yan Diomande</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>rb_leipzig</td>
+            <td class="tm-val">€75,000,000</td>
+            <td class="siv-val">€135,554,222</td>
+            <td><span class="badge gem">1.81x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#5</div>
+                    <div class="name-club">
+                        <h3>Kenan Yıldız</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>juventus</td>
+            <td class="tm-val">€75,000,000</td>
+            <td class="siv-val">€104,874,169</td>
+            <td><span class="badge gem">1.40x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#6</div>
+                    <div class="name-club">
+                        <h3>Marcus Rashford</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_barcelona</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€97,365,282</td>
+            <td><span class="badge gem">2.43x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#7</div>
+                    <div class="name-club">
+                        <h3>Khvicha Kvaratskhelia</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>paris_saintgermain</td>
+            <td class="tm-val">€90,000,000</td>
+            <td class="siv-val">€95,724,544</td>
+            <td><span class="badge normal">1.06x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#8</div>
+                    <div class="name-club">
+                        <h3>Alberto Moleiro</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>villarreal</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€93,498,318</td>
+            <td><span class="badge gem">2.34x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#9</div>
+                    <div class="name-club">
+                        <h3>Bradley Barcola</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>paris_saintgermain</td>
+            <td class="tm-val">€70,000,000</td>
+            <td class="siv-val">€92,413,665</td>
+            <td><span class="badge gem">1.32x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#10</div>
+                    <div class="name-club">
+                        <h3>Igor Paixão</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>olympique_de_marseille</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€87,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#11</div>
+                    <div class="name-club">
+                        <h3>Bazoumana Touré</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>tsg_hoffenheim</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€79,190,989</td>
+            <td><span class="badge gem">2.26x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#12</div>
+                    <div class="name-club">
+                        <h3>Harvey Barnes</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>newcastle_united</td>
+            <td class="tm-val">€32,000,000</td>
+            <td class="siv-val">€75,585,831</td>
+            <td><span class="badge gem">2.36x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#13</div>
+                    <div class="name-club">
+                        <h3>Said El Mala</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>1_fc_koln</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€75,513,471</td>
+            <td><span class="badge gem">2.16x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#14</div>
+                    <div class="name-club">
+                        <h3>Abdessamad Ezzalzouli</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>real_betis</td>
+            <td class="tm-val">€30,000,000</td>
+            <td class="siv-val">€75,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#15</div>
+                    <div class="name-club">
+                        <h3>Christos Tzolis</h3>
+                        <span>Belcika_pro_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>club_brugge_kv</td>
+            <td class="tm-val">€30,000,000</td>
+            <td class="siv-val">€75,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#16</div>
+                    <div class="name-club">
+                        <h3>Jesús Rodriguez</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>como</td>
+            <td class="tm-val">€30,000,000</td>
+            <td class="siv-val">€75,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#17</div>
+                    <div class="name-club">
+                        <h3>Rafael Leão</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>milan</td>
+            <td class="tm-val">€65,000,000</td>
+            <td class="siv-val">€71,338,973</td>
+            <td><span class="badge normal">1.10x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#18</div>
+                    <div class="name-club">
+                        <h3>Pedro Gonçalves</h3>
+                        <span>Portekiz_liga_portugal</span>
+                    </div>
+                </div>
+            </td>
+            <td>sporting_cp</td>
+            <td class="tm-val">€28,000,000</td>
+            <td class="siv-val">€70,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#19</div>
+                    <div class="name-club">
+                        <h3>Assane Diao</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>como</td>
+            <td class="tm-val">€30,000,000</td>
+            <td class="siv-val">€68,628,539</td>
+            <td><span class="badge gem">2.29x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#20</div>
+                    <div class="name-club">
+                        <h3>Jérémy Doku</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_city</td>
+            <td class="tm-val">€65,000,000</td>
+            <td class="siv-val">€68,187,532</td>
+            <td><span class="badge normal">1.05x</span></td>
+        </tr>
+        </tbody>
+</table>
+</div>
+
+<div id="RW" class="tab-content " style="display: none;">
+<table>
+<thead>
+<tr>
+<th>Oyuncu</th>
+<th>Sezon/Takım</th>
+<th>Gerçek TM</th>
+<th>SIV (Saf Değer)</th>
+<th>Verim (SIV/TM)</th>
+</tr>
+</thead>
+<tbody>
+
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#1</div>
+                    <div class="name-club">
+                        <h3>Lamine Yamal</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_barcelona</td>
+            <td class="tm-val">€200,000,000</td>
+            <td class="siv-val">€500,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#2</div>
+                    <div class="name-club">
+                        <h3>Michael Olise</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_bayern_munchen</td>
+            <td class="tm-val">€140,000,000</td>
+            <td class="siv-val">€350,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#3</div>
+                    <div class="name-club">
+                        <h3>Antoine Semenyo</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_city</td>
+            <td class="tm-val">€75,000,000</td>
+            <td class="siv-val">€158,162,050</td>
+            <td><span class="badge gem">2.11x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#4</div>
+                    <div class="name-club">
+                        <h3>Estêvão</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>chelsea</td>
+            <td class="tm-val">€80,000,000</td>
+            <td class="siv-val">€127,781,113</td>
+            <td><span class="badge gem">1.60x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#5</div>
+                    <div class="name-club">
+                        <h3>Bukayo Saka</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>arsenal</td>
+            <td class="tm-val">€120,000,000</td>
+            <td class="siv-val">€124,609,155</td>
+            <td><span class="badge normal">1.04x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#6</div>
+                    <div class="name-club">
+                        <h3>Désiré Doué</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>paris_saintgermain</td>
+            <td class="tm-val">€90,000,000</td>
+            <td class="siv-val">€124,121,501</td>
+            <td><span class="badge gem">1.38x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#7</div>
+                    <div class="name-club">
+                        <h3>Mason Greenwood</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>olympique_de_marseille</td>
+            <td class="tm-val">€55,000,000</td>
+            <td class="siv-val">€84,768,034</td>
+            <td><span class="badge gem">1.54x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#8</div>
+                    <div class="name-club">
+                        <h3>Bryan Mbeumo</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_united</td>
+            <td class="tm-val">€80,000,000</td>
+            <td class="siv-val">€81,295,178</td>
+            <td><span class="badge normal">1.02x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#9</div>
+                    <div class="name-club">
+                        <h3>Brahim Díaz</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>real_madrid</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€78,069,951</td>
+            <td><span class="badge gem">2.23x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#10</div>
+                    <div class="name-club">
+                        <h3>Geovany Quenda</h3>
+                        <span>Portekiz_liga_portugal</span>
+                    </div>
+                </div>
+            </td>
+            <td>sporting_cp</td>
+            <td class="tm-val">€42,000,000</td>
+            <td class="siv-val">€75,544,247</td>
+            <td><span class="badge gem">1.80x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#11</div>
+                    <div class="name-club">
+                        <h3>Mohamed Salah</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>liverpool</td>
+            <td class="tm-val">€30,000,000</td>
+            <td class="siv-val">€75,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#12</div>
+                    <div class="name-club">
+                        <h3>Ibrahim Mbaye</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>paris_saintgermain</td>
+            <td class="tm-val">€30,000,000</td>
+            <td class="siv-val">€75,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#13</div>
+                    <div class="name-club">
+                        <h3>Anthony Elanga</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>newcastle_united</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€71,453,268</td>
+            <td><span class="badge gem">1.79x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#14</div>
+                    <div class="name-club">
+                        <h3>Evann Guessand</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>crystal_palace</td>
+            <td class="tm-val">€28,000,000</td>
+            <td class="siv-val">€70,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#15</div>
+                    <div class="name-club">
+                        <h3>Moussa Diaby</h3>
+                        <span>Suudi_arabistan_pro_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>alittihad</td>
+            <td class="tm-val">€28,000,000</td>
+            <td class="siv-val">€70,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#16</div>
+                    <div class="name-club">
+                        <h3>Maghnes Akliouche</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>as_monaco</td>
+            <td class="tm-val">€50,000,000</td>
+            <td class="siv-val">€69,525,634</td>
+            <td><span class="badge gem">1.39x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#17</div>
+                    <div class="name-club">
+                        <h3>Christian Pulišić</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>milan</td>
+            <td class="tm-val">€50,000,000</td>
+            <td class="siv-val">€67,053,678</td>
+            <td><span class="badge gem">1.34x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#18</div>
+                    <div class="name-club">
+                        <h3>Karim Adeyemi</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>borussia_dortmund</td>
+            <td class="tm-val">€50,000,000</td>
+            <td class="siv-val">€64,797,990</td>
+            <td><span class="badge normal">1.30x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#19</div>
+                    <div class="name-club">
+                        <h3>Jamie Leweling</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>vfb_stuttgart</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€62,959,876</td>
+            <td><span class="badge gem">1.57x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#20</div>
+                    <div class="name-club">
+                        <h3>Jarrod Bowen</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>west_ham_united</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€62,908,490</td>
+            <td><span class="badge gem">1.80x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        </tbody>
+</table>
+</div>
+
+<div id="SS" class="tab-content " style="display: none;">
+<table>
+<thead>
+<tr>
+<th>Oyuncu</th>
+<th>Sezon/Takım</th>
+<th>Gerçek TM</th>
+<th>SIV (Saf Değer)</th>
+<th>Verim (SIV/TM)</th>
+</tr>
+</thead>
+<tbody>
+
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#1</div>
+                    <div class="name-club">
+                        <h3>João Félix</h3>
+                        <span>Suudi_arabistan_pro_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>alnassr</td>
+            <td class="tm-val">€25,000,000</td>
+            <td class="siv-val">€62,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#2</div>
+                    <div class="name-club">
+                        <h3>Ademola Lookman</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>atletico_madrid</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€58,190,222</td>
+            <td><span class="badge gem">1.45x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#3</div>
+                    <div class="name-club">
+                        <h3>Giacomo Raspadori</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>atletico_madrid</td>
+            <td class="tm-val">€22,000,000</td>
+            <td class="siv-val">€55,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#4</div>
+                    <div class="name-club">
+                        <h3>Serge Gnabry</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_bayern_munchen</td>
+            <td class="tm-val">€20,000,000</td>
+            <td class="siv-val">€50,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#5</div>
+                    <div class="name-club">
+                        <h3>Yuito Suzuki</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>sc_freiburg</td>
+            <td class="tm-val">€18,000,000</td>
+            <td class="siv-val">€45,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#6</div>
+                    <div class="name-club">
+                        <h3>Nicolò Zaniolo</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>udinese</td>
+            <td class="tm-val">€13,000,000</td>
+            <td class="siv-val">€32,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#7</div>
+                    <div class="name-club">
+                        <h3>Albert Guðmundsson</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>fiorentina</td>
+            <td class="tm-val">€13,000,000</td>
+            <td class="siv-val">€32,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#8</div>
+                    <div class="name-club">
+                        <h3>Sebastiano Esposito</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>cagliari</td>
+            <td class="tm-val">€12,000,000</td>
+            <td class="siv-val">€30,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#9</div>
+                    <div class="name-club">
+                        <h3>Antoine Griezmann</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>atletico_madrid</td>
+            <td class="tm-val">€10,000,000</td>
+            <td class="siv-val">€25,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#10</div>
+                    <div class="name-club">
+                        <h3>Ramón Sosa</h3>
+                        <span>Brezilya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>palmeiras</td>
+            <td class="tm-val">€10,000,000</td>
+            <td class="siv-val">€25,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        </tbody>
+</table>
+</div>
+
+<div id="AM" class="tab-content " style="display: none;">
+<table>
+<thead>
+<tr>
+<th>Oyuncu</th>
+<th>Sezon/Takım</th>
+<th>Gerçek TM</th>
+<th>SIV (Saf Değer)</th>
+<th>Verim (SIV/TM)</th>
+</tr>
+</thead>
+<tbody>
+
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#1</div>
+                    <div class="name-club">
+                        <h3>Fermín López</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_barcelona</td>
+            <td class="tm-val">€100,000,000</td>
+            <td class="siv-val">€250,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#2</div>
+                    <div class="name-club">
+                        <h3>Jude Bellingham</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>real_madrid</td>
+            <td class="tm-val">€140,000,000</td>
+            <td class="siv-val">€217,725,523</td>
+            <td><span class="badge gem">1.56x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#3</div>
+                    <div class="name-club">
+                        <h3>Arda Güler</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>real_madrid</td>
+            <td class="tm-val">€90,000,000</td>
+            <td class="siv-val">€216,783,460</td>
+            <td><span class="badge gem">2.41x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#4</div>
+                    <div class="name-club">
+                        <h3>Jamal Musiala</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_bayern_munchen</td>
+            <td class="tm-val">€120,000,000</td>
+            <td class="siv-val">€193,436,015</td>
+            <td><span class="badge gem">1.61x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#5</div>
+                    <div class="name-club">
+                        <h3>Rayan Cherki</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_city</td>
+            <td class="tm-val">€65,000,000</td>
+            <td class="siv-val">€162,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#6</div>
+                    <div class="name-club">
+                        <h3>Florian Wirtz</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>liverpool</td>
+            <td class="tm-val">€110,000,000</td>
+            <td class="siv-val">€140,654,014</td>
+            <td><span class="badge normal">1.28x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#7</div>
+                    <div class="name-club">
+                        <h3>Dani Olmo</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_barcelona</td>
+            <td class="tm-val">€60,000,000</td>
+            <td class="siv-val">€137,033,739</td>
+            <td><span class="badge gem">2.28x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#8</div>
+                    <div class="name-club">
+                        <h3>Martin Ødegaard</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>arsenal</td>
+            <td class="tm-val">€65,000,000</td>
+            <td class="siv-val">€124,364,395</td>
+            <td><span class="badge gem">1.91x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#9</div>
+                    <div class="name-club">
+                        <h3>Lennart Karl</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_bayern_munchen</td>
+            <td class="tm-val">€60,000,000</td>
+            <td class="siv-val">€122,725,625</td>
+            <td><span class="badge gem">2.05x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#10</div>
+                    <div class="name-club">
+                        <h3>Cole Palmer</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>chelsea</td>
+            <td class="tm-val">€110,000,000</td>
+            <td class="siv-val">€114,045,048</td>
+            <td><span class="badge normal">1.04x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#11</div>
+                    <div class="name-club">
+                        <h3>Nico Paz</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>como</td>
+            <td class="tm-val">€65,000,000</td>
+            <td class="siv-val">€107,956,413</td>
+            <td><span class="badge gem">1.66x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#12</div>
+                    <div class="name-club">
+                        <h3>Dominik Szoboszlai</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>liverpool</td>
+            <td class="tm-val">€100,000,000</td>
+            <td class="siv-val">€106,171,073</td>
+            <td><span class="badge normal">1.06x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#13</div>
+                    <div class="name-club">
+                        <h3>Bruno Fernandes</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_united</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€100,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#14</div>
+                    <div class="name-club">
+                        <h3>Morgan Rogers</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>aston_villa</td>
+            <td class="tm-val">€80,000,000</td>
+            <td class="siv-val">€90,278,257</td>
+            <td><span class="badge normal">1.13x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#15</div>
+                    <div class="name-club">
+                        <h3>Phil Foden</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_city</td>
+            <td class="tm-val">€80,000,000</td>
+            <td class="siv-val">€89,236,603</td>
+            <td><span class="badge normal">1.12x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#16</div>
+                    <div class="name-club">
+                        <h3>Konstantinos Karetsas</h3>
+                        <span>Belcika_pro_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>krc_genk</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€87,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#17</div>
+                    <div class="name-club">
+                        <h3>Francisco Trincão</h3>
+                        <span>Portekiz_liga_portugal</span>
+                    </div>
+                </div>
+            </td>
+            <td>sporting_cp</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€87,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#18</div>
+                    <div class="name-club">
+                        <h3>Ismael Saibari</h3>
+                        <span>Hollanda_eredivisie</span>
+                    </div>
+                </div>
+            </td>
+            <td>psv_eindhoven</td>
+            <td class="tm-val">€32,000,000</td>
+            <td class="siv-val">€80,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#19</div>
+                    <div class="name-club">
+                        <h3>Bilal El Khannouss</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>vfb_stuttgart</td>
+            <td class="tm-val">€32,000,000</td>
+            <td class="siv-val">€78,245,303</td>
+            <td><span class="badge gem">2.45x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#20</div>
+                    <div class="name-club">
+                        <h3>Christoph Baumgartner</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>rb_leipzig</td>
+            <td class="tm-val">€30,000,000</td>
+            <td class="siv-val">€75,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        </tbody>
+</table>
+</div>
+
+<div id="CM" class="tab-content " style="display: none;">
+<table>
+<thead>
+<tr>
+<th>Oyuncu</th>
+<th>Sezon/Takım</th>
+<th>Gerçek TM</th>
+<th>SIV (Saf Değer)</th>
+<th>Verim (SIV/TM)</th>
+</tr>
+</thead>
+<tbody>
+
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#1</div>
+                    <div class="name-club">
+                        <h3>Pedri</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_barcelona</td>
+            <td class="tm-val">€150,000,000</td>
+            <td class="siv-val">€375,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#2</div>
+                    <div class="name-club">
+                        <h3>Federico Valverde</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>real_madrid</td>
+            <td class="tm-val">€120,000,000</td>
+            <td class="siv-val">€225,261,602</td>
+            <td><span class="badge gem">1.88x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#3</div>
+                    <div class="name-club">
+                        <h3>João Neves</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>paris_saintgermain</td>
+            <td class="tm-val">€110,000,000</td>
+            <td class="siv-val">€174,598,059</td>
+            <td><span class="badge gem">1.59x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#4</div>
+                    <div class="name-club">
+                        <h3>Declan Rice</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>arsenal</td>
+            <td class="tm-val">€120,000,000</td>
+            <td class="siv-val">€149,695,310</td>
+            <td><span class="badge normal">1.25x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#5</div>
+                    <div class="name-club">
+                        <h3>Warren Zaïre-Emery</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>paris_saintgermain</td>
+            <td class="tm-val">€60,000,000</td>
+            <td class="siv-val">€120,983,222</td>
+            <td><span class="badge gem">2.02x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#6</div>
+                    <div class="name-club">
+                        <h3>Bruno Guimarães</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>newcastle_united</td>
+            <td class="tm-val">€75,000,000</td>
+            <td class="siv-val">€107,139,779</td>
+            <td><span class="badge gem">1.43x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#7</div>
+                    <div class="name-club">
+                        <h3>Enzo Fernández</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>chelsea</td>
+            <td class="tm-val">€90,000,000</td>
+            <td class="siv-val">€105,596,637</td>
+            <td><span class="badge normal">1.17x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#8</div>
+                    <div class="name-club">
+                        <h3>Fabián Ruiz</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>paris_saintgermain</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€92,319,319</td>
+            <td><span class="badge gem">2.31x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#9</div>
+                    <div class="name-club">
+                        <h3>Frenkie de Jong</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_barcelona</td>
+            <td class="tm-val">€45,000,000</td>
+            <td class="siv-val">€86,357,506</td>
+            <td><span class="badge gem">1.92x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#10</div>
+                    <div class="name-club">
+                        <h3>Pape Gueye</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>villarreal</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€83,876,525</td>
+            <td><span class="badge gem">2.10x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#11</div>
+                    <div class="name-club">
+                        <h3>Senny Mayulu</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>paris_saintgermain</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€82,480,254</td>
+            <td><span class="badge gem">2.06x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#12</div>
+                    <div class="name-club">
+                        <h3>Tom Bischof</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_bayern_munchen</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€81,705,999</td>
+            <td><span class="badge gem">2.04x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#13</div>
+                    <div class="name-club">
+                        <h3>Alexis Mac Allister</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>liverpool</td>
+            <td class="tm-val">€80,000,000</td>
+            <td class="siv-val">€80,697,839</td>
+            <td><span class="badge normal">1.01x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#14</div>
+                    <div class="name-club">
+                        <h3>Éderson</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>atalanta</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€77,893,885</td>
+            <td><span class="badge gem">1.95x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#15</div>
+                    <div class="name-club">
+                        <h3>Pablo Gavi</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_barcelona</td>
+            <td class="tm-val">€30,000,000</td>
+            <td class="siv-val">€75,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#16</div>
+                    <div class="name-club">
+                        <h3>Exequiel Palacios</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>bayer_04_leverkusen</td>
+            <td class="tm-val">€30,000,000</td>
+            <td class="siv-val">€75,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#17</div>
+                    <div class="name-club">
+                        <h3>Mamadou Sangare</h3>
+                        <span>Avusturya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>sk_rapid_wien</td>
+            <td class="tm-val">€30,000,000</td>
+            <td class="siv-val">€75,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#18</div>
+                    <div class="name-club">
+                        <h3>Victor Froholdt</h3>
+                        <span>Danimarka_superliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_kbenhavn</td>
+            <td class="tm-val">€30,000,000</td>
+            <td class="siv-val">€75,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#19</div>
+                    <div class="name-club">
+                        <h3>Assan Ouédraogo</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>rb_leipzig</td>
+            <td class="tm-val">€28,000,000</td>
+            <td class="siv-val">€70,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#20</div>
+                    <div class="name-club">
+                        <h3>Nicolò Barella</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>inter</td>
+            <td class="tm-val">€50,000,000</td>
+            <td class="siv-val">€69,102,002</td>
+            <td><span class="badge gem">1.38x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        </tbody>
+</table>
+</div>
+
+<div id="DM" class="tab-content " style="display: none;">
+<table>
+<thead>
+<tr>
+<th>Oyuncu</th>
+<th>Sezon/Takım</th>
+<th>Gerçek TM</th>
+<th>SIV (Saf Değer)</th>
+<th>Verim (SIV/TM)</th>
+</tr>
+</thead>
+<tbody>
+
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#1</div>
+                    <div class="name-club">
+                        <h3>Vitinha</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>paris_saintgermain</td>
+            <td class="tm-val">€110,000,000</td>
+            <td class="siv-val">€263,327,969</td>
+            <td><span class="badge gem">2.39x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#2</div>
+                    <div class="name-club">
+                        <h3>Aleksandar Pavlović</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_bayern_munchen</td>
+            <td class="tm-val">€75,000,000</td>
+            <td class="siv-val">€162,080,743</td>
+            <td><span class="badge gem">2.16x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#3</div>
+                    <div class="name-club">
+                        <h3>Rodri</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_city</td>
+            <td class="tm-val">€65,000,000</td>
+            <td class="siv-val">€149,225,024</td>
+            <td><span class="badge gem">2.30x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#4</div>
+                    <div class="name-club">
+                        <h3>Moisés Caicedo</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>chelsea</td>
+            <td class="tm-val">€110,000,000</td>
+            <td class="siv-val">€145,001,796</td>
+            <td><span class="badge gem">1.32x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#5</div>
+                    <div class="name-club">
+                        <h3>Ryan Gravenberch</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>liverpool</td>
+            <td class="tm-val">€90,000,000</td>
+            <td class="siv-val">€120,086,436</td>
+            <td><span class="badge gem">1.33x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#6</div>
+                    <div class="name-club">
+                        <h3>Joshua Kimmich</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_bayern_munchen</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€100,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#7</div>
+                    <div class="name-club">
+                        <h3>Martín Zubimendi</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>arsenal</td>
+            <td class="tm-val">€80,000,000</td>
+            <td class="siv-val">€85,507,018</td>
+            <td><span class="badge normal">1.07x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#8</div>
+                    <div class="name-club">
+                        <h3>Aurélien Tchouaméni</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>real_madrid</td>
+            <td class="tm-val">€75,000,000</td>
+            <td class="siv-val">€84,719,210</td>
+            <td><span class="badge normal">1.13x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#9</div>
+                    <div class="name-club">
+                        <h3>Sandro Tonali</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>newcastle_united</td>
+            <td class="tm-val">€80,000,000</td>
+            <td class="siv-val">€77,471,564</td>
+            <td><span class="badge normal">0.97x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#10</div>
+                    <div class="name-club">
+                        <h3>Marc Bernal</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_barcelona</td>
+            <td class="tm-val">€30,000,000</td>
+            <td class="siv-val">€75,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#11</div>
+                    <div class="name-club">
+                        <h3>Ardon Jashari</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>milan</td>
+            <td class="tm-val">€30,000,000</td>
+            <td class="siv-val">€75,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#12</div>
+                    <div class="name-club">
+                        <h3>James Garner</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>everton</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€72,879,864</td>
+            <td><span class="badge gem">2.08x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#13</div>
+                    <div class="name-club">
+                        <h3>Máximo Perrone</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>como</td>
+            <td class="tm-val">€30,000,000</td>
+            <td class="siv-val">€66,212,461</td>
+            <td><span class="badge gem">2.21x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#14</div>
+                    <div class="name-club">
+                        <h3>Boubacar Kamara</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>aston_villa</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€63,077,224</td>
+            <td><span class="badge gem">1.58x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#15</div>
+                    <div class="name-club">
+                        <h3>Nico González</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_city</td>
+            <td class="tm-val">€45,000,000</td>
+            <td class="siv-val">€63,014,970</td>
+            <td><span class="badge gem">1.40x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#16</div>
+                    <div class="name-club">
+                        <h3>Manuel Locatelli</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>juventus</td>
+            <td class="tm-val">€25,000,000</td>
+            <td class="siv-val">€62,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#17</div>
+                    <div class="name-club">
+                        <h3>Ethan Ampadu</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>leeds_united</td>
+            <td class="tm-val">€25,000,000</td>
+            <td class="siv-val">€62,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#18</div>
+                    <div class="name-club">
+                        <h3>Samuele Ricci</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>milan</td>
+            <td class="tm-val">€25,000,000</td>
+            <td class="siv-val">€62,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#19</div>
+                    <div class="name-club">
+                        <h3>Leon Avdullahu</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>tsg_hoffenheim</td>
+            <td class="tm-val">€25,000,000</td>
+            <td class="siv-val">€62,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#20</div>
+                    <div class="name-club">
+                        <h3>Anton Stach</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>leeds_united</td>
+            <td class="tm-val">€25,000,000</td>
+            <td class="siv-val">€62,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        </tbody>
+</table>
+</div>
+
+<div id="LM" class="tab-content " style="display: none;">
+<table>
+<thead>
+<tr>
+<th>Oyuncu</th>
+<th>Sezon/Takım</th>
+<th>Gerçek TM</th>
+<th>SIV (Saf Değer)</th>
+<th>Verim (SIV/TM)</th>
+</tr>
+</thead>
+<tbody>
+
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#1</div>
+                    <div class="name-club">
+                        <h3>Keane Lewis-Potter</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>brentford</td>
+            <td class="tm-val">€25,000,000</td>
+            <td class="siv-val">€62,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#2</div>
+                    <div class="name-club">
+                        <h3>Diego Moreira</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>rc_strasbourg</td>
+            <td class="tm-val">€25,000,000</td>
+            <td class="siv-val">€50,806,951</td>
+            <td><span class="badge gem">2.03x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#3</div>
+                    <div class="name-club">
+                        <h3>Nicola Zalewski</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>atalanta</td>
+            <td class="tm-val">€20,000,000</td>
+            <td class="siv-val">€50,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#4</div>
+                    <div class="name-club">
+                        <h3>Rodrigo Gomes</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>wolverhampton</td>
+            <td class="tm-val">€15,000,000</td>
+            <td class="siv-val">€37,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#5</div>
+                    <div class="name-club">
+                        <h3>Lorenzo Bernasconi</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>atalanta</td>
+            <td class="tm-val">€15,000,000</td>
+            <td class="siv-val">€37,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#6</div>
+                    <div class="name-club">
+                        <h3>Sebastian Nanasi</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>rc_strasbourg</td>
+            <td class="tm-val">€12,000,000</td>
+            <td class="siv-val">€30,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        </tbody>
+</table>
+</div>
+
+<div id="RM" class="tab-content " style="display: none;">
+<table>
+<thead>
+<tr>
+<th>Oyuncu</th>
+<th>Sezon/Takım</th>
+<th>Gerçek TM</th>
+<th>SIV (Saf Değer)</th>
+<th>Verim (SIV/TM)</th>
+</tr>
+</thead>
+<tbody>
+
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#1</div>
+                    <div class="name-club">
+                        <h3>Luís Henrique</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>inter</td>
+            <td class="tm-val">€23,000,000</td>
+            <td class="siv-val">€57,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#2</div>
+                    <div class="name-club">
+                        <h3>Alexis Saelemaekers</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>milan</td>
+            <td class="tm-val">€25,000,000</td>
+            <td class="siv-val">€56,364,977</td>
+            <td><span class="badge gem">2.25x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#3</div>
+                    <div class="name-club">
+                        <h3>Yan Couto</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>borussia_dortmund</td>
+            <td class="tm-val">€20,000,000</td>
+            <td class="siv-val">€50,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#4</div>
+                    <div class="name-club">
+                        <h3>Anan Khalaili</h3>
+                        <span>Belcika_pro_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>royale_union_saintgilloise</td>
+            <td class="tm-val">€18,000,000</td>
+            <td class="siv-val">€45,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#5</div>
+                    <div class="name-club">
+                        <h3>Timothy Weah</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>olympique_de_marseille</td>
+            <td class="tm-val">€20,000,000</td>
+            <td class="siv-val">€42,101,388</td>
+            <td><span class="badge gem">2.11x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#6</div>
+                    <div class="name-club">
+                        <h3>Raoul Bellanova</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>atalanta</td>
+            <td class="tm-val">€18,000,000</td>
+            <td class="siv-val">€37,722,058</td>
+            <td><span class="badge gem">2.10x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#7</div>
+                    <div class="name-club">
+                        <h3>Ludovic Blas</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>stade_rennais</td>
+            <td class="tm-val">€10,000,000</td>
+            <td class="siv-val">€25,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#8</div>
+                    <div class="name-club">
+                        <h3>Mario Dorgeles</h3>
+                        <span>Portekiz_liga_portugal</span>
+                    </div>
+                </div>
+            </td>
+            <td>sporting_braga</td>
+            <td class="tm-val">€10,000,000</td>
+            <td class="siv-val">€25,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        </tbody>
+</table>
+</div>
+
+<div id="LB" class="tab-content " style="display: none;">
+<table>
+<thead>
+<tr>
+<th>Oyuncu</th>
+<th>Sezon/Takım</th>
+<th>Gerçek TM</th>
+<th>SIV (Saf Değer)</th>
+<th>Verim (SIV/TM)</th>
+</tr>
+</thead>
+<tbody>
+
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#1</div>
+                    <div class="name-club">
+                        <h3>Nuno Mendes</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>paris_saintgermain</td>
+            <td class="tm-val">€75,000,000</td>
+            <td class="siv-val">€171,194,070</td>
+            <td><span class="badge gem">2.28x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#2</div>
+                    <div class="name-club">
+                        <h3>Federico Dimarco</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>inter</td>
+            <td class="tm-val">€50,000,000</td>
+            <td class="siv-val">€93,025,119</td>
+            <td><span class="badge gem">1.86x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#3</div>
+                    <div class="name-club">
+                        <h3>Álvaro Carreras</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>real_madrid</td>
+            <td class="tm-val">€60,000,000</td>
+            <td class="siv-val">€87,242,191</td>
+            <td><span class="badge gem">1.45x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#4</div>
+                    <div class="name-club">
+                        <h3>Theo Hernández</h3>
+                        <span>Suudi_arabistan_pro_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>alhilal</td>
+            <td class="tm-val">€28,000,000</td>
+            <td class="siv-val">€70,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#5</div>
+                    <div class="name-club">
+                        <h3>Patrick Dorgu</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_united</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€68,203,170</td>
+            <td><span class="badge gem">1.95x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#6</div>
+                    <div class="name-club">
+                        <h3>Alphonso Davies</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_bayern_munchen</td>
+            <td class="tm-val">€45,000,000</td>
+            <td class="siv-val">€65,131,136</td>
+            <td><span class="badge gem">1.45x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#7</div>
+                    <div class="name-club">
+                        <h3>Nico O'Reilly</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_city</td>
+            <td class="tm-val">€50,000,000</td>
+            <td class="siv-val">€62,660,912</td>
+            <td><span class="badge normal">1.25x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#8</div>
+                    <div class="name-club">
+                        <h3>Gerard Martín</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_barcelona</td>
+            <td class="tm-val">€25,000,000</td>
+            <td class="siv-val">€62,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#9</div>
+                    <div class="name-club">
+                        <h3>Alejandro Grimaldo</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>bayer_04_leverkusen</td>
+            <td class="tm-val">€24,000,000</td>
+            <td class="siv-val">€60,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#10</div>
+                    <div class="name-club">
+                        <h3>Alejandro Balde</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_barcelona</td>
+            <td class="tm-val">€55,000,000</td>
+            <td class="siv-val">€59,602,505</td>
+            <td><span class="badge normal">1.08x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#11</div>
+                    <div class="name-club">
+                        <h3>Myles Lewis-Skelly</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>arsenal</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€59,480,257</td>
+            <td><span class="badge gem">1.70x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#12</div>
+                    <div class="name-club">
+                        <h3>Jorrel Hato</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>chelsea</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€58,531,280</td>
+            <td><span class="badge gem">1.67x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#13</div>
+                    <div class="name-club">
+                        <h3>Carlos Romero</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>espanyol</td>
+            <td class="tm-val">€25,000,000</td>
+            <td class="siv-val">€56,537,139</td>
+            <td><span class="badge gem">2.26x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#14</div>
+                    <div class="name-club">
+                        <h3>Maxim De Cuyper</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>brighton__hove_albion</td>
+            <td class="tm-val">€22,000,000</td>
+            <td class="siv-val">€55,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#15</div>
+                    <div class="name-club">
+                        <h3>David Raum</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>rb_leipzig</td>
+            <td class="tm-val">€22,000,000</td>
+            <td class="siv-val">€55,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#16</div>
+                    <div class="name-club">
+                        <h3>Rayan Aït-Nouri</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_city</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€53,817,386</td>
+            <td><span class="badge gem">1.35x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#17</div>
+                    <div class="name-club">
+                        <h3>Davide Bartesaghi</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>milan</td>
+            <td class="tm-val">€23,000,000</td>
+            <td class="siv-val">€53,381,598</td>
+            <td><span class="badge gem">2.32x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#18</div>
+                    <div class="name-club">
+                        <h3>Andrea Cambiaso</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>juventus</td>
+            <td class="tm-val">€30,000,000</td>
+            <td class="siv-val">€53,338,978</td>
+            <td><span class="badge gem">1.78x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#19</div>
+                    <div class="name-club">
+                        <h3>Daniel Svensson</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>borussia_dortmund</td>
+            <td class="tm-val">€22,000,000</td>
+            <td class="siv-val">€52,943,315</td>
+            <td><span class="badge gem">2.41x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#20</div>
+                    <div class="name-club">
+                        <h3>Marc Cucurella</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>chelsea</td>
+            <td class="tm-val">€50,000,000</td>
+            <td class="siv-val">€51,754,687</td>
+            <td><span class="badge normal">1.04x</span></td>
+        </tr>
+        </tbody>
+</table>
+</div>
+
+<div id="CB" class="tab-content " style="display: none;">
+<table>
+<thead>
+<tr>
+<th>Oyuncu</th>
+<th>Sezon/Takım</th>
+<th>Gerçek TM</th>
+<th>SIV (Saf Değer)</th>
+<th>Verim (SIV/TM)</th>
+</tr>
+</thead>
+<tbody>
+
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#1</div>
+                    <div class="name-club">
+                        <h3>Pau Cubarsí</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_barcelona</td>
+            <td class="tm-val">€80,000,000</td>
+            <td class="siv-val">€200,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#2</div>
+                    <div class="name-club">
+                        <h3>William Saliba</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>arsenal</td>
+            <td class="tm-val">€90,000,000</td>
+            <td class="siv-val">€167,287,816</td>
+            <td><span class="badge gem">1.86x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#3</div>
+                    <div class="name-club">
+                        <h3>Dean Huijsen</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>real_madrid</td>
+            <td class="tm-val">€65,000,000</td>
+            <td class="siv-val">€162,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#4</div>
+                    <div class="name-club">
+                        <h3>Willian Pacho</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>paris_saintgermain</td>
+            <td class="tm-val">€70,000,000</td>
+            <td class="siv-val">€150,875,299</td>
+            <td><span class="badge gem">2.16x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#5</div>
+                    <div class="name-club">
+                        <h3>Nico Schlotterbeck</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>borussia_dortmund</td>
+            <td class="tm-val">€55,000,000</td>
+            <td class="siv-val">€137,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#6</div>
+                    <div class="name-club">
+                        <h3>Dayot Upamecano</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_bayern_munchen</td>
+            <td class="tm-val">€70,000,000</td>
+            <td class="siv-val">€124,998,332</td>
+            <td><span class="badge gem">1.79x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#7</div>
+                    <div class="name-club">
+                        <h3>Alessandro Bastoni</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>inter</td>
+            <td class="tm-val">€70,000,000</td>
+            <td class="siv-val">€117,604,500</td>
+            <td><span class="badge gem">1.68x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#8</div>
+                    <div class="name-club">
+                        <h3>Marc Guéhi</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_city</td>
+            <td class="tm-val">€65,000,000</td>
+            <td class="siv-val">€106,228,175</td>
+            <td><span class="badge gem">1.63x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#9</div>
+                    <div class="name-club">
+                        <h3>Joško Gvardiol</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_city</td>
+            <td class="tm-val">€70,000,000</td>
+            <td class="siv-val">€105,279,670</td>
+            <td><span class="badge gem">1.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#10</div>
+                    <div class="name-club">
+                        <h3>Luka Vušković</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>hamburger_sv</td>
+            <td class="tm-val">€60,000,000</td>
+            <td class="siv-val">€101,327,298</td>
+            <td><span class="badge gem">1.69x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#11</div>
+                    <div class="name-club">
+                        <h3>Gonçalo Inácio</h3>
+                        <span>Portekiz_liga_portugal</span>
+                    </div>
+                </div>
+            </td>
+            <td>sporting_cp</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€100,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#12</div>
+                    <div class="name-club">
+                        <h3>Rúben Dias</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_city</td>
+            <td class="tm-val">€60,000,000</td>
+            <td class="siv-val">€97,149,030</td>
+            <td><span class="badge gem">1.62x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#13</div>
+                    <div class="name-club">
+                        <h3>Ezri Konsa</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>aston_villa</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€88,018,038</td>
+            <td><span class="badge gem">2.20x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#14</div>
+                    <div class="name-club">
+                        <h3>Lisandro Martínez</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_united</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€87,993,190</td>
+            <td><span class="badge gem">2.20x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#15</div>
+                    <div class="name-club">
+                        <h3>Evan Ndicka</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>roma</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€87,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#16</div>
+                    <div class="name-club">
+                        <h3>Eric García</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_barcelona</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€87,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#17</div>
+                    <div class="name-club">
+                        <h3>Edmond Tapsoba</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>bayer_04_leverkusen</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€87,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#18</div>
+                    <div class="name-club">
+                        <h3>Sven Botman</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>newcastle_united</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€87,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#19</div>
+                    <div class="name-club">
+                        <h3>Dávid Hancko</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>atletico_madrid</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€87,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#20</div>
+                    <div class="name-club">
+                        <h3>Jan Paul van Hecke</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>brighton__hove_albion</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€87,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        </tbody>
+</table>
+</div>
+
+<div id="RB" class="tab-content " style="display: none;">
+<table>
+<thead>
+<tr>
+<th>Oyuncu</th>
+<th>Sezon/Takım</th>
+<th>Gerçek TM</th>
+<th>SIV (Saf Değer)</th>
+<th>Verim (SIV/TM)</th>
+</tr>
+</thead>
+<tbody>
+
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#1</div>
+                    <div class="name-club">
+                        <h3>Achraf Hakimi</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>paris_saintgermain</td>
+            <td class="tm-val">€80,000,000</td>
+            <td class="siv-val">€113,886,305</td>
+            <td><span class="badge gem">1.42x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#2</div>
+                    <div class="name-club">
+                        <h3>Trent Alexander-Arnold</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>real_madrid</td>
+            <td class="tm-val">€65,000,000</td>
+            <td class="siv-val">€92,230,135</td>
+            <td><span class="badge gem">1.42x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#3</div>
+                    <div class="name-club">
+                        <h3>Pedro Porro</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>tottenham_hotspur</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€89,111,455</td>
+            <td><span class="badge gem">2.23x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#4</div>
+                    <div class="name-club">
+                        <h3>Josip Stanišić</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_bayern_munchen</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€80,564,955</td>
+            <td><span class="badge gem">2.30x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#5</div>
+                    <div class="name-club">
+                        <h3>Rico Lewis</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_city</td>
+            <td class="tm-val">€32,000,000</td>
+            <td class="siv-val">€80,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#6</div>
+                    <div class="name-club">
+                        <h3>Konrad Laimer</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_bayern_munchen</td>
+            <td class="tm-val">€32,000,000</td>
+            <td class="siv-val">€80,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#7</div>
+                    <div class="name-club">
+                        <h3>Reece James</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>chelsea</td>
+            <td class="tm-val">€60,000,000</td>
+            <td class="siv-val">€79,632,132</td>
+            <td><span class="badge gem">1.33x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#8</div>
+                    <div class="name-club">
+                        <h3>Matheus Nunes</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_city</td>
+            <td class="tm-val">€45,000,000</td>
+            <td class="siv-val">€73,740,686</td>
+            <td><span class="badge gem">1.64x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#9</div>
+                    <div class="name-club">
+                        <h3>Jules Koundé</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_barcelona</td>
+            <td class="tm-val">€65,000,000</td>
+            <td class="siv-val">€73,290,721</td>
+            <td><span class="badge normal">1.13x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#10</div>
+                    <div class="name-club">
+                        <h3>Jurriën Timber</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>arsenal</td>
+            <td class="tm-val">€70,000,000</td>
+            <td class="siv-val">€73,041,467</td>
+            <td><span class="badge normal">1.04x</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#11</div>
+                    <div class="name-club">
+                        <h3>Malo Gusto</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>chelsea</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€69,170,260</td>
+            <td><span class="badge gem">1.98x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#12</div>
+                    <div class="name-club">
+                        <h3>Josh Acheampong</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>chelsea</td>
+            <td class="tm-val">€25,000,000</td>
+            <td class="siv-val">€62,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#13</div>
+                    <div class="name-club">
+                        <h3>Julian Ryerson</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>borussia_dortmund</td>
+            <td class="tm-val">€25,000,000</td>
+            <td class="siv-val">€62,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#14</div>
+                    <div class="name-club">
+                        <h3>Valentino Livramento</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>newcastle_united</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€57,315,373</td>
+            <td><span class="badge gem">1.43x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#15</div>
+                    <div class="name-club">
+                        <h3>Diogo Dalot</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_united</td>
+            <td class="tm-val">€30,000,000</td>
+            <td class="siv-val">€53,400,927</td>
+            <td><span class="badge gem">1.78x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#16</div>
+                    <div class="name-club">
+                        <h3>Conor Bradley</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>liverpool</td>
+            <td class="tm-val">€30,000,000</td>
+            <td class="siv-val">€52,703,410</td>
+            <td><span class="badge gem">1.76x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#17</div>
+                    <div class="name-club">
+                        <h3>Ben White</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>arsenal</td>
+            <td class="tm-val">€30,000,000</td>
+            <td class="siv-val">€52,081,272</td>
+            <td><span class="badge gem">1.74x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#18</div>
+                    <div class="name-club">
+                        <h3>Vanderson</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>as_monaco</td>
+            <td class="tm-val">€20,000,000</td>
+            <td class="siv-val">€50,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#19</div>
+                    <div class="name-club">
+                        <h3>Trai Hume</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>sunderland</td>
+            <td class="tm-val">€22,000,000</td>
+            <td class="siv-val">€48,939,250</td>
+            <td><span class="badge gem">2.22x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#20</div>
+                    <div class="name-club">
+                        <h3>Noussair Mazraoui</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_united</td>
+            <td class="tm-val">€20,000,000</td>
+            <td class="siv-val">€48,148,784</td>
+            <td><span class="badge gem">2.41x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        </tbody>
+</table>
+</div>
+
+<div id="GK" class="tab-content " style="display: none;">
+<table>
+<thead>
+<tr>
+<th>Oyuncu</th>
+<th>Sezon/Takım</th>
+<th>Gerçek TM</th>
+<th>SIV (Saf Değer)</th>
+<th>Verim (SIV/TM)</th>
+</tr>
+</thead>
+<tbody>
+
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#1</div>
+                    <div class="name-club">
+                        <h3>Joan García</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_barcelona</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€100,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#2</div>
+                    <div class="name-club">
+                        <h3>Gianluigi Donnarumma</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_city</td>
+            <td class="tm-val">€45,000,000</td>
+            <td class="siv-val">€96,979,969</td>
+            <td><span class="badge gem">2.16x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#3</div>
+                    <div class="name-club">
+                        <h3>Gregor Kobel</h3>
+                        <span>Almanya_bundesliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>borussia_dortmund</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€90,969,381</td>
+            <td><span class="badge gem">2.27x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#4</div>
+                    <div class="name-club">
+                        <h3>Diogo Costa</h3>
+                        <span>Portekiz_liga_portugal</span>
+                    </div>
+                </div>
+            </td>
+            <td>fc_porto</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€88,985,645</td>
+            <td><span class="badge gem">2.22x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#5</div>
+                    <div class="name-club">
+                        <h3>Mile Svilar</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>roma</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€87,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#6</div>
+                    <div class="name-club">
+                        <h3>David Raya</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>arsenal</td>
+            <td class="tm-val">€35,000,000</td>
+            <td class="siv-val">€87,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#7</div>
+                    <div class="name-club">
+                        <h3>Bart Verbruggen</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>brighton__hove_albion</td>
+            <td class="tm-val">€40,000,000</td>
+            <td class="siv-val">€76,325,034</td>
+            <td><span class="badge gem">1.91x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#8</div>
+                    <div class="name-club">
+                        <h3>Senne Lammens</h3>
+                        <span>Belcika_pro_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>royal_antwerp_fc</td>
+            <td class="tm-val">€30,000,000</td>
+            <td class="siv-val">€75,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#9</div>
+                    <div class="name-club">
+                        <h3>Lucas Chevalier</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>paris_saintgermain</td>
+            <td class="tm-val">€30,000,000</td>
+            <td class="siv-val">€75,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#10</div>
+                    <div class="name-club">
+                        <h3>Dean Henderson</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>crystal_palace</td>
+            <td class="tm-val">€28,000,000</td>
+            <td class="siv-val">€70,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#11</div>
+                    <div class="name-club">
+                        <h3>Đorđe Petrović</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>bournemouth</td>
+            <td class="tm-val">€28,000,000</td>
+            <td class="siv-val">€70,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#12</div>
+                    <div class="name-club">
+                        <h3>Giorgi Mamardashvili</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>liverpool</td>
+            <td class="tm-val">€28,000,000</td>
+            <td class="siv-val">€70,000,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#13</div>
+                    <div class="name-club">
+                        <h3>Marco Carnesecchi</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>atalanta</td>
+            <td class="tm-val">€25,000,000</td>
+            <td class="siv-val">€62,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#14</div>
+                    <div class="name-club">
+                        <h3>Anatoliy Trubin</h3>
+                        <span>Portekiz_liga_portugal</span>
+                    </div>
+                </div>
+            </td>
+            <td>benfica</td>
+            <td class="tm-val">€25,000,000</td>
+            <td class="siv-val">€62,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#15</div>
+                    <div class="name-club">
+                        <h3>Caoimhin Kelleher</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>brentford</td>
+            <td class="tm-val">€25,000,000</td>
+            <td class="siv-val">€62,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#16</div>
+                    <div class="name-club">
+                        <h3>Unai Simón</h3>
+                        <span>Ispanya_laliga</span>
+                    </div>
+                </div>
+            </td>
+            <td>athletic_club</td>
+            <td class="tm-val">€25,000,000</td>
+            <td class="siv-val">€62,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#17</div>
+                    <div class="name-club">
+                        <h3>Mike Maignan</h3>
+                        <span>Italya_serie_a</span>
+                    </div>
+                </div>
+            </td>
+            <td>milan</td>
+            <td class="tm-val">€25,000,000</td>
+            <td class="siv-val">€62,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#18</div>
+                    <div class="name-club">
+                        <h3>James Trafford</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>manchester_city</td>
+            <td class="tm-val">€25,000,000</td>
+            <td class="siv-val">€62,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#19</div>
+                    <div class="name-club">
+                        <h3>Robin Risser</h3>
+                        <span>Fransa_ligue_1</span>
+                    </div>
+                </div>
+            </td>
+            <td>rc_lens</td>
+            <td class="tm-val">€25,000,000</td>
+            <td class="siv-val">€62,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="player-info">
+                    <div class="rank">#20</div>
+                    <div class="name-club">
+                        <h3>Robin Roefs</h3>
+                        <span>Ingiltere_premier_league</span>
+                    </div>
+                </div>
+            </td>
+            <td>sunderland</td>
+            <td class="tm-val">€25,000,000</td>
+            <td class="siv-val">€62,500,000</td>
+            <td><span class="badge gem">2.50x 🚀 GİZLİ CEVHER</span></td>
+        </tr>
+        </tbody>
+</table>
+</div>
+
+
+    </div>
+</body>
+</html>

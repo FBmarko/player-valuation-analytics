@@ -1,0 +1,13 @@
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+catboost
+statsbombpy
+soccerdata
+kaggle
+thefuzz
+requests
+xgboost
+lightgbm

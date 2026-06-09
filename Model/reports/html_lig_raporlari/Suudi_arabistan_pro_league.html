@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suudi Arabistan Pro League — Model tabloları</title>
+<style>
+
+        :root {
+            --bg: #0b1220;
+            --panel: #151d2e;
+            --text: #e8edf5;
+            --muted: #8b9bb4;
+            --border: #2a3548;
+            --accent: #3b82f6;
+            --good: #22c55e;
+            --mid: #eab308;
+            --bad: #f87171;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: "Segoe UI", system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 24px;
+            line-height: 1.45;
+        }
+        .wrap { max-width: 1200px; margin: 0 auto; }
+        h1 { font-size: 1.65rem; margin: 0 0 8px; font-weight: 650; }
+        .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 28px; }
+        .team-block {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 22px;
+            overflow: hidden;
+        }
+        .team-block h2 {
+            margin: 0;
+            padding: 12px 16px;
+            font-size: 1.05rem;
+            background: rgba(59, 130, 246, 0.12);
+            border-bottom: 1px solid var(--border);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+        th, td {
+            text-align: left;
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            color: var(--muted);
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(255,255,255,0.03); }
+        td.num { text-align: right; font-variant-numeric: tabular-nums; }
+        .pct-high { color: var(--good); font-weight: 600; }
+        .pct-mid { color: var(--mid); font-weight: 600; }
+        .pct-low { color: var(--bad); font-weight: 600; }
+        .note {
+            margin-top: 32px;
+            padding: 14px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+        a.back { color: var(--accent); text-decoration: none; }
+        a.back:hover { text-decoration: underline; }
+    
+</style>
+</head>
+<body>
+<div class="wrap">
+<p><a class="back" href="index.html">← Tüm ligler</a></p>
+<h1>Suudi Arabistan Pro League</h1>
+<p class="meta">Model: elite_stacking_model.pkl · Üretim: 2026-04-12 15:42 · Takım: 18 · Oyuncu satırı: 358</p>
+<div class="team-block">
+<h2>Alahli</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Enzo Millot</td><td class="num">28.000.000 €</td><td class="num">28.547.291 €</td><td class="num pct-high">98.0 %</td></tr>
+<tr><td>Wenderson Galeno</td><td class="num">22.000.000 €</td><td class="num">21.351.290 €</td><td class="num pct-high">97.1 %</td></tr>
+<tr><td>Ivan Toney</td><td class="num">20.000.000 €</td><td class="num">20.231.047 €</td><td class="num pct-high">98.8 %</td></tr>
+<tr><td>Valentin Atangana Edoa</td><td class="num">18.000.000 €</td><td class="num">17.999.978 €</td><td class="num pct-high">100.0 %</td></tr>
+<tr><td>Roger Ibañez</td><td class="num">17.000.000 €</td><td class="num">17.223.874 €</td><td class="num pct-high">98.7 %</td></tr>
+<tr><td>Merih Demiral</td><td class="num">14.000.000 €</td><td class="num">13.143.168 €</td><td class="num pct-high">93.9 %</td></tr>
+<tr><td>Franck Kessié</td><td class="num">12.000.000 €</td><td class="num">12.264.403 €</td><td class="num pct-high">97.8 %</td></tr>
+<tr><td>Matheus Gonçalves</td><td class="num">9.000.000 €</td><td class="num">9.411.742 €</td><td class="num pct-high">95.4 %</td></tr>
+<tr><td>Ricardo Mathias</td><td class="num">8.000.000 €</td><td class="num">13.314.194 €</td><td class="num pct-low">33.6 %</td></tr>
+<tr><td>Riyad Mahrez</td><td class="num">7.000.000 €</td><td class="num">6.595.853 €</td><td class="num pct-high">94.2 %</td></tr>
+<tr><td>Edouard Mendy</td><td class="num">4.500.000 €</td><td class="num">4.019.008 €</td><td class="num pct-high">89.3 %</td></tr>
+<tr><td>Matteo Dams</td><td class="num">4.000.000 €</td><td class="num">4.980.487 €</td><td class="num pct-high">75.5 %</td></tr>
+<tr><td>Firas Al-Buraikan</td><td class="num">4.000.000 €</td><td class="num">4.250.394 €</td><td class="num pct-high">93.7 %</td></tr>
+<tr><td>Ali Majrashi</td><td class="num">1.200.000 €</td><td class="num">952.606 €</td><td class="num pct-high">79.4 %</td></tr>
+<tr><td>Zakaria Hawsawi</td><td class="num">1.000.000 €</td><td class="num">567.702 €</td><td class="num pct-mid">56.8 %</td></tr>
+<tr><td>Ziyad Aljohani</td><td class="num">800.000 €</td><td class="num">1.055.913 €</td><td class="num pct-mid">68.0 %</td></tr>
+<tr><td>Rayan Hamed</td><td class="num">700.000 €</td><td class="num">850.365 €</td><td class="num pct-high">78.5 %</td></tr>
+<tr><td>Mohammed Sulaiman</td><td class="num">700.000 €</td><td class="num">699.605 €</td><td class="num pct-high">99.9 %</td></tr>
+<tr><td>Mohammed Abdulrahman</td><td class="num">500.000 €</td><td class="num">506.035 €</td><td class="num pct-high">98.8 %</td></tr>
+<tr><td>Saleh Abu Al-Shamat</td><td class="num">375.000 €</td><td class="num">157.020 €</td><td class="num pct-low">41.9 %</td></tr>
+<tr><td>Abdulrahman Al Sanbi</td><td class="num">300.000 €</td><td class="num">26.888 €</td><td class="num pct-low">9.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Alettifaq</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Moussa Dembélé</td><td class="num">7.500.000 €</td><td class="num">6.441.512 €</td><td class="num pct-high">85.9 %</td></tr>
+<tr><td>Álvaro Medrán</td><td class="num">3.500.000 €</td><td class="num">3.024.390 €</td><td class="num pct-high">86.4 %</td></tr>
+<tr><td>Ondrej Duda</td><td class="num">3.200.000 €</td><td class="num">2.771.297 €</td><td class="num pct-high">86.6 %</td></tr>
+<tr><td>Marek Rodák</td><td class="num">2.800.000 €</td><td class="num">2.816.718 €</td><td class="num pct-high">99.4 %</td></tr>
+<tr><td>Jack Hendry</td><td class="num">2.500.000 €</td><td class="num">2.040.145 €</td><td class="num pct-high">81.6 %</td></tr>
+<tr><td>Georginio Wijnaldum</td><td class="num">2.500.000 €</td><td class="num">2.245.567 €</td><td class="num pct-high">89.8 %</td></tr>
+<tr><td>João Costa</td><td class="num">2.500.000 €</td><td class="num">3.413.456 €</td><td class="num pct-mid">63.5 %</td></tr>
+<tr><td>Khalid Al-Ghannam</td><td class="num">900.000 €</td><td class="num">981.541 €</td><td class="num pct-high">90.9 %</td></tr>
+<tr><td>Mohau Nkota</td><td class="num">800.000 €</td><td class="num">795.663 €</td><td class="num pct-high">99.5 %</td></tr>
+<tr><td>Matija Glušćević</td><td class="num">800.000 €</td><td class="num">619.526 €</td><td class="num pct-high">77.4 %</td></tr>
+<tr><td>Francisco Calvo</td><td class="num">700.000 €</td><td class="num">646.280 €</td><td class="num pct-high">92.3 %</td></tr>
+<tr><td>Ahmed Hassan</td><td class="num">700.000 €</td><td class="num">727.281 €</td><td class="num pct-high">96.1 %</td></tr>
+<tr><td>Mukhtar Ali</td><td class="num">700.000 €</td><td class="num">806.953 €</td><td class="num pct-high">84.7 %</td></tr>
+<tr><td>Abdullah Madu</td><td class="num">500.000 €</td><td class="num">437.182 €</td><td class="num pct-high">87.4 %</td></tr>
+<tr><td>Abdulbaset Hindi</td><td class="num">500.000 €</td><td class="num">471.059 €</td><td class="num pct-high">94.2 %</td></tr>
+<tr><td>Abdullah Al Khateeb</td><td class="num">375.000 €</td><td class="num">440.077 €</td><td class="num pct-high">82.6 %</td></tr>
+<tr><td>Madallah Al-Olayan</td><td class="num">350.000 €</td><td class="num">111.083 €</td><td class="num pct-low">31.7 %</td></tr>
+<tr><td>Awad Abdu Dahal</td><td class="num">200.000 €</td><td class="num">-102.882 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Alfateh</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Zaydou Youssouf</td><td class="num">6.000.000 €</td><td class="num">6.026.604 €</td><td class="num pct-high">99.6 %</td></tr>
+<tr><td>Matías Vargas</td><td class="num">4.500.000 €</td><td class="num">4.101.313 €</td><td class="num pct-high">91.1 %</td></tr>
+<tr><td>Amine Sbai</td><td class="num">2.500.000 €</td><td class="num">1.071.553 €</td><td class="num pct-low">42.9 %</td></tr>
+<tr><td>Jorge Fernandes</td><td class="num">1.700.000 €</td><td class="num">1.823.750 €</td><td class="num pct-high">92.7 %</td></tr>
+<tr><td>Sofiane Bendebka</td><td class="num">800.000 €</td><td class="num">618.557 €</td><td class="num pct-high">77.3 %</td></tr>
+<tr><td>Fernando Pacheco</td><td class="num">700.000 €</td><td class="num">606.608 €</td><td class="num pct-high">86.7 %</td></tr>
+<tr><td>Marwane Saadane</td><td class="num">450.000 €</td><td class="num">79.010 €</td><td class="num pct-low">17.6 %</td></tr>
+<tr><td>Mourad Batna</td><td class="num">450.000 €</td><td class="num">254.118 €</td><td class="num pct-mid">56.5 %</td></tr>
+<tr><td>Naif Masoud</td><td class="num">375.000 €</td><td class="num">257.152 €</td><td class="num pct-mid">68.6 %</td></tr>
+<tr><td>Saeed Baattia</td><td class="num">250.000 €</td><td class="num">249.679 €</td><td class="num pct-high">99.9 %</td></tr>
+<tr><td>Abdulaziz Al-Swealem</td><td class="num">250.000 €</td><td class="num">862 €</td><td class="num pct-low">0.3 %</td></tr>
+<tr><td>Ziyad Aljari</td><td class="num">225.000 €</td><td class="num">96.312 €</td><td class="num pct-low">42.8 %</td></tr>
+<tr><td>Faisal Darisi</td><td class="num">175.000 €</td><td class="num">60.636 €</td><td class="num pct-low">34.6 %</td></tr>
+<tr><td>Hussain Qasim</td><td class="num">150.000 €</td><td class="num">139.623 €</td><td class="num pct-high">93.1 %</td></tr>
+<tr><td>Amin Al-Bukhari</td><td class="num">125.000 €</td><td class="num">-121.993 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Saad Al-Shurafa</td><td class="num">125.000 €</td><td class="num">462.592 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Ali Al Masoud</td><td class="num">100.000 €</td><td class="num">-25.679 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Wesley Delgado</td><td class="num">100.000 €</td><td class="num">594.819 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Abdullah Al-Anazi</td><td class="num">100.000 €</td><td class="num">108.721 €</td><td class="num pct-high">91.3 %</td></tr>
+<tr><td>Mohammed Al-Sarnoukh</td><td class="num">75.000 €</td><td class="num">-400.043 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Fawaz Al-Hamad</td><td class="num">75.000 €</td><td class="num">-699.020 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Faisal Al Abdulwahed</td><td class="num">50.000 €</td><td class="num">183.225 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Jefferson Ramos</td><td class="num">50.000 €</td><td class="num">584.471 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Alfayha</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Fashion Sakala</td><td class="num">3.800.000 €</td><td class="num">2.475.472 €</td><td class="num pct-mid">65.1 %</td></tr>
+<tr><td>Jason</td><td class="num">2.200.000 €</td><td class="num">1.729.432 €</td><td class="num pct-high">78.6 %</td></tr>
+<tr><td>Silvère Ganvoula</td><td class="num">1.200.000 €</td><td class="num">1.120.984 €</td><td class="num pct-high">93.4 %</td></tr>
+<tr><td>Chris Smalling</td><td class="num">1.200.000 €</td><td class="num">935.636 €</td><td class="num pct-high">78.0 %</td></tr>
+<tr><td>Alfa Semedo</td><td class="num">1.000.000 €</td><td class="num">1.363.825 €</td><td class="num pct-mid">63.6 %</td></tr>
+<tr><td>Yassine Benzia</td><td class="num">1.000.000 €</td><td class="num">1.048.419 €</td><td class="num pct-high">95.2 %</td></tr>
+<tr><td>Sabri Abdu Dahal</td><td class="num">1.000.000 €</td><td class="num">1.378.160 €</td><td class="num pct-mid">62.2 %</td></tr>
+<tr><td>Mikel Villanueva</td><td class="num">900.000 €</td><td class="num">1.163.897 €</td><td class="num pct-high">70.7 %</td></tr>
+<tr><td>Ahmed Bamasud</td><td class="num">650.000 €</td><td class="num">622.469 €</td><td class="num pct-high">95.8 %</td></tr>
+<tr><td>Orlando Mosquera</td><td class="num">650.000 €</td><td class="num">552.741 €</td><td class="num pct-high">85.0 %</td></tr>
+<tr><td>Rakan Kaabi</td><td class="num">450.000 €</td><td class="num">784.774 €</td><td class="num pct-low">25.6 %</td></tr>
+<tr><td>Abdullah Radif</td><td class="num">400.000 €</td><td class="num">186.168 €</td><td class="num pct-mid">46.5 %</td></tr>
+<tr><td>Ziyad Al-Sahafi</td><td class="num">300.000 €</td><td class="num">118.589 €</td><td class="num pct-low">39.5 %</td></tr>
+<tr><td>Mokher Al-Rashidi</td><td class="num">275.000 €</td><td class="num">335.726 €</td><td class="num pct-high">77.9 %</td></tr>
+<tr><td>Mohammed Al Baqawi</td><td class="num">250.000 €</td><td class="num">70.733 €</td><td class="num pct-low">28.3 %</td></tr>
+<tr><td>Stylianos Vrontis</td><td class="num">250.000 €</td><td class="num">281.896 €</td><td class="num pct-high">87.2 %</td></tr>
+<tr><td>Mansour Al Bishi</td><td class="num">225.000 €</td><td class="num">79.347 €</td><td class="num pct-low">35.3 %</td></tr>
+<tr><td>Nawwaf Al Harthi</td><td class="num">200.000 €</td><td class="num">294.225 €</td><td class="num pct-mid">52.9 %</td></tr>
+<tr><td>Rayan Enad</td><td class="num">175.000 €</td><td class="num">-187.940 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Ammar Al-Khaibari</td><td class="num">125.000 €</td><td class="num">13.047 €</td><td class="num pct-low">10.4 %</td></tr>
+<tr><td>Abdulrahman Al Anzi</td><td class="num">100.000 €</td><td class="num">21.902 €</td><td class="num pct-low">21.9 %</td></tr>
+<tr><td>Abdullah Al-Jawaey</td><td class="num">75.000 €</td><td class="num">-44.145 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Alhazem</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Bruno Varela</td><td class="num">2.000.000 €</td><td class="num">1.938.185 €</td><td class="num pct-high">96.9 %</td></tr>
+<tr><td>Fábio Martins</td><td class="num">1.800.000 €</td><td class="num">1.722.842 €</td><td class="num pct-high">95.7 %</td></tr>
+<tr><td>Rosier Loreintz</td><td class="num">800.000 €</td><td class="num">1.070.194 €</td><td class="num pct-mid">66.2 %</td></tr>
+<tr><td>Youssouf Oumarou</td><td class="num">700.000 €</td><td class="num">531.448 €</td><td class="num pct-high">75.9 %</td></tr>
+<tr><td>Elias Mokwana</td><td class="num">700.000 €</td><td class="num">502.804 €</td><td class="num pct-high">71.8 %</td></tr>
+<tr><td>Amir Saâyoud</td><td class="num">500.000 €</td><td class="num">389.061 €</td><td class="num pct-high">77.8 %</td></tr>
+<tr><td>Omar Al-Somah</td><td class="num">500.000 €</td><td class="num">284.807 €</td><td class="num pct-mid">57.0 %</td></tr>
+<tr><td>Abdelmounaim Boutouil</td><td class="num">450.000 €</td><td class="num">187.529 €</td><td class="num pct-low">41.7 %</td></tr>
+<tr><td>Miguel Carvalho</td><td class="num">350.000 €</td><td class="num">2.165.923 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Aboubacar Bah</td><td class="num">300.000 €</td><td class="num">1.172.655 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Sultan Tanker</td><td class="num">275.000 €</td><td class="num">329.505 €</td><td class="num pct-high">80.2 %</td></tr>
+<tr><td>Abdurahman Al-Dakheel</td><td class="num">250.000 €</td><td class="num">20.207 €</td><td class="num pct-low">8.1 %</td></tr>
+<tr><td>Saud Al Rashed</td><td class="num">225.000 €</td><td class="num">176.582 €</td><td class="num pct-high">78.5 %</td></tr>
+<tr><td>Nawaf Al-Habashi</td><td class="num">200.000 €</td><td class="num">81.428 €</td><td class="num pct-low">40.7 %</td></tr>
+<tr><td>Abdulaziz Al-Harbi</td><td class="num">175.000 €</td><td class="num">-153.747 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Ibrahim Zaied</td><td class="num">175.000 €</td><td class="num">75.602 €</td><td class="num pct-low">43.2 %</td></tr>
+<tr><td>Abdullah Al-Shanqiti</td><td class="num">175.000 €</td><td class="num">-3.896 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Abdulhadi Al-Harajin</td><td class="num">125.000 €</td><td class="num">-93.871 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Mohammed Al-Yami</td><td class="num">125.000 €</td><td class="num">-24.574 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Abdulaziz Al-Dwehe</td><td class="num">75.000 €</td><td class="num">-5.264 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Yousef Al-Shammari</td><td class="num">75.000 €</td><td class="num">-36.454 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Abdulrahman Al-Khaibary</td><td class="num">50.000 €</td><td class="num">-198.130 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Alhilal</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Theo Hernández</td><td class="num">28.000.000 €</td><td class="num">28.011.814 €</td><td class="num pct-high">100.0 %</td></tr>
+<tr><td>Rúben Neves</td><td class="num">25.000.000 €</td><td class="num">24.496.712 €</td><td class="num pct-high">98.0 %</td></tr>
+<tr><td>Darwin Núñez</td><td class="num">25.000.000 €</td><td class="num">26.137.797 €</td><td class="num pct-high">95.4 %</td></tr>
+<tr><td>Malcom</td><td class="num">20.000.000 €</td><td class="num">20.985.933 €</td><td class="num pct-high">95.1 %</td></tr>
+<tr><td>Marcos Leonardo</td><td class="num">20.000.000 €</td><td class="num">12.795.217 €</td><td class="num pct-mid">64.0 %</td></tr>
+<tr><td>Mohamed Kader Meite</td><td class="num">18.000.000 €</td><td class="num">17.801.591 €</td><td class="num pct-high">98.9 %</td></tr>
+<tr><td>Sergej Milinković-Savić</td><td class="num">15.000.000 €</td><td class="num">14.226.476 €</td><td class="num pct-high">94.8 %</td></tr>
+<tr><td>Saimon Bouabre</td><td class="num">15.000.000 €</td><td class="num">11.831.518 €</td><td class="num pct-high">78.9 %</td></tr>
+<tr><td>Yusuf Akçiçek</td><td class="num">15.000.000 €</td><td class="num">14.618.878 €</td><td class="num pct-high">97.5 %</td></tr>
+<tr><td>João Cancelo</td><td class="num">9.000.000 €</td><td class="num">9.266.007 €</td><td class="num pct-high">97.0 %</td></tr>
+<tr><td>Karim Benzema</td><td class="num">6.000.000 €</td><td class="num">5.944.907 €</td><td class="num pct-high">99.1 %</td></tr>
+<tr><td>Kalidou Koulibaly</td><td class="num">5.000.000 €</td><td class="num">4.719.745 €</td><td class="num pct-high">94.4 %</td></tr>
+<tr><td>Pablo Marí</td><td class="num">2.500.000 €</td><td class="num">2.333.662 €</td><td class="num pct-high">93.3 %</td></tr>
+<tr><td>Hassan Al Tambakti</td><td class="num">1.800.000 €</td><td class="num">2.517.472 €</td><td class="num pct-mid">60.1 %</td></tr>
+<tr><td>Kaio César</td><td class="num">1.800.000 €</td><td class="num">1.616.430 €</td><td class="num pct-high">89.8 %</td></tr>
+<tr><td>Murad Al Hawsawi</td><td class="num">1.500.000 €</td><td class="num">-174.564 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Salem Al-Dawsari</td><td class="num">1.300.000 €</td><td class="num">1.196.781 €</td><td class="num pct-high">92.1 %</td></tr>
+<tr><td>Moteb Al-Harbi</td><td class="num">1.200.000 €</td><td class="num">630.139 €</td><td class="num pct-mid">52.5 %</td></tr>
+<tr><td>Mohamed Kanno</td><td class="num">900.000 €</td><td class="num">1.195.613 €</td><td class="num pct-mid">67.2 %</td></tr>
+<tr><td>Nasser Al-Dawsari</td><td class="num">800.000 €</td><td class="num">885.470 €</td><td class="num pct-high">89.3 %</td></tr>
+<tr><td>Ali Lajami</td><td class="num">800.000 €</td><td class="num">830.150 €</td><td class="num pct-high">96.2 %</td></tr>
+<tr><td>Mohammed Al-Yami</td><td class="num">450.000 €</td><td class="num">245.833 €</td><td class="num pct-mid">54.6 %</td></tr>
+<tr><td>Sultan Mandash</td><td class="num">400.000 €</td><td class="num">298.607 €</td><td class="num pct-high">74.7 %</td></tr>
+<tr><td>Abdulkarim Darisi</td><td class="num">175.000 €</td><td class="num">-270.009 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Alittihad</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Moussa Diaby</td><td class="num">28.000.000 €</td><td class="num">27.488.839 €</td><td class="num pct-high">98.2 %</td></tr>
+<tr><td>Roger Fernandes</td><td class="num">22.000.000 €</td><td class="num">22.544.804 €</td><td class="num pct-high">97.5 %</td></tr>
+<tr><td>Youssef En-Nesyri</td><td class="num">20.000.000 €</td><td class="num">20.013.314 €</td><td class="num pct-high">99.9 %</td></tr>
+<tr><td>Fabinho</td><td class="num">13.000.000 €</td><td class="num">12.758.363 €</td><td class="num pct-high">98.1 %</td></tr>
+<tr><td>Jan-Carlo Simić</td><td class="num">12.000.000 €</td><td class="num">11.242.707 €</td><td class="num pct-high">93.7 %</td></tr>
+<tr><td>George Ilenikhena</td><td class="num">12.000.000 €</td><td class="num">13.013.857 €</td><td class="num pct-high">91.6 %</td></tr>
+<tr><td>Steven Bergwijn</td><td class="num">12.000.000 €</td><td class="num">12.033.315 €</td><td class="num pct-high">99.7 %</td></tr>
+<tr><td>Mahamadou Doumbia</td><td class="num">9.000.000 €</td><td class="num">18.206.717 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Houssem Aouar</td><td class="num">8.000.000 €</td><td class="num">7.961.766 €</td><td class="num pct-high">99.5 %</td></tr>
+<tr><td>Predrag Rajković</td><td class="num">7.000.000 €</td><td class="num">7.071.564 €</td><td class="num pct-high">99.0 %</td></tr>
+<tr><td>Mario Mitaj</td><td class="num">5.500.000 €</td><td class="num">5.818.646 €</td><td class="num pct-high">94.2 %</td></tr>
+<tr><td>N&#x27;Golo Kanté</td><td class="num">4.500.000 €</td><td class="num">4.183.846 €</td><td class="num pct-high">93.0 %</td></tr>
+<tr><td>Danilo Pereira</td><td class="num">4.000.000 €</td><td class="num">3.612.184 €</td><td class="num pct-high">90.3 %</td></tr>
+<tr><td>Faisal Al-Ghamdi</td><td class="num">1.300.000 €</td><td class="num">1.713.307 €</td><td class="num pct-mid">68.2 %</td></tr>
+<tr><td>Saad Al-Mousa</td><td class="num">1.200.000 €</td><td class="num">690.604 €</td><td class="num pct-mid">57.6 %</td></tr>
+<tr><td>Muhannad Shanqeeti</td><td class="num">1.000.000 €</td><td class="num">1.164.004 €</td><td class="num pct-high">83.6 %</td></tr>
+<tr><td>Talal Abubakr Haji</td><td class="num">900.000 €</td><td class="num">911.595 €</td><td class="num pct-high">98.7 %</td></tr>
+<tr><td>Abdulrahman Alobud</td><td class="num">800.000 €</td><td class="num">1.071.401 €</td><td class="num pct-mid">66.1 %</td></tr>
+<tr><td>Ahmed Al-Julaydan</td><td class="num">700.000 €</td><td class="num">481.064 €</td><td class="num pct-mid">68.7 %</td></tr>
+<tr><td>Ahmed Al-Ghamdi</td><td class="num">600.000 €</td><td class="num">610.511 €</td><td class="num pct-high">98.2 %</td></tr>
+<tr><td>Saleh Al-Shehri</td><td class="num">550.000 €</td><td class="num">664.835 €</td><td class="num pct-high">79.1 %</td></tr>
+<tr><td>Ahmed Sharahili</td><td class="num">500.000 €</td><td class="num">282.686 €</td><td class="num pct-mid">56.5 %</td></tr>
+<tr><td>Abdulaziz Al-Bishi</td><td class="num">325.000 €</td><td class="num">40.647 €</td><td class="num pct-low">12.5 %</td></tr>
+<tr><td>Hassan Kadesh</td><td class="num">300.000 €</td><td class="num">330.264 €</td><td class="num pct-high">89.9 %</td></tr>
+<tr><td>Mohammed Ali Barnawi</td><td class="num">225.000 €</td><td class="num">370.148 €</td><td class="num pct-low">35.5 %</td></tr>
+<tr><td>Hamed Al-Ghamdi</td><td class="num">200.000 €</td><td class="num">21.496 €</td><td class="num pct-low">10.7 %</td></tr>
+<tr><td>Awad Al-Nashri</td><td class="num">200.000 €</td><td class="num">262.749 €</td><td class="num pct-mid">68.6 %</td></tr>
+<tr><td>Mohammed Al-Absi</td><td class="num">125.000 €</td><td class="num">-88.602 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Alkhaleej</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Giorgos Masouras</td><td class="num">1.800.000 €</td><td class="num">1.832.718 €</td><td class="num pct-high">98.2 %</td></tr>
+<tr><td>Kostas Fortounis</td><td class="num">1.800.000 €</td><td class="num">1.800.552 €</td><td class="num pct-high">100.0 %</td></tr>
+<tr><td>Joshua King</td><td class="num">1.500.000 €</td><td class="num">1.439.665 €</td><td class="num pct-high">96.0 %</td></tr>
+<tr><td>Anthony Moris</td><td class="num">1.500.000 €</td><td class="num">2.173.910 €</td><td class="num pct-mid">55.1 %</td></tr>
+<tr><td>Paolo Fernandes</td><td class="num">1.000.000 €</td><td class="num">646.013 €</td><td class="num pct-mid">64.6 %</td></tr>
+<tr><td>Dimitrios Kourbelis</td><td class="num">1.000.000 €</td><td class="num">783.398 €</td><td class="num pct-high">78.3 %</td></tr>
+<tr><td>Pedro Rebocho</td><td class="num">800.000 €</td><td class="num">617.742 €</td><td class="num pct-high">77.2 %</td></tr>
+<tr><td>Bart Schenkeveld</td><td class="num">700.000 €</td><td class="num">581.581 €</td><td class="num pct-high">83.1 %</td></tr>
+<tr><td>Saleh Al-Amri</td><td class="num">450.000 €</td><td class="num">451.086 €</td><td class="num pct-high">99.8 %</td></tr>
+<tr><td>Mohammed Al-Khabrani</td><td class="num">250.000 €</td><td class="num">-102.371 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Thamer Al Khaibri</td><td class="num">250.000 €</td><td class="num">346.667 €</td><td class="num pct-mid">61.3 %</td></tr>
+<tr><td>Saeed Al Hamsal</td><td class="num">225.000 €</td><td class="num">354.969 €</td><td class="num pct-low">42.2 %</td></tr>
+<tr><td>Ali Al-Salem</td><td class="num">200.000 €</td><td class="num">235.534 €</td><td class="num pct-high">82.2 %</td></tr>
+<tr><td>Abdullah Al-Hafith</td><td class="num">175.000 €</td><td class="num">7.822 €</td><td class="num pct-low">4.5 %</td></tr>
+<tr><td>Hamad Al-Jayzani</td><td class="num">150.000 €</td><td class="num">201.227 €</td><td class="num pct-mid">65.8 %</td></tr>
+<tr><td>Bader Munshi</td><td class="num">150.000 €</td><td class="num">-83.065 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Majed Omar Kanabah</td><td class="num">125.000 €</td><td class="num">38.023 €</td><td class="num pct-low">30.4 %</td></tr>
+<tr><td>Arif Al-Haydar</td><td class="num">100.000 €</td><td class="num">17.388 €</td><td class="num pct-low">17.4 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Alkholood</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Juan Cozzani</td><td class="num">3.500.000 €</td><td class="num">3.611.623 €</td><td class="num pct-high">96.8 %</td></tr>
+<tr><td>Guga</td><td class="num">2.800.000 €</td><td class="num">2.138.586 €</td><td class="num pct-high">76.4 %</td></tr>
+<tr><td>Shaquille Pinas</td><td class="num">2.300.000 €</td><td class="num">2.570.820 €</td><td class="num pct-high">88.2 %</td></tr>
+<tr><td>Edgaras Utkus</td><td class="num">1.800.000 €</td><td class="num">2.054.900 €</td><td class="num pct-high">85.8 %</td></tr>
+<tr><td>Norbert Gyömbér</td><td class="num">900.000 €</td><td class="num">770.658 €</td><td class="num pct-high">85.6 %</td></tr>
+<tr><td>Myziane Maolida</td><td class="num">800.000 €</td><td class="num">1.077.472 €</td><td class="num pct-mid">65.3 %</td></tr>
+<tr><td>Mohammed Mazyad Alshammari</td><td class="num">75.000 €</td><td class="num">-113.355 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Alnajma Sc</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Lázaro</td><td class="num">2.000.000 €</td><td class="num">1.920.100 €</td><td class="num pct-high">96.0 %</td></tr>
+<tr><td>Samir Caetano</td><td class="num">1.800.000 €</td><td class="num">1.554.975 €</td><td class="num pct-high">86.4 %</td></tr>
+<tr><td>David Tijanič</td><td class="num">1.500.000 €</td><td class="num">1.250.870 €</td><td class="num pct-high">83.4 %</td></tr>
+<tr><td>Bilal Boutobba</td><td class="num">1.300.000 €</td><td class="num">1.561.454 €</td><td class="num pct-high">79.9 %</td></tr>
+<tr><td>Felippe Cardoso</td><td class="num">1.200.000 €</td><td class="num">1.122.093 €</td><td class="num pct-high">93.5 %</td></tr>
+<tr><td>Nabil Donga</td><td class="num">1.200.000 €</td><td class="num">820.008 €</td><td class="num pct-mid">68.3 %</td></tr>
+<tr><td>Ali Jasim</td><td class="num">550.000 €</td><td class="num">960.159 €</td><td class="num pct-low">25.4 %</td></tr>
+<tr><td>Marin Prekodravac</td><td class="num">325.000 €</td><td class="num">594.986 €</td><td class="num pct-low">16.9 %</td></tr>
+<tr><td>Victor Braga</td><td class="num">300.000 €</td><td class="num">88.567 €</td><td class="num pct-low">29.5 %</td></tr>
+<tr><td>Abdulelah Alshamary</td><td class="num">250.000 €</td><td class="num">244.994 €</td><td class="num pct-high">98.0 %</td></tr>
+<tr><td>Majed Dawran</td><td class="num">200.000 €</td><td class="num">133.942 €</td><td class="num pct-mid">67.0 %</td></tr>
+<tr><td>Mohammed Al-Konaideri</td><td class="num">200.000 €</td><td class="num">231.213 €</td><td class="num pct-high">84.4 %</td></tr>
+<tr><td>Khalid Al-Shammari</td><td class="num">175.000 €</td><td class="num">-124.844 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Hisham Al-Dubais</td><td class="num">175.000 €</td><td class="num">-134.109 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Abdullah Al-Hawsawi</td><td class="num">175.000 €</td><td class="num">562.349 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Fahad Al Abdulrazzaq</td><td class="num">175.000 €</td><td class="num">9.774 €</td><td class="num pct-low">5.6 %</td></tr>
+<tr><td>Rakan Al-Tulayhi</td><td class="num">150.000 €</td><td class="num">652.108 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Vitor Vargas</td><td class="num">150.000 €</td><td class="num">495.514 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Nasser Al Haleel</td><td class="num">150.000 €</td><td class="num">-53.173 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Abdulaziz Al Harabi</td><td class="num">125.000 €</td><td class="num">-87.996 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Mohammed Al Aqal</td><td class="num">125.000 €</td><td class="num">-157.340 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Mohammed Al-Fatil</td><td class="num">100.000 €</td><td class="num">53.004 €</td><td class="num pct-mid">53.0 %</td></tr>
+<tr><td>Waled Al Enazi</td><td class="num">75.000 €</td><td class="num">-121.560 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Nawaf Al-Hawsawi</td><td class="num">75.000 €</td><td class="num">103.725 €</td><td class="num pct-mid">61.7 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Alnassr</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>João Félix</td><td class="num">25.000.000 €</td><td class="num">24.740.667 €</td><td class="num pct-high">99.0 %</td></tr>
+<tr><td>Kingsley Coman</td><td class="num">22.000.000 €</td><td class="num">22.462.623 €</td><td class="num pct-high">97.9 %</td></tr>
+<tr><td>Mohamed Simakan</td><td class="num">20.000.000 €</td><td class="num">20.361.299 €</td><td class="num pct-high">98.2 %</td></tr>
+<tr><td>Ângelo</td><td class="num">14.000.000 €</td><td class="num">13.824.779 €</td><td class="num pct-high">98.7 %</td></tr>
+<tr><td>Cristiano Ronaldo</td><td class="num">12.000.000 €</td><td class="num">11.898.191 €</td><td class="num pct-high">99.2 %</td></tr>
+<tr><td>Marcelo Brozović</td><td class="num">9.000.000 €</td><td class="num">8.835.393 €</td><td class="num pct-high">98.2 %</td></tr>
+<tr><td>Bento</td><td class="num">9.000.000 €</td><td class="num">9.476.504 €</td><td class="num pct-high">94.7 %</td></tr>
+<tr><td>Sadio Mané</td><td class="num">7.000.000 €</td><td class="num">6.942.412 €</td><td class="num pct-high">99.2 %</td></tr>
+<tr><td>Wesley</td><td class="num">5.000.000 €</td><td class="num">5.281.371 €</td><td class="num pct-high">94.4 %</td></tr>
+<tr><td>Iñigo Martínez</td><td class="num">4.500.000 €</td><td class="num">4.340.318 €</td><td class="num pct-high">96.5 %</td></tr>
+<tr><td>Sultan Al-Ghannam</td><td class="num">1.800.000 €</td><td class="num">1.559.440 €</td><td class="num pct-high">86.6 %</td></tr>
+<tr><td>Ayman Yahya</td><td class="num">1.400.000 €</td><td class="num">1.159.922 €</td><td class="num pct-high">82.9 %</td></tr>
+<tr><td>Nawaf Boushal</td><td class="num">1.400.000 €</td><td class="num">1.212.491 €</td><td class="num pct-high">86.6 %</td></tr>
+<tr><td>Abdulrahman Ghareeb</td><td class="num">1.200.000 €</td><td class="num">1.227.607 €</td><td class="num pct-high">97.7 %</td></tr>
+<tr><td>Abdulelah Al-Amri</td><td class="num">1.000.000 €</td><td class="num">842.647 €</td><td class="num pct-high">84.3 %</td></tr>
+<tr><td>Abdullah Al-Khaibari</td><td class="num">800.000 €</td><td class="num">888.451 €</td><td class="num pct-high">88.9 %</td></tr>
+<tr><td>Nawaf Al-Aqidi</td><td class="num">700.000 €</td><td class="num">528.688 €</td><td class="num pct-high">75.5 %</td></tr>
+<tr><td>Salem Alnajdi</td><td class="num">600.000 €</td><td class="num">325.290 €</td><td class="num pct-mid">54.2 %</td></tr>
+<tr><td>Ali Al-Hassan</td><td class="num">500.000 €</td><td class="num">648.843 €</td><td class="num pct-high">70.2 %</td></tr>
+<tr><td>Abdullah Al-Hamdan</td><td class="num">325.000 €</td><td class="num">526.881 €</td><td class="num pct-low">37.9 %</td></tr>
+<tr><td>Raghed Al-Najjar</td><td class="num">200.000 €</td><td class="num">117.018 €</td><td class="num pct-mid">58.5 %</td></tr>
+<tr><td>Mohammed Khalil Marran</td><td class="num">150.000 €</td><td class="num">232.403 €</td><td class="num pct-mid">45.1 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Alokhdood</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Khaled Narey</td><td class="num">2.000.000 €</td><td class="num">1.824.490 €</td><td class="num pct-high">91.2 %</td></tr>
+<tr><td>Christian Bassogog</td><td class="num">1.000.000 €</td><td class="num">665.921 €</td><td class="num pct-mid">66.6 %</td></tr>
+<tr><td>Blaž Kramer</td><td class="num">900.000 €</td><td class="num">995.965 €</td><td class="num pct-high">89.3 %</td></tr>
+<tr><td>Samuel Portugal</td><td class="num">900.000 €</td><td class="num">1.040.324 €</td><td class="num pct-high">84.4 %</td></tr>
+<tr><td>Juan Pedroza</td><td class="num">800.000 €</td><td class="num">762.317 €</td><td class="num pct-high">95.3 %</td></tr>
+<tr><td>Koray Günter</td><td class="num">700.000 €</td><td class="num">554.841 €</td><td class="num pct-high">79.3 %</td></tr>
+<tr><td>Khaled Al-Lazam</td><td class="num">400.000 €</td><td class="num">-174.277 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Mohammed Abo Abd</td><td class="num">225.000 €</td><td class="num">17.738 €</td><td class="num pct-low">7.9 %</td></tr>
+<tr><td>Saleh Al Abbas</td><td class="num">175.000 €</td><td class="num">424.796 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Saud Salem</td><td class="num">100.000 €</td><td class="num">-56.629 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Alqadsiah</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Mateo Retegui</td><td class="num">35.000.000 €</td><td class="num">35.105.777 €</td><td class="num pct-high">99.7 %</td></tr>
+<tr><td>Julián Quiñones</td><td class="num">12.000.000 €</td><td class="num">11.906.669 €</td><td class="num pct-high">99.2 %</td></tr>
+<tr><td>Christopher Baah</td><td class="num">12.000.000 €</td><td class="num">12.135.570 €</td><td class="num pct-high">98.9 %</td></tr>
+<tr><td>Nahitan Nández</td><td class="num">4.500.000 €</td><td class="num">4.054.691 €</td><td class="num pct-high">90.1 %</td></tr>
+<tr><td>Musab Al Juwayr</td><td class="num">4.500.000 €</td><td class="num">4.986.483 €</td><td class="num pct-high">89.2 %</td></tr>
+<tr><td>Mohammed Abu Al-Shamat</td><td class="num">1.400.000 €</td><td class="num">904.075 €</td><td class="num pct-mid">64.6 %</td></tr>
+<tr><td>Waleed Al-Ahmed</td><td class="num">1.400.000 €</td><td class="num">614.206 €</td><td class="num pct-low">43.9 %</td></tr>
+<tr><td>Turki Al-Ammar</td><td class="num">900.000 €</td><td class="num">832.467 €</td><td class="num pct-high">92.5 %</td></tr>
+<tr><td>Jehad Thakri</td><td class="num">900.000 €</td><td class="num">1.437.162 €</td><td class="num pct-low">40.3 %</td></tr>
+<tr><td>Yasir Al-Shahrani</td><td class="num">650.000 €</td><td class="num">275.110 €</td><td class="num pct-low">42.3 %</td></tr>
+<tr><td>Ahmed Al-Kassar</td><td class="num">175.000 €</td><td class="num">-40.384 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Alriyadh</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Tozé</td><td class="num">2.500.000 €</td><td class="num">2.696.117 €</td><td class="num pct-high">92.2 %</td></tr>
+<tr><td>Leandro Antunes</td><td class="num">1.500.000 €</td><td class="num">1.713.286 €</td><td class="num pct-high">85.8 %</td></tr>
+<tr><td>Mamadou Sylla</td><td class="num">1.200.000 €</td><td class="num">827.933 €</td><td class="num pct-mid">69.0 %</td></tr>
+<tr><td>Teddy Okou</td><td class="num">1.000.000 €</td><td class="num">612.989 €</td><td class="num pct-mid">61.3 %</td></tr>
+<tr><td>Enes Sali</td><td class="num">1.000.000 €</td><td class="num">1.705.252 €</td><td class="num pct-low">29.5 %</td></tr>
+<tr><td>Yoann Barbet</td><td class="num">900.000 €</td><td class="num">773.274 €</td><td class="num pct-high">85.9 %</td></tr>
+<tr><td>Victor Lekhal</td><td class="num">800.000 €</td><td class="num">815.175 €</td><td class="num pct-high">98.1 %</td></tr>
+<tr><td>Sergio González</td><td class="num">700.000 €</td><td class="num">491.031 €</td><td class="num pct-high">70.1 %</td></tr>
+<tr><td>Abdulelah Al Khaibari</td><td class="num">375.000 €</td><td class="num">494.145 €</td><td class="num pct-mid">68.2 %</td></tr>
+<tr><td>Milan Borjan</td><td class="num">275.000 €</td><td class="num">120.760 €</td><td class="num pct-low">43.9 %</td></tr>
+<tr><td>Marzouq Tambakti</td><td class="num">250.000 €</td><td class="num">501.286 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Osama Al-Boardi</td><td class="num">250.000 €</td><td class="num">164.943 €</td><td class="num pct-mid">66.0 %</td></tr>
+<tr><td>Khalil Al-Absi</td><td class="num">200.000 €</td><td class="num">-186.949 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Sultan Harun</td><td class="num">200.000 €</td><td class="num">690.610 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Sulaiman Hahya Hazazi</td><td class="num">200.000 €</td><td class="num">-6.778 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Abdullah Hassoun</td><td class="num">150.000 €</td><td class="num">-161.938 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Ahmed Al Siyahi</td><td class="num">125.000 €</td><td class="num">-193.552 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Faisal Al-Sobhi</td><td class="num">100.000 €</td><td class="num">-185.586 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Yahia Al-Shehri</td><td class="num">75.000 €</td><td class="num">4.135 €</td><td class="num pct-low">5.5 %</td></tr>
+<tr><td>Luca Ramirez</td><td class="num">75.000 €</td><td class="num">557.580 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Talal Al-Shubili</td><td class="num">50.000 €</td><td class="num">-356.998 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Alshabab</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Josh Brownhill</td><td class="num">10.000.000 €</td><td class="num">10.317.505 €</td><td class="num pct-high">96.8 %</td></tr>
+<tr><td>Yacine Adli</td><td class="num">9.000.000 €</td><td class="num">9.364.500 €</td><td class="num pct-high">96.0 %</td></tr>
+<tr><td>Yannick Carrasco</td><td class="num">6.000.000 €</td><td class="num">5.882.130 €</td><td class="num pct-high">98.0 %</td></tr>
+<tr><td>Vincent Sierro</td><td class="num">3.800.000 €</td><td class="num">3.301.456 €</td><td class="num pct-high">86.9 %</td></tr>
+<tr><td>Carlos Junior</td><td class="num">3.500.000 €</td><td class="num">3.179.483 €</td><td class="num pct-high">90.8 %</td></tr>
+<tr><td>Unai Hernández</td><td class="num">2.500.000 €</td><td class="num">2.760.452 €</td><td class="num pct-high">89.6 %</td></tr>
+<tr><td>Wesley Hoedt</td><td class="num">1.500.000 €</td><td class="num">1.383.725 €</td><td class="num pct-high">92.2 %</td></tr>
+<tr><td>Abderrazak Hamdallah</td><td class="num">1.200.000 €</td><td class="num">1.383.512 €</td><td class="num pct-high">84.7 %</td></tr>
+<tr><td>Mohammed Al-Thani</td><td class="num">800.000 €</td><td class="num">790.302 €</td><td class="num pct-high">98.8 %</td></tr>
+<tr><td>Saad Yaslam Balobaid</td><td class="num">600.000 €</td><td class="num">1.111.676 €</td><td class="num pct-low">14.7 %</td></tr>
+<tr><td>Mohammed Al Shwirekh</td><td class="num">550.000 €</td><td class="num">435.313 €</td><td class="num pct-high">79.1 %</td></tr>
+<tr><td>Hammam Al-Hammami</td><td class="num">500.000 €</td><td class="num">550.577 €</td><td class="num pct-high">89.9 %</td></tr>
+<tr><td>Mubarak Al-Rajeh</td><td class="num">400.000 €</td><td class="num">316.703 €</td><td class="num pct-high">79.2 %</td></tr>
+<tr><td>Haroune Camara</td><td class="num">350.000 €</td><td class="num">210.654 €</td><td class="num pct-mid">60.2 %</td></tr>
+<tr><td>Basil Yousef Al-Sayyali</td><td class="num">350.000 €</td><td class="num">129.187 €</td><td class="num pct-low">36.9 %</td></tr>
+<tr><td>Faisal Al-Sibyani</td><td class="num">325.000 €</td><td class="num">524.680 €</td><td class="num pct-low">38.6 %</td></tr>
+<tr><td>Ali Al-Asmari</td><td class="num">300.000 €</td><td class="num">356.836 €</td><td class="num pct-high">81.1 %</td></tr>
+<tr><td>Ali Albulayhi</td><td class="num">275.000 €</td><td class="num">70.201 €</td><td class="num pct-low">25.5 %</td></tr>
+<tr><td>Marcelo Grohe</td><td class="num">250.000 €</td><td class="num">156.221 €</td><td class="num pct-mid">62.5 %</td></tr>
+<tr><td>Abdulaziz Al-Othman</td><td class="num">250.000 €</td><td class="num">-99.447 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Ali Al Azaizah</td><td class="num">200.000 €</td><td class="num">263.653 €</td><td class="num pct-mid">68.2 %</td></tr>
+<tr><td>Mohammed Essa Harbush</td><td class="num">200.000 €</td><td class="num">132.165 €</td><td class="num pct-mid">66.1 %</td></tr>
+<tr><td>Ali Makki</td><td class="num">200.000 €</td><td class="num">140.716 €</td><td class="num pct-high">70.4 %</td></tr>
+<tr><td>Abdullah Matuq</td><td class="num">175.000 €</td><td class="num">322.371 €</td><td class="num pct-low">15.8 %</td></tr>
+<tr><td>Majed Abdullah</td><td class="num">150.000 €</td><td class="num">-16.898 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Nasser Al Bishi</td><td class="num">100.000 €</td><td class="num">-221.089 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Sultan Al Anzi</td><td class="num">75.000 €</td><td class="num">-419.235 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Altaawoun</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Musa Barrow</td><td class="num">7.000.000 €</td><td class="num">6.339.464 €</td><td class="num pct-high">90.6 %</td></tr>
+<tr><td>Romain Faivre</td><td class="num">5.000.000 €</td><td class="num">5.056.769 €</td><td class="num pct-high">98.9 %</td></tr>
+<tr><td>Angelo Fulgini</td><td class="num">5.000.000 €</td><td class="num">4.823.114 €</td><td class="num pct-high">96.5 %</td></tr>
+<tr><td>Biel</td><td class="num">4.500.000 €</td><td class="num">5.409.007 €</td><td class="num pct-high">79.8 %</td></tr>
+<tr><td>Mailson</td><td class="num">3.500.000 €</td><td class="num">2.974.414 €</td><td class="num pct-high">85.0 %</td></tr>
+<tr><td>Marin Petkov</td><td class="num">3.500.000 €</td><td class="num">3.763.650 €</td><td class="num pct-high">92.5 %</td></tr>
+<tr><td>Ashraf El Mahdioui</td><td class="num">3.000.000 €</td><td class="num">2.742.299 €</td><td class="num pct-high">91.4 %</td></tr>
+<tr><td>Andrei Girotto</td><td class="num">2.500.000 €</td><td class="num">2.226.569 €</td><td class="num pct-high">89.1 %</td></tr>
+<tr><td>Flávio</td><td class="num">2.000.000 €</td><td class="num">1.835.216 €</td><td class="num pct-high">91.8 %</td></tr>
+<tr><td>Roger Martínez</td><td class="num">1.500.000 €</td><td class="num">1.988.917 €</td><td class="num pct-mid">67.4 %</td></tr>
+<tr><td>Mohammed Al-Kuwaykibi</td><td class="num">500.000 €</td><td class="num">360.447 €</td><td class="num pct-high">72.1 %</td></tr>
+<tr><td>Mohammed Mahzari</td><td class="num">400.000 €</td><td class="num">1.150.626 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Bassam Al-Hurayji</td><td class="num">350.000 €</td><td class="num">515.232 €</td><td class="num pct-mid">52.8 %</td></tr>
+<tr><td>Mohammed Al-Qahtani</td><td class="num">300.000 €</td><td class="num">636.544 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Cristopher Zambrano</td><td class="num">300.000 €</td><td class="num">523.661 €</td><td class="num pct-low">25.4 %</td></tr>
+<tr><td>Abduleallah Hawsawi</td><td class="num">300.000 €</td><td class="num">309.411 €</td><td class="num pct-high">96.9 %</td></tr>
+<tr><td>Fahad Ayed Al-Rashidi</td><td class="num">275.000 €</td><td class="num">642.641 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Qasim Lajami</td><td class="num">225.000 €</td><td class="num">31.385 €</td><td class="num pct-low">13.9 %</td></tr>
+<tr><td>Ebrahim Alshuyl</td><td class="num">225.000 €</td><td class="num">225.340 €</td><td class="num pct-high">99.8 %</td></tr>
+<tr><td>Meshal Alaeli</td><td class="num">200.000 €</td><td class="num">124.686 €</td><td class="num pct-mid">62.3 %</td></tr>
+<tr><td>Victor Hugo</td><td class="num">175.000 €</td><td class="num">1.166.272 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Moustapha Sémbène</td><td class="num">100.000 €</td><td class="num">-233.568 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Abdulmalik Al Harbi</td><td class="num">50.000 €</td><td class="num">372.207 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Damac Fc</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Morlaye Sylla</td><td class="num">2.200.000 €</td><td class="num">2.448.277 €</td><td class="num pct-high">88.7 %</td></tr>
+<tr><td>Valentín Vada</td><td class="num">1.600.000 €</td><td class="num">1.610.541 €</td><td class="num pct-high">99.3 %</td></tr>
+<tr><td>Nabil Alioui</td><td class="num">1.300.000 €</td><td class="num">1.082.303 €</td><td class="num pct-high">83.3 %</td></tr>
+<tr><td>Jamal Harkass</td><td class="num">1.200.000 €</td><td class="num">1.036.195 €</td><td class="num pct-high">86.3 %</td></tr>
+<tr><td>Yakou Méïté</td><td class="num">1.000.000 €</td><td class="num">1.037.880 €</td><td class="num pct-high">96.2 %</td></tr>
+<tr><td>Kewin</td><td class="num">900.000 €</td><td class="num">994.647 €</td><td class="num pct-high">89.5 %</td></tr>
+<tr><td>Abdelkader Bedrane</td><td class="num">400.000 €</td><td class="num">358.467 €</td><td class="num pct-high">89.6 %</td></tr>
+<tr><td>Jonathan Okita</td><td class="num">350.000 €</td><td class="num">146.227 €</td><td class="num pct-low">41.8 %</td></tr>
+<tr><td>David Kaiki</td><td class="num">350.000 €</td><td class="num">421.240 €</td><td class="num pct-high">79.6 %</td></tr>
+<tr><td>Mohammad Alsalkhadi</td><td class="num">300.000 €</td><td class="num">369.522 €</td><td class="num pct-high">76.8 %</td></tr>
+<tr><td>Arielson</td><td class="num">300.000 €</td><td class="num">750.053 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Riyadh Sharahili</td><td class="num">175.000 €</td><td class="num">322.410 €</td><td class="num pct-low">15.8 %</td></tr>
+<tr><td>Hazzaa Al-Ghamdi</td><td class="num">150.000 €</td><td class="num">134.829 €</td><td class="num pct-high">89.9 %</td></tr>
+<tr><td>Yahya Naji</td><td class="num">150.000 €</td><td class="num">198.179 €</td><td class="num pct-mid">67.9 %</td></tr>
+<tr><td>Abdulrahman Al-Obaid</td><td class="num">100.000 €</td><td class="num">265.537 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Noor Al-Rashidi</td><td class="num">100.000 €</td><td class="num">20.911 €</td><td class="num pct-low">20.9 %</td></tr>
+</tbody></table></div>
+<div class="team-block">
+<h2>Neom Sc</h2>
+<table>
+<thead><tr><th>Oyuncu</th><th class="num">TM değeri</th><th class="num">Model tahmini</th><th class="num">Başarı %</th></tr></thead><tbody>
+<tr><td>Nathan Zeze</td><td class="num">18.000.000 €</td><td class="num">18.294.092 €</td><td class="num pct-high">98.4 %</td></tr>
+<tr><td>Marcin Bułka</td><td class="num">17.000.000 €</td><td class="num">17.573.311 €</td><td class="num pct-high">96.6 %</td></tr>
+<tr><td>Luciano Rodríguez</td><td class="num">10.000.000 €</td><td class="num">9.140.008 €</td><td class="num pct-high">91.4 %</td></tr>
+<tr><td>Saïd Benrahma</td><td class="num">9.000.000 €</td><td class="num">8.721.810 €</td><td class="num pct-high">96.9 %</td></tr>
+<tr><td>Abdoulaye Doucouré</td><td class="num">6.000.000 €</td><td class="num">5.738.408 €</td><td class="num pct-high">95.6 %</td></tr>
+<tr><td>Amadou Koné</td><td class="num">6.000.000 €</td><td class="num">7.262.487 €</td><td class="num pct-high">79.0 %</td></tr>
+<tr><td>Alexandre Lacazette</td><td class="num">5.000.000 €</td><td class="num">4.625.886 €</td><td class="num pct-high">92.5 %</td></tr>
+<tr><td>Luís Maximiano</td><td class="num">3.500.000 €</td><td class="num">2.976.637 €</td><td class="num pct-high">85.0 %</td></tr>
+<tr><td>Rayane Messi Tanfouri</td><td class="num">3.000.000 €</td><td class="num">3.916.430 €</td><td class="num pct-mid">69.5 %</td></tr>
+<tr><td>Ahmed Hegazy</td><td class="num">1.000.000 €</td><td class="num">629.747 €</td><td class="num pct-mid">63.0 %</td></tr>
+<tr><td>Abdulmalik Al Oyayari</td><td class="num">800.000 €</td><td class="num">1.024.798 €</td><td class="num pct-high">71.9 %</td></tr>
+<tr><td>Abbas Sadiq Alhassan</td><td class="num">600.000 €</td><td class="num">794.335 €</td><td class="num pct-mid">67.6 %</td></tr>
+<tr><td>Abdulaziz Noor</td><td class="num">500.000 €</td><td class="num">332.960 €</td><td class="num pct-mid">66.6 %</td></tr>
+<tr><td>Faris Abdi</td><td class="num">500.000 €</td><td class="num">588.072 €</td><td class="num pct-high">82.4 %</td></tr>
+<tr><td>Mohammed Al-Burayk</td><td class="num">400.000 €</td><td class="num">183.310 €</td><td class="num pct-mid">45.8 %</td></tr>
+<tr><td>Islam Ahmed Hawsawi</td><td class="num">350.000 €</td><td class="num">144.956 €</td><td class="num pct-low">41.4 %</td></tr>
+<tr><td>Ahmed Abdu</td><td class="num">275.000 €</td><td class="num">42.977 €</td><td class="num pct-low">15.6 %</td></tr>
+<tr><td>Salman Al-Faraj</td><td class="num">250.000 €</td><td class="num">9.037 €</td><td class="num pct-low">3.6 %</td></tr>
+<tr><td>Ayman Fallatah</td><td class="num">250.000 €</td><td class="num">725.588 €</td><td class="num pct-low">0.0 %</td></tr>
+<tr><td>Khalifah Al-Dawsari</td><td class="num">175.000 €</td><td class="num">234.648 €</td><td class="num pct-mid">65.9 %</td></tr>
+<tr><td>Ala&#x27;a Al-Hejji</td><td class="num">150.000 €</td><td class="num">-37.006 €</td><td class="num pct-low">0.0 %</td></tr>
+</tbody></table></div>
+<p class="note">Başarı %: TM ile tahmin arasındaki göreli hataya göre 100 − (|tahmin−TM|/TM×100), 0–100 aralığına sıkıştırılmıştır. Çoklu sezon için oyuncu başına en yüksek <code>minutesPlayed</code> satırı seçilmiştir.</p>
+</div></body></html>

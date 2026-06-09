@@ -1,0 +1,291 @@
+import { ArrowUpRight, BadgeEuro, BrainCircuit, Trophy, UsersRound, TrendingUp } from "lucide-react";
+import { Link } from "react-router-dom";
+import TeamJersey from "../components/TeamJersey";
+import {
+  slugify,
+  formatMarketValue,
+  getTopProspects,
+  getEliteCount,
+  getPlayersByTeam,
+} from "../utils/dataUtils";
+
+function GlassCard({ children, className = "" }) {
+  return (
+    <div className={`rounded-[2rem] border border-slate-800 bg-slate-900/50 shadow-2xl backdrop-blur-md ${className}`}>
+      {children}
+    </div>
+  );
+}
+
+function ProspectCard({ player, team, rank }) {
+  const latestValue = player.marketValueHistory.at(-1).value;
+
+  return (
+    <Link
+      to={`/player/${player.id}`}
+      className="group block rounded-[2rem] border border-slate-800 bg-slate-950/50 p-5 transition hover:-translate-y-1 hover:border-emerald-400/40 hover:bg-slate-900/80 hover:shadow-[0_24px_80px_rgba(34,197,94,0.12)]"
+    >
+      <div className="flex items-start justify-between gap-5">
+        <div>
+          <span className="text-xs font-black uppercase tracking-[0.28em] text-emerald-300">
+            Prospect #{rank}
+          </span>
+          <h2 className="mt-4 text-2xl font-black text-white">{player.name}</h2>
+          <p className="mt-1 text-sm text-slate-400">{player.position}</p>
+        </div>
+        <TeamJersey
+          primaryColor={team.primaryColor}
+          secondaryColor={team.secondaryColor}
+          className="h-20 w-20"
+        />
+      </div>
+
+      <p className="mt-5 line-clamp-2 text-sm leading-6 text-slate-500">{player.summary}</p>
+
+      <div className="mt-6 grid grid-cols-2 gap-3">
+        <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4">
+          <p className="text-xs uppercase tracking-[0.22em] text-slate-500">A-Quality</p>
+          <p className="mt-2 text-3xl font-black text-emerald-300">{player.aiQualityScore}</p>
+        </div>
+        <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4">
+          <p className="text-xs uppercase tracking-[0.22em] text-slate-500">Value</p>
+          <p className="mt-2 text-3xl font-black text-amber-300">{formatMarketValue(latestValue)}</p>
+        </div>
+      </div>
+
+      <div className="mt-5 flex items-center justify-between text-sm text-slate-400">
+        <span>{team.name}</span>
+        <span className="inline-flex items-center gap-2 text-emerald-300">
+          Deep dive
+          <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </span>
+      </div>
+    </Link>
+  );
+}
+
+function OverviewTile({ icon: Icon, label, value, accent = "text-emerald-300" }) {
+  return (
+    <GlassCard className="p-5">
+      <div className="flex items-center justify-between">
+        <div className={`grid h-11 w-11 place-items-center rounded-2xl bg-slate-950 ${accent}`}>
+          <Icon className="h-5 w-5" />
+        </div>
+      </div>
+      <p className="mt-5 text-3xl font-black text-white">{value}</p>
+      <p className="mt-1 text-sm text-slate-400">{label}</p>
+    </GlassCard>
+  );
+}
+
+export default function Home({ teams, players }) {
+  const topProspects = getTopProspects(players, 3);
+  const totalMarketValue = players.reduce(
+    (sum, player) => sum + player.marketValueHistory.at(-1).value,
+    0,
+  );
+  
+  // Group leagues uniquely
+  const leaguesMap = teams.reduce((groups, team) => {
+    groups[team.league] = groups[team.league] || {
+      name: team.league,
+      country: team.country,
+      teamsCount: 0,
+    };
+    groups[team.league].teamsCount += 1;
+    return groups;
+  }, {});
+
+  const leaguesList = Object.values(leaguesMap).sort((a, b) => a.name.localeCompare(b.name));
+  const elitePlayers = getEliteCount(players);
+
+  // Leaderboard data
+  const topValuedPlayers = [...players]
+    .sort((a, b) => b.marketValueHistory.at(-1).value - a.marketValueHistory.at(-1).value)
+    .slice(0, 5);
+
+  const topValuationGaps = [...players]
+    .filter((p) => p.marketEstimate && p.marketEstimate.valuationGapMillions > 0)
+    .sort((a, b) => b.marketEstimate.valuationGapMillions - a.marketEstimate.valuationGapMillions)
+    .slice(0, 5);
+
+  const teamMarketValues = teams.map((team) => {
+    const teamPlayers = getPlayersByTeam(players, team.id);
+    const totalMV = teamPlayers.reduce((sum, p) => sum + p.marketValueHistory.at(-1).value, 0);
+    return {
+      team,
+      playersCount: teamPlayers.length,
+      totalMV,
+    };
+  });
+  const topClubs = teamMarketValues
+    .sort((a, b) => b.totalMV - a.totalMV)
+    .slice(0, 5);
+
+  return (
+    <div className="space-y-8 p-6">
+      <GlassCard className="relative overflow-hidden p-8">
+        <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-emerald-400/10 blur-3xl" />
+        <div className="absolute bottom-0 left-1/3 h-56 w-56 rounded-full bg-amber-400/10 blur-3xl" />
+        <div className="relative max-w-5xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.32em] text-emerald-300">
+            Home Command Center
+          </p>
+          <h1 className="mt-4 text-4xl font-black tracking-tight text-white md:text-6xl">
+            AI-powered recruitment intelligence for investor-grade football decisions.
+          </h1>
+          <p className="mt-5 max-w-3xl text-base leading-7 text-slate-400">
+            Track high-upside prospects, valuation momentum, squad color identity, and AI category
+            confidence from one calm command surface.
+          </p>
+        </div>
+      </GlassCard>
+
+      <div className="grid gap-4 md:grid-cols-4">
+        <OverviewTile icon={UsersRound} label="Tracked prospects" value={players.length} />
+        <OverviewTile icon={Trophy} label="Covered leagues" value={leaguesList.length} accent="text-amber-300" />
+        <OverviewTile icon={BrainCircuit} label="Elite AI profiles" value={elitePlayers} />
+        <OverviewTile
+          icon={BadgeEuro}
+          label="Total tracked value"
+          value={formatMarketValue(totalMarketValue)}
+          accent="text-sky-300"
+        />
+      </div>
+
+      <section>
+        <div className="mb-5 flex items-end justify-between gap-4">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-slate-500">
+              Ranked Board
+            </p>
+            <h2 className="mt-2 text-3xl font-black text-white">Top 3 AI Prospect Cards</h2>
+          </div>
+        </div>
+
+        <div className="grid gap-5 xl:grid-cols-3">
+          {topProspects.map((player, index) => (
+            <ProspectCard
+              key={player.id}
+              player={player}
+              team={teams.find((team) => team.id === player.teamId)}
+              rank={index + 1}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Leaderboards Grid */}
+      <section className="grid gap-6 xl:grid-cols-3">
+        <GlassCard className="p-6 overflow-hidden">
+          <h3 className="text-lg font-black text-white flex items-center gap-2 mb-4">
+            <BadgeEuro className="h-5 w-5 text-amber-300" />
+            Top Valued Players
+          </h3>
+          <div className="divide-y divide-slate-800">
+            {topValuedPlayers.map((player) => {
+              const latestValue = player.marketValueHistory.at(-1).value;
+              const playerTeam = teams.find((t) => t.id === player.teamId) || { name: "Unknown" };
+              return (
+                <div key={player.id} className="py-3 flex items-center justify-between gap-4 text-sm transition hover:bg-slate-900/20 px-2 rounded-xl">
+                  <div className="min-w-0">
+                    <Link to={`/player/${player.id}`} className="font-bold text-white hover:text-emerald-300 transition">
+                      {player.name}
+                    </Link>
+                    <p className="text-xs text-slate-500 truncate">{playerTeam.name}</p>
+                  </div>
+                  <span className="font-bold text-amber-300 shrink-0">{formatMarketValue(latestValue)}</span>
+                </div>
+              );
+            })}
+          </div>
+        </GlassCard>
+
+        <GlassCard className="p-6 overflow-hidden">
+          <h3 className="text-lg font-black text-white flex items-center gap-2 mb-4">
+            <TrendingUp className="h-5 w-5 text-emerald-300" />
+            Top AI Valuation Gaps
+          </h3>
+          <div className="divide-y divide-slate-800">
+            {topValuationGaps.map((player) => {
+              const gap = player.marketEstimate.valuationGapMillions;
+              const playerTeam = teams.find((t) => t.id === player.teamId) || { name: "Unknown" };
+              return (
+                <div key={player.id} className="py-3 flex items-center justify-between gap-4 text-sm transition hover:bg-slate-900/20 px-2 rounded-xl">
+                  <div className="min-w-0">
+                    <Link to={`/player/${player.id}`} className="font-bold text-white hover:text-emerald-300 transition">
+                      {player.name}
+                    </Link>
+                    <p className="text-xs text-slate-500 truncate">{playerTeam.name}</p>
+                  </div>
+                  <span className="font-bold text-emerald-300 shrink-0">+{formatMarketValue(gap)}</span>
+                </div>
+              );
+            })}
+          </div>
+        </GlassCard>
+
+        <GlassCard className="p-6 overflow-hidden">
+          <h3 className="text-lg font-black text-white flex items-center gap-2 mb-4">
+            <Trophy className="h-5 w-5 text-sky-300" />
+            Top Clubs by Value
+          </h3>
+          <div className="divide-y divide-slate-800">
+            {topClubs.map(({ team, totalMV }) => {
+              return (
+                <div key={team.id} className="py-3 flex items-center justify-between gap-4 text-sm transition hover:bg-slate-900/20 px-2 rounded-xl">
+                  <div className="min-w-0">
+                    <Link to={`/team/${team.id}`} className="font-bold text-white hover:text-emerald-300 transition">
+                      {team.name}
+                    </Link>
+                    <p className="text-xs text-slate-500 truncate">{team.league}</p>
+                  </div>
+                  <span className="font-bold text-sky-300 shrink-0">{formatMarketValue(totalMV)}</span>
+                </div>
+              );
+            })}
+          </div>
+        </GlassCard>
+      </section>
+
+      {/* Featured Leagues Grid */}
+      <GlassCard className="p-6">
+        <div className="mb-5">
+          <h2 className="text-2xl font-black text-white">Featured Leagues</h2>
+          <p className="mt-1 text-sm text-slate-500">Global market division profiles.</p>
+        </div>
+        <div className="grid gap-4 lg:grid-cols-3">
+          {leaguesList.map((league) => {
+            const leagueSlug = slugify(league.name);
+            const country = league.country || "Country unconfirmed";
+            
+            return (
+              <Link
+                key={league.name}
+                to={`/league/${leagueSlug}`}
+                className="group block rounded-3xl border border-slate-800 bg-slate-950/50 p-5 transition hover:border-emerald-400/35 hover:bg-slate-900/60"
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-lg font-black text-white truncate">{league.name}</p>
+                    <p className="mt-1 text-xs text-slate-500 truncate">
+                      {country !== "UNKNOWN" ? country : "Country unconfirmed"}
+                    </p>
+                  </div>
+                  <div className="grid h-12 w-12 place-items-center rounded-2xl bg-slate-900 text-emerald-300 group-hover:bg-slate-800 transition">
+                    <ArrowUpRight className="h-5 w-5" />
+                  </div>
+                </div>
+                <div className="mt-4 flex items-center gap-2">
+                  <span className="text-xs font-bold text-slate-400">
+                    {league.teamsCount} squads registered
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </GlassCard>
+    </div>
+  );
+}
