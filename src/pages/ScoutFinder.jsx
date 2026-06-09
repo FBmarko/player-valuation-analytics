@@ -132,12 +132,12 @@ export default function ScoutFinder({ teams, players }) {
   };
 
   return (
-    <div className="p-6 max-w-7xl mx-auto">
+    <div className="page-enter mx-auto max-w-7xl p-4 sm:p-6">
       {/* Header */}
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 rounded-2xl border border-slate-800 bg-slate-900/60 px-4 py-3 text-sm font-semibold text-slate-300 transition hover:border-emerald-400/40 hover:text-emerald-300"
+          className="premium-button inline-flex items-center gap-2 rounded-2xl px-4 py-3 text-sm font-semibold text-slate-300"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Command Center
@@ -157,7 +157,7 @@ export default function ScoutFinder({ teams, players }) {
       <div className="grid gap-6 lg:grid-cols-[20rem_1fr]">
         
         {/* Left Filters Panel */}
-        <aside className="h-fit rounded-[2rem] border border-slate-800 bg-slate-900/45 p-6 backdrop-blur-md space-y-6">
+        <aside className="glass-panel h-fit space-y-6 rounded-[2rem] p-6">
           <div className="flex items-center justify-between border-b border-slate-850 pb-4">
             <p className="text-sm font-black text-white flex items-center gap-2">
               <SlidersHorizontal className="h-4 w-4 text-emerald-400" />
@@ -322,7 +322,7 @@ export default function ScoutFinder({ teams, players }) {
         <section className="space-y-4">
           
           {/* Sorting controls */}
-          <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-slate-850 bg-slate-900/35 px-5 py-3.5">
+          <div className="glass-card flex flex-wrap items-center justify-between gap-4 rounded-2xl px-5 py-3.5">
             <p className="text-xs font-bold text-slate-400">
               Found <span className="text-white">{filteredPlayers.length}</span> players matching filters
             </p>
@@ -361,7 +361,7 @@ export default function ScoutFinder({ teams, players }) {
                 <Link
                   key={player.id}
                   to={`/player/${player.id}`}
-                  className="group relative overflow-hidden rounded-3xl border border-slate-850 p-5 bg-gradient-to-b from-slate-900/60 to-slate-950/85 hover:border-slate-700 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300"
+                  className="elite-prospect-card group relative overflow-hidden rounded-3xl p-5 transition-all duration-300 hover:-translate-y-1"
                   style={{
                     boxShadow: `0 10px 30px -15px rgba(0,0,0,0.7), 0 0 15px ${colors.primary}08`
                   }}
@@ -420,7 +420,7 @@ export default function ScoutFinder({ teams, players }) {
                     </div>
                   </div>
 
-                  {/* FUT-style Category Stats Grid */}
+                  {/* Category score snapshot */}
                   <div className="grid grid-cols-5 gap-1.5 relative z-10 bg-slate-950/40 p-2 rounded-xl border border-slate-850/40 text-center select-none">
                     {Object.entries(player.aiScores).slice(0, 5).map(([category, value]) => {
                       const abbr = {
@@ -465,7 +465,7 @@ export default function ScoutFinder({ teams, players }) {
             <div className="text-center pt-4">
               <button
                 onClick={() => setVisibleCount((prev) => prev + 30)}
-                className="inline-flex items-center gap-2 rounded-2xl border border-slate-800 bg-slate-900/60 px-6 py-3.5 text-sm font-bold text-slate-300 hover:border-emerald-500/40 hover:text-white hover:bg-slate-900 transition"
+                className="premium-button inline-flex items-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-bold text-slate-300"
               >
                 Load More Players
               </button>

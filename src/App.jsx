@@ -1,5 +1,6 @@
 import { useMemo, useState, useEffect } from "react";
 import { HashRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { Crosshair } from "lucide-react";
 import Sidebar from "./components/layout/Sidebar";
 import Topbar from "./components/layout/Topbar";
 import { loadGeneratedData } from "./data/generatedData";
@@ -80,10 +81,37 @@ function AppShell() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-slate-950 text-slate-100">
-        <div className="text-center">
-          <div className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-emerald-500 border-t-transparent mx-auto"></div>
-          <p className="text-lg font-bold">Loading scouting database...</p>
+      <div className="premium-page animated-gradient-bg flex min-h-screen items-center justify-center px-5 text-slate-100">
+        <div className="glass-panel loading-scanner w-full max-w-3xl rounded-[2rem] p-6 sm:p-8">
+          <div className="flex flex-col items-center text-center">
+            <div className="grid h-16 w-16 place-items-center rounded-3xl border border-emerald-300/30 bg-emerald-300/10 text-emerald-200 shadow-[0_0_44px_rgba(52,211,153,0.22)]">
+              <Crosshair className="h-8 w-8" />
+            </div>
+            <p className="mt-5 text-2xl font-black text-white">ScoutAI</p>
+            <p className="mt-2 text-xs font-bold uppercase tracking-[0.26em] text-emerald-200">
+              Loading scouting intelligence...
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-[1.35fr_0.85fr]">
+            <div className="rounded-3xl border border-slate-700/40 bg-slate-950/40 p-4">
+              <div className="skeleton-shimmer h-8 w-44 rounded-full" />
+              <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                <div className="skeleton-shimmer h-24 rounded-2xl" />
+                <div className="skeleton-shimmer h-24 rounded-2xl" />
+                <div className="skeleton-shimmer h-24 rounded-2xl" />
+              </div>
+              <div className="mt-4 skeleton-shimmer h-36 rounded-3xl" />
+            </div>
+            <div className="rounded-3xl border border-slate-700/40 bg-slate-950/40 p-4">
+              <div className="skeleton-shimmer h-32 rounded-3xl" />
+              <div className="mt-4 space-y-3">
+                <div className="skeleton-shimmer h-4 rounded-full" />
+                <div className="skeleton-shimmer h-4 w-5/6 rounded-full" />
+                <div className="skeleton-shimmer h-4 w-2/3 rounded-full" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -91,8 +119,8 @@ function AppShell() {
 
   if (error) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-slate-950 text-slate-100">
-        <div className="rounded-2xl border border-rose-500/30 bg-rose-950/20 p-8 text-center max-w-md">
+      <div className="premium-page flex min-h-screen items-center justify-center px-5 text-slate-100">
+        <div className="glass-panel max-w-md rounded-[2rem] border-rose-500/30 bg-rose-950/20 p-8 text-center">
           <p className="text-xl font-bold text-rose-400 mb-2">Error Loading Data</p>
           <p className="text-sm text-slate-300">{error}</p>
         </div>
@@ -101,7 +129,7 @@ function AppShell() {
   }
 
   return (
-    <div className="flex min-h-screen bg-slate-950 text-slate-100">
+    <div className="premium-page flex min-h-screen text-slate-100">
       <Sidebar teams={teams} isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <main className="min-w-0 flex-1 flex flex-col">
         <Topbar

@@ -466,7 +466,7 @@ function CompareVerdict({ player1, player2, p1Color, p2Color }) {
   const p2Percent = total > 0 ? (p2Wins / total) * 100 : 50;
 
   return (
-    <div className="relative overflow-hidden rounded-[2rem] border border-slate-800 bg-slate-900/40 p-6 backdrop-blur-md shadow-2xl mb-6">
+      <div className="glass-panel relative mb-6 overflow-hidden rounded-[2rem] p-6">
       <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/[0.02] to-sky-500/[0.02] pointer-events-none" />
       
       <div className="mb-4 flex items-center justify-between gap-4 border-b border-slate-850 pb-3">
@@ -487,7 +487,7 @@ function CompareVerdict({ player1, player2, p1Color, p2Color }) {
         {/* Verdict Visual Dominance Bar */}
         <div className="rounded-2xl bg-slate-950/60 p-4 border border-slate-850">
           <p className="text-[10px] font-black uppercase tracking-wider text-slate-500 mb-3 text-center">
-            Metric Conquests
+            Metric Leads
           </p>
           <div className="flex items-center justify-between text-xs font-extrabold mb-2.5">
             <span style={{ color: p1Color }}>{p1Wins} wins</span>
@@ -531,12 +531,12 @@ export default function ComparePlayers({ teams, players }) {
   const p2Color = useMemo(() => getVibrantColor(p2Team?.primaryColor || "#38bdf8"), [p2Team]);
 
   return (
-    <div className="p-6 max-w-7xl mx-auto">
+    <div className="page-enter mx-auto max-w-7xl p-4 sm:p-6">
       {/* Header */}
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 rounded-2xl border border-slate-800 bg-slate-900/60 px-4 py-3 text-sm font-semibold text-slate-300 transition hover:border-emerald-400/40 hover:text-emerald-300"
+          className="premium-button inline-flex items-center gap-2 rounded-2xl px-4 py-3 text-sm font-semibold text-slate-300"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Command Center
@@ -553,7 +553,7 @@ export default function ComparePlayers({ teams, players }) {
       </div>
 
       {/* Selectors Panel (frosted glass) */}
-      <div className="relative overflow-hidden rounded-[2rem] border border-slate-800 bg-slate-900/40 p-6 backdrop-blur-md mb-6 shadow-2xl">
+      <div className="glass-panel relative mb-6 overflow-hidden rounded-[2rem] p-6">
         <div className="flex flex-col md:flex-row items-center gap-6">
           <PlayerSelector
             label="First Player"
@@ -601,7 +601,7 @@ export default function ComparePlayers({ teams, players }) {
             </div>
 
             {/* Radar Overlay Card */}
-            <div className="relative overflow-hidden rounded-[2rem] border border-slate-800 bg-slate-900/40 p-6 backdrop-blur-md shadow-2xl">
+            <div className="glass-panel relative overflow-hidden rounded-[2rem] p-6">
               <div className="mb-4 flex items-center justify-between gap-4 border-b border-slate-850/60 pb-4">
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Ability Mapping</p>
@@ -629,7 +629,7 @@ export default function ComparePlayers({ teams, players }) {
           </div>
 
           {/* RIGHT COLUMN: EA Sports Outward Progress Comparison */}
-          <div className="relative overflow-hidden rounded-[2rem] border border-slate-800 bg-slate-900/40 p-6 backdrop-blur-md shadow-2xl">
+          <div className="glass-panel relative overflow-hidden rounded-[2rem] p-6">
             <div className="mb-5 flex items-center justify-between gap-4 border-b border-slate-850/60 pb-4">
               <div>
                 <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Detailed Head to Head</p>

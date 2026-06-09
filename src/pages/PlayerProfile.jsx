@@ -141,7 +141,7 @@ const getFeaturedMetrics = (group) => {
 function PremiumPanel({ children, className = "" }) {
   return (
     <section
-      className={`relative overflow-hidden rounded-[2rem] border border-slate-800 bg-slate-900/55 shadow-2xl backdrop-blur-md ${className}`}
+      className={`glass-panel relative overflow-hidden rounded-[2rem] ${className}`}
     >
       {children}
     </section>
@@ -163,7 +163,7 @@ function ScoutMetricConsole({ groups }) {
           return (
             <article
               key={group.category}
-              className="rounded-[1.75rem] border border-slate-800 bg-slate-900/55 p-3 backdrop-blur-md transition hover:border-slate-700 2xl:col-span-2"
+              className="bento-card rounded-[1.75rem] p-3 transition 2xl:col-span-2"
             >
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <span className="flex min-w-0 items-center gap-3">
@@ -186,7 +186,7 @@ function ScoutMetricConsole({ groups }) {
                 {group.metrics.map((metric) => (
                   <div
                     key={metric.label}
-                    className={`rounded-2xl border ${config.border} bg-slate-950/60 p-2.5`}
+                    className={`stat-card rounded-2xl border ${config.border} p-2.5`}
                   >
                     <p className={`text-base font-black ${isUnavailable(metric.value) ? "text-slate-500" : config.accent}`}>
                       {displayFallback(metric.value)}
@@ -202,7 +202,7 @@ function ScoutMetricConsole({ groups }) {
         return (
           <article
             key={group.category}
-            className="rounded-[1.75rem] border border-slate-800 bg-slate-900/55 p-3 backdrop-blur-md transition hover:border-slate-700"
+            className="bento-card rounded-[1.75rem] p-3 transition"
           >
             <div className="flex items-center justify-between gap-4">
               <span className="flex min-w-0 items-center gap-3">
@@ -228,7 +228,7 @@ function ScoutMetricConsole({ groups }) {
                 {featuredMetrics.map((metric) => (
                   <div
                     key={metric.label}
-                    className={`rounded-2xl border ${config.border} bg-slate-950/60 p-2.5`}
+                    className={`stat-card rounded-2xl border ${config.border} p-2.5`}
                   >
                     <p className={`text-base font-black ${isUnavailable(metric.value) ? "text-slate-500" : config.accent}`}>
                       {displayFallback(metric.value)}
@@ -242,7 +242,7 @@ function ScoutMetricConsole({ groups }) {
                 {secondaryMetrics.map((metric) => (
                   <div
                     key={metric.label}
-                    className="flex items-center justify-between gap-3 rounded-2xl border border-slate-800 bg-slate-950/45 px-2.5 py-2 transition hover:border-slate-700"
+                    className="route-card flex items-center justify-between gap-3 rounded-2xl border border-slate-800 bg-slate-950/45 px-2.5 py-2 transition hover:border-slate-700"
                   >
                     <p className="min-w-0 truncate text-xs text-slate-500">{metric.label}</p>
                     <p className={`shrink-0 text-xs font-black ${isUnavailable(metric.value) ? "text-slate-500" : "text-slate-100"}`}>
@@ -261,7 +261,7 @@ function ScoutMetricConsole({ groups }) {
 
 function MiniMetric({ icon: Icon, label, value, accent = "text-slate-300" }) {
   return (
-    <div className="rounded-2xl border border-slate-800 bg-slate-950/55 p-4">
+    <div className="stat-card rounded-2xl p-4">
       <div className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-slate-500">
         <Icon className={`h-4 w-4 ${accent}`} />
         {label}
@@ -288,7 +288,7 @@ function MarketEstimateMetric({ estimate }) {
     Number.isFinite(estimate.valuationGapPercent) ? ` (${estimate.valuationGapPercent > 0 ? "+" : ""}${estimate.valuationGapPercent.toFixed(1)}%)` : "";
 
   return (
-    <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-4">
+    <div className="neon-border rounded-2xl bg-emerald-400/10 p-4">
       <div className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-slate-500">
         <BadgeEuro className="h-4 w-4 text-emerald-300" />
         {estimate.displayLabel ?? "AI Market Estimate"}
@@ -324,7 +324,7 @@ function MarketEstimateMetric({ estimate }) {
 
 function InsightCard({ icon: Icon, label, value, detail, accent = "text-emerald-300" }) {
   return (
-    <div className="rounded-3xl border border-slate-800 bg-slate-950/60 p-4">
+    <div className="stat-card rounded-3xl p-4">
       <div className="flex items-center justify-between gap-4">
         <div className={`grid h-10 w-10 place-items-center rounded-2xl bg-slate-900 ${accent}`}>
           <Icon className="h-5 w-5" />
@@ -339,7 +339,7 @@ function InsightCard({ icon: Icon, label, value, detail, accent = "text-emerald-
 
 function ScoreOrb({ score, tier }) {
   return (
-    <div className={`relative rounded-[2rem] border ${tier.ring} bg-slate-950/75 p-6`}>
+    <div className={`neon-border relative rounded-[2rem] border ${tier.ring} bg-slate-950/75 p-6`}>
       <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_50%_0%,rgba(34,197,94,0.18),transparent_62%)]" />
       <div className="relative">
         <div className="flex items-center gap-3 text-slate-400">
@@ -364,7 +364,7 @@ function ScoreOrb({ score, tier }) {
 
 function ReportList({ icon: Icon, title, items, accent }) {
   return (
-    <div className="rounded-3xl border border-slate-800 bg-slate-950/55 p-5">
+    <div className="bento-card rounded-3xl p-5">
       <div className="flex items-center gap-3">
         <div className={`grid h-12 w-12 place-items-center rounded-2xl bg-slate-900 ${accent}`}>
           <Icon className="h-5 w-5" />
@@ -478,7 +478,7 @@ function AIScoutReport({ player, className = "" }) {
         />
       </div>
 
-      <div className="mt-5 flex-1 rounded-3xl border border-emerald-400/20 bg-emerald-400/10 p-6">
+      <div className="neon-border mt-5 flex-1 rounded-3xl bg-emerald-400/10 p-6">
         <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.24em] text-emerald-300">
           <BrainCircuit className="h-4 w-4" />
           AI Scouting Analyst Comment
@@ -624,7 +624,7 @@ function FutureProjection({ projection, currentValue, currentQuality, projection
           </div>
         </div>
       ) : (
-        <div className="flex flex-1 items-center rounded-3xl border border-slate-800 bg-slate-950/55 p-6">
+        <div className="glass-card flex flex-1 items-center rounded-3xl p-6">
           <div>
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.24em] text-emerald-300">
               <TrendingUp className="h-4 w-4" />
@@ -645,14 +645,13 @@ function ProfileHero({ player, team }) {
   const latestValue = player.marketValueHistory.at(-1).value;
 
   return (
-    <PremiumPanel className="p-0">
+    <PremiumPanel className="premium-hero p-0">
       <div
         className="absolute inset-x-0 top-0 h-64 opacity-35 blur-2xl"
         style={{
           background: `linear-gradient(120deg, ${team.primaryColor}, transparent 55%, ${team.secondaryColor})`,
         }}
       />
-      <div className="absolute right-8 top-8 h-48 w-48 rounded-full bg-emerald-400/10 blur-3xl" />
 
       <div className="relative p-6">
         <div className="grid gap-6 md:grid-cols-[14rem_1fr] xl:grid-cols-[16rem_1fr_13rem]">
@@ -660,7 +659,7 @@ function ProfileHero({ player, team }) {
 
           <div className="min-w-0 self-center">
             <div className="flex flex-wrap items-center gap-3">
-              <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.24em] text-emerald-300">
+              <span className="hero-kicker">
                 AI Deep Dive Profile
               </span>
               <span className="rounded-full border border-slate-700 bg-slate-950/70 px-3 py-1 text-xs text-slate-400">
@@ -682,7 +681,7 @@ function ProfileHero({ player, team }) {
             </div>
           </div>
 
-          <div className="md:col-span-2 xl:col-span-1 rounded-[2rem] border border-slate-800 bg-slate-950/65 p-5 flex flex-col sm:flex-row xl:flex-col justify-between items-center gap-4">
+          <div className="glass-card md:col-span-2 xl:col-span-1 flex flex-col items-center justify-between gap-4 rounded-[2rem] p-5 sm:flex-row xl:flex-col">
             <div className="text-center sm:text-left xl:text-center">
               <p className="text-xs uppercase tracking-[0.24em] text-slate-500">Club Identity</p>
               <p className="mt-2 text-lg font-black text-white">{team.name}</p>
@@ -826,11 +825,11 @@ export default function PlayerProfile({ teams, players }) {
   const team = teams.find((candidate) => candidate.id === player.teamId);
 
   return (
-    <div className="p-4 sm:p-6">
+    <div className="page-enter p-4 sm:p-6">
       <div className="mb-6 flex items-center justify-between gap-4">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 rounded-2xl border border-slate-800 bg-slate-900/60 px-3.5 py-2.5 sm:px-4 sm:py-3 text-xs sm:text-sm font-semibold text-slate-300 transition hover:border-emerald-400/40 hover:text-emerald-300"
+          className="premium-button inline-flex items-center gap-2 rounded-2xl px-3.5 py-2.5 text-xs font-semibold text-slate-300 sm:px-4 sm:py-3 sm:text-sm"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Command Center

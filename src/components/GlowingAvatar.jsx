@@ -1,7 +1,7 @@
 import { UserRound } from "lucide-react";
 
 const getScoreGlow = (score) => {
-  if (score >= 7500) {
+  if (score >= 4800) {
     return {
       glow: "rgba(34, 197, 94, 0.45)",
       ring: "border-emerald-400/40",
@@ -9,7 +9,7 @@ const getScoreGlow = (score) => {
     };
   }
 
-  if (score >= 6500) {
+  if (score >= 4200) {
     return {
       glow: "rgba(245, 158, 11, 0.38)",
       ring: "border-amber-400/35",

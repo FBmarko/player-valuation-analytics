@@ -13,7 +13,7 @@ import {
 
 function GlassCard({ children, className = "" }) {
   return (
-    <div className={`rounded-[2rem] border border-slate-800 bg-slate-900/50 shadow-2xl backdrop-blur-md ${className}`}>
+    <div className={`glass-panel rounded-[2rem] ${className}`}>
       {children}
     </div>
   );
@@ -21,9 +21,9 @@ function GlassCard({ children, className = "" }) {
 
 function OverviewTile({ icon: Icon, label, value, accent = "text-emerald-300" }) {
   return (
-    <GlassCard className="p-5">
+    <GlassCard className="stat-card overflow-hidden p-5">
       <div className="flex items-center justify-between">
-        <div className={`grid h-11 w-11 place-items-center rounded-2xl bg-slate-950 ${accent}`}>
+        <div className={`grid h-11 w-11 place-items-center rounded-2xl border border-slate-700/50 bg-slate-950/70 ${accent}`}>
           <Icon className="h-5 w-5" />
         </div>
       </div>
@@ -35,15 +35,16 @@ function OverviewTile({ icon: Icon, label, value, accent = "text-emerald-300" })
 
 function ProspectCard({ player, team, rank }) {
   const latestValue = player.marketValueHistory.at(-1).value;
+  const estimate = player.marketEstimate?.predictedMarketValueMillions;
 
   return (
     <Link
       to={`/player/${player.id}`}
-      className="group block rounded-[2rem] border border-slate-800 bg-slate-950/50 p-5 transition hover:-translate-y-1 hover:border-emerald-400/40 hover:bg-slate-900/80 hover:shadow-[0_24px_80px_rgba(34,197,94,0.12)]"
+      className="elite-prospect-card group block rounded-[2rem] p-5 transition duration-300 hover:-translate-y-1"
     >
       <div className="flex items-start justify-between gap-5">
         <div>
-          <span className="text-xs font-black uppercase tracking-[0.28em] text-emerald-300">
+          <span className="hero-kicker">
             League Prospect #{rank}
           </span>
           <h2 className="mt-4 text-2xl font-black text-white">{player.name}</h2>
@@ -59,18 +60,23 @@ function ProspectCard({ player, team, rank }) {
       <p className="mt-5 line-clamp-2 text-sm leading-6 text-slate-500">{player.summary}</p>
 
       <div className="mt-6 grid grid-cols-2 gap-3">
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4">
+        <div className="stat-card rounded-2xl p-4">
           <p className="text-xs uppercase tracking-[0.22em] text-slate-500">A-Quality</p>
           <p className="mt-2 text-3xl font-black text-emerald-300">{player.aiQualityScore}</p>
         </div>
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4">
+        <div className="stat-card rounded-2xl p-4">
           <p className="text-xs uppercase tracking-[0.22em] text-slate-500">Value</p>
           <p className="mt-2 text-3xl font-black text-amber-300">{formatMarketValue(latestValue)}</p>
         </div>
       </div>
 
-      <div className="mt-5 flex items-center justify-between text-sm text-slate-400">
+      <div className="mt-5 flex flex-wrap items-center justify-between gap-3 text-sm text-slate-400">
         <span>{team.name}</span>
+        {estimate && (
+          <span className="metric-pill text-emerald-200">
+            AI est. {formatMarketValue(estimate)}
+          </span>
+        )}
         <span className="inline-flex items-center gap-2 text-emerald-300">
           Deep dive
           <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -101,21 +107,20 @@ export default function LeaguePage({ teams, players }) {
   const topProspects = getTopProspects(leaguePlayers, 3);
 
   return (
-    <div className="space-y-8 p-6">
+    <div className="page-enter space-y-8 p-4 sm:p-6">
       <div className="flex items-center gap-4">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 rounded-2xl border border-slate-800 bg-slate-900/60 px-4 py-3 text-sm font-semibold text-slate-300 transition hover:border-emerald-400/40 hover:text-emerald-300"
+          className="premium-button inline-flex items-center gap-2 rounded-2xl px-4 py-3 text-sm font-semibold text-slate-300"
         >
           <ArrowLeft className="h-4 w-4" />
           Command Center
         </Link>
       </div>
 
-      <GlassCard className="relative overflow-hidden p-8">
-        <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-emerald-400/10 blur-3xl" />
+      <GlassCard className="premium-hero p-7 sm:p-8">
         <div className="relative max-w-5xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.32em] text-emerald-300">
+          <p className="hero-kicker">
             League Profile
           </p>
           <h1 className="mt-4 text-4xl font-black tracking-tight text-white md:text-5xl">
@@ -127,7 +132,7 @@ export default function LeaguePage({ teams, players }) {
         </div>
       </GlassCard>
 
-      <div className="grid gap-4 md:grid-cols-4">
+      <div className="stagger-list grid gap-4 md:grid-cols-4">
         <OverviewTile icon={Trophy} label="Teams in League" value={leagueTeams.length} accent="text-amber-300" />
         <OverviewTile icon={UsersRound} label="Players in League" value={leaguePlayers.length} />
         <OverviewTile icon={BrainCircuit} label="Elite AI Profiles" value={eliteCount} />
@@ -148,7 +153,7 @@ export default function LeaguePage({ teams, players }) {
             <h2 className="mt-2 text-2xl font-black text-white">Top 3 AI Prospects</h2>
           </div>
 
-          <div className="grid gap-5 xl:grid-cols-3">
+          <div className="stagger-list grid gap-5 xl:grid-cols-3">
             {topProspects.map((player, index) => {
               const playerTeam = teams.find((t) => t.id === player.teamId);
               return (
@@ -180,7 +185,7 @@ export default function LeaguePage({ teams, players }) {
               <Link
                 key={team.id}
                 to={`/team/${team.id}`}
-                className="group block rounded-3xl border border-slate-800 bg-slate-950/50 p-5 transition hover:border-emerald-400/35 hover:bg-slate-900/60"
+                className="bento-card route-card group block rounded-3xl p-5"
               >
                 <div className="flex items-center justify-between gap-4">
                   <div className="min-w-0">
@@ -206,7 +211,7 @@ export default function LeaguePage({ teams, players }) {
                 </div>
 
                 {topPlayer && (
-                  <div className="mt-4 rounded-2xl bg-slate-900/60 p-3 flex items-center justify-between text-xs transition group-hover:bg-slate-900">
+                  <div className="mt-4 flex items-center justify-between rounded-2xl border border-slate-700/40 bg-slate-950/55 p-3 text-xs transition group-hover:border-emerald-400/20">
                     <span className="text-slate-400">Top Prospect:</span>
                     <span className="font-bold text-emerald-300">{topPlayer.name} ({topPlayer.aiQualityScore})</span>
                   </div>

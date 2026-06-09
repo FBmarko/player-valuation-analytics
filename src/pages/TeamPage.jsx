@@ -4,11 +4,12 @@ import TeamJersey from "../components/TeamJersey";
 import {
   formatMarketValue,
   getPlayersByTeam,
+  getEliteCount,
 } from "../utils/dataUtils";
 
 function GlassCard({ children, className = "" }) {
   return (
-    <div className={`rounded-[2rem] border border-slate-800 bg-slate-900/50 shadow-2xl backdrop-blur-md ${className}`}>
+    <div className={`glass-panel rounded-[2rem] ${className}`}>
       {children}
     </div>
   );
@@ -16,9 +17,9 @@ function GlassCard({ children, className = "" }) {
 
 function OverviewTile({ icon: Icon, label, value, accent = "text-emerald-300" }) {
   return (
-    <GlassCard className="p-5">
+    <GlassCard className="stat-card overflow-hidden p-5">
       <div className="flex items-center justify-between">
-        <div className={`grid h-11 w-11 place-items-center rounded-2xl bg-slate-950 ${accent}`}>
+        <div className={`grid h-11 w-11 place-items-center rounded-2xl border border-slate-700/50 bg-slate-950/70 ${accent}`}>
           <Icon className="h-5 w-5" />
         </div>
       </div>
@@ -30,15 +31,16 @@ function OverviewTile({ icon: Icon, label, value, accent = "text-emerald-300" })
 
 function ProspectCard({ player, team, rank }) {
   const latestValue = player.marketValueHistory.at(-1).value;
+  const estimate = player.marketEstimate?.predictedMarketValueMillions;
 
   return (
     <Link
       to={`/player/${player.id}`}
-      className="group block rounded-[2rem] border border-slate-800 bg-slate-950/50 p-5 transition hover:-translate-y-1 hover:border-emerald-400/40 hover:bg-slate-900/80 hover:shadow-[0_24px_80px_rgba(34,197,94,0.12)]"
+      className="elite-prospect-card group block rounded-[2rem] p-5 transition duration-300 hover:-translate-y-1"
     >
       <div className="flex items-start justify-between gap-5">
         <div>
-          <span className="text-xs font-black uppercase tracking-[0.28em] text-emerald-300">
+          <span className="hero-kicker">
             Squad Prospect #{rank}
           </span>
           <h2 className="mt-4 text-2xl font-black text-white">{player.name}</h2>
@@ -54,18 +56,23 @@ function ProspectCard({ player, team, rank }) {
       <p className="mt-5 line-clamp-2 text-sm leading-6 text-slate-500">{player.summary}</p>
 
       <div className="mt-6 grid grid-cols-2 gap-3">
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4">
+        <div className="stat-card rounded-2xl p-4">
           <p className="text-xs uppercase tracking-[0.22em] text-slate-500">A-Quality</p>
           <p className="mt-2 text-3xl font-black text-emerald-300">{player.aiQualityScore}</p>
         </div>
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4">
+        <div className="stat-card rounded-2xl p-4">
           <p className="text-xs uppercase tracking-[0.22em] text-slate-500">Value</p>
           <p className="mt-2 text-3xl font-black text-amber-300">{formatMarketValue(latestValue)}</p>
         </div>
       </div>
 
-      <div className="mt-5 flex items-center justify-between text-sm text-slate-400">
+      <div className="mt-5 flex flex-wrap items-center justify-between gap-3 text-sm text-slate-400">
         <span>{team.name}</span>
+        {estimate && (
+          <span className="metric-pill text-emerald-200">
+            AI est. {formatMarketValue(estimate)}
+          </span>
+        )}
         <span className="inline-flex items-center gap-2 text-emerald-300">
           Deep dive
           <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -85,7 +92,7 @@ export default function TeamPage({ teams, players }) {
   }
 
   const country = team.country || "Country unconfirmed";
-  const eliteCount = teamPlayers.filter((p) => p.aiQualityScore >= 7500).length;
+  const eliteCount = getEliteCount(teamPlayers);
   const totalTeamMV = teamPlayers.reduce(
     (sum, p) => sum + p.marketValueHistory.at(-1).value,
     0,
@@ -98,18 +105,18 @@ export default function TeamPage({ teams, players }) {
   const allPlayersSorted = [...teamPlayers].sort((a, b) => b.aiQualityScore - a.aiQualityScore);
 
   return (
-    <div className="space-y-8 p-6">
+    <div className="page-enter space-y-8 p-4 sm:p-6">
       <div className="flex items-center gap-4">
         <Link
           to={`/league/${team.league ? team.league.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") : ""}`}
-          className="inline-flex items-center gap-2 rounded-2xl border border-slate-800 bg-slate-900/60 px-4 py-3 text-sm font-semibold text-slate-300 transition hover:border-emerald-400/40 hover:text-emerald-300"
+          className="premium-button inline-flex items-center gap-2 rounded-2xl px-4 py-3 text-sm font-semibold text-slate-300"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to League
         </Link>
       </div>
 
-      <GlassCard className="relative overflow-hidden p-8">
+      <GlassCard className="premium-hero p-7 sm:p-8">
         <div
           className="absolute inset-y-0 right-0 w-96 opacity-15 blur-3xl pointer-events-none"
           style={{
@@ -118,7 +125,7 @@ export default function TeamPage({ teams, players }) {
         />
         <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.32em] text-emerald-300">
+            <p className="hero-kicker">
               Squad Profile
             </p>
             <h1 className="mt-4 text-4xl font-black tracking-tight text-white md:text-5xl">
@@ -136,7 +143,7 @@ export default function TeamPage({ teams, players }) {
         </div>
       </GlassCard>
 
-      <div className="grid gap-4 md:grid-cols-4">
+      <div className="stagger-list grid gap-4 md:grid-cols-4">
         <OverviewTile icon={UsersRound} label="Players on Team" value={teamPlayers.length} />
         <OverviewTile icon={BrainCircuit} label="Elite AI Profiles" value={eliteCount} />
         <OverviewTile
@@ -157,7 +164,7 @@ export default function TeamPage({ teams, players }) {
             <h2 className="mt-2 text-2xl font-black text-white">Top Prospects</h2>
           </div>
 
-          <div className="grid gap-5 xl:grid-cols-3">
+          <div className="stagger-list grid gap-5 xl:grid-cols-3">
             {topProspects.map((player, index) => (
               <ProspectCard
                 key={player.id}
@@ -171,7 +178,7 @@ export default function TeamPage({ teams, players }) {
       )}
 
       <GlassCard className="overflow-hidden">
-        <div className="p-6 border-b border-slate-900 bg-slate-900/20">
+        <div className="border-b border-slate-800/70 bg-slate-900/20 p-6">
           <h2 className="text-2xl font-black text-white">Squad Roster</h2>
           <p className="mt-1 text-sm text-slate-500">All tracked players sorted by AI Quality Index.</p>
         </div>
@@ -194,7 +201,7 @@ export default function TeamPage({ teams, players }) {
                 const est = player.marketEstimate;
 
                 return (
-                  <tr key={player.id} className="transition hover:bg-slate-900/30">
+                  <tr key={player.id} className="transition hover:bg-emerald-400/5">
                     <td className="px-6 py-4">
                       <Link to={`/player/${player.id}`} className="font-bold text-white hover:text-emerald-300 transition">
                         {player.name}
@@ -217,7 +224,7 @@ export default function TeamPage({ teams, players }) {
                     <td className="px-6 py-4 text-right">
                       <Link
                         to={`/player/${player.id}`}
-                        className="inline-flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/80 px-3.5 py-2 text-xs font-bold text-slate-300 transition hover:border-emerald-400/40 hover:text-emerald-300"
+                        className="premium-button inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-bold text-slate-300"
                       >
                         Deep dive
                         <ArrowUpRight className="h-3.5 w-3.5" />

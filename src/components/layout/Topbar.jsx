@@ -78,7 +78,7 @@ export default function Topbar({ searchableItems, onSelect, onMenuClick }) {
   const isOpen = isFocused && normalizeSearch(query).length >= 2;
 
   return (
-    <header className="sticky top-0 z-[40] border-b border-slate-800 bg-slate-950/80 px-4 py-4 sm:px-6 sm:py-5 backdrop-blur-xl">
+    <header className="premium-topbar sticky top-0 z-[40] border-b border-slate-800/70 px-4 py-4 sm:px-6 sm:py-5">
       {isOpen && (
         <button
           type="button"
@@ -93,7 +93,7 @@ export default function Topbar({ searchableItems, onSelect, onMenuClick }) {
         <button
           type="button"
           onClick={onMenuClick}
-          className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-slate-800 bg-slate-900/60 text-slate-300 hover:border-emerald-400/40 hover:text-emerald-300 lg:hidden"
+          className="premium-icon-button grid h-12 w-12 shrink-0 place-items-center rounded-xl text-slate-300 lg:hidden"
           aria-label="Toggle navigation menu"
         >
           <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -113,7 +113,7 @@ export default function Topbar({ searchableItems, onSelect, onMenuClick }) {
                 event.currentTarget.blur();
               }
             }}
-            className="h-12 sm:h-14 w-full rounded-xl sm:rounded-2xl border border-slate-800 bg-slate-900/70 pl-10 sm:pl-12 pr-4 sm:pr-32 text-xs sm:text-sm text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-emerald-400/50 focus:ring-4 focus:ring-emerald-400/10"
+            className="premium-search-input h-12 sm:h-14 w-full rounded-xl sm:rounded-2xl border border-slate-800/80 pl-10 sm:pl-12 pr-4 sm:pr-32 text-xs sm:text-sm text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-emerald-400/50"
             placeholder="Search players, teams, leagues..."
           />
           <div className="pointer-events-none absolute right-4 top-1/2 hidden -translate-y-1/2 items-center gap-2 rounded-xl border border-slate-700 bg-slate-950/80 px-2 py-1 text-xs text-slate-500 sm:flex">
@@ -122,13 +122,13 @@ export default function Topbar({ searchableItems, onSelect, onMenuClick }) {
           </div>
 
           {isOpen && suggestions.length > 0 && (
-            <div className="absolute left-0 right-0 top-16 z-50 overflow-hidden rounded-3xl border border-emerald-400/20 bg-slate-950/95 shadow-[0_30px_120px_rgba(0,0,0,0.55)] backdrop-blur-xl">
+            <div className="glass-panel command-menu absolute left-0 right-0 top-16 z-50 overflow-hidden rounded-3xl border-emerald-400/20">
               {suggestions.map((item) => (
                 <button
                   key={`${item.type}-${item.id}`}
                   type="button"
                   onClick={() => handleSelect(item)}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition hover:bg-slate-900"
+                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition hover:bg-emerald-400/10 hover:text-emerald-100"
                 >
                   <span>
                     <span className="block text-sm font-semibold text-slate-100">{item.label}</span>
@@ -150,17 +150,17 @@ export default function Topbar({ searchableItems, onSelect, onMenuClick }) {
               setShowSettings(!showSettings);
               setShowNotifications(false);
             }}
-            className={`grid h-12 w-12 sm:h-14 sm:w-14 place-items-center rounded-xl sm:rounded-2xl border transition ${
+            className={`premium-icon-button grid h-12 w-12 sm:h-14 sm:w-14 place-items-center rounded-xl sm:rounded-2xl transition ${
               showSettings
                 ? "border-emerald-400/60 bg-emerald-400/10 text-emerald-300 shadow-[0_0_20px_rgba(52,211,153,0.15)]"
-                : "border-slate-800 bg-slate-900/60 text-slate-300 hover:border-emerald-400/40 hover:text-emerald-300"
+                : "text-slate-300 hover:text-emerald-300"
             }`}
           >
             <SlidersHorizontal className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
 
           {showSettings && (
-            <div className="absolute right-0 top-16 w-80 rounded-[1.75rem] border border-slate-800 bg-slate-950/95 p-5 shadow-2xl backdrop-blur-xl z-50 animate-in fade-in slide-in-from-top-3 duration-200">
+            <div className="glass-panel command-menu absolute right-0 top-16 z-50 w-80 rounded-[1.75rem] p-5">
               <h3 className="text-xs font-black uppercase tracking-[0.25em] text-emerald-300">
                 System Parameters
               </h3>
@@ -201,17 +201,17 @@ export default function Topbar({ searchableItems, onSelect, onMenuClick }) {
               setShowNotifications(!showNotifications);
               setShowSettings(false);
             }}
-            className={`grid h-12 w-12 sm:h-14 sm:w-14 place-items-center rounded-xl sm:rounded-2xl border transition ${
+            className={`premium-icon-button grid h-12 w-12 sm:h-14 sm:w-14 place-items-center rounded-xl sm:rounded-2xl transition ${
               showNotifications
                 ? "border-amber-400/60 bg-amber-400/10 text-amber-300 shadow-[0_0_20px_rgba(251,191,36,0.15)]"
-                : "border-slate-800 bg-slate-900/60 text-slate-300 hover:border-amber-400/40 hover:text-amber-300"
+                : "text-slate-300 hover:text-amber-300"
             }`}
           >
             <Bell className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
 
           {showNotifications && (
-            <div className="absolute right-0 top-16 w-80 rounded-[1.75rem] border border-slate-800 bg-slate-950/95 p-5 shadow-2xl backdrop-blur-xl z-50 animate-in fade-in slide-in-from-top-3 duration-200">
+            <div className="glass-panel command-menu absolute right-0 top-16 z-50 w-80 rounded-[1.75rem] p-5">
               <h3 className="text-xs font-black uppercase tracking-[0.25em] text-amber-300">
                 System Notifications
               </h3>

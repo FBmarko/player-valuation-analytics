@@ -32,9 +32,9 @@ export default function StatBar({ label, value, max = 99 }) {
         <span className="text-sm font-semibold text-slate-200">{label}</span>
         <span className={`text-sm font-black ${tone.text}`}>{value}/{max}</span>
       </div>
-      <div className="h-3 overflow-hidden rounded-full bg-slate-800/80 ring-1 ring-slate-700/70">
+      <div className="score-bar h-3 overflow-hidden rounded-full ring-1 ring-slate-700/70">
         <div
-          className={`h-full rounded-full bg-gradient-to-r ${tone.bar} ${tone.glow}`}
+          className={`h-full rounded-full bg-gradient-to-r ${tone.bar} ${tone.glow} transition-[width] duration-700 ease-out`}
           style={{ width }}
         />
       </div>
