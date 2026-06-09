@@ -829,7 +829,7 @@ export default function PlayerProfile({ teams, players }) {
       <div className="mt-6 grid items-stretch gap-6 xl:grid-cols-[minmax(30rem,0.54fr)_minmax(0,0.46fr)]">
         <aside className="flex flex-col">
           <ScoutMetricConsole groups={player.rawMetrics} />
-          <AIScoutReport report={player.aiReport} className="mt-3 flex-1" />
+          <AIScoutReport player={player} className="mt-3 flex-1" />
         </aside>
 
         <section className="flex flex-col">

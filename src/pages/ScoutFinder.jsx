@@ -420,20 +420,34 @@ export default function ScoutFinder({ teams, players }) {
                     </div>
                   </div>
 
-                  {/* Mini-bars category strength */}
-                  <div className="flex gap-1.5 relative z-10 bg-slate-950/40 p-2 rounded-xl border border-slate-850/40">
-                    {Object.entries(player.aiScores).slice(0, 5).map(([category, value]) => (
-                      <div key={category} className="flex-1 bg-slate-900 rounded-full h-1.5 overflow-hidden border border-slate-850/20" title={`${category}: ${value}`}>
-                        <div 
-                          className="h-full rounded-full transition-all duration-500" 
-                          style={{ 
-                            width: `${(value / 99) * 100}%`,
-                            backgroundColor: colors.primary,
-                            boxShadow: `0 0 4px ${colors.primary}80`
-                          }} 
-                        />
-                      </div>
-                    ))}
+                  {/* FUT-style Category Stats Grid */}
+                  <div className="grid grid-cols-5 gap-1.5 relative z-10 bg-slate-950/40 p-2 rounded-xl border border-slate-850/40 text-center select-none">
+                    {Object.entries(player.aiScores).slice(0, 5).map(([category, value]) => {
+                      const abbr = {
+                        attack: "ATT",
+                        playmaking: "PLA",
+                        dribbling: "DRI",
+                        defense: "DEF",
+                        physicality: "PHY"
+                      }[category] || category.slice(0, 3).toUpperCase();
+                      
+                      return (
+                        <div key={category} className="flex flex-col items-center gap-1">
+                          <span className="text-[8px] font-black text-slate-550 tracking-wider">{abbr}</span>
+                          <div className="w-full bg-slate-900 rounded-full h-1 overflow-hidden border border-slate-850/20" title={`${category}: ${value}`}>
+                            <div 
+                              className="h-full rounded-full transition-all duration-500" 
+                              style={{ 
+                                width: `${(value / 99) * 100}%`,
+                                backgroundColor: colors.primary,
+                                boxShadow: `0 0 4px ${colors.primary}60`
+                              }} 
+                            />
+                          </div>
+                          <span className="text-[9px] font-black text-slate-300 mt-0.5">{value}</span>
+                        </div>
+                      );
+                    })}
                   </div>
 
                   {/* Action link indicator */}

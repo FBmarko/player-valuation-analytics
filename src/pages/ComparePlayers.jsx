@@ -24,6 +24,52 @@ import {
 import GlowingAvatar from "../components/GlowingAvatar";
 import TeamJersey from "../components/TeamJersey";
 
+function getVibrantColor(hex) {
+  if (!hex) return "#10b981";
+  if (hex === "#ffffff" || hex === "#FFFFFF") return "#cbd5e1"; // nice bright slate/white
+  
+  // Parse hex to RGB
+  let cleanHex = hex.replace("#", "");
+  if (cleanHex.length === 3) {
+    cleanHex = cleanHex.split("").map(c => c + c).join("");
+  }
+  
+  let r = parseInt(cleanHex.slice(0, 2), 16);
+  let g = parseInt(cleanHex.slice(2, 4), 16);
+  let b = parseInt(cleanHex.slice(4, 6), 16);
+
+  if (isNaN(r) || isNaN(g) || isNaN(b)) return "#10b981"; // fallback
+
+  // Convert RGB to HSL
+  r /= 255; g /= 255; b /= 255;
+  let max = Math.max(r, g, b), min = Math.min(r, g, b);
+  let h, s, l = (max + min) / 2;
+
+  if (max === min) {
+    h = s = 0; // achromatic
+  } else {
+    let d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+      case g: h = (b - r) / d + 2; break;
+      case b: h = (r - g) / d + 4; break;
+    }
+    h /= 6;
+  }
+
+  h = Math.round(h * 360);
+  s = Math.round(s * 100);
+  l = Math.round(l * 100);
+
+  // Boost saturation and lightness for dark theme visibility
+  if (s < 45 && s > 0) s = 80;
+  if (l < 48) l = 58; // boost lightness to make it pop on dark backgrounds
+  if (l > 85) l = 80;
+
+  return `hsl(${h}, ${s}%, ${l}%)`;
+}
+
 function CompareRadarChart({ player1, player2, p1Color, p2Color }) {
   const radarData = useMemo(() => {
     return Object.keys(player1.aiScores).map((key) => ({
@@ -487,8 +533,8 @@ export default function ComparePlayers({ teams, players }) {
   const p1Team = useMemo(() => teams.find((t) => t.id === player1?.teamId), [teams, player1]);
   const p2Team = useMemo(() => teams.find((t) => t.id === player2?.teamId), [teams, player2]);
 
-  const p1Color = p1Team?.primaryColor || "#10b981";
-  const p2Color = p2Team?.primaryColor || "#38bdf8";
+  const p1Color = useMemo(() => getVibrantColor(p1Team?.primaryColor || "#10b981"), [p1Team]);
+  const p2Color = useMemo(() => getVibrantColor(p2Team?.primaryColor || "#38bdf8"), [p2Team]);
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
