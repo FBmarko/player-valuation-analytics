@@ -19,7 +19,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DATASET_PATH = PROJECT_ROOT / "Model" / "data" / "processed" / "engineered_master_dataset_high_r2.csv"
 CONFIG_PATH = PROJECT_ROOT / "Model" / "config" / "web_export_config.json"
-OUTPUT_DIR = PROJECT_ROOT / "src" / "data" / "generated"
+OUTPUT_DIR = PROJECT_ROOT / "public" / "data" / "generated"
 SOFASCORE_STANDARDIZED_DIR = PROJECT_ROOT / "Model" / "data" / "standardized" / "sofascore"
 
 PLAYER_NAME_COL = "\u0130sim"

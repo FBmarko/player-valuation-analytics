@@ -18,9 +18,9 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 MODEL_ROOT = PROJECT_ROOT / "Model"
 DATASET_PATH = MODEL_ROOT / "data" / "processed" / "engineered_master_dataset_high_r2.csv"
 MODEL_PATH = MODEL_ROOT / "models" / "elite_stacking_model_high_r2.pkl"
-PLAYERS_PATH = PROJECT_ROOT / "src" / "data" / "generated" / "players.generated.json"
-METADATA_PATH = PROJECT_ROOT / "src" / "data" / "generated" / "metadata.generated.json"
-PREDICTIONS_PATH = PROJECT_ROOT / "src" / "data" / "generated" / "predictions.high_r2_benchmark.generated.json"
+PLAYERS_PATH = PROJECT_ROOT / "public" / "data" / "generated" / "players.generated.json"
+METADATA_PATH = PROJECT_ROOT / "public" / "data" / "generated" / "metadata.generated.json"
+PREDICTIONS_PATH = PROJECT_ROOT / "public" / "data" / "generated" / "predictions.high_r2_benchmark.generated.json"
 
 PLAYER_ID_COL = "Oyuncu_ID"
 PLAYER_NAME_COL = "\u0130sim"
