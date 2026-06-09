@@ -1,3 +1,0 @@
-﻿model_key,description,r2,r2_pct,mae_eur,rmse_eur,mape_pct,within_2x_band_pct,n_test,n_train,feature_count
-honest,Tarihsel PD yok / düşük sızıntı,0.48171866189397916,48.17,5320901.678561612,12414467.81223866,150.57,40.35,3234,18526,110
-benchmark,Tarihsel PD dahil (R² üst sınır),0.9023054158248317,90.23,2485790.9513216084,5389898.234894753,52.66,80.24,3234,18526,123

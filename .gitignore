@@ -10,6 +10,10 @@ dist/
 # Machine Learning model binaries (exceeds GitHub size limit)
 *.pkl
 
+# Raw and processed datasets / CSVs to prevent licensing/copyright issues
+Model/data/
+*.csv
+
 # OS files
 .DS_Store
 Thumbs.db
