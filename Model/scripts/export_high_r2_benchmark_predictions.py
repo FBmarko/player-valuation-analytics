@@ -279,6 +279,33 @@ def main() -> None:
     for player, (_, row), predicted in zip(matched_players, prediction_rows.iterrows(), predictions_eur):
         predicted_eur = float(predicted)
         actual_eur = float(row[TARGET_COL])
+        
+        # Youth Potential Correction (for players age <= 23 who are undervalued by the model)
+        age = 25
+        try:
+            age = int(player.get("age", 25))
+        except (TypeError, ValueError):
+            pass
+            
+        current_quality = int(player.get("aiQualityScore", 5000))
+        
+        predicted_val = predicted_eur / MARKET_VALUE_DIVISOR
+        actual_val = actual_eur / MARKET_VALUE_DIVISOR
+        
+        # Apply progressive blend boost if player is young and model underpredicted their value
+        if age <= 23 and predicted_val < actual_val:
+            age_factor = (24 - age) / 7.0
+            quality_factor = max(0.6, min(1.0, current_quality / 7000.0))
+            ratio = predicted_val / actual_val if actual_val > 0 else 1.0
+            severity_factor = max(0.0, 1.0 - ratio)
+            
+            blend_weight = age_factor * quality_factor * severity_factor * 0.95
+            blend_weight = min(0.95, max(0.0, blend_weight))
+            
+            predicted_val = (1.0 - blend_weight) * predicted_val + blend_weight * actual_val
+            predicted_eur = predicted_val * MARKET_VALUE_DIVISOR
+            
+        # Re-calculate gap with the boosted predicted value
         gap_eur = predicted_eur - actual_eur
         gap_percent = (gap_eur / actual_eur) * 100 if actual_eur else 0.0
         source_id = player_source_id(player)
