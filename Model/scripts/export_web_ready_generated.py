@@ -868,14 +868,43 @@ def clamp(value: int, low: int, high: int) -> int:
     return max(low, min(high, value))
 
 
-def compute_ai_quality_score(weighted_avg: float, league_coef: float, config: dict[str, object]) -> int:
+def compute_ai_quality_score(
+    weighted_avg: float,
+    league_coef: float,
+    mv: float,
+    scores: dict[str, int],
+    config: dict[str, object]
+) -> int:
     score_range = config.get("scoreRange", {"min": 1000, "max": 9999})
     low = int(score_range.get("min", 1000)) if isinstance(score_range, dict) else 1000
     high = int(score_range.get("max", 9999)) if isinstance(score_range, dict) else 9999
     
+    # Base raw score scaled between low and high
     val = low + (weighted_avg / 99.0) * (high - low)
-    scaled_part = (val - low) * league_coef
+    
+    # Calculate market value coefficient (mv_coef)
+    # A logarithmic scaling based on market value in millions, normalized against 150M limit.
+    mv_coef = 0.60 + 0.40 * (math.log10(mv + 1.0) / math.log10(150.0 + 1.0))
+    mv_coef = min(1.0, max(0.4, mv_coef))
+    
+    # Blend league strength and market value coefficient (30% league, 70% market value)
+    final_coef = 0.30 * league_coef + 0.70 * mv_coef
+    
+    scaled_part = (val - low) * final_coef
     final_val = low + scaled_part
+    
+    # Undervalued Gems Bonus
+    # If a player has a low market value, but extremely high category scores, give them a bonus!
+    max_cat = max(scores.values()) if scores else 0
+    expected_cat = 35.0 + 2.0 * mv
+    if max_cat > expected_cat and mv < 25.0:
+        bonus = (max_cat - expected_cat) * 45.0
+        bonus = min(1500.0, max(0.0, bonus))
+    else:
+        bonus = 0.0
+        
+    final_val += bonus
+    
     return max(low, min(high, int(round(final_val))))
 
 
@@ -1219,7 +1248,8 @@ def main() -> None:
         else:
             league_coef = 0.70 + 0.30 * (lig_guc / 60.0)
             
-        quality_by_player[key] = compute_ai_quality_score(weighted_avg, league_coef, config)
+        mv = to_millions(row.get(CURRENT_VALUE_COL), config)
+        quality_by_player[key] = compute_ai_quality_score(weighted_avg, league_coef, mv, scores, config)
 
     players = [
         build_player(

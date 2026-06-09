@@ -300,7 +300,22 @@ function MarketEstimateMetric({ estimate }) {
         {formatSignedMillions(estimate.valuationGapMillions)}
         {gapPercent}
       </p>
-      <p className="mt-2 text-[11px] leading-4 text-slate-500">
+      
+      {estimate.projectedSeasonEndValueMillions && (
+        <div className="mt-2.5 pt-2 border-t border-emerald-500/10">
+          <p className="text-[9px] font-black uppercase text-slate-450 tracking-wider">Projected Season-End PD</p>
+          <p className="text-xs font-black text-amber-300 mt-0.5">
+            €{estimate.projectedSeasonEndValueMillions}M
+            {estimate.mvBonusPercent > 0 && (
+              <span className="text-[9px] text-emerald-400 ml-1.5 font-bold">
+                (+{estimate.mvBonusPercent}% premium)
+              </span>
+            )}
+          </p>
+        </div>
+      )}
+
+      <p className="mt-2 text-[10px] leading-4 text-slate-500">
         {estimate.riskNote ?? "Market-aware benchmark"}
       </p>
     </div>

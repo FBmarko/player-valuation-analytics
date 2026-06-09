@@ -158,6 +158,7 @@ def build_simulated_future_projection(
     current_quality: int,
     current_value: float,
     age: object,
+    mv_bonus_percent: float = 0.0,
 ) -> list[dict[str, object]]:
     try:
         player_age = int(age)
@@ -208,7 +209,10 @@ def build_simulated_future_projection(
         
         # Project quality and value
         proj_quality = int(round(current_quality * (q_factor ** year)))
-        proj_value = current_value * (val_factor ** year)
+        
+        # Apply the position-weighted gems bonus directly to base current value
+        base_value = current_value * (1.0 + mv_bonus_percent)
+        proj_value = base_value * (val_factor ** year)
         
         # Bounds check
         proj_quality = max(1000, min(9999, proj_quality))
@@ -310,11 +314,37 @@ def main() -> None:
             current_value = estimate.get("predictedMarketValueMillions", 1.0)
             age = player.get("age", 25)
             
-            future_proj = build_simulated_future_projection(player, current_quality, current_value, age)
+            # Position-weighted gems calculation for market value bonus
+            pos = str(player.get("position", "")).lower()
+            ai_scores = player.get("aiScores", {})
+            if "forward" in pos or "striker" in pos or "winger" in pos or "attack" in pos:
+                primary_val = ai_scores.get("attack", 50)
+                secondary_val = ai_scores.get("dribbling", 50)
+            elif "midfield" in pos:
+                primary_val = ai_scores.get("playmaking", 50)
+                secondary_val = ai_scores.get("dribbling", 50)
+            else:
+                primary_val = ai_scores.get("defense", 50)
+                secondary_val = ai_scores.get("physicality", 50)
+                
+            weighted_stat = 0.7 * primary_val + 0.3 * secondary_val
+            expected_stat = 35.0 + 2.0 * current_value
+            excess = weighted_stat - expected_stat
+            
+            mv_bonus_percent = min(0.60, excess * 0.018) if (excess > 0 and current_value < 25.0) else 0.0
+            projected_season_end_mv = round(current_value * (1.0 + mv_bonus_percent), 2)
+            
+            updated_estimate = {
+                **estimate,
+                "projectedSeasonEndValueMillions": projected_season_end_mv,
+                "mvBonusPercent": round(mv_bonus_percent * 100, 1)
+            }
+            
+            future_proj = build_simulated_future_projection(player, current_quality, current_value, age, mv_bonus_percent)
             
             updated_players.append({
                 **player,
-                "marketEstimate": estimate,
+                "marketEstimate": updated_estimate,
                 "futureProjection": future_proj
             })
         else:
