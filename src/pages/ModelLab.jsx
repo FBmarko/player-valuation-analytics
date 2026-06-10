@@ -59,12 +59,12 @@ const modelVersions = [
   {
     version: "V1",
     title: "High-R2 Benchmark",
-    status: "Active web estimate",
+    status: "Raw benchmark base",
     modelPath: "elite_stacking_model_high_r2.pkl",
     dataset: "engineered_master_dataset_high_r2.csv",
     target: "PD_Guncel",
     structure: "TransformedTargetRegressor wrapping CatBoost + XGBoost + LightGBM stack",
-    result: "Provides the current AI Market Estimate shown on player profiles, then the web export applies youth-potential post-processing.",
+    result: "Produces the raw market-aware benchmark prediction that feeds the active web estimate.",
     leakage: "High benchmark",
     leakageTone: "text-amber-300",
     featureCount: 123,
@@ -72,7 +72,7 @@ const modelVersions = [
     maeM: 2.49,
     rmseM: 5.39,
     band: 80.24,
-    note: "R2 below is raw model validation. The displayed web estimate also includes age <= 23 youth adjustment and position-weighted bonus after prediction.",
+    note: "R2 below is raw model validation before the youth adjustment layer.",
   },
   {
     version: "V2",
@@ -217,6 +217,60 @@ function VersionCard({ model }) {
   );
 }
 
+function ActiveHybridCard({ predictionCoverage }) {
+  return (
+    <GlassCard className="neon-border overflow-hidden p-6">
+      <div className="grid gap-6 xl:grid-cols-[1fr_1.15fr] xl:items-center">
+        <div>
+          <p className="hero-kicker">
+            <BrainCircuit className="h-3.5 w-3.5" />
+            Active Web Model
+          </p>
+          <h2 className="mt-5 text-3xl font-black text-white md:text-4xl">
+            High-R2 Benchmark + Youth Adjustment
+          </h2>
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-400">
+            This is the combined signal currently used on the website for `AI Market Estimate`:
+            the high-R2 benchmark prediction is generated first, then the offline export applies
+            the age-based youth-potential adjustment and position-weighted value bonus.
+          </p>
+          <p className="mt-4 rounded-2xl border border-amber-400/20 bg-amber-400/10 p-4 text-sm leading-7 text-amber-100">
+            Academic note: the R2 value here belongs to the raw benchmark model validation. The
+            youth adjustment is post-processing and is not separately included in that R2 test.
+          </p>
+        </div>
+
+        <div className="grid gap-3 sm:grid-cols-2">
+          <div className="stat-card rounded-2xl p-4">
+            <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">Raw R2 Test</p>
+            <p className="mt-2 text-2xl font-black text-emerald-300">90.23%</p>
+          </div>
+          <div className="stat-card rounded-2xl p-4">
+            <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">Raw Model MAE</p>
+            <p className="mt-2 text-2xl font-black text-amber-300">EUR 2.49M</p>
+          </div>
+          <div className="stat-card rounded-2xl p-4">
+            <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">Web Avg Abs Gap</p>
+            <p className="mt-2 text-2xl font-black text-sky-300">EUR 0.53M</p>
+          </div>
+          <div className="stat-card rounded-2xl p-4">
+            <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">Prediction Coverage</p>
+            <p className="mt-2 text-2xl font-black text-white">{predictionCoverage}</p>
+          </div>
+          <div className="rounded-2xl border border-slate-800 bg-slate-950/55 p-4">
+            <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">Youth Layer</p>
+            <p className="mt-2 text-sm font-black text-emerald-200">age &lt;= 23 blend boost</p>
+          </div>
+          <div className="rounded-2xl border border-slate-800 bg-slate-950/55 p-4">
+            <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">Bonus Layer</p>
+            <p className="mt-2 text-sm font-black text-emerald-200">position-weighted value bonus</p>
+          </div>
+        </div>
+      </div>
+    </GlassCard>
+  );
+}
+
 function PipelineVisual() {
   return (
     <GlassCard className="overflow-hidden p-6">
@@ -316,6 +370,8 @@ export default function ModelLab({ metadata }) {
         <MetricTile icon={BadgeCheck} label="Benchmark Coverage" value={predictionCoverage} detail="Offline prediction coverage by player id." />
         <MetricTile icon={Sigma} label="Clean v1 Features" value="118" detail="Direct historical player PD columns removed." accent="text-amber-300" />
       </div>
+
+      <ActiveHybridCard predictionCoverage={predictionCoverage} />
 
       <section>
         <div className="mb-5">
