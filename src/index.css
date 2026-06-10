@@ -354,6 +354,7 @@ input {
 }
 
 .command-menu {
+  position: absolute;
   animation: menuEnter 180ms ease-out both;
 }
 

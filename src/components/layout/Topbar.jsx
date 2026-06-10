@@ -64,6 +64,20 @@ export default function Topbar({ searchableItems, onSelect, onMenuClick }) {
     return searchableItems.filter((item) => matchesSmartSearch(item, query)).slice(0, 5);
   }, [query, searchableItems]);
 
+  const settingsRows = [
+    ["Data Source", "Generated JSON", "text-slate-200"],
+    ["Players", playersCount.toLocaleString(), "text-slate-200"],
+    ["Teams", teamsCount.toLocaleString(), "text-slate-200"],
+    ["Model", "High-R2 + Youth", "text-emerald-300"],
+    ["Projection", "Generated", "text-emerald-300"],
+  ];
+
+  const notificationItems = [
+    ["Generated data loaded", "Scout database is ready"],
+    ["AI Market Estimate active", "High-R2 predictions with youth adjustment"],
+    ["Presentation mode available", "Guided demo flow is ready"],
+  ];
+
   const handleSelect = (item) => {
     onSelect(item);
     setQuery("");
@@ -122,7 +136,7 @@ export default function Topbar({ searchableItems, onSelect, onMenuClick }) {
           </div>
 
           {isOpen && suggestions.length > 0 && (
-            <div className="glass-panel command-menu absolute left-0 right-0 top-16 z-50 overflow-hidden rounded-3xl border-emerald-400/20">
+            <div className="glass-panel command-menu left-0 right-0 top-16 z-50 overflow-hidden rounded-3xl border-emerald-400/20">
               {suggestions.map((item) => (
                 <button
                   key={`${item.type}-${item.id}`}
@@ -160,35 +174,27 @@ export default function Topbar({ searchableItems, onSelect, onMenuClick }) {
           </button>
 
           {showSettings && (
-            <div className="glass-panel command-menu absolute right-0 top-16 z-50 w-80 rounded-[1.75rem] p-5">
-              <h3 className="text-xs font-black uppercase tracking-[0.25em] text-emerald-300">
-                System Parameters
-              </h3>
-              <div className="mt-4 space-y-3">
-                <div className="flex items-center justify-between rounded-xl border border-slate-900 bg-slate-900/40 p-2.5">
-                  <span className="text-xs text-slate-500">Data Source</span>
-                  <span className="text-xs font-bold text-slate-200">Generated JSON</span>
-                </div>
-                <div className="flex items-center justify-between rounded-xl border border-slate-900 bg-slate-900/40 p-2.5">
-                  <span className="text-xs text-slate-500">Players Count</span>
-                  <span className="text-xs font-bold text-slate-200">
-                    {playersCount.toLocaleString()}
-                  </span>
-                </div>
-                <div className="flex items-center justify-between rounded-xl border border-slate-900 bg-slate-900/40 p-2.5">
-                  <span className="text-xs text-slate-500">Teams Count</span>
-                  <span className="text-xs font-bold text-slate-200">
-                    {teamsCount.toLocaleString()}
-                  </span>
-                </div>
-                <div className="flex items-center justify-between rounded-xl border border-slate-900 bg-slate-900/40 p-2.5">
-                  <span className="text-xs text-slate-500">Model Estimate</span>
-                  <span className="text-xs font-bold text-slate-200">High-R2 + Youth</span>
-                </div>
-                <div className="flex items-center justify-between rounded-xl border border-slate-900 bg-slate-900/40 p-2.5">
-                  <span className="text-xs text-slate-500">Future Projections</span>
-                  <span className="text-xs font-bold text-emerald-300">Generated</span>
-                </div>
+            <div className="glass-panel command-menu right-0 top-16 z-50 w-[20rem] max-w-[calc(100vw-2rem)] rounded-[1.35rem] border-emerald-400/20 p-3 shadow-[0_24px_70px_rgba(0,0,0,0.42)]">
+              <div className="flex items-center justify-between gap-4 border-b border-slate-800/70 px-2 pb-3">
+                <h3 className="text-[10px] font-black uppercase tracking-[0.24em] text-emerald-300">
+                  System
+                </h3>
+                <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-emerald-200">
+                  Live
+                </span>
+              </div>
+              <div className="mt-2 space-y-1.5">
+                {settingsRows.map(([label, value, tone]) => (
+                  <div
+                    key={label}
+                    className="flex items-center justify-between gap-4 rounded-xl border border-slate-900/80 bg-slate-950/45 px-3 py-2"
+                  >
+                    <span className="text-[11px] font-semibold text-slate-500">{label}</span>
+                    <span className={`max-w-40 truncate text-right text-[11px] font-black ${tone}`}>
+                      {value}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           )}
@@ -211,29 +217,22 @@ export default function Topbar({ searchableItems, onSelect, onMenuClick }) {
           </button>
 
           {showNotifications && (
-            <div className="glass-panel command-menu absolute right-0 top-16 z-50 w-80 rounded-[1.75rem] p-5">
-              <h3 className="text-xs font-black uppercase tracking-[0.25em] text-amber-300">
-                System Notifications
-              </h3>
-              <div className="mt-4 space-y-2.5">
-                <div className="rounded-xl border border-slate-900 bg-slate-900/40 p-3 text-left">
-                  <p className="text-xs font-semibold text-slate-200">
-                    Generated data loaded successfully
-                  </p>
-                  <p className="mt-1 text-[10px] text-slate-500">Scout database is ready</p>
-                </div>
-                <div className="rounded-xl border border-slate-900 bg-slate-900/40 p-3 text-left">
-                  <p className="text-xs font-semibold text-slate-200">
-                    AI Market Estimate available
-                  </p>
-                  <p className="mt-1 text-[10px] text-slate-500">High-R2 predictions active</p>
-                </div>
-                <div className="rounded-xl border border-slate-900 bg-slate-900/40 p-3 text-left">
-                  <p className="text-xs font-semibold text-slate-200">
-                    Presentation mode available
-                  </p>
-                  <p className="mt-1 text-[10px] text-slate-500">Use guided demo flow for reviews</p>
-                </div>
+            <div className="glass-panel command-menu right-0 top-16 z-50 w-[20rem] max-w-[calc(100vw-2rem)] rounded-[1.35rem] border-amber-400/20 p-3 shadow-[0_24px_70px_rgba(0,0,0,0.42)]">
+              <div className="flex items-center justify-between gap-4 border-b border-slate-800/70 px-2 pb-3">
+                <h3 className="text-[10px] font-black uppercase tracking-[0.24em] text-amber-300">
+                  Updates
+                </h3>
+                <span className="rounded-full border border-amber-400/20 bg-amber-400/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-amber-200">
+                  3
+                </span>
+              </div>
+              <div className="mt-2 space-y-1.5">
+                {notificationItems.map(([title, detail]) => (
+                  <div key={title} className="rounded-xl border border-slate-900/80 bg-slate-950/45 px-3 py-2 text-left">
+                    <p className="text-xs font-bold text-slate-200">{title}</p>
+                    <p className="mt-0.5 text-[10px] leading-4 text-slate-500">{detail}</p>
+                  </div>
+                ))}
               </div>
             </div>
           )}
