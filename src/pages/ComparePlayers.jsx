@@ -24,6 +24,12 @@ import {
 import GlowingAvatar from "../components/GlowingAvatar";
 import TeamJersey from "../components/TeamJersey";
 
+const formatCompareValue = (value) => {
+  const numericValue = Number(value);
+  if (!Number.isFinite(numericValue)) return "€0.0M";
+  return `€${numericValue.toFixed(1)}M`;
+};
+
 function getVibrantColor(hex) {
   if (!hex) return "#10b981";
   if (hex === "#ffffff" || hex === "#FFFFFF") return "#cbd5e1"; // nice bright slate/white
@@ -236,6 +242,7 @@ function PlayerSelector({ label, players, selectedPlayer, onSelect, placeholder,
 
 function ComparePlayerCard({ player, team, color, secondaryColor }) {
   const latestValue = player.marketValueHistory.at(-1).value;
+  const estimateValue = formatCompareValue(player.marketEstimate?.predictedMarketValueMillions || latestValue);
   const shortPosition = useMemo(() => {
     return player.position
       .split(" ")
@@ -288,14 +295,16 @@ function ComparePlayerCard({ player, team, color, secondaryColor }) {
         </p>
 
         {/* Core Stats Overview */}
-        <div className="mt-6 grid grid-cols-2 gap-4 w-full border-t border-slate-850 pt-5">
-          <div className="border-r border-slate-850/60 pr-2">
-            <p className="text-[10px] font-black uppercase text-slate-500 tracking-[0.15em]">AI Index</p>
-            <p className="text-2xl font-black mt-1.5 leading-none bg-gradient-to-r from-emerald-300 to-green-500 bg-clip-text text-transparent">{player.aiQualityScore}</p>
+        <div className="mt-6 grid w-full grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-2 border-t border-slate-850 pt-5">
+          <div className="min-w-0 border-r border-slate-850/60 pr-2 text-left">
+            <p className="truncate text-[10px] font-black uppercase text-slate-500 tracking-[0.12em]">AI Index</p>
+            <p className="mt-1.5 truncate text-xl font-black leading-none bg-gradient-to-r from-emerald-300 to-green-500 bg-clip-text text-transparent">{player.aiQualityScore}</p>
           </div>
-          <div className="pl-2">
-            <p className="text-[10px] font-black uppercase text-slate-500 tracking-[0.15em]">Est. Value</p>
-            <p className="text-2xl font-black mt-1.5 leading-none bg-gradient-to-r from-amber-300 to-orange-400 bg-clip-text text-transparent">€{player.marketEstimate?.predictedMarketValueMillions || 0}M</p>
+          <div className="min-w-0 pl-2 text-right">
+            <p className="truncate text-[10px] font-black uppercase text-slate-500 tracking-[0.12em]">Est. Value</p>
+            <p className="mt-1.5 whitespace-nowrap text-xl font-black leading-none bg-gradient-to-r from-amber-300 to-orange-400 bg-clip-text text-transparent">
+              {estimateValue}
+            </p>
           </div>
         </div>
       </div>
