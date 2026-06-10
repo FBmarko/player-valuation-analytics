@@ -64,7 +64,7 @@ const modelVersions = [
     dataset: "engineered_master_dataset_high_r2.csv",
     target: "PD_Guncel",
     structure: "TransformedTargetRegressor wrapping CatBoost + XGBoost + LightGBM stack",
-    result: "Provides the current AI Market Estimate shown on player profiles.",
+    result: "Provides the current AI Market Estimate shown on player profiles, then the web export applies youth-potential post-processing.",
     leakage: "High benchmark",
     leakageTone: "text-amber-300",
     featureCount: 123,
@@ -72,7 +72,7 @@ const modelVersions = [
     maeM: 2.49,
     rmseM: 5.39,
     band: 80.24,
-    note: "Uses historical market-value-derived features, so it is a benchmark estimate, not a clean future forecast.",
+    note: "R2 below is raw model validation. The displayed web estimate also includes age <= 23 youth adjustment and position-weighted bonus after prediction.",
   },
   {
     version: "V2",
@@ -195,7 +195,7 @@ function VersionCard({ model }) {
 
       <div className="mt-5 grid grid-cols-3 gap-3">
         <div className="rounded-2xl border border-slate-800 bg-slate-950/55 p-3">
-          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">R2 test</p>
+          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">Raw R2 test</p>
           <p className="mt-2 text-lg font-black text-emerald-300">{pct(model.r2)}</p>
         </div>
         <div className="rounded-2xl border border-slate-800 bg-slate-950/55 p-3">
@@ -290,7 +290,7 @@ export default function ModelLab({ metadata }) {
             <div className="flex items-center justify-between gap-4">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.24em] text-slate-500">Active Signal</p>
-                <p className="mt-2 text-2xl font-black text-emerald-300">High-R2 Benchmark</p>
+                <p className="mt-2 text-2xl font-black text-emerald-300">High-R2 Benchmark + Youth Adjustment</p>
               </div>
               <BrainCircuit className="h-9 w-9 text-emerald-300" />
             </div>
@@ -352,7 +352,7 @@ export default function ModelLab({ metadata }) {
             </ResponsiveContainer>
           </div>
           <p className="mt-4 rounded-2xl border border-amber-400/20 bg-amber-400/10 p-4 text-sm leading-7 text-amber-100">
-            The highest R2 model is deliberately labeled as a benchmark because it uses historical market-value-derived inputs. Clean v1 is safer, but its validation accuracy is not yet good enough to replace the active benchmark.
+            The highest R2 model is deliberately labeled as a benchmark because it uses historical market-value-derived inputs. The R2 values shown here are raw validation metrics before the youth-potential post-processing used in the web export.
           </p>
         </GlassCard>
 
@@ -486,6 +486,7 @@ export default function ModelLab({ metadata }) {
           </div>
           <div className="mt-5 space-y-2 text-sm leading-7 text-slate-400">
             <p>V1 benchmark uses historical player market values and must be labeled clearly.</p>
+            <p>The active web estimate adds an age-based youth premium after raw model prediction.</p>
             <p>V2 drops PD_23, PD_24, PD_25 and derived historical PD aggregates.</p>
             <p>Aggregate league and club value context remains, and should stay documented.</p>
           </div>
