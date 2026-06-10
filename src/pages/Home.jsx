@@ -1,4 +1,4 @@
-import { ArrowUpRight, BadgeEuro, BrainCircuit, Trophy, UsersRound, TrendingUp } from "lucide-react";
+import { ArrowUpRight, BadgeEuro, BrainCircuit, FlaskConical, Trophy, UsersRound, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import TeamJersey from "../components/TeamJersey";
 import {
@@ -142,6 +142,15 @@ export default function Home({ teams, players }) {
             Track high-upside prospects, valuation momentum, squad color identity, and AI category
             confidence from one calm command surface.
           </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link
+              to="/models"
+              className="premium-button inline-flex items-center gap-2 rounded-2xl px-4 py-3 text-sm font-bold text-slate-200"
+            >
+              <FlaskConical className="h-4 w-4 text-emerald-300" />
+              Open Model Lab
+            </Link>
+          </div>
         </div>
       </GlassCard>
 
