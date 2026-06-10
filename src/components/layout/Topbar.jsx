@@ -167,7 +167,7 @@ export default function Topbar({ searchableItems, onSelect, onMenuClick }) {
               <div className="mt-4 space-y-3">
                 <div className="flex items-center justify-between rounded-xl border border-slate-900 bg-slate-900/40 p-2.5">
                   <span className="text-xs text-slate-500">Data Source</span>
-                  <span className="text-xs font-bold text-slate-200">Static JSON</span>
+                  <span className="text-xs font-bold text-slate-200">Generated JSON</span>
                 </div>
                 <div className="flex items-center justify-between rounded-xl border border-slate-900 bg-slate-900/40 p-2.5">
                   <span className="text-xs text-slate-500">Players Count</span>
@@ -183,11 +183,11 @@ export default function Topbar({ searchableItems, onSelect, onMenuClick }) {
                 </div>
                 <div className="flex items-center justify-between rounded-xl border border-slate-900 bg-slate-900/40 p-2.5">
                   <span className="text-xs text-slate-500">Model Estimate</span>
-                  <span className="text-xs font-bold text-slate-200">High-R2 Benchmark</span>
+                  <span className="text-xs font-bold text-slate-200">High-R2 + Youth</span>
                 </div>
                 <div className="flex items-center justify-between rounded-xl border border-slate-900 bg-slate-900/40 p-2.5">
                   <span className="text-xs text-slate-500">Future Projections</span>
-                  <span className="text-xs font-bold text-amber-400">Pending</span>
+                  <span className="text-xs font-bold text-emerald-300">Generated</span>
                 </div>
               </div>
             </div>
@@ -230,9 +230,9 @@ export default function Topbar({ searchableItems, onSelect, onMenuClick }) {
                 </div>
                 <div className="rounded-xl border border-slate-900 bg-slate-900/40 p-3 text-left">
                   <p className="text-xs font-semibold text-slate-200">
-                    Future projection model pending
+                    Presentation mode available
                   </p>
-                  <p className="mt-1 text-[10px] text-slate-500">Awaiting forecast output</p>
+                  <p className="mt-1 text-[10px] text-slate-500">Use guided demo flow for reviews</p>
                 </div>
               </div>
             </div>

@@ -1,4 +1,4 @@
-import { Crosshair, FlaskConical, Shield, Sparkles, Search, GitCompare } from "lucide-react";
+import { Crosshair, FlaskConical, Shield, Sparkles, Search, GitCompare, PlayCircle } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { slugify } from "../../utils/dataUtils";
 
@@ -103,6 +103,21 @@ export default function Sidebar({ teams, isOpen, onClose }) {
         >
           <FlaskConical className="h-4 w-4" />
           Model Lab
+        </NavLink>
+
+        <NavLink
+          to="/presentation"
+          className={({ isActive }) =>
+            `nav-pill mt-2 flex items-center gap-2.5 rounded-2xl px-4 py-3 text-sm font-semibold transition ${
+              isActive
+                ? "border border-emerald-300/25 bg-emerald-400/10 text-emerald-100 shadow-[0_0_28px_rgba(52,211,153,0.12)]"
+                : "border border-transparent text-slate-400 hover:border-slate-700/60 hover:bg-slate-900/55 hover:text-slate-100"
+            }`
+          }
+          onClick={onClose}
+        >
+          <PlayCircle className="h-4 w-4" />
+          Presentation Mode
         </NavLink>
 
         <div className="glass-card mt-4 rounded-3xl p-4">

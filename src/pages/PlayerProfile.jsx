@@ -1,6 +1,7 @@
 import {
   Activity,
   ArrowLeft,
+  BadgeCheck,
   BadgeEuro,
   BrainCircuit,
   CalendarClock,
@@ -16,6 +17,7 @@ import {
   Sparkles,
   Target,
   TrendingUp,
+  UsersRound,
 } from "lucide-react";
 import { useState, useMemo } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
@@ -23,6 +25,13 @@ import GlowingAvatar from "../components/GlowingAvatar";
 import StatBar from "../components/StatBar";
 import TeamJersey from "../components/TeamJersey";
 import AbilityRadarChart from "../components/charts/AbilityRadarChart";
+import {
+  getConfidenceProfile,
+  getDecisionSignals,
+  getPlayerRankContext,
+  getSimilarPlayers,
+  getValuationGap,
+} from "../utils/scoutingInsights";
 
 const titleCase = (value) => value.charAt(0).toUpperCase() + value.slice(1);
 
@@ -489,6 +498,118 @@ function AIScoutReport({ player, className = "" }) {
   );
 }
 
+function DecisionBrief({ player, players }) {
+  const confidence = getConfidenceProfile(player);
+  const rankContext = getPlayerRankContext(players, player);
+  const valuation = getValuationGap(player);
+  const signals = getDecisionSignals(player);
+  const topScore = getRankedScores(player.aiScores)[0];
+  const youthLayer = Number(player.age) <= 23 ? "Youth premium active" : "Senior curve";
+
+  return (
+    <PremiumPanel className="mt-6 p-6">
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[0.28em] text-slate-500">Decision Brief</p>
+          <h2 className="mt-2 text-2xl font-black text-white">Scouting Confidence & Investment Logic</h2>
+        </div>
+        <BadgeCheck className="h-6 w-6 text-emerald-300" />
+      </div>
+
+      <div className="grid gap-3 md:grid-cols-4">
+        <MiniMetric icon={ShieldCheck} label="Prediction Confidence" value={`${confidence.score}% • ${confidence.label}`} accent={confidence.tone} />
+        <MiniMetric icon={UsersRound} label="Position Percentile" value={`${rankContext.label} • #${rankContext.rank}/${rankContext.cohortSize}`} accent="text-sky-300" />
+        <MiniMetric
+          icon={BadgeEuro}
+          label="Model Value Gap"
+          value={`${formatSignedMillions(valuation.gapMillions)} (${valuation.gapPercent > 0 ? "+" : ""}${valuation.gapPercent.toFixed(1)}%)`}
+          accent={valuation.gapMillions >= 0 ? "text-emerald-300" : "text-amber-300"}
+        />
+        <MiniMetric icon={BrainCircuit} label="Main Driver" value={`${topScore.label} ${topScore.value}/99 • ${youthLayer}`} accent="text-emerald-300" />
+      </div>
+
+      <div className="mt-5 grid gap-4 xl:grid-cols-[1fr_1fr_0.8fr]">
+        <ReportList icon={Sparkles} title="Decision Strengths" items={signals.strengths} accent="text-emerald-300" />
+        <ReportList icon={CircleAlert} title="Risk Checks" items={signals.risks} accent="text-amber-300" />
+        <div className="bento-card rounded-3xl p-5">
+          <div className="flex items-center gap-3">
+            <div className="grid h-12 w-12 place-items-center rounded-2xl bg-slate-900 text-sky-300">
+              <ClipboardList className="h-5 w-5" />
+            </div>
+            <h3 className="text-base font-black text-white">Data Quality</h3>
+          </div>
+          <div className="mt-5 space-y-3">
+            {confidence.notes.map((note) => (
+              <p key={note} className="rounded-2xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm leading-6 text-slate-300">
+                {note}
+              </p>
+            ))}
+          </div>
+        </div>
+      </div>
+    </PremiumPanel>
+  );
+}
+
+function SimilarPlayersPanel({ player, players, teams }) {
+  const similarPlayers = getSimilarPlayers(players, player, 4);
+
+  return (
+    <PremiumPanel className="mt-6 p-6">
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[0.28em] text-slate-500">Similarity Search</p>
+          <h2 className="mt-2 text-2xl font-black text-white">Comparable Player Profiles</h2>
+        </div>
+        <UsersRound className="h-6 w-6 text-sky-300" />
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {similarPlayers.map(({ player: similarPlayer, similarityScore }) => {
+          const team = teams.find((candidate) => candidate.id === similarPlayer.teamId) || { name: "Unknown" };
+          const valuation = getValuationGap(similarPlayer);
+          const strongest = getRankedScores(similarPlayer.aiScores)[0];
+
+          return (
+            <Link
+              key={similarPlayer.id}
+              to={`/player/${similarPlayer.id}`}
+              className="elite-prospect-card route-card block rounded-3xl p-5"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div className="min-w-0">
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-300">
+                    {similarityScore}% match
+                  </p>
+                  <h3 className="mt-3 truncate text-lg font-black text-white">{similarPlayer.name}</h3>
+                  <p className="mt-1 truncate text-xs text-slate-500">{team.name} • {similarPlayer.position}</p>
+                </div>
+                <GlowingAvatar aiQualityScore={similarPlayer.aiQualityScore} className="h-12 w-12 shrink-0" />
+              </div>
+
+              <div className="mt-5 grid grid-cols-2 gap-2">
+                <div className="rounded-2xl border border-slate-800 bg-slate-950/50 p-3">
+                  <p className="text-[10px] font-black uppercase tracking-wider text-slate-500">AI Score</p>
+                  <p className="mt-1 text-sm font-black text-emerald-300">{formatScore(similarPlayer.aiQualityScore)}</p>
+                </div>
+                <div className="rounded-2xl border border-slate-800 bg-slate-950/50 p-3">
+                  <p className="text-[10px] font-black uppercase tracking-wider text-slate-500">Gap</p>
+                  <p className={`mt-1 text-sm font-black ${valuation.gapMillions >= 0 ? "text-emerald-300" : "text-amber-300"}`}>
+                    {formatSignedMillions(valuation.gapMillions)}
+                  </p>
+                </div>
+              </div>
+              <p className="mt-4 rounded-2xl border border-slate-800 bg-slate-950/45 px-3 py-2 text-xs leading-5 text-slate-400">
+                Shared signal: {strongest.label} {strongest.value}/99
+              </p>
+            </Link>
+          );
+        })}
+      </div>
+    </PremiumPanel>
+  );
+}
+
 function FutureProjection({ projection, currentValue, currentQuality, projectionIndex = 0, onChange, className = "" }) {
   const finalSeason = projection.at(-1);
   const projectionReady = hasProjectionData(projection);
@@ -841,6 +962,7 @@ export default function PlayerProfile({ teams, players }) {
       </div>
 
       <ProfileHero player={player} team={team} />
+      <DecisionBrief player={player} players={players} />
 
       <div className="mt-6 grid items-stretch gap-6 lg:grid-cols-[1.2fr_1fr]">
         <aside className="flex flex-col">
@@ -852,6 +974,8 @@ export default function PlayerProfile({ teams, players }) {
           <AIDashboard player={player} />
         </section>
       </div>
+
+      <SimilarPlayersPanel player={player} players={players} teams={teams} />
     </div>
   );
 }

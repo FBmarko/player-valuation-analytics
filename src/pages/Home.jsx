@@ -1,4 +1,4 @@
-import { ArrowUpRight, BadgeEuro, BrainCircuit, FlaskConical, Trophy, UsersRound, TrendingUp } from "lucide-react";
+import { ArrowUpRight, BadgeEuro, BrainCircuit, FlaskConical, PlayCircle, ShieldCheck, Sparkles, Trophy, UsersRound, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import TeamJersey from "../components/TeamJersey";
 import {
@@ -8,6 +8,7 @@ import {
   getEliteCount,
   getPlayersByTeam,
 } from "../utils/dataUtils";
+import { getConfidenceProfile, getTalentSegments, getValuationGap } from "../utils/scoutingInsights";
 
 function GlassCard({ children, className = "" }) {
   return (
@@ -84,6 +85,52 @@ function OverviewTile({ icon: Icon, label, value, accent = "text-emerald-300" })
   );
 }
 
+function OpportunityList({ icon: Icon, title, description, entries, teams, accent = "text-emerald-300", mode }) {
+  return (
+    <GlassCard className="bento-card overflow-hidden p-6">
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <p className={`inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.22em] ${accent}`}>
+            <Icon className="h-4 w-4" />
+            {mode}
+          </p>
+          <h3 className="mt-3 text-xl font-black text-white">{title}</h3>
+          <p className="mt-2 text-sm leading-6 text-slate-500">{description}</p>
+        </div>
+      </div>
+
+      <div className="mt-5 divide-y divide-slate-800">
+        {entries.slice(0, 4).map(({ player }) => {
+          const team = teams.find((candidate) => candidate.id === player.teamId) || { name: "Unknown" };
+          const valuation = getValuationGap(player);
+          const confidence = getConfidenceProfile(player);
+
+          return (
+            <Link
+              key={player.id}
+              to={`/player/${player.id}`}
+              className="route-card flex items-center justify-between gap-4 rounded-xl px-2 py-3 text-sm transition hover:bg-slate-900/20"
+            >
+              <span className="min-w-0">
+                <span className="block truncate font-bold text-white">{player.name}</span>
+                <span className="mt-0.5 block truncate text-xs text-slate-500">
+                  {team.name} • {player.age} yrs • {confidence.score}% confidence
+                </span>
+              </span>
+              <span className="shrink-0 text-right">
+                <span className={`block text-xs font-black ${valuation.gapMillions >= 0 ? "text-emerald-300" : "text-amber-300"}`}>
+                  {valuation.gapMillions >= 0 ? "+" : ""}{formatMarketValue(Math.abs(valuation.gapMillions))}
+                </span>
+                <span className="text-[10px] uppercase tracking-wider text-slate-500">{player.aiQualityScore}</span>
+              </span>
+            </Link>
+          );
+        })}
+      </div>
+    </GlassCard>
+  );
+}
+
 export default function Home({ teams, players }) {
   const topProspects = getTopProspects(players, 3);
   const totalMarketValue = players.reduce(
@@ -104,6 +151,8 @@ export default function Home({ teams, players }) {
 
   const leaguesList = Object.values(leaguesMap).sort((a, b) => a.name.localeCompare(b.name));
   const elitePlayers = getEliteCount(players);
+  const talentSegments = getTalentSegments(players);
+  const highConfidenceCount = players.filter((player) => getConfidenceProfile(player).score >= 84).length;
 
   // Leaderboard data
   const topValuedPlayers = [...players]
@@ -150,11 +199,18 @@ export default function Home({ teams, players }) {
               <FlaskConical className="h-4 w-4 text-emerald-300" />
               Open Model Lab
             </Link>
+            <Link
+              to="/presentation"
+              className="premium-button inline-flex items-center gap-2 rounded-2xl px-4 py-3 text-sm font-bold text-slate-200"
+            >
+              <PlayCircle className="h-4 w-4 text-amber-300" />
+              Presentation Mode
+            </Link>
           </div>
         </div>
       </GlassCard>
 
-      <div className="stagger-list grid gap-4 md:grid-cols-4">
+      <div className="stagger-list grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
         <OverviewTile icon={UsersRound} label="Tracked prospects" value={players.length} />
         <OverviewTile icon={Trophy} label="Covered leagues" value={leaguesList.length} accent="text-amber-300" />
         <OverviewTile icon={BrainCircuit} label="Elite AI profiles" value={elitePlayers} />
@@ -162,9 +218,62 @@ export default function Home({ teams, players }) {
           icon={BadgeEuro}
           label="Total tracked value"
           value={formatMarketValue(totalMarketValue)}
+          accent="text-emerald-300"
+        />
+        <OverviewTile
+          icon={ShieldCheck}
+          label="High-confidence profiles"
+          value={highConfidenceCount}
           accent="text-sky-300"
         />
       </div>
+
+      <section>
+        <div className="mb-5 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-slate-500">
+              Opportunity Desk
+            </p>
+            <h2 className="mt-2 text-3xl font-black text-white">Model-Driven Shortlists</h2>
+          </div>
+          <Link
+            to="/scout"
+            className="premium-button inline-flex items-center gap-2 rounded-2xl px-4 py-3 text-sm font-bold text-slate-300"
+          >
+            Open Scout Finder
+            <ArrowUpRight className="h-4 w-4" />
+          </Link>
+        </div>
+
+        <div className="grid gap-5 xl:grid-cols-3">
+          <OpportunityList
+            icon={BadgeEuro}
+            mode="Value Gap"
+            title="Undervalued Talent Finder"
+            description="Players where AI market estimate sits materially above current value."
+            entries={talentSegments.undervalued}
+            teams={teams}
+          />
+          <OpportunityList
+            icon={Sparkles}
+            mode="U23"
+            title="Youth Upside Board"
+            description="Young high-score profiles with resale potential and strong model signal."
+            entries={talentSegments.youthUpside}
+            teams={teams}
+            accent="text-amber-300"
+          />
+          <OpportunityList
+            icon={ShieldCheck}
+            mode="Confidence"
+            title="Low-Risk Watchlist"
+            description="High AI score plus broad raw metric coverage for cleaner scouting reads."
+            entries={talentSegments.lowRisk}
+            teams={teams}
+            accent="text-sky-300"
+          />
+        </div>
+      </section>
 
       <section>
         <div className="mb-5 flex items-end justify-between gap-4">

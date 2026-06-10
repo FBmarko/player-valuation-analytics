@@ -11,6 +11,7 @@ import PlayerProfile from "./pages/PlayerProfile";
 import ComparePlayers from "./pages/ComparePlayers";
 import ScoutFinder from "./pages/ScoutFinder";
 import ModelLab from "./pages/ModelLab";
+import PresentationMode from "./pages/PresentationMode";
 import { slugify } from "./utils/dataUtils";
 
 function AppShell() {
@@ -61,6 +62,7 @@ function AppShell() {
       { id: "ai-quality-index", type: "AI parameter", label: "A-Quality Index Score" },
       { id: "market-value", type: "AI parameter", label: "Market Value Momentum" },
       { id: "models", type: "page", label: "Model Research Lab" },
+      { id: "presentation", type: "page", label: "Presentation Mode" },
     ],
     [players, teams, leagues],
   );
@@ -81,8 +83,8 @@ function AppShell() {
       return;
     }
 
-    if (item.type === "page" && item.id === "models") {
-      navigate("/models");
+    if (item.type === "page") {
+      navigate(item.id === "presentation" ? "/presentation" : "/models");
     }
   };
 
@@ -149,6 +151,7 @@ function AppShell() {
           <Route path="/scout" element={<ScoutFinder teams={teams} players={players} />} />
           <Route path="/compare" element={<ComparePlayers teams={teams} players={players} />} />
           <Route path="/models" element={<ModelLab metadata={metadata} />} />
+          <Route path="/presentation" element={<PresentationMode teams={teams} players={players} metadata={metadata} />} />
           <Route path="/league/:leagueId" element={<LeaguePage teams={teams} players={players} />} />
           <Route path="/team/:teamId" element={<TeamPage teams={teams} players={players} />} />
           <Route path="/player/:id" element={<PlayerProfile teams={teams} players={players} />} />

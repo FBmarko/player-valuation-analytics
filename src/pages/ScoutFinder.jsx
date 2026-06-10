@@ -4,15 +4,19 @@ import {
   ArrowLeft,
   SlidersHorizontal,
   Search,
-  Users,
   BadgePercent,
-  TrendingUp,
-  Brain,
-  ChevronDown,
   ChevronRight,
-  TrendingDown,
+  ShieldCheck,
+  Sparkles,
+  TrendingUp,
 } from "lucide-react";
 import GlowingAvatar from "../components/GlowingAvatar";
+import {
+  getConfidenceProfile,
+  getPositionGroup,
+  getScoreTier,
+  getValuationGap,
+} from "../utils/scoutingInsights";
 
 export default function ScoutFinder({ teams, players }) {
   // Filter states
@@ -24,43 +28,40 @@ export default function ScoutFinder({ teams, players }) {
   const [maxScore, setMaxScore] = useState(9999);
   const [maxVal, setMaxVal] = useState(150); // Millions
   const [onlyUndervalued, setOnlyUndervalued] = useState(false);
+  const [leagueFilter, setLeagueFilter] = useState("ALL");
+  const [segment, setSegment] = useState("ALL");
+  const [minGap, setMinGap] = useState(0);
   const [sortBy, setSortBy] = useState("score_desc");
   const [visibleCount, setVisibleCount] = useState(30);
 
-  // Position detector mapping
-  const detectPositionGroup = (posDetail) => {
-    const detail = (posDetail || "").toLowerCase();
-    if (detail.includes("goalkeeper") || detail === "gk") {
-      return "GK";
-    }
-    if (detail.includes("midfield") || detail.includes("dm") || detail.includes("am") || detail.includes("cm")) {
-      return "MID";
-    }
-    if (detail.includes("forward") || detail.includes("striker") || detail.includes("winger") || detail.includes("attack") || detail === "st" || detail === "lw" || detail === "rw" || detail === "cf") {
-      return "FW";
-    }
-    if (detail.includes("back") || detail.includes("defender") || detail.includes("fullback") || detail.includes("cb") || detail.includes("lb") || detail.includes("rb")) {
-      return "DF";
-    }
-    return "MID"; // default fallback
-  };
+  const teamsById = useMemo(() => new Map(teams.map((team) => [team.id, team])), [teams]);
+  const leagues = useMemo(() => Array.from(new Set(teams.map((team) => team.league))).sort(), [teams]);
 
   const filteredPlayers = useMemo(() => {
     return players
       .filter((p) => {
+        const team = teamsById.get(p.teamId);
+        const valuation = getValuationGap(p);
+        const confidence = getConfidenceProfile(p);
+        const age = parseInt(p.age);
+
         // Search term filter
         if (searchTerm && !p.name.toLowerCase().includes(searchTerm.toLowerCase())) {
           return false;
         }
 
+        // League filter
+        if (leagueFilter !== "ALL" && team?.league !== leagueFilter) {
+          return false;
+        }
+
         // Position group filter
         if (positionGroup !== "ALL") {
-          const group = detectPositionGroup(p.position);
+          const group = getPositionGroup(p.position);
           if (group !== positionGroup) return false;
         }
 
         // Age filter
-        const age = parseInt(p.age);
         if (!isNaN(age) && (age < minAge || age > maxAge)) {
           return false;
         }
@@ -72,15 +73,30 @@ export default function ScoutFinder({ teams, players }) {
         }
 
         // Market Value filter
-        const marketVal = p.marketEstimate?.predictedMarketValueMillions || 0;
+        const marketVal = valuation.predictedValue;
         if (maxVal < 150 && marketVal > maxVal) {
           return false;
         }
 
         // Undervalued Gems filter
         if (onlyUndervalued) {
-          const gap = p.marketEstimate?.valuationGapPercent || 0;
-          if (gap < 10) return false;
+          if (valuation.gapPercent < 10) return false;
+        }
+
+        if (minGap > 0 && valuation.gapPercent < minGap) {
+          return false;
+        }
+
+        if (segment === "UNDERVALUED" && (!valuation.isUndervalued || p.aiQualityScore < 4200)) {
+          return false;
+        }
+
+        if (segment === "YOUTH" && (isNaN(age) || age > 23 || p.aiQualityScore < 4200)) {
+          return false;
+        }
+
+        if (segment === "LOW_RISK" && (confidence.score < 84 || p.aiQualityScore < 4200)) {
+          return false;
         }
 
         return true;
@@ -99,11 +115,17 @@ export default function ScoutFinder({ teams, players }) {
           return (a.marketEstimate?.predictedMarketValueMillions || 0) - (b.marketEstimate?.predictedMarketValueMillions || 0);
         }
         if (sortBy === "undervalued_desc") {
-          return (b.marketEstimate?.valuationGapPercent || 0) - (a.marketEstimate?.valuationGapPercent || 0);
+          return getValuationGap(b).gapPercent - getValuationGap(a).gapPercent;
+        }
+        if (sortBy === "confidence_desc") {
+          return getConfidenceProfile(b).score - getConfidenceProfile(a).score;
+        }
+        if (sortBy === "age_asc") {
+          return (Number(a.age) || 99) - (Number(b.age) || 99);
         }
         return b.aiQualityScore - a.aiQualityScore;
       });
-  }, [players, searchTerm, positionGroup, minAge, maxAge, minScore, maxScore, maxVal, onlyUndervalued, sortBy]);
+  }, [players, teamsById, searchTerm, leagueFilter, positionGroup, minAge, maxAge, minScore, maxScore, maxVal, onlyUndervalued, minGap, segment, sortBy]);
 
   const displayedPlayers = useMemo(() => {
     return filteredPlayers.slice(0, visibleCount);
@@ -127,9 +149,20 @@ export default function ScoutFinder({ teams, players }) {
     setMaxScore(9999);
     setMaxVal(150);
     setOnlyUndervalued(false);
+    setLeagueFilter("ALL");
+    setSegment("ALL");
+    setMinGap(0);
     setSortBy("score_desc");
     setVisibleCount(30);
   };
+
+  const resultSummary = useMemo(() => {
+    const undervaluedCount = filteredPlayers.filter((player) => getValuationGap(player).isUndervalued).length;
+    const youthCount = filteredPlayers.filter((player) => Number(player.age) <= 23).length;
+    const highConfidenceCount = filteredPlayers.filter((player) => getConfidenceProfile(player).score >= 84).length;
+
+    return { undervaluedCount, youthCount, highConfidenceCount };
+  }, [filteredPlayers]);
 
   return (
     <div className="page-enter mx-auto max-w-7xl p-4 sm:p-6">
@@ -210,6 +243,23 @@ export default function ScoutFinder({ teams, players }) {
             </div>
           </div>
 
+          {/* League Filter */}
+          <div>
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+              League
+            </label>
+            <select
+              value={leagueFilter}
+              onChange={(e) => setLeagueFilter(e.target.value)}
+              className="w-full rounded-xl border border-slate-800 bg-slate-950/45 px-3 py-2.5 text-xs font-semibold text-slate-300 outline-none transition focus:border-emerald-500/40"
+            >
+              <option value="ALL">All leagues</option>
+              {leagues.map((league) => (
+                <option key={league} value={league}>{league}</option>
+              ))}
+            </select>
+          </div>
+
           {/* Age Range Slider */}
           <div>
             <div className="flex items-center justify-between mb-2">
@@ -280,6 +330,38 @@ export default function ScoutFinder({ teams, players }) {
             </div>
           </div>
 
+          {/* Discovery Mode */}
+          <div>
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+              Discovery Mode
+            </label>
+            <div className="grid gap-2">
+              {[
+                ["ALL", "Full Board", Sparkles],
+                ["UNDERVALUED", "Undervalued", BadgePercent],
+                ["YOUTH", "U23 Upside", TrendingUp],
+                ["LOW_RISK", "Low Risk", ShieldCheck],
+              ].map(([mode, label, Icon]) => (
+                <button
+                  key={mode}
+                  type="button"
+                  onClick={() => setSegment(mode)}
+                  className={`flex items-center justify-between rounded-2xl border px-3 py-2.5 text-left text-xs font-bold transition ${
+                    segment === mode
+                      ? "border-emerald-400/30 bg-emerald-400/10 text-emerald-200"
+                      : "border-slate-850 bg-slate-950/35 text-slate-400 hover:text-slate-200"
+                  }`}
+                >
+                  <span className="inline-flex items-center gap-2">
+                    <Icon className="h-3.5 w-3.5" />
+                    {label}
+                  </span>
+                  <ChevronRight className="h-3.5 w-3.5" />
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* Market Value Slider */}
           <div>
             <div className="flex items-center justify-between mb-2">
@@ -297,6 +379,27 @@ export default function ScoutFinder({ teams, players }) {
               value={maxVal}
               onChange={(e) => setMaxVal(parseInt(e.target.value))}
               className="w-full h-1.5 bg-slate-950 border border-slate-850/60 rounded-lg appearance-none cursor-pointer accent-amber-500 hover:accent-amber-450 focus:outline-none transition shadow-inner"
+            />
+          </div>
+
+          {/* Minimum Gap Slider */}
+          <div>
+            <div className="flex items-center justify-between mb-2">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                Min AI Value Gap
+              </label>
+              <span className="text-xs font-bold text-emerald-300">
+                {minGap === 0 ? "Any gap" : `+${minGap}%`}
+              </span>
+            </div>
+            <input
+              type="range"
+              min="0"
+              max="80"
+              step="5"
+              value={minGap}
+              onChange={(e) => setMinGap(parseInt(e.target.value))}
+              className="w-full h-1.5 bg-slate-950 border border-slate-850/60 rounded-lg appearance-none cursor-pointer accent-emerald-500 hover:accent-emerald-450 focus:outline-none transition shadow-inner"
             />
           </div>
 
@@ -323,9 +426,22 @@ export default function ScoutFinder({ teams, players }) {
           
           {/* Sorting controls */}
           <div className="glass-card flex flex-wrap items-center justify-between gap-4 rounded-2xl px-5 py-3.5">
-            <p className="text-xs font-bold text-slate-400">
-              Found <span className="text-white">{filteredPlayers.length}</span> players matching filters
-            </p>
+            <div>
+              <p className="text-xs font-bold text-slate-400">
+                Found <span className="text-white">{filteredPlayers.length}</span> players matching filters
+              </p>
+              <div className="mt-2 flex flex-wrap gap-2 text-[10px] font-black uppercase tracking-wider">
+                <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 text-emerald-300">
+                  {resultSummary.undervaluedCount} undervalued
+                </span>
+                <span className="rounded-full border border-sky-400/20 bg-sky-400/10 px-2.5 py-1 text-sky-300">
+                  {resultSummary.youthCount} U23
+                </span>
+                <span className="rounded-full border border-amber-400/20 bg-amber-400/10 px-2.5 py-1 text-amber-300">
+                  {resultSummary.highConfidenceCount} high confidence
+                </span>
+              </div>
+            </div>
             <div className="flex items-center gap-3">
               <span className="text-xs text-slate-500 font-medium">Sort by:</span>
               <select
@@ -338,6 +454,8 @@ export default function ScoutFinder({ teams, players }) {
                 <option value="value_desc">Market Value (High)</option>
                 <option value="value_asc">Market Value (Low)</option>
                 <option value="undervalued_desc">Valuation Gap % (High)</option>
+                <option value="confidence_desc">Prediction Confidence (High)</option>
+                <option value="age_asc">Age (Youngest)</option>
               </select>
             </div>
           </div>
@@ -347,11 +465,11 @@ export default function ScoutFinder({ teams, players }) {
             {displayedPlayers.map((player) => {
               const colors = getTeamColors(player.teamId);
               const teamName = getTeamName(player.teamId);
-              const isUndervalued = player.marketEstimate?.valuationGapPercent >= 10;
-              
-              // Calculate tier
-              const tier = player.aiQualityScore >= 4800 ? "S-Tier" : player.aiQualityScore >= 4200 ? "A-Tier" : "B-Tier";
-              const tierClass = player.aiQualityScore >= 4800 
+              const valuation = getValuationGap(player);
+              const confidence = getConfidenceProfile(player);
+              const isUndervalued = valuation.isUndervalued;
+              const tier = getScoreTier(player.aiQualityScore);
+              const tierClass = player.aiQualityScore >= 4800
                 ? "text-emerald-400 border-emerald-500/30 bg-emerald-500/10 drop-shadow-[0_0_6px_rgba(16,185,129,0.2)]" 
                 : player.aiQualityScore >= 4200 
                   ? "text-amber-400 border-amber-500/30 bg-amber-500/10 drop-shadow-[0_0_6px_rgba(245,158,11,0.2)]" 
@@ -390,7 +508,7 @@ export default function ScoutFinder({ teams, players }) {
                         </span>
                       )}
                       <span className={`text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full border ${tierClass}`}>
-                        {tier}
+                        {tier.label}
                       </span>
                     </div>
                   </div>
@@ -416,7 +534,20 @@ export default function ScoutFinder({ teams, players }) {
                     </div>
                     <div>
                       <p className="text-[9px] font-black uppercase tracking-widest text-slate-500">Est. Value</p>
-                      <p className="text-sm font-black text-amber-300 mt-0.5">€{player.marketEstimate?.predictedMarketValueMillions || 0}M</p>
+                      <p className="text-sm font-black text-amber-300 mt-0.5">€{valuation.predictedValue.toFixed(2)}M</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2 border-b border-slate-850/60 pb-3.5 mb-3.5 relative z-10">
+                    <div className="rounded-xl border border-emerald-400/15 bg-emerald-400/5 px-3 py-2">
+                      <p className="text-[8px] font-black uppercase tracking-widest text-slate-500">Value Gap</p>
+                      <p className={`mt-1 text-xs font-black ${valuation.gapMillions >= 0 ? "text-emerald-300" : "text-amber-300"}`}>
+                        {valuation.gapMillions >= 0 ? "+" : ""}{valuation.gapMillions.toFixed(2)}M
+                      </p>
+                    </div>
+                    <div className="rounded-xl border border-sky-400/15 bg-sky-400/5 px-3 py-2">
+                      <p className="text-[8px] font-black uppercase tracking-widest text-slate-500">Confidence</p>
+                      <p className={`mt-1 text-xs font-black ${confidence.tone}`}>{confidence.score}%</p>
                     </div>
                   </div>
 

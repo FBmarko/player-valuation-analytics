@@ -142,6 +142,29 @@ const methodologySteps = [
   },
 ];
 
+const featureInfluenceGroups = [
+  {
+    label: "Player Form",
+    detail: "Goals, assists, xG/xA, minutes, duels, passing and defensive volume describe the sporting output.",
+    tone: "text-emerald-300",
+  },
+  {
+    label: "Role Context",
+    detail: "Position-aware AI category scores prevent forwards, midfielders and defenders from being judged by one generic profile.",
+    tone: "text-sky-300",
+  },
+  {
+    label: "Market Context",
+    detail: "The active benchmark also reads historical market-value-derived features, which is why it remains labeled as benchmark.",
+    tone: "text-amber-300",
+  },
+  {
+    label: "Youth Adjustment",
+    detail: "After raw prediction, U23 players can receive age-based upside blending and position-weighted value bonus.",
+    tone: "text-violet-300",
+  },
+];
+
 function GlassCard({ children, className = "" }) {
   return <div className={`glass-panel rounded-[2rem] ${className}`}>{children}</div>;
 }
@@ -271,6 +294,35 @@ function ActiveHybridCard({ predictionCoverage }) {
   );
 }
 
+function FeatureInfluencePanel() {
+  return (
+    <GlassCard className="p-6">
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.24em] text-slate-500">Explainability</p>
+          <h2 className="mt-2 text-2xl font-black text-white">What Drives the Web Estimate?</h2>
+        </div>
+        <Layers className="h-6 w-6 text-emerald-300" />
+      </div>
+
+      <div className="grid gap-4 lg:grid-cols-4">
+        {featureInfluenceGroups.map((group) => (
+          <div key={group.label} className="rounded-3xl border border-slate-800 bg-slate-950/50 p-4">
+            <p className={`text-sm font-black ${group.tone}`}>{group.label}</p>
+            <p className="mt-3 text-xs leading-6 text-slate-500">{group.detail}</p>
+          </div>
+        ))}
+      </div>
+
+      <p className="mt-5 rounded-2xl border border-amber-400/20 bg-amber-400/10 p-4 text-sm leading-7 text-amber-100">
+        Interpretation rule: use the current website estimate as a market-aware scouting benchmark,
+        not as a fully leakage-free production valuation model. Clean v1 is the safer candidate for
+        future deployment after tuning.
+      </p>
+    </GlassCard>
+  );
+}
+
 function PipelineVisual() {
   return (
     <GlassCard className="overflow-hidden p-6">
@@ -372,6 +424,7 @@ export default function ModelLab({ metadata }) {
       </div>
 
       <ActiveHybridCard predictionCoverage={predictionCoverage} />
+      <FeatureInfluencePanel />
 
       <section>
         <div className="mb-5">
